@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Earthling Field Guide</title>
+<title>Earthling Field Guide – Middle School Edition</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Chakra+Petch:wght@600;700&display=swap">
 <style>
 /* Layout: the 3D game fills the screen; menus and the question panel float over it. */
 :root {
   color-scheme: dark;
-  --deep: #0b1d2a; --panel: #12303f; --panel-2: #1b4257; --ink: #f2f7f5; --dim: #a9c3cc;
-  --signal: #ffd166; --good: #7be0ad; --bad: #ffb09c; --line: #2f5d73;
+  --deep: #151a33; --panel: #20264a; --panel-2: #2c3566; --ink: #f4f3fb; --dim: #b8bddb;
+  --signal: #9be37a; --good: #7be0ad; --bad: #ffb09c; --line: #4a5491; /* middle school colors: indigo and leaf green */
   --display: "Chakra Petch", "Trebuchet MS", sans-serif; --body: "Atkinson Hyperlegible", Arial, sans-serif;
   --ts: 1;
 }
@@ -223,7 +223,7 @@ ul.slots { list-style: none; padding-left: 0; }
 </head>
 <body>
 <div id="app">
-  <canvas id="stage" aria-label="Earthling Field Guide game view"></canvas>
+  <canvas id="stage" aria-label="Earthling Field Guide – Middle School Edition game view"></canvas>
 
   <div id="hud" hidden>
     <span id="hudHp"></span><span id="hudScore">0</span><span id="hudStreak"></span><span id="hudTime"></span>
@@ -246,7 +246,7 @@ ul.slots { list-style: none; padding-left: 0; }
 
   <section id="menu" class="screen" hidden>
     <div class="card">
-      <h1>Earthling Field Guide<small>A Keystone Biology mission</small></h1>
+      <h1>Earthling Field Guide<small>Middle School Edition</small></h1>
       <p class="dim">You are a visitor studying life on Earth. Build your explorer, then start the mission.</p>
       <div id="cust"></div>
       <p class="modeh">Choose how to play</p><div class="modes"><button type="button" id="btnPlay" class="primary">🎮 Platformer Adventure</button><button type="button" id="btnCozy" class="primary cozyb" hidden>🌿 Cozy Exploration</button></div>
@@ -259,19 +259,25 @@ ul.slots { list-style: none; padding-left: 0; }
   </section>
 
   <section id="about" class="screen" hidden>
-    <div class="card wide about"><h2>About Earthling Field Guide</h2>
-      <p><b>Earthling Field Guide: A Keystone Biology Mission</b><br>Created by J.E. Lynch<br><span id="aboutVer" class="dim"></span></p>
-      <p>A free learning game for Pennsylvania high school biology. Players explore as an alien field researcher, discover vocabulary and key ideas, and practice the Keystone Biology eligible content.</p>
+    <div class="card wide about"><h2>About Earthling Field Guide – Middle School Edition</h2>
+      <p><b>Earthling Field Guide – Middle School Edition</b><br>Middle school version (grades 6–8)<br>Created by J.E. Lynch<br><span id="aboutVer" class="dim"></span></p>
+      <p>A free learning game for Pennsylvania middle school science (grades 6–8). Players explore as an alien field researcher and discover the vocabulary and key ideas of the PA STEELS Life Science and Environmental Literacy and Sustainability standards. It is the middle school companion to the high school game Earthling Field Guide.</p>
       <h3>Standards</h3>
       <ul>
-        <li>Pennsylvania Department of Education. <i>Keystone Exams: Biology. Assessment Anchors and Eligible Content.</i> Harrisburg, PA.</li>
-        <li>Pennsylvania Department of Education. <i>Pennsylvania Integrated Standards for Science, Environment, Ecology, Technology and Engineering (STEELS), Grades 9–12.</i> Harrisburg, PA.</li>
+        <li>Pennsylvania Department of Education. <i>Pennsylvania Integrated Standards for Science, Environment, Ecology, Technology and Engineering (STEELS), Grades 6–8:</i> 3.1 Life Science and 3.4 Environmental Literacy and Sustainability. Harrisburg, PA.</li>
+      </ul>
+      <h3>Sources for real-world examples</h3>
+      <ul>
+        <li>U.S. National Park Service, Fire program. <i>Indigenous Fire Practices Shape our Land.</i> Last updated March 18, 2024.</li>
+        <li>U.S. Environmental Protection Agency. <i>Summary of the Clean Water Act</i> and <i>National Pollutant Discharge Elimination System (NPDES).</i></li>
+        <li>Pennsylvania Department of Environmental Protection. <i>Riparian Buffer or Riparian Forest Buffer Equivalency Demonstration</i> (310-2135-002), 2015.</li>
+        <li>California Air Resources Board. <i>West Oakland</i> (Community Air Protection Program), page viewed 2026; and O. Matthews and A. Weaver, <i>Community Health: Air Pollution in West Oakland, California,</i> U.S. EPA, 2024.</li>
       </ul>
       <div id="aboutStd"></div>
       <h3>About the content</h3>
       <ul>
-        <li>All questions, notes, and activities were written for this game. They are aligned to the standards above but are not official Keystone Exam items.</li>
-        <li>The data sets in "Read the Data" (for example, potato cores in sugar solutions and enzyme activity) are illustrative, modeled on classic classroom labs. They are not real measurements.</li>
+        <li>All questions, notes, and activities were written for this game. They are aligned to the standards above but are not official PSSA items.</li>
+        <li>Data sets in "Read the Data" are illustrative, modeled on classic classroom labs, unless they name a real source.</li>
       </ul>
       <h3>Credits</h3>
       <ul>
@@ -347,6 +353,6 @@ ul.slots { list-style: none; padding-left: 0; }
 <script src="ambient.js"></script>
 <script src="earthtex.js"></script>
 <script src="intro.js"></script>
-<script>FieldGuide.loadWorlds(5);</script>
+<script>FieldGuide.loadWorlds(6);</script>
 </body>
 </html>

@@ -23,7 +23,7 @@ Object.assign(C.I18N.en, {
   'in.l2b': 'I come in peace, with a curious mind and a scientist\'s heart.',
   'in.l3a': 'Every stream, forest, flower, and tiny creature has a story to tell.',
   'in.l3b': 'Will you help me discover how life works on this wonderful planet?',
-  'in.title': 'Earthling Field Guide', 'in.tag': 'A Keystone Biology mission'
+  'in.title': 'Earthling Field Guide', 'in.tag': 'Middle School Edition'
 });
 Object.assign(C.I18N.es, {
   'in.skip': 'Saltar intro ⏭', 'in.begin': '▶ Comenzar', 'in.beginSub': 'Una historia corta con sonido. Puedes saltarla cuando quieras.', 'in.watch': '🎬 Ver la intro otra vez',
@@ -40,7 +40,7 @@ Object.assign(C.I18N.es, {
   'in.l2b': 'Vengo en paz, con una mente curiosa y un corazón científico.',
   'in.l3a': 'Cada arroyo, bosque, flor y criatura diminuta tiene una historia que contar.',
   'in.l3b': '¿Me ayudas a descubrir cómo funciona la vida en este planeta maravilloso?',
-  'in.title': 'Earthling Field Guide', 'in.tag': 'Una misión de Biología Keystone'
+  'in.title': 'Earthling Field Guide', 'in.tag': 'Edición para la escuela intermedia'
 });
 /* the story is told by the alien biologist: first the long search (galaxy), then the solar system, then Earth up close, then the landing */
 const SH = 20; /* the original Earth approach and landing now start 20 seconds later */
