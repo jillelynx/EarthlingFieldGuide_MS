@@ -10,7 +10,7 @@ FieldGuide.registerWorld({
       outro: "Report sent: placeholder level 1-1 finished.",
       build: function (b) {
         b.hint(5, 4.6, "Level 1-1: Pocono vernal pool, Pennsylvania (coming soon)").ground(14)
-          .hint(3, 4.6, "This level will teach PA STEELS 3.1.6-8.A").gap(2.4).ground(12)
+          .gap(2.4).ground(12)
           .goal();
       } },
     { id: "1-2", title: "Deep-Sea Vent", theme: "deep", codes: ["3.1.6-8.A"],
@@ -18,7 +18,7 @@ FieldGuide.registerWorld({
       outro: "Report sent: placeholder level 1-2 finished.",
       build: function (b) {
         b.hint(5, 4.6, "Level 1-2: Deep-sea hydrothermal vent (coming soon)").ground(14)
-          .hint(3, 4.6, "This level will teach PA STEELS 3.1.6-8.A").gap(2.4).ground(12)
+          .gap(2.4).ground(12)
           .goal();
       } },
     { id: "1-3", title: "Backyard Garden", theme: "garden", codes: ["3.1.6-8.B"],
@@ -26,7 +26,7 @@ FieldGuide.registerWorld({
       outro: "Report sent: placeholder level 1-3 finished.",
       build: function (b) {
         b.hint(5, 4.6, "Level 1-3: Backyard garden (coming soon)").ground(14)
-          .hint(3, 4.6, "This level will teach PA STEELS 3.1.6-8.B").gap(2.4).ground(12)
+          .gap(2.4).ground(12)
           .goal();
       } },
     { id: "1-4", title: "Rocky Tide Pool", theme: "shore", codes: ["3.1.6-8.B"],
@@ -34,7 +34,7 @@ FieldGuide.registerWorld({
       outro: "Report sent: placeholder level 1-4 finished.",
       build: function (b) {
         b.hint(5, 4.6, "Level 1-4: Rocky-shore tide pool (coming soon)").ground(14)
-          .hint(3, 4.6, "This level will teach PA STEELS 3.1.6-8.B").gap(2.4).ground(12)
+          .gap(2.4).ground(12)
           .goal();
       } }
   ]

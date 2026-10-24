@@ -10,7 +10,7 @@ FieldGuide.registerWorld({
       outro: "Report sent: placeholder level 6-1 finished.",
       build: function (b) {
         b.hint(5, 4.6, "Level 6-1: Fossil dig through rock layers (coming soon)").ground(14)
-          .hint(3, 4.6, "This level will teach PA STEELS 3.1.6-8.O").gap(2.4).ground(12)
+          .gap(2.4).ground(12)
           .goal();
       } },
     { id: "6-2", title: "Whale Fossil Valley", theme: "canyon", codes: ["3.1.6-8.P"],
@@ -18,7 +18,7 @@ FieldGuide.registerWorld({
       outro: "Report sent: placeholder level 6-2 finished.",
       build: function (b) {
         b.hint(5, 4.6, "Level 6-2: Whale fossil valley (coming soon)").ground(14)
-          .hint(3, 4.6, "This level will teach PA STEELS 3.1.6-8.P").gap(2.4).ground(12)
+          .gap(2.4).ground(12)
           .goal();
       } },
     { id: "6-3", title: "Marine Research Station", theme: "shore", codes: ["3.1.6-8.Q"],
@@ -26,7 +26,7 @@ FieldGuide.registerWorld({
       outro: "Report sent: placeholder level 6-3 finished.",
       build: function (b) {
         b.hint(5, 4.6, "Level 6-3: Marine research station (coming soon)").ground(14)
-          .hint(3, 4.6, "This level will teach PA STEELS 3.1.6-8.Q").gap(2.4).ground(12)
+          .gap(2.4).ground(12)
           .goal();
       } },
     { id: "6-4", title: "Finch Island", theme: "island", codes: ["3.1.6-8.S"],
@@ -34,7 +34,7 @@ FieldGuide.registerWorld({
       outro: "Report sent: placeholder level 6-4 finished.",
       build: function (b) {
         b.hint(5, 4.6, "Level 6-4: Island with finches (coming soon)").ground(14)
-          .hint(3, 4.6, "This level will teach PA STEELS 3.1.6-8.S").gap(2.4).ground(12)
+          .gap(2.4).ground(12)
           .goal();
       } },
     { id: "6-5", title: "Selection Simulator", theme: "island", codes: ["3.1.6-8.T"],
@@ -42,7 +42,7 @@ FieldGuide.registerWorld({
       outro: "Report sent: placeholder level 6-5 finished.",
       build: function (b) {
         b.hint(5, 4.6, "Level 6-5: Selection simulator (coming soon)").ground(14)
-          .hint(3, 4.6, "This level will teach PA STEELS 3.1.6-8.T").gap(2.4).ground(12)
+          .gap(2.4).ground(12)
           .goal();
       } }
   ]

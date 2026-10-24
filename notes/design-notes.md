@@ -21,6 +21,12 @@
 - Keystone tables and text removed. The teacher standards table in About (admin mode or #teacher) lists all 30 grades 6–8 standards with exact wording and shows which are not in the game yet.
 - Testing: `tools/test_setup.js` (Playwright) checks the menu, map, About table, the save name, cozy mode and the Biodome, and plays every level to the end.
 
+## Standards are for educators only (Jill, Oct 24, 2026)
+- Students never see standard codes: no codes on level signs, scan cards or questions, and the Progress screen's "By standard" table shows only in admin mode or with #teacher.
+- About has an **Educator reference sheet: standards alignment** (admin mode or #teacher only): all 30 standards with exact wording, where each is taught, and how many items are in the game, plus a Print button.
+- Each level stores its standard codes in its data (`codes`), so the sheet updates itself as worlds are built. Places outside the platformer (cozy mode, Biodome) are listed in STD_PLACES in engine.js.
+- Test: `tools/std_test.js`.
+
 ## Still to adapt (step 5)
 - Build the real levels one world at a time, with English and Spanish text.
 - Biodome: supplies still say to go back to high school levels (for example "World 2, level 1: Water and Carbon"). Relink them to middle school levels.

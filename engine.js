@@ -3366,11 +3366,33 @@ const STEELS = {"3.1.6-8.A": "Conduct an investigation to provide evidence that 
 function stdMap() { /* from the questions and activities actually in the game: code -> { worlds: {w: 1}, n } */
   const m = {}; Object.keys(QMAP).forEach(function (k) { const q = QMAP[k]; if (!q.code || !STEELS[q.code]) return; const e = m[q.code] = m[q.code] || { worlds: {}, n: 0 }; e.n++; if (q.world) e.worlds[q.world] = 1; });
   return m; }
+/* where each standard is taught outside the platformer levels (approved standards map, notes/standards-map.md) */
+const STD_PLACES = {
+  '3.1.6-8.U': ['Biodome'], '3.4.6-8.A': ["Cozy mode: Farmer Lu's farm"], '3.4.6-8.B': ['Cozy mode: ranger station exhibit (Interior Alaska)'],
+  '3.4.6-8.C': ['Cozy mode: Willow Creek watershed, wetland and Pocono Bog'], '3.4.6-8.D': ['Cozy mode: ranger station news board'],
+  '3.4.6-8.E': ['Cozy mode: pond, stream and meadow surveys'], '3.4.6-8.F': ["Cozy mode: the farm's orchard"],
+  '3.4.6-8.G': ['Cozy mode: the valley town pipe and the creek-bank buffer'], '3.4.6-8.H': ['Cozy mode: stream planting at the Quiet Pond', 'Biodome'],
+  '3.4.6-8.I': ['Cozy mode: ranger station exhibit (West Oakland, California)'] };
+function stdPlaces(c) {
+  const out = []; allLevels().forEach(function (e) { if ((e.lv.codes || []).indexOf(c) >= 0) out.push('Level ' + e.lv.id + ' ' + e.lv.title); });
+  return out.concat(STD_PLACES[c] || []); }
+/* EDUCATOR REFERENCE SHEET (About, admin mode or #teacher only): every standard, its exact wording, where it is taught, items in the game */
 function standardsTable() {
   const m = stdMap();
-  return '<table class="ftab stdtab"><tr><th>PA STEELS (grades 6–8)</th><th>Where</th><th>Items</th></tr>' + Object.keys(STEELS).map(function (c) { const e = m[c];
-    return '<tr><td><b>' + esc(c) + '</b><br><span class="dim">' + esc(STEELS[c]) + '</span></td><td>' + (e ? 'World ' + Object.keys(e.worlds).sort().join(', ') : '<span class="dim">Not yet in the game</span>') + '</td><td>' + (e ? e.n : 0) + '</td></tr>'; }).join('') + '</table>';
+  return '<table class="ftab stdtab"><tr><th>PA STEELS standard (grades 6–8)</th><th>Where it is taught</th><th>Items in the game</th></tr>' + Object.keys(STEELS).map(function (c) { const e = m[c];
+    return '<tr><td><b>' + esc(c) + '</b><br><span class="dim">' + esc(STEELS[c]) + '</span></td><td>' + stdPlaces(c).map(esc).join('<br>') + '</td><td>' + (e ? e.n : '<span class="dim">0 (coming soon)</span>') + '</td></tr>'; }).join('') + '</table>';
 }
+function refSheet() {
+  return '<h3>Educator reference sheet: standards alignment</h3>' +
+    '<p class="dim">Only teachers see this sheet (admin mode or the #teacher link). Students never see standard codes in the game.</p>' +
+    '<p>Source: Pennsylvania Department of Education, <i>Pennsylvania Integrated Standards for Science, Environment, Ecology, Technology and Engineering (STEELS)</i>, grades 6–8. This game covers 3.1 Life Science and 3.4 Environmental Literacy and Sustainability (30 standards). Wording is copied exactly from the standards document.</p>' +
+    '<p><button type="button" id="btnRefPrint">🖨 Print the reference sheet</button></p>' + standardsTable(); }
+function printRefSheet() {
+  const w = window.open('', '_blank'); if (!w) return;
+  w.document.write('<!doctype html><meta charset="utf-8"><title>Standards alignment: Earthling Field Guide – Middle School Edition</title>' +
+    '<style>body{font:13px/1.4 Arial,sans-serif;color:#111;margin:24px}h1{font-size:18px}table{border-collapse:collapse;width:100%}th,td{border:1px solid #999;padding:6px;vertical-align:top;text-align:left}th{background:#eee}.dim{color:#444}button{display:none}</style>' +
+    '<h1>Earthling Field Guide – Middle School Edition: standards alignment</h1><p>' + esc(VERSION) + '</p>' + refSheet().replace(/<h3>[^<]*<\/h3>/, ''));
+  w.document.close(); w.focus(); w.print(); }
 function buildProgress() {
   let html = '<h3>Mastery by unit</h3><p class="dim">Share of questions answered right on the first try.</p>';
   for (let w = 1; w <= BQ.UNITS.length; w++) {
@@ -3379,7 +3401,7 @@ function buildProgress() {
     html += '<div class="bar"><span>' + w + '. ' + BQ.UNITS[w - 1] + '</span><div class="track"><div class="fill" style="width:' + pct + '%"></div></div><span class="num">' + (BQ.worlds[w] ? (t ? pct + '%' : 'Not started') : 'Coming soon') + '</span></div>';
   }
   const codes = Object.keys(S.codes).sort();
-  if (codes.length) html += '<h3>By standard</h3><table class="ftab"><tr><th>PA STEELS (grades 6–8)</th><th>First-try correct</th></tr>' + codes.map(function (k) { return '<tr><td title="' + esc(STEELS[k] || '') + '">' + esc(k) + '</td><td>' + S.codes[k].right + ' of ' + S.codes[k].tries + '</td></tr>'; }).join('') + '</table>';
+  if (codes.length && (S.set.admin || TEACH)) html += '<h3>By standard (teachers only)</h3><table class="ftab"><tr><th>PA STEELS (grades 6–8)</th><th>First-try correct</th></tr>' + codes.map(function (k) { return '<tr><td title="' + esc(STEELS[k] || '') + '">' + esc(k) + '</td><td>' + S.codes[k].right + ' of ' + S.codes[k].tries + '</td></tr>'; }).join('') + '</table>';
   const top = BQ.Leaderboard.top(10).filter(function (r) { return nickOK(r.nick); }).slice(0, 5); if (!nickOK(S.nick)) { S.nick = ''; save(); }
   html += '<h3>High scores on this device</h3>' + (top.length ? '<ol class="board">' + top.map(function (r) { return '<li><span>' + esc(r.nick) + '</span><span class="num">' + r.score + '</span></li>'; }).join('') + '</ol>' : '<p class="dim">Enter a nickname below, then finish a level to post a score. Your total so far: ' + totalScore() + '.</p>');
   $('progBody').innerHTML = html; $('nick').value = S.nick;
@@ -3530,7 +3552,7 @@ function wire() {
   ['pointerdown', 'pointermove', 'pointerup', 'wheel'].forEach(function (ev) { $('stage').addEventListener(ev, function (e) { if (mode === 'cozy' && BQ.cozy) BQ.cozy.pointer(e, ev); else if (mode === 'dome' && BQ.dome) BQ.dome.pointer(e, ev); }, ev === 'wheel' ? { passive: false } : undefined); });
   $('btnLevels').onclick = function () { openMap(); };
   $('btnAbout').onclick = function () { show('about'); $('aboutVer').textContent = VERSION;
-    const sb = $('aboutStd'); if (sb) sb.innerHTML = (S.set.admin || TEACH) ? '<h3>Standards map (teachers)</h3><p class="dim">Every question and activity is tagged with the PA STEELS grades 6–8 standard it teaches. The wording is copied exactly from the PA STEELS K-12 standards. "Items" counts the questions and activities for that standard.</p>' + standardsTable() : '<p class="dim">Teachers: turn on admin mode (type the admin password on the main menu) to see a table of every PA STEELS grades 6–8 standard in this game, with its exact wording.</p>'; };
+    const sb = $('aboutStd'); if (sb) { sb.innerHTML = (S.set.admin || TEACH) ? refSheet() : ''; sb.hidden = !(S.set.admin || TEACH); const pb = $('btnRefPrint'); if (pb) pb.onclick = printRefSheet; } };
   $('menuVer').textContent = VERSION + ' · by J.E. Lynch' + (S.set.admin ? ' · ADMIN' : '');
   $('btnProgress').onclick = function () { buildProgress(); show('progress'); };
   $('btnSettings').onclick = function () { backTo = 'menu'; show('settings'); };

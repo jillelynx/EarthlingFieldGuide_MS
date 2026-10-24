@@ -10,7 +10,7 @@ FieldGuide.registerWorld({
       outro: "Report sent: placeholder level 3-1 finished.",
       build: function (b) {
         b.hint(5, 4.6, "Level 3-1: Sunny meadow (coming soon)").ground(14)
-          .hint(3, 4.6, "This level will teach PA STEELS 3.1.6-8.F").gap(2.4).ground(12)
+          .gap(2.4).ground(12)
           .goal();
       } },
     { id: "3-2", title: "Kelp Forest", theme: "reef", codes: ["3.1.6-8.F"],
@@ -18,7 +18,7 @@ FieldGuide.registerWorld({
       outro: "Report sent: placeholder level 3-2 finished.",
       build: function (b) {
         b.hint(5, 4.6, "Level 3-2: Kelp forest (coming soon)").ground(14)
-          .hint(3, 4.6, "This level will teach PA STEELS 3.1.6-8.F").gap(2.4).ground(12)
+          .gap(2.4).ground(12)
           .goal();
       } },
     { id: "3-3", title: "Digestive Journey", theme: "gut", codes: ["3.1.6-8.G"],
@@ -26,7 +26,7 @@ FieldGuide.registerWorld({
       outro: "Report sent: placeholder level 3-3 finished.",
       build: function (b) {
         b.hint(5, 4.6, "Level 3-3: Inside the digestive system (coming soon)").ground(14)
-          .hint(3, 4.6, "This level will teach PA STEELS 3.1.6-8.G").gap(2.4).ground(12)
+          .gap(2.4).ground(12)
           .goal();
       } },
     { id: "3-4", title: "Garden Test Plots", theme: "garden", codes: ["3.1.6-8.E"],
@@ -34,7 +34,7 @@ FieldGuide.registerWorld({
       outro: "Report sent: placeholder level 3-4 finished.",
       build: function (b) {
         b.hint(5, 4.6, "Level 3-4: Community garden test plots (coming soon)").ground(14)
-          .hint(3, 4.6, "This level will teach PA STEELS 3.1.6-8.E").gap(2.4).ground(12)
+          .gap(2.4).ground(12)
           .goal();
       } }
   ]

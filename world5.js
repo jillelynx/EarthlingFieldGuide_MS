@@ -10,7 +10,7 @@ FieldGuide.registerWorld({
       outro: "Report sent: placeholder level 5-1 finished.",
       build: function (b) {
         b.hint(5, 4.6, "Level 5-1: Wildflower meadow (coming soon)").ground(14)
-          .hint(3, 4.6, "This level will teach PA STEELS 3.1.6-8.D").gap(2.4).ground(12)
+          .gap(2.4).ground(12)
           .goal();
       } },
     { id: "5-2", title: "Strawberry Patch", theme: "garden", codes: ["3.1.6-8.N"],
@@ -18,7 +18,7 @@ FieldGuide.registerWorld({
       outro: "Report sent: placeholder level 5-2 finished.",
       build: function (b) {
         b.hint(5, 4.6, "Level 5-2: Strawberry patch and tide pool (coming soon)").ground(14)
-          .hint(3, 4.6, "This level will teach PA STEELS 3.1.6-8.N").gap(2.4).ground(12)
+          .gap(2.4).ground(12)
           .goal();
       } },
     { id: "5-3", title: "Gene Lab", theme: "lab", codes: ["3.1.6-8.M"],
@@ -26,7 +26,7 @@ FieldGuide.registerWorld({
       outro: "Report sent: placeholder level 5-3 finished.",
       build: function (b) {
         b.hint(5, 4.6, "Level 5-3: Gene lab in a cave (coming soon)").ground(14)
-          .hint(3, 4.6, "This level will teach PA STEELS 3.1.6-8.M").gap(2.4).ground(12)
+          .gap(2.4).ground(12)
           .goal();
       } },
     { id: "5-4", title: "Farm and Lab", theme: "lab", codes: ["3.1.6-8.R"],
@@ -34,7 +34,7 @@ FieldGuide.registerWorld({
       outro: "Report sent: placeholder level 5-4 finished.",
       build: function (b) {
         b.hint(5, 4.6, "Level 5-4: Farm and research lab (coming soon)").ground(14)
-          .hint(3, 4.6, "This level will teach PA STEELS 3.1.6-8.R").gap(2.4).ground(12)
+          .gap(2.4).ground(12)
           .goal();
       } }
   ]

@@ -10,7 +10,7 @@ FieldGuide.registerWorld({
       outro: "Report sent: placeholder level 2-1 finished.",
       build: function (b) {
         b.hint(5, 4.6, "Level 2-1: Inside the human body (coming soon)").ground(14)
-          .hint(3, 4.6, "This level will teach PA STEELS 3.1.6-8.C").gap(2.4).ground(12)
+          .gap(2.4).ground(12)
           .goal();
       } },
     { id: "2-2", title: "Mountain Trail", theme: "forest", codes: ["3.1.6-8.C"],
@@ -18,7 +18,7 @@ FieldGuide.registerWorld({
       outro: "Report sent: placeholder level 2-2 finished.",
       build: function (b) {
         b.hint(5, 4.6, "Level 2-2: Mountain trail hike (coming soon)").ground(14)
-          .hint(3, 4.6, "This level will teach PA STEELS 3.1.6-8.C").gap(2.4).ground(12)
+          .gap(2.4).ground(12)
           .goal();
       } },
     { id: "2-3", title: "Forest at Night", theme: "forest", codes: ["3.1.6-8.H"],
@@ -26,7 +26,7 @@ FieldGuide.registerWorld({
       outro: "Report sent: placeholder level 2-3 finished.",
       build: function (b) {
         b.hint(5, 4.6, "Level 2-3: Forest at night (coming soon)").ground(14)
-          .hint(3, 4.6, "This level will teach PA STEELS 3.1.6-8.H").gap(2.4).ground(12)
+          .gap(2.4).ground(12)
           .goal();
       } },
     { id: "2-4", title: "Reaction Lab", theme: "lab", codes: ["3.1.6-8.H"],
@@ -34,7 +34,7 @@ FieldGuide.registerWorld({
       outro: "Report sent: placeholder level 2-4 finished.",
       build: function (b) {
         b.hint(5, 4.6, "Level 2-4: Reaction lab (coming soon)").ground(14)
-          .hint(3, 4.6, "This level will teach PA STEELS 3.1.6-8.H").gap(2.4).ground(12)
+          .gap(2.4).ground(12)
           .goal();
       } }
   ]

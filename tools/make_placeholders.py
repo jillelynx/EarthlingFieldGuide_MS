@@ -1,6 +1,6 @@
 """Writes placeholder world files (world1-6.js and world1-6-questions.js) from the approved standards map.
-Each placeholder level is short and finishable: a title sign, a sign naming the standard it will teach,
-one small gap to jump, and the mothership beam. Run: python3 tools/make_placeholders.py"""
+Each placeholder level is short and finishable: a title sign, one small gap to jump, and the mothership beam.
+Standard codes are stored with each level (codes) for the educator reference sheet; students never see them. Run: python3 tools/make_placeholders.py"""
 import json, os
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WORLDS = [
@@ -50,7 +50,7 @@ for wid, wtitle, levels in WORLDS:
                 '      outro: %s,' % js('Report sent: placeholder level %s finished.' % lid),
                 '      build: function (b) {',
                 '        b.hint(5, 4.6, %s).ground(14)' % js('Level %s: %s (coming soon)' % (lid, place)),
-                '          .hint(3, 4.6, %s).gap(2.4).ground(12)' % js('This level will teach PA STEELS %s' % std),
+                '          .gap(2.4).ground(12)',
                 '          .goal();',
                 '      } }' + (',' if i < len(levels) - 1 else '')]
     out += ['  ]', '});', '']

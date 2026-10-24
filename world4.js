@@ -10,7 +10,7 @@ FieldGuide.registerWorld({
       outro: "Report sent: placeholder level 4-1 finished.",
       build: function (b) {
         b.hint(5, 4.6, "Level 4-1: Coral reef (coming soon)").ground(14)
-          .hint(3, 4.6, "This level will teach PA STEELS 3.1.6-8.J").gap(2.4).ground(12)
+          .gap(2.4).ground(12)
           .goal();
       } },
     { id: "4-2", title: "Pennsylvania Forest", theme: "forest", codes: ["3.1.6-8.I"],
@@ -18,7 +18,7 @@ FieldGuide.registerWorld({
       outro: "Report sent: placeholder level 4-2 finished.",
       build: function (b) {
         b.hint(5, 4.6, "Level 4-2: Pennsylvania forest (coming soon)").ground(14)
-          .hint(3, 4.6, "This level will teach PA STEELS 3.1.6-8.I").gap(2.4).ground(12)
+          .gap(2.4).ground(12)
           .goal();
       } },
     { id: "4-3", title: "Forest Floor", theme: "forest", codes: ["3.1.6-8.K"],
@@ -26,7 +26,7 @@ FieldGuide.registerWorld({
       outro: "Report sent: placeholder level 4-3 finished.",
       build: function (b) {
         b.hint(5, 4.6, "Level 4-3: Fallen log and forest floor (coming soon)").ground(14)
-          .hint(3, 4.6, "This level will teach PA STEELS 3.1.6-8.K").gap(2.4).ground(12)
+          .gap(2.4).ground(12)
           .goal();
       } },
     { id: "4-4", title: "After the Fire", theme: "canyon", codes: ["3.1.6-8.L"],
@@ -34,7 +34,7 @@ FieldGuide.registerWorld({
       outro: "Report sent: placeholder level 4-4 finished.",
       build: function (b) {
         b.hint(5, 4.6, "Level 4-4: Forest after a fire (coming soon)").ground(14)
-          .hint(3, 4.6, "This level will teach PA STEELS 3.1.6-8.L").gap(2.4).ground(12)
+          .gap(2.4).ground(12)
           .goal();
       } },
     { id: "4-5", title: "River Valley", theme: "shore", codes: ["3.1.6-8.U"],
@@ -42,7 +42,7 @@ FieldGuide.registerWorld({
       outro: "Report sent: placeholder level 4-5 finished.",
       build: function (b) {
         b.hint(5, 4.6, "Level 4-5: River valley (coming soon)").ground(14)
-          .hint(3, 4.6, "This level will teach PA STEELS 3.1.6-8.U").gap(2.4).ground(12)
+          .gap(2.4).ground(12)
           .goal();
       } }
   ]
