@@ -3390,7 +3390,7 @@ function refSheet() {
 function printRefSheet() {
   const w = window.open('', '_blank'); if (!w) return;
   w.document.write('<!doctype html><meta charset="utf-8"><title>Standards alignment: Earthling Field Guide – Middle School Edition</title>' +
-    '<style>body{font:13px/1.4 Arial,sans-serif;color:#111;margin:24px}h1{font-size:18px}table{border-collapse:collapse;width:100%}th,td{border:1px solid #999;padding:6px;vertical-align:top;text-align:left}th{background:#eee}.dim{color:#444}button{display:none}</style>' +
+    '<style>*{-webkit-print-color-adjust:exact;print-color-adjust:exact}body{font:13px/1.4 Arial,sans-serif;color:#151a33;margin:24px}h1{font-size:18px;color:#151a33;border-bottom:4px solid #9be37a;padding-bottom:6px}table{border-collapse:collapse;width:100%}th,td{border:1px solid #b8bddb;padding:6px;vertical-align:top;text-align:left}th{background:#2c3566;color:#fff}tr:nth-child(even) td{background:#f1f0fa}td b{color:#2f6b1c}.dim{color:#3a3f5c}button{display:none}</style>' +
     '<h1>Earthling Field Guide – Middle School Edition: standards alignment</h1><p>' + esc(VERSION) + '</p>' + refSheet().replace(/<h3>[^<]*<\/h3>/, ''));
   w.document.close(); w.focus(); w.print(); }
 function buildProgress() {
