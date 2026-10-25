@@ -142,6 +142,19 @@ const I18N = {
     'm.animal': 'animal cell', 'm.prok': 'bacterium', 'm.plant': 'plant cell', 'm.yours': '✓ Your {n}', 'm.done': '✓ Your {n} is complete! The gate is open.',
     'p.boost': 'Energy boost: run faster and jump higher for 6 seconds!', 'p.boostL': 'Energy boost', 'p.shield': 'Shield', 'p.life': 'Extra life',
     'q.start': 'Side quest: {name} ({n} to find). It is optional, and worth +300!',
+    'id.intro': '<h2>🛡️ Immune Defense</h2><p>The portal pulled you <b>inside a blood vessel</b>. Germs are floating toward you!</p><p>Every germ is covered in <b>antigens</b>: shapes on its surface. Your weapons are <b>antibodies</b>: Y-shaped proteins made by white blood cells. Each antibody fits only <b>one</b> antigen shape, like a key fits one lock.</p><p><b>Match the shape to tag the germ.</b> A wrong shape just bounces off.</p><p class="dim">Aim: move the mouse (or arrow keys). Fire: click (or space). Pick an antibody: keys 1 to 4. Do not let 3 germs get past you!</p>',
+    'id.hud': 'Tagged: {t}   Score: {s}   Time: {n}', 'id.start': 'Start', 'id.won': '🛡️ Infection stopped!', 'id.over': '🛡️ Defense over', 'id.score': 'You tagged <b>{t}</b> germs. Score: <b>{s}</b>', 'id.scoreH': 'You tagged <b>{t}</b> germs and kept {h} hearts (+{b}). Score: <b>{s}</b>',
+    'id.real': '<p><b>What really happens:</b> white blood cells make antibodies that fit one antigen shape. Antibodies tag germs so other white blood cells can eat them. <b>Memory cells</b> remember the germ, so next time your body fights back faster. That is how vaccines work. Your immune system and circulatory system work together: blood carries the white blood cells everywhere.</p>',
+    'id.back': 'Return through the portal', 'id.memory': 'Memory cells! Your body remembers these germs, so your antibodies now fire twice as fast.', 'id.past': 'A germ got past you!',
+    'id.tagged': 'Tagged! The antibody fits the {a} antigen. A white blood cell will eat this germ.', 'id.bounce': 'Bounced off! A {a} antibody does not fit a {b} antigen.', 'id.home': 'Back from the portal with +{s} points!',
+    'id.sh0': 'triangle', 'id.sh1': 'cube', 'id.sh2': 'ring', 'id.sh3': 'diamond',
+    'c.kicker': '🎉 World complete!', 'c.allKicker': '🏆 Field Guide complete!', 'c.title': 'World {n}: {t}', 'c.allTitle': 'You finished all six worlds!',
+    'c.body': 'You finished every level in this world. Your report to the home planet is complete!', 'c.allBody': 'You explored every world and sent every report home. You are a true Earth scientist!',
+    'c.levels': 'Levels finished', 'c.stars': 'Stars', 'c.words': 'Words discovered', 'c.rares': 'Rare specimens', 'c.quests': 'Side quests finished',
+    'c.nameLbl': 'Your name for the certificate (optional; it is not saved)', 'c.cert': '🎓 Print my certificate', 'c.next': 'Next world ▶', 'c.close': 'Back to the station',
+    'c.badName': 'Please choose a name that is appropriate and respectful.', 'c.sound': 'fanfare, world complete',
+    'c.cTitle': 'Certificate of Achievement', 'c.edition': 'Middle School Edition', 'c.cThis': 'This certifies that', 'c.cDid': 'completed', 'c.cAll': 'every world of the Field Guide',
+    'c.cDate': 'Date', 'c.cSign': 'Mission Control', 'c.cPrint': 'Print', 'c.certs': 'Certificates', 'c.certNone': 'Finish every level in a world to earn its certificate.', 'c.cAllBtn': 'Whole Field Guide',
     'm.flag': 'A tail like a bacterium\u2019s!', 'm.c.prok.w': 'You built a bacterium', 'm.c.prok.n': 'A bacterium is ONE cell. It has a cell membrane, cytoplasm, DNA and ribosomes, but no nucleus: its DNA floats in the cytoplasm.',
     'm.c.plant.w': 'You built a plant cell', 'm.c.plant.n': 'The cell wall gives support, chloroplasts make food from sunlight, the vacuole stores water, the nucleus controls the cell and mitochondria release energy. Each part has a job, and together they keep the cell alive.',
     'm.c.animal.w': 'You built an animal cell', 'm.c.animal.n': 'An animal cell has no cell wall and no chloroplasts. Its nucleus controls the cell, mitochondria release energy and the cell membrane controls what goes in and out.', 'q.done': '✓ Side quest complete: {name}! +300.',
@@ -176,6 +189,19 @@ const I18N = {
     'm.flag': '¡Una cola como la de una bacteria!', 'm.c.prok.w': 'Construiste una bacteria', 'm.c.prok.n': 'Una bacteria es UNA sola célula. Tiene membrana celular, citoplasma, ADN y ribosomas, pero no tiene núcleo: su ADN flota en el citoplasma.',
     'm.c.plant.w': 'Construiste una célula vegetal', 'm.c.plant.n': 'La pared celular da soporte, los cloroplastos producen alimento con la luz del sol, la vacuola guarda agua, el núcleo controla la célula y las mitocondrias liberan energía. Cada parte tiene un trabajo y, juntas, mantienen viva la célula.',
     'm.c.animal.w': 'Construiste una célula animal', 'm.c.animal.n': 'Una célula animal no tiene pared celular ni cloroplastos. Su núcleo controla la célula, las mitocondrias liberan energía y la membrana celular controla lo que entra y sale.',
+    'c.kicker': '🎉 ¡Mundo completo!', 'c.allKicker': '🏆 ¡Guía de campo completa!', 'c.title': 'Mundo {n}: {t}', 'c.allTitle': '¡Terminaste los seis mundos!',
+    'c.body': 'Terminaste todos los niveles de este mundo. ¡Tu informe para el planeta natal está completo!', 'c.allBody': 'Exploraste todos los mundos y enviaste todos los informes. ¡Eres un verdadero científico de la Tierra!',
+    'c.levels': 'Niveles terminados', 'c.stars': 'Estrellas', 'c.words': 'Palabras descubiertas', 'c.rares': 'Especímenes raros', 'c.quests': 'Misiones extra terminadas',
+    'c.nameLbl': 'Tu nombre para el certificado (opcional; no se guarda)', 'c.cert': '🎓 Imprimir mi certificado', 'c.next': 'Siguiente mundo ▶', 'c.close': 'Volver a la estación',
+    'c.badName': 'Por favor, escribe un nombre apropiado y respetuoso.', 'c.sound': 'fanfarria, mundo completo',
+    'c.cTitle': 'Certificado de logro', 'c.edition': 'Edición para la escuela intermedia', 'c.cThis': 'Se certifica que', 'c.cDid': 'completó', 'c.cAll': 'todos los mundos de la guía de campo',
+    'c.cDate': 'Fecha', 'c.cSign': 'Control de la misión', 'c.cPrint': 'Imprimir', 'c.certs': 'Certificados', 'c.certNone': 'Termina todos los niveles de un mundo para ganar su certificado.', 'c.cAllBtn': 'Toda la guía de campo',
+    'id.intro': '<h2>🛡️ Defensa inmunitaria</h2><p>El portal te llevó <b>dentro de un vaso sanguíneo</b>. ¡Unos microbios flotan hacia ti!</p><p>Cada microbio está cubierto de <b>antígenos</b>: formas en su superficie. Tus armas son los <b>anticuerpos</b>: proteínas en forma de Y que producen los glóbulos blancos. Cada anticuerpo encaja con <b>una sola</b> forma de antígeno, como una llave en una cerradura.</p><p><b>Une la forma para marcar al microbio.</b> Una forma incorrecta rebota.</p><p class="dim">Apunta: mueve el ratón (o las flechas). Dispara: haz clic (o espacio). Elige un anticuerpo: teclas 1 a 4. ¡No dejes pasar 3 microbios!</p>',
+    'id.hud': 'Marcados: {t}   Puntaje: {s}   Tiempo: {n}', 'id.start': 'Empezar', 'id.won': '🛡️ ¡Infección detenida!', 'id.over': '🛡️ Fin de la defensa', 'id.score': 'Marcaste <b>{t}</b> microbios. Puntaje: <b>{s}</b>', 'id.scoreH': 'Marcaste <b>{t}</b> microbios y conservaste {h} corazones (+{b}). Puntaje: <b>{s}</b>',
+    'id.real': '<p><b>Lo que pasa en realidad:</b> los glóbulos blancos producen anticuerpos que encajan con una forma de antígeno. Los anticuerpos marcan a los microbios para que otros glóbulos blancos se los coman. Las <b>células de memoria</b> recuerdan al microbio, así que la próxima vez tu cuerpo se defiende más rápido. Así funcionan las vacunas. Tu sistema inmunitario y tu sistema circulatorio trabajan juntos: la sangre lleva los glóbulos blancos a todas partes.</p>',
+    'id.back': 'Volver por el portal', 'id.memory': '¡Células de memoria! Tu cuerpo recuerda estos microbios, así que tus anticuerpos ahora disparan el doble de rápido.', 'id.past': '¡Un microbio se te escapó!',
+    'id.tagged': '¡Marcado! El anticuerpo encaja con el antígeno de forma {a}. Un glóbulo blanco se comerá a este microbio.', 'id.bounce': '¡Rebotó! Un anticuerpo de forma {a} no encaja con un antígeno de forma {b}.', 'id.home': '¡De vuelta del portal con +{s} puntos!',
+    'id.sh0': 'triángulo', 'id.sh1': 'cubo', 'id.sh2': 'anillo', 'id.sh3': 'diamante',
     'q.start': 'Misión extra: {name} (hay {n} por encontrar). Es opcional, ¡y vale +300!', 'q.done': '✓ ¡Misión extra completa: {name}! +300.',
     'h.ghost': 'Esa forma tenue es una plataforma escondida. Las gafas de laboratorio la vuelven sólida. Gánalas con 3 estrellas o cómpralas en la tienda de la estación.', 'h.crumble': '¡Plataforma frágil! Se rompe si te quedas encima mucho tiempo. ¡Sigue moviéndote!', 'h.boom': '¡Plataforma inestable! Va a estallar si te quedas encima. ¡Salta rápido!',
     'j.title': 'Diario de campo', 'j.found': '{n} de {m} descubiertos', 'j.where': 'Se encuentra en el nivel {lv}', 'j.unknown': 'Aún no descubierto',
@@ -313,7 +339,8 @@ const SONGS = {
   island: { name: 'island breeze theme', bpm: 96, root: 64, scale: 'mixo', prog: [0, 4, 3, 4], seed: 47, drums: 1, lead: 'square' },
   canyon: { name: 'canyon dig theme', bpm: 90, root: 57, scale: 'dorian', prog: [0, 4, 3, 4], seed: 53, drums: 1, lead: 'square' },
   boss: { name: 'boss battle theme', bpm: 138, root: 55, scale: 'minor', prog: [0, 0, 5, 4], seed: 17, drums: 3, lead: 'square' }
-};
+};SONGS.night = Object.assign({}, SONGS.forest, { name: 'starry night theme', bpm: 72 });
+
 const Music = { want: null, cur: null, song: null, mel: null, step: 0, next: 0, timer: 0, gain: null, duck: 1, gesture: false, noise: null };
 function mtof(m) { return 440 * Math.pow(2, (m - 69) / 12); }
 function noteOf(song, d, oct) { const sc = SCALES[song.scale], o = Math.floor(d / 7); return song.root + 12 * (oct + o) + sc[((d % 7) + 7) % 7]; }
@@ -381,6 +408,9 @@ const GEARINFO = ['Gear gives you a special power. Earn stars to unlock more gea
   'Ribosome hat: ribosomes build proteins! Press E in the air to build a protein platform under your feet (one each time you leave the ground).'];
 /* Each world's look: sky gradient, sun glow, layered ridges, haze, drifting lights, light beams. */
 const THEMES = {
+  /* NIGHT (middle school): a dark-sky park at night. Stars, a moon, fireflies; the alien carries a small lamp. */
+  night: { skyTop: '#02040c', horizon: '#1c2a58', skyBottom: '#070b1e', sun: ['#eef2ff', -30, 20, 110], ridge: '#0a1222', ground: '#151b16', top: '#2b3b2c', rim: '#bfe0ff',
+    mote: '#e4ff6a', pal: ['#0c1a14', '#11241a', '#173020'], shapes: ['tree', 'tree', 'hill'], density: 0.8, fogD: 0.013, hemi: ['#4a5a90', '#04050a'], key: '#8fa0d8', stars: true, night: true },
   space: { skyTop: '#040a1c', horizon: '#1f3f73', skyBottom: '#08142c', sun: ['#7fb8ff', 70, 30, 200], ridge: '#0c1c36', ground: '#14304a', top: '#2c5f80', rim: '#9fe8ff',
     mote: '#bfe6ff', stars: true, pal: ['#2f7f9a', '#5fd0c5', '#8a7fd6'], shapes: ['blob', 'ring'], density: 0.35, fogD: 0.012, hemi: ['#9fc8ff', '#1a2238'], key: '#cfe6ff' },
   pond: { skyTop: '#1d3466', horizon: '#f4ad78', skyBottom: '#d9806a', sun: ['#ffcf8a', -40, 9, 230], ridge: '#3b3d6c', ground: '#253830', top: '#4f7448', rim: '#ffe2a8',
@@ -1628,20 +1658,22 @@ function bilayer(x0, x1, y0, y1) {
   const face = new T.Mesh(G.plane, new T.MeshBasicMaterial({ map: t })); face.scale.set(x1 - x0, y1 - y0, 1); face.position.set((x0 + x1) / 2, (y0 + y1) / 2, 2.51); g.add(face);
   return g;
 }
+// chart top: a round number so the middle gridline is round too (percent-change charts keep steps of 10)
+function niceLim(m, neg) { if (neg || m <= 0) return Math.max(10, Math.ceil(m / 10) * 10); const p = Math.pow(10, Math.floor(Math.log10(m))); const ks = [1, 2, 4, 5, 10]; for (let k = 0; k < ks.length; k++) if (ks[k] * p >= m) return ks[k] * p; return 10 * p; }
 function chartTex(gd, left, W, firstCenter) {
   const c = document.createElement('canvas'); c.width = 1024; c.height = 420; const g = c.getContext('2d');
-  const px = function (xw) { return (xw - left) / W * 1024; }, v = gd.values, lim = Math.ceil(Math.max.apply(null, v.map(Math.abs)) / 10) * 10;
-  const top = 74, bot = 340, py = function (y) { return top + (lim - y) / (2 * lim) * (bot - top); };
+  const px = function (xw) { return (xw - left) / W * 1024; }, v = gd.values, neg = v.some(function (y) { return y < 0; }), lim = niceLim(Math.max.apply(null, v.map(Math.abs)), neg);
+  const top = 74, bot = 340, py = function (y) { return neg ? top + (lim - y) / (2 * lim) * (bot - top) : top + (lim - y) / lim * (bot - top); }, fv = function (y) { return (neg && y > 0 ? '+' : '') + y + (gd.unit || (neg ? '%' : '')); };
   g.fillStyle = 'rgba(8,20,30,0.86)'; g.beginPath(); g.moveTo(20, 4); g.arcTo(1020, 4, 1020, 416, 18); g.arcTo(1020, 416, 4, 416, 18); g.arcTo(4, 416, 4, 4, 18); g.arcTo(4, 4, 1020, 4, 18); g.closePath(); g.fill();
   g.strokeStyle = '#ffd166'; g.lineWidth = 4; g.stroke();
   g.fillStyle = '#ffffff'; g.font = '700 34px "Atkinson Hyperlegible", Arial, sans-serif'; g.textAlign = 'center'; g.fillText(gd.title, 512, 44);
   g.font = '700 22px "Atkinson Hyperlegible", Arial, sans-serif'; g.textAlign = 'right';
-  [-lim, -lim / 2, 0, lim / 2, lim].forEach(function (y) { g.strokeStyle = y === 0 ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.18)'; g.lineWidth = y === 0 ? 3 : 2; g.beginPath(); g.moveTo(px(left + 1.7), py(y)); g.lineTo(1000, py(y)); g.stroke(); g.fillStyle = '#d6e4ea'; g.fillText((y > 0 ? '+' : '') + y, px(left + 1.55), py(y) + 8); });
+  (neg ? [-lim, -lim / 2, 0, lim / 2, lim] : [0, lim / 2, lim]).forEach(function (y) { g.strokeStyle = y === 0 ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.18)'; g.lineWidth = y === 0 ? 3 : 2; g.beginPath(); g.moveTo(px(left + 1.7), py(y)); g.lineTo(1000, py(y)); g.stroke(); g.fillStyle = '#d6e4ea'; g.fillText((neg && y > 0 ? '+' : '') + y, px(left + 1.55), py(y) + 8); });
   v.forEach(function (y, i) {
     const cx = px(firstCenter + i * 3.6), bw = 2.0 / W * 1024, t = Math.min(py(y), py(0)), h = Math.abs(py(y) - py(0));
     g.fillStyle = y >= 0 ? '#7fd4ff' : '#ffb09c'; g.fillRect(cx - bw / 2, t, bw, h);
     g.fillStyle = '#ffffff'; g.textAlign = 'center'; g.font = '700 28px "Atkinson Hyperlegible", Arial, sans-serif';
-    g.fillText((y > 0 ? '+' : '') + y + '%', cx, y >= 0 ? t - 10 : t + h + 30);
+    g.fillText(fv(y), cx, y >= 0 ? t - 10 : t + h + 30);
     g.fillStyle = '#ffd166'; g.font = '700 26px "Atkinson Hyperlegible", Arial, sans-serif'; g.fillText(gd.categories[i], cx, 378);
   });
   g.save(); g.translate(26, (top + bot) / 2); g.rotate(-Math.PI / 2); g.textAlign = 'center'; g.font = '700 20px "Atkinson Hyperlegible", Arial, sans-serif'; g.fillStyle = '#d6e4ea'; g.fillText(gd.ylabel, 0, 0); g.restore();
@@ -2066,6 +2098,8 @@ const FOES = {
   crab: { name: 'green crab', stomp: false, msg: 'A green crab pinched you! Crabs scuttle sideways over the rocks. Jump over it.', msg_es: '¡Un cangrejo verde te pellizcó! Los cangrejos caminan de lado sobre las rocas. Salta por encima.' },
   wasp: { name: 'yellowjacket', stomp: false, msg: 'A yellowjacket! Leave it alone and it will usually leave you alone. Wait for it to fly past.', msg_es: '¡Una avispa! Si la dejas en paz, casi siempre te deja en paz. Espera a que pase.' },
   urchin: { name: 'sea urchin', stomp: false, msg: 'Ouch! Sea urchins are covered in sharp spines. Jump over them.', msg_es: '¡Ay! Los erizos de mar están cubiertos de espinas afiladas. Salta por encima.' },
+  snake: { name: 'timber rattlesnake', stomp: false, msg: 'A timber rattlesnake! It warns you with its rattle. Give it space and jump over it.', msg_es: '¡Una serpiente de cascabel! Te avisa con su cascabel. Dale espacio y salta por encima.' },
+  bat: { name: 'little brown bat', stomp: false, msg: 'A bat swooped past! Bats hunt insects at night by listening to echoes. Duck under it.', msg_es: '¡Un murciélago pasó volando! Los murciélagos cazan insectos de noche escuchando ecos. Agáchate.' },
   wave: { name: 'wave', stomp: false, msg: 'A wave crashed over you! In a tide pool, living things must hold on tight when waves hit.', msg_es: '¡Una ola te golpeó! En una poza de marea, los seres vivos deben agarrarse fuerte cuando llegan las olas.' }
 };
 function foeMsg(f) { return (BQ.lang() === 'es' && f.msg_es) || f.msg; }
@@ -2092,6 +2126,18 @@ function foeMesh(look) {
     const core = new T.Mesh(G.sph, emat('#5a2a6a', '#1a0a20')); core.scale.setScalar(0.4); g.add(core);
     for (let i = 0; i < 26; i++) { const a = i * 2.39, el = Math.acos(1 - 2 * (i + 0.5) / 26), sp = new T.Mesh(G.cone, emat('#7a3a8a', '#200a28')); sp.scale.set(0.05, 0.5, 0.05);
       sp.position.set(Math.sin(el) * Math.cos(a) * 0.45, Math.cos(el) * 0.45, Math.sin(el) * Math.sin(a) * 0.45); sp.lookAt(sp.position.clone().multiplyScalar(3)); sp.rotateX(Math.PI / 2); g.add(sp); }
+  } else if (look === 'snake') {
+    const M = emat('#6a5030', '#1a1008'), D = emat('#2a1e10', '#0a0604');
+    for (let i = 0; i < 9; i++) { const s = new T.Mesh(G.sph, i % 2 ? D : M); s.scale.set(0.2, 0.13, 0.16); s.position.set(-0.95 + i * 0.22, Math.sin(i * 1.1) * 0.05, Math.cos(i * 0.9) * 0.18); g.add(s); }
+    const hd = new T.Mesh(G.sph, M); hd.scale.set(0.24, 0.14, 0.19); hd.position.set(1.08, 0.05, 0); g.add(hd);
+    const rt = new T.Mesh(G.sph, emat('#c8b08a', '#3a2a10')); rt.scale.set(0.12, 0.08, 0.08); rt.position.set(-1.12, 0.12, 0); g.add(rt); g.userData.rattle = rt;
+    [-1, 1].forEach(function (s) { const e = new T.Mesh(G.sph, emat('#10202c', '#000000')); e.scale.setScalar(0.035); e.position.set(1.2, 0.12, s * 0.1); g.add(e); });
+  } else if (look === 'bat') {
+    const M = emat('#3a2a2a', '#100808'), body = new T.Mesh(G.sph, M); body.scale.set(0.16, 0.2, 0.14); g.add(body);
+    const hd = new T.Mesh(G.sph, M); hd.scale.setScalar(0.11); hd.position.y = 0.22; g.add(hd);
+    [-1, 1].forEach(function (s) { const e = new T.Mesh(G.cone, M); e.scale.set(0.04, 0.09, 0.04); e.position.set(s * 0.06, 0.34, 0); g.add(e);
+      const w = new T.Mesh(G.sph, emat('#4a3434', '#140a0a')); w.scale.set(0.42, 0.03, 0.2); w.position.set(s * 0.42, 0.05, 0); g.add(w); (g.userData.wings = g.userData.wings || []).push(w); });
+    g.userData.buzz = true; g.scale.setScalar(1.4);
   } else if (look === 'wave') {
     const crest = new T.Mesh(new T.TorusGeometry(1.0, 0.35, 8, 20, Math.PI), new T.MeshLambertMaterial({ color: '#7fd4ff', emissive: '#10405a', transparent: true, opacity: 0.7 })); crest.rotation.z = Math.PI * 0.05; g.add(crest);
     const foam = new T.Mesh(G.sph, basic('#ffffff', 0.7, false)); foam.scale.set(0.5, 0.25, 0.4); foam.position.set(0.9, 0.2, 0); g.add(foam); g.add(glow('#bfe9ff', 2.6, 0.35));
@@ -2315,6 +2361,7 @@ function startLevel(w, lv) {
   });
   P = { x: 2, y: 0, vx: 0, vy: 0, ground: null, face: 1, m: buildAlien(S.alien), t: 0, atp: false, atpM: null, badge: null, inv: 0, boost: 0, boostM: null, shield: 0, shieldM: null, dbl: true, trail: [], hist: [] };
   L.group.add(P.m);
+  if (th.night) { P.lamp = new T.PointLight(0xffe8b0, 2.2, 18, 1); P.lamp.position.set(0, 1.8, 1.5); P.m.add(P.lamp); }
   const sh = new T.Mesh(G.plane, new T.MeshBasicMaterial({ map: FX.glow, color: th.rim, transparent: true, opacity: 0.5, blending: T.AdditiveBlending, depthWrite: false })); sh.rotation.x = -Math.PI / 2; sh.scale.set(3.2, 3.2, 1); L.group.add(sh); P.shadow = sh;
   cam.position.set(P.x + 4, 5, camZ);
   mode = 'play'; paused = false; actEdge = false; jumpBuf = 0; noteT = 0; $('note').hidden = true; if (S.alien.gear) setTimeout(function () { if (mode === 'play') toast(GEARINFO[S.alien.gear], 5); }, 6000); show(null); $('hud').hidden = false; $('touch').hidden = !touchMode;
@@ -2387,14 +2434,14 @@ function figHTML(f) {
     return s;
   }
   if (f.type === 'bars') {
-    const W = 330, H = 190, l = 46, r = 8, t = 14, bt = 40, v = f.values, lim = Math.ceil(Math.max.apply(null, v.map(Math.abs)) / 10) * 10, bw = (W - l - r) / v.length;
-    const sy = function (y) { return t + (lim - y) / (2 * lim) * (H - t - bt); };
+    const W = 330, H = 190, l = 46, r = 8, t = 14, bt = 40, v = f.values, neg = v.some(function (y) { return y < 0; }), lim = niceLim(Math.max.apply(null, v.map(Math.abs)), neg), bw = (W - l - r) / v.length;
+    const sy = function (y) { return neg ? t + (lim - y) / (2 * lim) * (H - t - bt) : t + (lim - y) / lim * (H - t - bt); }, fv = function (y) { return (neg && y > 0 ? '+' : '') + y + (f.unit || (neg ? '%' : '')); };
     let s = '<svg class="fsvg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(f.ylabel) + ' bar graph">';
-    [-lim, -lim / 2, 0, lim / 2, lim].forEach(function (y) { s += '<line x1="' + l + '" x2="' + (W - r) + '" y1="' + sy(y) + '" y2="' + sy(y) + '" stroke="currentColor" stroke-opacity="' + (y === 0 ? 0.9 : 0.2) + '"/><text x="' + (l - 6) + '" y="' + (sy(y) + 4) + '" text-anchor="end" font-size="11" fill="currentColor">' + y + '</text>'; });
+    (neg ? [-lim, -lim / 2, 0, lim / 2, lim] : [0, lim / 2, lim]).forEach(function (y) { s += '<line x1="' + l + '" x2="' + (W - r) + '" y1="' + sy(y) + '" y2="' + sy(y) + '" stroke="currentColor" stroke-opacity="' + (y === 0 ? 0.9 : 0.2) + '"/><text x="' + (l - 6) + '" y="' + (sy(y) + 4) + '" text-anchor="end" font-size="11" fill="currentColor">' + y + '</text>'; });
     v.forEach(function (y, i) {
       const x = l + i * bw + bw * 0.2, top = Math.min(sy(y), sy(0)), h = Math.abs(sy(y) - sy(0));
       s += '<rect x="' + x + '" y="' + top + '" width="' + (bw * 0.6) + '" height="' + h + '" fill="' + (y >= 0 ? '#7fd4ff' : '#ffb09c') + '"/>';
-      s += '<text x="' + (x + bw * 0.3) + '" y="' + (y >= 0 ? top - 4 : top + h + 12) + '" text-anchor="middle" font-size="11" fill="currentColor">' + (y > 0 ? '+' : '') + y + '%</text>';
+      s += '<text x="' + (x + bw * 0.3) + '" y="' + (y >= 0 ? top - 4 : top + h + 12) + '" text-anchor="middle" font-size="11" fill="currentColor">' + fv(y) + '</text>';
       s += '<text x="' + (x + bw * 0.3) + '" y="' + (H - bt + 16) + '" text-anchor="middle" font-size="11" fill="currentColor">' + esc(f.categories[i]) + '</text>';
     });
     s += '<text transform="translate(12 ' + ((t + H - bt) / 2) + ') rotate(-90)" text-anchor="middle" font-size="11" fill="currentColor">' + esc(f.ylabel) + '</text></svg>';
@@ -2594,7 +2641,7 @@ function step(dt) {
       const c = (h.t + h.offset) % h.period, warn = c > h.period - 1.3 && c < h.period - 0.55, fall = c >= h.period - 0.55, u = fall ? (c - (h.period - 0.55)) / 0.55 : 0;
       h.dust.material.opacity = warn ? 0.4 + 0.3 * Math.sin(h.t * 30) : 0; h.y = fall ? h.top - (h.top - h.gy - 0.4) * u * u : h.top; h.m.visible = fall || warn || c < 0.2;
       h.m.position.set(h.x + (warn ? Math.sin(h.t * 50) * 0.06 : 0), h.y, 0); if (fall) h.m.rotation.z += dt * 6;
-      if (fall && u > 0.3 && P.inv <= 0 && P.shield <= 0 && Math.abs(P.x - h.x) < 0.8 && P.y < h.y && P.y + PH > h.y - 0.5) { P.inv = 1.3; P.vx = P.x < h.x ? -6 : 6; P.vy = 4; toast('Cave-in! Watch for falling dust: it means a rock is about to drop.', 3.5); hurt(true); }
+      if (fall && u > 0.3 && P.inv <= 0 && P.shield <= 0 && Math.abs(P.x - h.x) < 0.8 && P.y < h.y && P.y + PH > h.y - 0.5) { P.inv = 1.3; P.vx = P.x < h.x ? -6 : 6; P.vy = 4; toast('Falling rock! Watch for falling dust: it means a rock is about to drop.', 3.5); hurt(true); }
       return;
     }
     if (h.kind === 'antibody') {
@@ -2609,7 +2656,8 @@ function step(dt) {
       if (h.look === 'angler') { h.m.rotation.y = h.x >= px ? 0 : Math.PI; const u = h.m.userData.lure; if (u) u.scale.setScalar(0.13 * (1 + Math.sin(h.t * 4) * 0.2)); }
       else if (h.look === 'atolla') { const r = h.m.userData.ring, f = Math.sin(h.t * 2.2) > 0.6; if (r) r.material.opacity = f ? 1 : 0.25; const pulse = 1 + Math.sin(h.t * 2) * 0.1; h.m.scale.set(pulse, 2 - pulse, pulse); }
       else if (h.look === 'shark') { h.m.rotation.y = h.x >= px ? 0 : Math.PI; h.m.rotation.z = Math.sin(h.t * 3) * 0.05; }
-      else if (h.m.userData.buzz) { h.m.rotation.z = Math.sin(h.t * 30) * 0.08; }
+      else if (h.m.userData.buzz) { h.m.rotation.z = Math.sin(h.t * 30) * 0.08; if (h.m.userData.wings) h.m.userData.wings.forEach(function (w, k) { w.rotation.z = (k ? -1 : 1) * Math.sin(h.t * 18) * 0.6; }); }
+      else if (h.look === 'snake') { h.m.rotation.y = Math.cos(h.t * h.sp + h.ph) >= 0 ? 0 : Math.PI; if (h.m.userData.rattle) h.m.userData.rattle.rotation.x = Math.sin(h.t * 40) * 0.4; }
       else if (h.look === 'jelly') { const pulse = 1 + Math.sin(h.t * 3) * 0.12; h.m.scale.set(pulse, 2 - pulse, pulse); }
       else h.m.rotation.z += dt * 2.5; }
     const dx = P.x - h.x, dy = P.y + PH * 0.52 - h.y;
@@ -2754,7 +2802,75 @@ function finish() {
   const list = allLevels(), i = list.findIndex(function (e) { return e.lv === L.lv; });
   $('btnNext').hidden = i >= list.length - 1; $('hud').hidden = true; $('touch').hidden = true; $('toast').hidden = true;
   menuScene(); show('done'); stationTab('report');
+  S.celeb = S.celeb || {}; const wNow = LAST.w.id;
+  if (worldDone(wNow) && !S.celeb[wNow]) { S.celeb[wNow] = Date.now(); if (allDone() && !S.celeb.all) S.celeb.all = Date.now(); save(); setTimeout(function () { celebrate(allDone() && S.celeb.all > Date.now() - 5000 ? 'all' : wNow); }, 1100); }
   ($('btnNext').hidden ? $('btnReplay') : $('btnNext')).focus();
+}
+
+/* ---------- CELEBRATION AND CERTIFICATES (middle school edition) ----------
+   Finishing the last level of a world opens a celebration with confetti and a printable certificate.
+   Finishing all six worlds opens a bigger celebration and a whole-game certificate. The name typed for the
+   certificate is used only for printing; it is never saved. Certificates can be printed again from Progress. */
+function worldDone(w) { const ls = allLevels().filter(function (e) { return e.w.id === w; }); return ls.length > 0 && ls.every(function (e) { return S.levels[e.lv.id] && S.levels[e.lv.id].stars; }); }
+function allDone() { return BQ.UNITS.every(function (u, i) { return worldDone(i + 1); }); }
+function worldStats(w) {
+  const ls = allLevels().filter(function (e) { return w === 'all' || e.w.id === w; }); let stars = 0, words = 0, wordsMax = 0, rares = 0, raresMax = 0, quests = 0;
+  ls.forEach(function (e) { const sv = S.levels[e.lv.id]; stars += sv ? sv.stars : 0; const pl = levelPlan(e.lv); pl.scans.forEach(function (id) { wordsMax++; if (S.found[id]) words++; });
+    if (pl.rare) { raresMax++; if (S.rare[e.lv.id]) rares++; } if (S.quests && S.quests[e.lv.id]) quests++; });
+  return { levels: ls.filter(function (e) { return S.levels[e.lv.id] && S.levels[e.lv.id].stars; }).length, levelsMax: ls.length, stars: stars, starsMax: ls.length * 3, words: words, wordsMax: wordsMax, rares: rares, raresMax: raresMax, quests: quests };
+}
+function statsHTML(s) {
+  return '<dl class="celstats"><dt>' + esc(tx('c.levels')) + '</dt><dd>' + s.levels + ' / ' + s.levelsMax + '</dd><dt>' + esc(tx('c.stars')) + '</dt><dd>★ ' + s.stars + ' / ' + s.starsMax + '</dd>' +
+    '<dt>' + esc(tx('c.words')) + '</dt><dd>' + s.words + ' / ' + s.wordsMax + '</dd><dt>' + esc(tx('c.rares')) + '</dt><dd>💎 ' + s.rares + ' / ' + s.raresMax + '</dd><dt>' + esc(tx('c.quests')) + '</dt><dd>' + s.quests + '</dd></dl>';
+}
+function confetti(on) {
+  const box = $('confetti'); if (!box) return; box.innerHTML = ''; if (!on) return;
+  const cols = ['#9be37a', '#ffd166', '#7fd4ff', '#ff8fb1', '#c9a7ff', '#ffffff'], n = S.set.low ? 24 : 70;
+  for (let i = 0; i < n; i++) { const p = document.createElement('i'); p.style.left = (Math.random() * 100).toFixed(1) + '%'; p.style.background = cols[i % cols.length];
+    p.style.animationDelay = (Math.random() * 2.5).toFixed(2) + 's'; p.style.animationDuration = (3 + Math.random() * 3).toFixed(2) + 's'; p.style.transform = 'rotate(' + Math.round(Math.random() * 360) + 'deg)'; box.appendChild(p); }
+}
+let CEL = null;
+function celebrate(w) {
+  const all = w === 'all', wo = all ? null : BQ.worlds[w]; CEL = w;
+  $('celKicker').textContent = tx(all ? 'c.allKicker' : 'c.kicker');
+  $('celTitle').textContent = all ? tx('c.allTitle') : tx('c.title', { n: w, t: wo.title });
+  $('celBody').innerHTML = '<p>' + esc(tx(all ? 'c.allBody' : 'c.body')) + '</p>' + statsHTML(worldStats(w));
+  $('celNameLbl').textContent = tx('c.nameLbl'); $('celNameMsg').textContent = ''; $('btnCert').textContent = tx('c.cert'); $('btnCelClose').textContent = tx('c.close');
+  const nextW = all ? null : BQ.worlds[w + 1]; $('btnCelNext').hidden = !nextW; $('btnCelNext').textContent = tx('c.next');
+  $('celebrate').hidden = false; confetti(true); setTimeout(function () { $('btnCert').focus(); }, 50);
+  [523, 659, 784, 1047, 1319].forEach(function (f, k) { setTimeout(function () { beep(f, k === 4 ? 0.8 : 0.22, 'triangle', k === 0 ? tx('c.sound') : null); }, 300 + k * 160); });
+}
+function closeCelebrate() { $('celebrate').hidden = true; confetti(false); CEL = null; }
+function certificate(w, name) {
+  const all = w === 'all', s = worldStats(w), es = BQ.lang() === 'es', win = window.open('', '_blank'); if (!win) return;
+  const date = new Date().toLocaleDateString(es ? 'es-US' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  const what = all ? tx('c.cAll') : tx('c.title', { n: w, t: BQ.worlds[w].title });
+  const topics = (all ? allLevels() : allLevels().filter(function (e) { return e.w.id === w; })).map(function (e) { return e.lv.title; });
+  const nm = name ? '<span class="nm">' + esc(name) + '</span>' : '<span class="line"></span>';
+  win.document.write('<!doctype html><html lang="' + (es ? 'es' : 'en') + '"><meta charset="utf-8"><title>' + esc(tx('c.cTitle')) + '</title><style>' +
+    '*{-webkit-print-color-adjust:exact;print-color-adjust:exact;box-sizing:border-box}@page{size:landscape;margin:0}html,body{margin:0;background:#151a33;color:#f4f3fb;font-family:"Atkinson Hyperlegible",Arial,sans-serif}' +
+    '.cert{margin:18px;min-height:calc(100vh - 36px);border:6px double #9be37a;border-radius:18px;padding:40px 46px 34px;text-align:center;background:radial-gradient(circle at 50% 0%,#2c3566,#151a33 70%);position:relative;display:flex;flex-direction:column;justify-content:space-evenly}' +
+    'h1{font-family:"Chakra Petch","Trebuchet MS",sans-serif;font-size:40px;letter-spacing:.04em;margin:6px 0 2px;color:#9be37a}.game{font-size:17px;letter-spacing:.18em;text-transform:uppercase;color:#b8bddb}' +
+    '.this{font-size:20px;margin-top:26px;color:#d8dcf4}.nm{display:inline-block;font-size:36px;font-weight:700;margin:10px 0;border-bottom:2px solid #9be37a;padding:0 24px;min-width:50%}.line{display:inline-block;width:60%;height:52px;border-bottom:2px solid #9be37a}' +
+    '.did{font-size:20px;margin-top:10px}.what{font-size:28px;font-weight:700;margin:6px 0 14px;color:#ffd166}.topics{font-size:14px;color:#b8bddb;margin:0 auto 16px;max-width:85%}' +
+    '.stats{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;font-size:16px;margin:10px 0 22px}.stats b{display:block;font-size:24px;color:#9be37a}' +
+    '.foot{display:flex;justify-content:space-between;align-items:flex-end;margin-top:28px;font-size:15px;color:#d8dcf4}.foot span{display:inline-block;border-top:1px solid #b8bddb;padding-top:6px;min-width:220px}' +
+    '.seal{position:absolute;right:42px;top:30px;width:96px;height:96px;border-radius:50%;background:#9be37a;color:#151a33;display:grid;place-items:center;font-size:44px;box-shadow:0 0 0 6px #2c3566,0 0 0 9px #9be37a}' +
+    '.ufo{position:absolute;left:46px;top:34px;font-size:56px}button{margin:14px;font:inherit;font-size:16px;padding:8px 18px;border-radius:10px;border:2px solid #9be37a;background:#2c3566;color:#f4f3fb;cursor:pointer}@media print{button{display:none}}</style>' +
+    '<div class="cert"><div class="ufo" aria-hidden="true">🛸</div><div class="seal" aria-hidden="true">' + (all ? '🏆' : '★') + '</div>' +
+    '<div class="game">Earthling Field Guide – ' + esc(tx('c.edition')) + '</div><h1>' + esc(tx('c.cTitle')) + '</h1>' +
+    '<div class="this">' + esc(tx('c.cThis')) + '</div>' + nm + '<div class="did">' + esc(tx('c.cDid')) + '</div><div class="what">' + esc(what) + '</div>' +
+    '<div class="topics">' + topics.map(esc).join(' · ') + '</div>' +
+    '<div class="stats"><div><b>★ ' + s.stars + ' / ' + s.starsMax + '</b>' + esc(tx('c.stars')) + '</div><div><b>' + s.words + ' / ' + s.wordsMax + '</b>' + esc(tx('c.words')) + '</div><div><b>💎 ' + s.rares + ' / ' + s.raresMax + '</b>' + esc(tx('c.rares')) + '</div></div>' +
+    '<div class="foot"><span>' + esc(tx('c.cDate')) + ': ' + esc(date) + '</span><span>' + esc(tx('c.cSign')) + '</span></div></div>' +
+    '<div style="text-align:center"><button onclick="window.print()">🖨 ' + esc(tx('c.cPrint')) + '</button></div></html>');
+  win.document.close(); win.focus();
+}
+function certName() { const v = ($('celName').value || '').trim().replace(/\s+/g, ' '); if (!v) return ''; if (window.FG_NameFilter && !window.FG_NameFilter.check(v).ok) { $('celNameMsg').textContent = tx('c.badName'); return null; } return v; }
+function certListHTML() {
+  const done = BQ.UNITS.map(function (u, i) { return i + 1; }).filter(worldDone);
+  return '<h3>' + esc(tx('c.certs')) + '</h3>' + (done.length ? '<div class="btns certs">' + done.map(function (w) { return '<button type="button" data-cert="' + w + '">🎓 ' + esc(tx('c.title', { n: w, t: BQ.worlds[w].title })) + '</button>'; }).join('') +
+    (allDone() ? '<button type="button" data-cert="all" class="primary">🏆 ' + esc(tx('c.cAllBtn')) + '</button>' : '') + '</div>' : '<p class="dim">' + esc(tx('c.certNone')) + '</p>');
 }
 
 /* ---------- PORTAL MINI-GAME: IMMUNE DEFENSE ----------
@@ -2775,16 +2891,14 @@ function enterMini(p) {
   for (let i = 0; i < (S.set.low ? 14 : 30); i++) { const c = new T.Mesh(G.tor, emat('#e0384a', '#5a0a14')); c.scale.set(0.5, 0.5, 0.35); const a = Math.random() * 6.3, r = 3 + Math.random() * 3.4; c.position.set(Math.cos(a) * r, Math.sin(a) * r, -Math.random() * 120); c.rotation.set(Math.random() * 3, Math.random() * 3, 0); M.grp.add(c); M.cells.push(c); }
   $('hud').hidden = true; $('touch').hidden = true; $('toast').hidden = true; $('note').hidden = true; $('mini').hidden = false;
   $('miniPick').innerHTML = ANTIGENS.map(function (a, i) { return '<button type="button" data-ab="' + i + '" style="--c:' + a.col + '"><span class="ys">Y</span><span style="color:' + a.col + '">' + a.sym + '</span> ' + (i + 1) + '</button>'; }).join('');
-  miniPanel('<h2>🛡️ Immune Defense</h2><p>The portal pulled you <b>inside a blood vessel</b>. Germs are floating toward you!</p>' +
-    '<p>Every germ is covered in <b>antigens</b>: shapes on its surface. Your weapons are <b>antibodies</b>: Y-shaped proteins. Each antibody fits only <b>one</b> antigen shape, like a key fits one lock.</p>' +
-    '<p><b>Match the shape to tag the germ.</b> A wrong shape just bounces off.</p><p class="dim">Aim: move the mouse (or arrow keys). Fire: click (or space). Pick an antibody: keys 1 to 4. Don\'t let 3 germs get past you!</p>' +
-    '<button type="button" id="miniGo" class="primary">Start</button>');
+  miniPanel(tx('id.intro') +
+    '<button type="button" id="miniGo" class="primary">' + esc(tx('id.start')) + '</button>');
   miniSel(0); camMini(); setTimeout(function () { const b = $('miniGo'); if (b) b.focus(); }, 50);
 }
 function camMini() { cam.position.set(0, 0, 10); cam.lookAt(0, 0, -40); }
 function miniPanel(html) { $('miniCard').innerHTML = html; $('miniCard').hidden = !html; }
 function miniSel(i) { M.sel = i; document.querySelectorAll('#miniPick [data-ab]').forEach(function (b) { b.setAttribute('aria-pressed', +b.dataset.ab === i ? 'true' : 'false'); }); }
-function miniHud() { $('miniTop').textContent = '♥'.repeat(M.hearts) + '♡'.repeat(3 - M.hearts) + '   Tagged: ' + M.tagged + '   Score: ' + M.score + '   Time: ' + Math.max(0, Math.ceil(M.dur - M.t)); }
+function miniHud() { $('miniTop').textContent = '♥'.repeat(M.hearts) + '♡'.repeat(3 - M.hearts) + '   ' + tx('id.hud', { t: M.tagged, s: M.score, n: Math.max(0, Math.ceil(M.dur - M.t)) }); }
 function miniGerm() {
   const ty = Math.floor(Math.random() * ANTIGENS.length), A = ANTIGENS[ty], g = new T.Group(), body = new T.Mesh(G.sph, emat('#b49ad0', '#4a3060')); body.scale.setScalar(1.25); g.add(body);
   const dirs = [[1, 0, 0], [-1, 0, 0], [0, 1, 0], [0, -1, 0], [0, 0, 1], [0.7, 0.7, 0], [-0.7, 0.7, 0], [0.7, -0.7, 0], [-0.7, -0.7, 0], [0, 0.7, 0.7], [0.7, 0, 0.7], [-0.7, 0, 0.7]];
@@ -2816,11 +2930,11 @@ function miniStep(dt) {
   M.fx = M.fx.filter(function (f) { f.t += dt; f.o.scale.setScalar(f.s0 * (1 + f.t * 3)); f.o.traverse(function (o) { if (o.material) o.material.opacity = Math.max(0, 1 - f.t / 0.4); }); if (f.t > 0.4) { M.grp.remove(f.o); return false; } return true; });
   if (M.intro || M.over) return;
   M.t += dt; M.cool -= dt;
-  if (!M.boost && M.t > 25) { M.boost = true; miniFlash('Memory cells! Your body remembers these germs, so your antibodies now fire twice as fast.', '#7be0ad', 3.5); beep(880, 0.4, 'triangle', 'power-up, memory cells'); }
+  if (!M.boost && M.t > 25) { M.boost = true; miniFlash(tx('id.memory'), '#7be0ad', 3.5); beep(880, 0.4, 'triangle', 'power-up, memory cells'); }
   M.spawn -= dt; if (M.spawn <= 0 && M.t < M.dur - 3) { miniGerm(); M.spawn = Math.max(0.65, 1.5 - M.t * 0.02); }
   M.germs.forEach(function (gm) {
     if (!gm.alive) return; gm.g.position.z += gm.sp * dt; gm.g.rotation.y += gm.spin * dt; gm.g.rotation.x += gm.spin * dt * 0.5;
-    if (gm.g.position.z > 6) { gm.alive = false; M.grp.remove(gm.g); M.hearts--; miniFlash('A germ got past you!', '#ff6b6b', 1.5); beep(150, 0.4, 'sawtooth', 'thud, a germ got past'); if (M.hearts <= 0) miniEnd(); }
+    if (gm.g.position.z > 6) { gm.alive = false; M.grp.remove(gm.g); M.hearts--; miniFlash(tx('id.past'), '#ff6b6b', 1.5); beep(150, 0.4, 'sawtooth', 'thud, a germ got past'); if (M.hearts <= 0) miniEnd(); }
   });
   M.germs = M.germs.filter(function (gm) { return gm.alive || false; });
   M.shots = M.shots.filter(function (sh) {
@@ -2829,8 +2943,8 @@ function miniStep(dt) {
     if (u < 1) return true;
     M.grp.remove(sh.o); const gm = sh.target;
     if (gm && gm.alive) {
-      if (gm.ty === sh.ty) { gm.alive = false; M.tagged++; M.score += 50; gm.g.traverse(function (o) { if (o.material) { o.material = o.material.clone(); o.material.transparent = true; } }); M.fx.push({ o: gm.g, t: 0, s0: 1 }); beep(1200, 0.12, 'triangle', 'pop, germ tagged'); if (M.tagged % 5 === 1) miniFlash('Tagged! The antibody fits the ' + ANTIGENS[gm.ty].name.toLowerCase() + ' antigen. A phagocyte will eat this germ.', '#7be0ad', 2.2); }
-      else { M.wrong++; miniFlash('Bounced off! A ' + ANTIGENS[sh.ty].name.toLowerCase() + ' antibody does not fit a ' + ANTIGENS[gm.ty].name.toLowerCase() + ' antigen.', '#ffb09c', 2.2); beep(220, 0.15, 'sawtooth', 'boing, wrong shape'); gm.g.position.z -= 4; }
+      if (gm.ty === sh.ty) { gm.alive = false; M.tagged++; M.score += 50; gm.g.traverse(function (o) { if (o.material) { o.material = o.material.clone(); o.material.transparent = true; } }); M.fx.push({ o: gm.g, t: 0, s0: 1 }); beep(1200, 0.12, 'triangle', 'pop, germ tagged'); if (M.tagged % 5 === 1) miniFlash(tx('id.tagged', { a: tx('id.sh' + gm.ty) }), '#7be0ad', 2.2); }
+      else { M.wrong++; miniFlash(tx('id.bounce', { a: tx('id.sh' + sh.ty), b: tx('id.sh' + gm.ty) }), '#ffb09c', 2.2); beep(220, 0.15, 'sawtooth', 'boing, wrong shape'); gm.g.position.z -= 4; }
     }
     return false;
   });
@@ -2841,10 +2955,8 @@ function miniFlash(t, col, secs) { const m = $('miniMsg'); m.textContent = t; m.
 function miniEnd() {
   if (M && M.tagged >= 15) award('immune');
   if (M.over) return; M.over = true; const bonus = M.hearts * 100; M.score += bonus;
-  miniPanel('<h2>' + (M.hearts > 0 ? '🛡️ Infection stopped!' : '🛡️ Defense over') + '</h2><p>You tagged <b>' + M.tagged + '</b> germs' + (M.hearts ? ' and kept ' + M.hearts + ' hearts (+' + bonus + ')' : '') + '. Score: <b>' + M.score + '</b></p>' +
-    '<p><b>What really happens:</b> B cells make antibodies that fit one antigen shape. Antibodies tag germs so phagocytes (like white blood cells) can eat them. <b>Memory cells</b> remember the antigen, so the next time your body fights back faster. That is how vaccines work.</p>' +
-    '<p class="dim">Big idea: a protein\'s <b>shape</b> decides its <b>job</b>. Enzymes, antibodies, and transport proteins all work this way.</p>' +
-    '<button type="button" id="miniBack" class="primary">Return through the portal</button>');
+  miniPanel('<h2>' + esc(tx(M.hearts > 0 ? 'id.won' : 'id.over')) + '</h2><p>' + tx(M.hearts ? 'id.scoreH' : 'id.score', { t: M.tagged, h: M.hearts, b: bonus, s: M.score }) + '</p>' + tx('id.real') +
+    '<button type="button" id="miniBack" class="primary">' + esc(tx('id.back')) + '</button>');
   setTimeout(function () { const b = $('miniBack'); if (b) b.focus(); }, 50);
 }
 function exitMini() {
@@ -2852,7 +2964,7 @@ function exitMini() {
   ['dnaRule', 'dnaWheel'].forEach(function (id) { const el = $(id); if (el) el.remove(); });
   L.score += M.score; (M.kind === 'golf' ? ['Enzyme', 'Active site', 'Substrate', 'Denature'] : M.kind === 'dna' ? ['Replication', 'Transcription', 'Translation', 'Codon'] : ['Antibody', 'Antigen']).forEach(function (w) { S.words[w] = 1; }); save(); $('miniAim').hidden = false; $('miniPow').hidden = true;
   $('mini').hidden = true; $('hud').hidden = false; $('touch').hidden = !touchMode; mode = 'play'; P.x = M.p.x + 2.2; P.y = M.p.y; P.vx = P.vy = 0; P.inv = 1.5;
-  cam.position.set(P.x + 2.5, P.y + 5.2, camZ); toast('Back from the portal with +' + M.score + ' points!', 4); hud(); M = null; Object.keys(keys).forEach(function (k) { keys[k] = false; });
+  cam.position.set(P.x + 2.5, P.y + 5.2, camZ); toast(tx('id.home', { s: M.score }), 4); hud(); M = null; Object.keys(keys).forEach(function (k) { keys[k] = false; });
 }
 function miniKey(e, down) {
   if (!M) return; if (M.kind === 'golf') return golfKey(e, down); if (M.kind === 'dna') return dnaKey(e, down); const k = e.key;
@@ -3547,6 +3659,7 @@ function buildProgress() {
   if (codes.length && (S.set.admin || TEACH)) html += '<h3>By standard (teachers only)</h3><table class="ftab"><tr><th>PA STEELS (grades 6–8)</th><th>First-try correct</th></tr>' + codes.map(function (k) { return '<tr><td title="' + esc(STEELS[k] || '') + '">' + esc(k) + '</td><td>' + S.codes[k].right + ' of ' + S.codes[k].tries + '</td></tr>'; }).join('') + '</table>';
   const top = BQ.Leaderboard.top(10).filter(function (r) { return nickOK(r.nick); }).slice(0, 5); if (!nickOK(S.nick)) { S.nick = ''; save(); }
   html += '<h3>High scores on this device</h3>' + (top.length ? '<ol class="board">' + top.map(function (r) { return '<li><span>' + esc(r.nick) + '</span><span class="num">' + r.score + '</span></li>'; }).join('') + '</ol>' : '<p class="dim">Enter a nickname below, then finish a level to post a score. Your total so far: ' + totalScore() + '.</p>');
+  html += certListHTML();
   $('progBody').innerHTML = html; $('nick').value = S.nick;
 }
 function applySettings() {
@@ -3698,6 +3811,11 @@ function wire() {
     const sb = $('aboutStd'); if (sb) { sb.innerHTML = (S.set.admin || TEACH) ? refSheet() : ''; sb.hidden = !(S.set.admin || TEACH); const pb = $('btnRefPrint'); if (pb) pb.onclick = printRefSheet; } };
   $('menuVer').textContent = VERSION + ' · by J.E. Lynch' + (S.set.admin ? ' · ADMIN' : '');
   $('btnProgress').onclick = function () { buildProgress(); show('progress'); };
+  $('progBody').addEventListener('click', function (e) { const b = e.target.closest('[data-cert]'); if (b) certificate(b.dataset.cert === 'all' ? 'all' : +b.dataset.cert, ''); });
+  $('btnCert').onclick = function () { const n = certName(); if (n === null) return; certificate(CEL, n); };
+  $('btnCelClose').onclick = closeCelebrate;
+  $('btnCelNext').onclick = function () { const w = BQ.worlds[CEL + 1]; closeCelebrate(); if (w) startLevel(w, w.levels[0]); };
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !$('celebrate').hidden) { closeCelebrate(); e.stopPropagation(); } }, true);
   $('btnSettings').onclick = function () { backTo = 'menu'; show('settings'); };
   $('levelList').addEventListener('click', function (e) { const b = e.target.closest('.lvl'); if (!b) return; if (b.dataset.lock) { mapInfo(+b.dataset.i); return; } const en = allLevels()[+b.dataset.i]; startLevel(en.w, en.lv); });
   $('levelList').addEventListener('keydown', function (e) { const b = e.target.closest && e.target.closest('.lvl'); if (b && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); b.dispatchEvent(new MouseEvent('click', { bubbles: true })); } });

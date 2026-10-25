@@ -223,6 +223,16 @@ ul.slots { list-style: none; padding-left: 0; }
 .dnaWord { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin: 10px 0; }
 .dnaWord span { display: flex; flex-direction: column; align-items: center; border: 3px solid var(--c); border-radius: 12px; padding: 4px 10px; font-family: var(--display); font-size: 40px; line-height: 1; color: var(--c); background: rgba(21, 26, 51, .6); }
 .dnaWord small { font-size: 15px; color: #e8f4ff; margin-bottom: 4px; }
+/* world-complete celebration */
+#celebrate { position: fixed; inset: 0; z-index: 30; display: grid; place-items: center; background: rgba(21, 26, 51, .9); }
+#celebrate .celcard { position: relative; z-index: 2; max-width: min(560px, calc(100% - 32px)); text-align: center; border: 3px solid var(--signal); box-shadow: 0 0 40px rgba(155, 227, 122, .35); animation: celpop .5s ease-out; }
+#celebrate h2 { font-size: calc(30px * var(--ts)); margin: 4px 0 8px; } #celKicker { font-size: 1.2em; }
+.celstats { display: grid; grid-template-columns: auto auto; gap: 4px 18px; justify-content: center; text-align: left; margin: 10px 0; } .celstats dt { color: var(--dim); } .celstats dd { margin: 0; font-weight: 700; }
+#confetti { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 1; }
+#confetti i { position: absolute; top: -20px; width: 10px; height: 16px; border-radius: 2px; animation: fall linear infinite; opacity: .9; }
+@keyframes fall { to { top: 105%; transform: translateX(40px) rotate(720deg); } } @keyframes celpop { from { transform: scale(.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { #confetti i { animation: none; display: none; } #celebrate .celcard { animation: none; } }
+.certs { justify-content: flex-start; }
 </style>
 </head>
 <body>
@@ -337,6 +347,10 @@ ul.slots { list-style: none; padding-left: 0; }
       <div class="btns"><button type="button" id="btnNext" class="primary">Beam down: next level ▶</button><button type="button" id="btnReplay">Play again</button><button type="button" id="btnMap">Map</button><button type="button" id="btnMenu">Main menu</button></div></div>
   </section>
 
+  <div id="celebrate" hidden role="dialog" aria-modal="true" aria-labelledby="celTitle"><div id="confetti" aria-hidden="true"></div>
+    <div class="card celcard"><p class="sttop" id="celKicker"></p><h2 id="celTitle"></h2><div id="celBody"></div>
+      <label class="set" for="celName"><span id="celNameLbl"></span><input type="text" id="celName" maxlength="40" autocomplete="off" data-notr></label><p id="celNameMsg" class="dim" role="status" aria-live="polite"></p>
+      <div class="btns"><button type="button" id="btnCert" class="primary"></button><button type="button" id="btnCelNext"></button><button type="button" id="btnCelClose"></button></div></div></div>
   <div id="err" hidden><p>This browser could not start 3D graphics. Try a current version of Chrome, Edge, Firefox, or Safari.</p></div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>

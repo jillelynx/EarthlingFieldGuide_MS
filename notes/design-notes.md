@@ -34,7 +34,7 @@
 - Cozy mode: add the middle school activities (watershed, farm and orchard, stream buffer, ranger station exhibits).
 
 ## World 1 built (October 24, 2026): What Living Things Are Made Of
-Standards: 3.1.6-8.A (living things are made of cells), 3.1.6-8.B (cell parts and their functions). Content source files: `tools/content/w1_*.py`; build with `python3 tools/content/build_w1.py` (it checks codes, answers, ids and that every Spanish list matches the English one).
+Standards: 3.1.6-8.A (living things are made of cells), 3.1.6-8.B (cell parts and their functions). Content source files: `tools/content/w1_*.py`; build with `python3 tools/content/build_world.py 1` (it checks codes, answers, ids and that every Spanish list matches the English one).
 Every scan card, question, activity, sign and level title is in English and Spanish.
 
 | Level | Real place | How students discover | Obstacles | Side quest | Rare specimen |
@@ -54,4 +54,21 @@ Engine messages: translated in the Spanish pass below.
 - Word choices match the high school game's Spanish (Tienda de suministros, Vestidor, Sala de Práctica).
 - Checked by playing all of World 1 and every menu in Spanish and listing anything still in English (`tools/harvest_menus.js --es`, `tools/play_levels.js ... --es`, `tools/spanish_misses.js`). Only document titles in About stay in English (they are the documents' real names).
 - Achievement "Energy Expert" (World 2) is now "Body Expert" / "Experto en el cuerpo", to match the middle school World 2.
-- Not translated yet: the high school mini-games (Immune Defense, Enzyme Mini Golf, Code Lab), which this game does not use yet.
+- Immune Defense (World 2 side game), portal clues, the balance activity and sound captions are now in Spanish too. The other high school mini-games (Enzyme Mini Golf, Code Lab) are not used and not translated.
+
+## World 2 built (October 25, 2026): The Body as a System
+Standards: 3.1.6-8.C (the body is a system of interacting subsystems made of groups of cells), 3.1.6-8.H (sensory receptors send messages to the brain for immediate behavior or storage as memories). Mixed reviews also bring back 3.1.6-8.A and B. Content source files: `tools/content/w2_*.py`; build any world with `python3 tools/content/build_world.py N` (it checks codes, answers, ids and that every Spanish list matches the English one). `build_w1.py` was replaced by `build_world.py`.
+Every scan card (36), question (22), activity, sign and level title is in English and Spanish. A field trip across Pennsylvania:
+
+| Level | Real place | How students discover | Obstacles | Side quest | Rare specimen |
+|---|---|---|---|---|---|
+| 2-1 Inside a Hiker's Body | Inside a hiker at Hawk Mountain (shrink ray) | Scans, Zoom out maze (cell → tissue → organ → system → organism), build the circulatory system hunt, which-system sort, mixed review, Immune Defense side game behind a 3-clue portal | Germs, white blood cells that pop up, antibodies, moving heart platforms, squeeze tunnel | Find the 4 heart valves | Heart muscle cell |
+| 2-2 Hawk Mountain Trail | Hawk Mountain Sanctuary, Berks County | Scans, heart-rate and breathing data charts, Become oxygen, sequence, Keep the oxygen flowing balance | Timber rattlesnakes, falling rocks | Count the migrating hawks | Kettle of broad-winged hawks |
+| 2-3 Cherry Springs at Night | Cherry Springs State Park dark-sky park (new night theme with a lamp on the alien) | Scans, collect-the-stimuli hunt, Become a nerve message, sequence, senses word bank | Bats, mosquitoes | Catch fireflies | Luna moth |
+| 2-4 Your Brain | "Your Brain" exhibit, The Franklin Institute, Philadelphia | Scans, climb the neural network, reaction-time data, reflex or memory sort, World 2 Lab Lock | Lab hazards, climbing | Collect the sense badges | Neuron model |
+
+New engine pieces: night theme and night music; timber rattlesnake and bat (bump only, never stomped); Immune Defense text in English and Spanish.
+Celebration and certificate: finishing every level of a world opens a celebration screen (confetti, stars, specimens, side quests) once, with a button for a printable certificate. The student can type a first name for the certificate; it is filtered, used only for printing and never saved. Earned certificates can be printed again from Progress.
+Chart fix: data charts made for plain numbers (heartbeats, breaths, milliseconds) now start at 0 with round gridlines and no "+" or "%". Percent-change charts look as before.
+Checked: a test player finished all four levels in English and in Spanish; the Immune Defense game was played in both languages; the standards check still shows no codes to students and all 30 rows on the educator sheet.
+Numbers on the data charts are illustrative, typical values.

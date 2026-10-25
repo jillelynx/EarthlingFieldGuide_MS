@@ -15,26 +15,31 @@ fs.mkdirSync(OUT, { recursive: true });
     await p.waitForTimeout(1500);
     if (startX) await p.evaluate(x => { const s = FieldGuide._debug.state(), L = s.L, P = s.P; P.x = +x; P.y = 6; P.vy = 0; L.zones.forEach(z => { if (z.x1 < +x) { z.done = true; if (z.gate) z.gate.off = true; if (z.gateMesh) z.gateMesh.visible = false; } }); L.stations.forEach(st => { if (st.wall && st.wall.x0 < +x) st.wall.off = true; }); }, startX);
     const info = await p.evaluate(() => { const L = FieldGuide._debug.state().L; return { len: Math.round(L.len), zones: L.zones.map(z => z.kind), scans: L.scans.length, stations: L.stations.length, quest: L.quest ? L.quest.items.length : 0, rare: !!L.rare, title: L.lv.title }; });
-    let t0 = Date.now(), lastX = -99, stuckT = 0, wetStuck = 0, opened = 0, answered = 0, shots = 0, done = false, maxX = 0;
+    let waitN = 0, t0 = Date.now(), lastX = -99, stuckT = 0, wetStuck = 0, opened = 0, answered = 0, shots = 0, done = false, maxX = 0;
     await p.keyboard.down('ArrowRight');
-    while (Date.now() - t0 < 240000) {
+    while (Date.now() - t0 < (ES ? 600000 : 360000)) {
       const st = await p.evaluate(() => { const D = FieldGuide._debug, s = D.state(), L = s.L, P = s.P; if (!L) return { gone: true, done: !!Object.values(s.S.levels).length };
         if (s.S.levels[L.lv.id] && s.S.levels[L.lv.id].stars) return { done: true };
         if (L.over) return { over: true };
         const a = L.active; if (a && a.queue && !a.done) { const q = a.queue[a.qi]; const i = a.perm.indexOf(q.answer); a.coolUntil = 0; D.answer(i); return { ans: 1, x: P.x }; }
-        if (a && (a.refuel || a.clue)) { const ev = new KeyboardEvent('keydown', { key: 'Escape' }); window.dispatchEvent(ev); }
+        if (a && a.clue && a.clue.choice == null) { const c = a.clue; D.answer(c.perm.indexOf(c.q.answer)); return { ans: 1, x: P.x }; }
+        if (a && (a.refuel || a.clue || a.portal)) { const ev = new KeyboardEvent('keydown', { key: 'Escape' }); window.dispatchEvent(ev); }
         const solidAt = (x, y) => L.solids.some(sl => !sl.off && x >= sl.x0 && x <= sl.x1 && Math.abs(sl.y1 - y) < 0.7);
         let edgeWait = false;
         if (P.ground && !solidAt(P.x + 1.2, P.y) && !solidAt(P.x + 2.2, P.y) && !solidAt(P.x + 2.2, P.y - 1.5) && !solidAt(P.x + 2.2, P.y + 1.2)) {
           const mv = (L.movers || []).find(m => m.s.x1 > P.x && m.s.x0 < P.x + 14);
-          if (mv) edgeWait = !(mv.s.x0 < P.x + 1.0 && mv.s.x1 > P.x + 0.8 && Math.abs(mv.s.y1 - P.y) < 0.8);
+          const mvS = (L.movers || []).map(m => m.s); const staticAhead = L.solids.some(sl => !sl.off && mvS.indexOf(sl) < 0 && sl.x0 > P.x && sl.x0 < P.x + 5 && Math.abs(sl.y1 - P.y) < 2);
+          if (mv && !staticAhead) edgeWait = !(mv.s.x0 < P.x + 1.0 && mv.s.x1 > P.x + 0.8 && Math.abs(mv.s.y1 - P.y) < 0.8);
         }
+        const onMv = P.ground && (L.movers || []).find(m => P.x >= m.s.x0 - 0.3 && P.x <= m.s.x1 + 0.3 && Math.abs(m.s.y1 - P.y) < 0.5);
+        if (onMv && P.x > onMv.s.x1 - 0.9) { const other = L.solids.some(sl => sl !== onMv.s && !sl.off && P.x + 2.2 >= sl.x0 && P.x + 1.2 <= sl.x1 && sl.y1 < P.y + 1.3 && sl.y1 > P.y - 2.5); if (!other) edgeWait = true; }
         const flier = L.hazards.some(h => h.alive !== false && h.x > P.x - 1 && h.x < P.x + 4.5 && h.y > P.y + 1.2 && h.y < P.y + 4.5);
         return { edgeWait, flier, x: P.x, y: P.y, water: !!(L.waters && L.waters.some(w => P.x > w.x0 - 2 && P.x < w.x1 && P.y < w.top + 4)), len: L.len }; });
       if (st.over) { await p.waitForTimeout(400); continue; }
       if (st.done) { done = await p.evaluate(i => !!(FieldGuide._debug.state().S.levels[i] || {}).stars, id); break; } if (st.gone) break;
       if (st.ans) { answered++; await p.waitForTimeout(150); continue; }
       maxX = Math.max(maxX, st.x);
+      if (st.edgeWait) waitN++; else waitN = 0; if (waitN > 60) { st.edgeWait = false; waitN = 0; }
       if (st.edgeWait) { await p.keyboard.up('ArrowRight'); await p.waitForTimeout(120); stuckT = 0; lastX = -99; continue; } else await p.keyboard.down('ArrowRight');
       if (Math.abs(st.x - lastX) < 0.15) stuckT += 0.3; else stuckT = 0; lastX = st.x;
       if (HARV || ES) await p.keyboard.press('e');

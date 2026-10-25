@@ -56,7 +56,7 @@ window.FG_ES = {
   'You fell. Back to the last checkpoint.': 'Te caíste. Vuelves al último punto de control.', 'Out of energy: you lost a life. Back to the last checkpoint.': 'Sin energía: perdiste una vida. Vuelves al último punto de control.',
   'Crumbly platform! It breaks if you stand on it too long. Keep moving!': '¡Plataforma que se desmorona! Se rompe si te quedas encima mucho tiempo. ¡Sigue moviéndote!',
   'That faint shape is a hidden platform. Lab goggles make it solid. Earn them with 3 stars or buy them at the station shop.': 'Esa forma tenue es una plataforma oculta. Las gafas de laboratorio la vuelven sólida. Gánalas con 3 estrellas o cómpralas en la tienda de suministros.',
-  'Engulfed! Phagocytes eat by wrapping around things. Jump past while it is hiding.': '¡Atrapado! Las amebas comen envolviendo las cosas. Salta cuando se esconda.',
+  'Engulfed! Phagocytes eat by wrapping around things. Jump past while it is hiding.': '¡Atrapado! Estas células comen envolviendo las cosas. Salta cuando se esconda.',
   '🫧 Bubble helmet on! Hold jump (Space or Up) to swim up, duck (Down or S) to dive. Shift swims faster.': '🫧 ¡Casco de burbuja puesto! Mantén el salto (Espacio o flecha arriba) para nadar hacia arriba y agáchate (flecha abajo o S) para bucear. Shift nada más rápido.',
   '🌑 No sunlight reaches this deep. Your antennae light up! Many animals down here make their own light (bioluminescence).': '🌑 La luz del sol no llega tan hondo. ¡Tus antenas se encienden! Muchos animales de aquí abajo producen su propia luz (bioluminiscencia).',
   '♨️ Ride the vent plume up!': '♨️ ¡Sube con el chorro de la fuente!',
@@ -110,11 +110,48 @@ window.FG_ES = {
   'Earth picture and clouds in the opening story: from the three.js examples (MIT License), based on NASA Blue Marble imagery (public domain).': 'Imagen de la Tierra y nubes de la historia inicial: de los ejemplos de three.js (licencia MIT), basada en imágenes Blue Marble de la NASA (dominio público).',
   'Flying heron and egret models: the Stork and Flamingo models from the three.js examples ("ro.me" project by mirada), MIT License, recolored in the game. Model loader: three.js GLTFLoader, MIT License.': 'Modelos de garza volando: los modelos Stork y Flamingo de los ejemplos de three.js (proyecto "ro.me" de mirada), licencia MIT, con colores nuevos en el juego. Cargador de modelos: GLTFLoader de three.js, licencia MIT.',
   'Fonts: Chakra Petch (Cadson Demak) and Atkinson Hyperlegible (Braille Institute), SIL Open Font License, from Google Fonts.': 'Fuentes: Chakra Petch (Cadson Demak) y Atkinson Hyperlegible (Braille Institute), licencia SIL Open Font, de Google Fonts.',
+  /* portal clues (escape-room side game) */
+  'A portal clue! Press E to read it.': '¡Una pista del portal! Pulsa E para leerla.', 'Close (Esc)': 'Cerrar (Esc)',
+  'Press the letter of your answer.': 'Pulsa la letra de tu respuesta.', 'Press the letter of your answer, or Esc to close.': 'Pulsa la letra de tu respuesta, o Esc para cerrar.',
+  'Press the letter of your answer. The letter becomes part of the portal code. The portal tells you if the code works.': 'Pulsa la letra de tu respuesta. La letra pasa a formar parte del código del portal. El portal te dice si el código funciona.',
+  '🔒 Portal: needs a code': '🔒 Portal: necesita un código', '🌀 Portal open: press E': '🌀 Portal abierto: pulsa E', '🌀 Locked portal': '🌀 Portal cerrado', 'Code:': 'Código:', 'Try this code': 'Probar este código',
+  'The code is the letters of your clue answers, in order. Wrong letters? Go back to a clue and change your answer.': 'El código son las letras de tus respuestas a las pistas, en orden. ¿Letras incorrectas? Vuelve a una pista y cambia tu respuesta.',
+  '✓ Code accepted! The portal is open. Press E at the portal to go through.': '✓ ¡Código aceptado! El portal está abierto. Pulsa E en el portal para cruzarlo.', 'Clues solved': 'Pistas resueltas',
+  'Press E to enter the portal.': 'Pulsa E para entrar en el portal.', 'A locked portal! Press E to see the code it needs.': '¡Un portal cerrado! Pulsa E para ver el código que necesita.',
+  'Go back to a clue and change your answer.': 'Vuelve a una pista y cambia tu respuesta.',
+  'Tagged by an antibody! Duck (down arrow or S) or jump over it.': '¡Te marcó un anticuerpo! Agáchate (flecha abajo o S) o salta por encima.',
+  /* balance activity */
+  'Balance It': 'Mantén el equilibrio', 'Hold it normal:': 'Mantenlo normal:', 'Hold it normal to weaken the boss:': 'Mantenlo normal para debilitar al jefe:', 'Normal range': 'Rango normal',
+  'Walk to a switch and press E. Orange switches raise it; blue switches lower it.': 'Camina hasta un interruptor y pulsa E. Los naranjas lo suben; los azules lo bajan.',
+  'Walk up to a switch, then press E.': 'Acércate a un interruptor y pulsa E.',
+  /* sound captions (the word "sound:" is added by a pattern) */
+  'beep, answer saved': 'pitido, respuesta guardada', 'boing, does not fit': 'boing, no encaja', 'boing, not a match': 'boing, no es pareja', 'boing, not that letter': 'boing, no es esa letra',
+  'boing, wrong shape': 'boing, forma incorrecta', 'buzz, code not accepted': 'zumbido, código no aceptado', 'buzz, name not allowed': 'zumbido, nombre no permitido', 'buzz, part does not fit': 'zumbido, la parte no encaja',
+  'buzz, wrong direction': 'zumbido, dirección incorrecta', 'chime, balance restored': 'campanilla, equilibrio recuperado', 'chime, matched': 'campanilla, pareja encontrada', 'chime, step correct': 'campanilla, paso correcto',
+  'click, lowering': 'clic, bajando', 'crumble, the platform fell apart': 'crujido, la plataforma se deshizo', 'ding, sparks': 'ding, chispas', 'fanfare, balanced': 'fanfarria, en equilibrio', 'go': 'ya',
+  'hum, shield on': 'zumbido, escudo encendido', 'jingle, extra life': 'tintineo, vida extra', 'pop, germ tagged': 'pop, microbio marcado', 'power-up, memory cells': 'mejora, células de memoria',
+  'rising chime, flight power': 'campanilla que sube, poder de vuelo', 'rising chime, refueled': 'campanilla que sube, recargado', 'sad tones, out of lives': 'tonos tristes, sin vidas', 'shimmer, hint lens': 'brillo, lupa de pistas',
+  'soft pop, part returned': 'pop suave, la parte volvió', 'soft tone, not this time': 'tono suave, esta vez no', 'thud, a germ got past': 'golpe, un microbio pasó', 'unlock chime, portal open': 'campanilla, portal abierto',
+  'whoosh, samples sent': 'zas, muestras enviadas',
+  /* World 2 extras */
+  'Falling rock! Watch for falling dust: it means a rock is about to drop.': '¡Cae una roca! Fíjate en el polvo que cae: significa que una roca está por caer.',
+  'Ouch! A virus got you. Jump on top of it, or jump over it.': '¡Ay! Te atrapó un virus. Salta encima de él o por encima.',
+  'Press 1 to 5 for each digit of the code (or click it).': 'Pulsa del 1 al 5 para cada dígito del código (o haz clic).',
   /* sources (titles stay in English: they are the documents' names) */
   'U.S. National Park Service, Fire program.': 'Servicio de Parques Nacionales de EE. UU., programa de incendios.', 'Last updated March 18, 2024.': 'Actualizado el 18 de marzo de 2024.',
   'U.S. Environmental Protection Agency.': 'Agencia de Protección Ambiental de EE. UU.', 'Pennsylvania Department of Environmental Protection.': 'Departamento de Protección Ambiental de Pensilvania.', 'California Air Resources Board.': 'Junta de Recursos del Aire de California.'
  },
  patterns: [
+  /* portal clues, balance readouts */
+  [/^🔐 Portal clue (\d+) of (\d+) · your answer now: ([A-E])$/, '🔐 Pista del portal $1 de $2 · tu respuesta ahora: $3'], [/^🔐 Portal clue (\d+) of (\d+)$/, '🔐 Pista del portal $1 de $2'],
+  [/^Clue (\d+): press E$/, 'Pista $1: pulsa E'], [/^Clue (\d+): ([A-E])$/, 'Pista $1: $2'], [/^Clue (\d+): (.+)$/, 'Pista $1: $2'],
+  [/^Answer saved: ([A-E])\. Portal code so far: (.+)$/, 'Respuesta guardada: $1. Código del portal hasta ahora: $2'],
+  [/^Find all (\d+) green clue terminals in this level and answer them\. (\d+) still to go\.$/, 'Encuentra las $1 terminales verdes de pistas en este nivel y respóndelas. Faltan $2.'],
+  [/^✗ Code not accepted\. (\d+) of (\d+) letters are right\. Hint: clue (\d+) is not right yet\. (.*)$/, '✗ Código no aceptado. $1 de $2 letras son correctas. Pista: la pista $3 todavía no es correcta. $4'],
+  [/^✗ Code not accepted\. (\d+) of (\d+) letters are right\. Go back to a clue and change your answer\.$/, '✗ Código no aceptado. $1 de $2 letras son correctas. Vuelve a una pista y cambia tu respuesta.'],
+  [/^([\d.]+) of ([\d.]+) s$/, '$1 de $2 s'], [/^(.*) · normal ([\d.]+) to ([\d.]+)$/, '$1 · normal: de $2 a $3'],
+  [/^Lab Lock: (\d+) of (\d+)$/, 'Candado del laboratorio: $1 de $2'], [/^Code: ([0-9_ ]+)$/, 'Código: $1'],
+  [/^New gear unlocked: (.+)\. Put it on in the Wardrobe\.$/, 'Nuevo equipo desbloqueado: $1. Póntelo en el Vestidor.'],
   /* endings and joining words the engine adds to a message */
   [/^(.+) Telling them apart: (.+)$/, '$1 Para distinguirlos: $2'],
   [/^(.+) The right answer is glowing gold\.$/, '$1 La respuesta correcta brilla dorada.'], [/^(.+) The right opening is glowing gold\.$/, '$1 La abertura correcta brilla dorada.'],

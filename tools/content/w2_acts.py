@@ -1,0 +1,146 @@
+# World 2 activities (English + Spanish)
+from w1_acts import bad, it, dq, door, mst, ws
+C, H = '3.1.6-8.C', '3.1.6-8.H'
+TOKENS = [
+ {'id': 'h2-circ', 'code': C, 'prompt': 'Collect only the parts of the CIRCULATORY SYSTEM',
+  'good': ['Heart', 'Arteries', 'Veins', 'Capillaries', 'Blood'],
+  'bad': [bad('Lungs', 'The lungs belong to the respiratory system. They work closely with the circulatory system, but they are a different system.', 'Pulmones', 'Los pulmones son parte del sistema respiratorio. Trabajan muy de cerca con el sistema circulatorio, pero son otro sistema.'),
+          bad('Stomach', 'The stomach is part of the digestive system.', 'Estómago', 'El estómago es parte del sistema digestivo.'),
+          bad('Thigh bone', 'Bones are part of the skeletal system.', 'Hueso del muslo', 'Los huesos son parte del sistema esquelético.'),
+          bad('Brain', 'The brain is part of the nervous system.', 'Cerebro', 'El cerebro es parte del sistema nervioso.')],
+  'es': {'prompt': 'Recoge solo las partes del SISTEMA CIRCULATORIO', 'good': ['Corazón', 'Arterias', 'Venas', 'Capilares', 'Sangre']}},
+ {'id': 'h2-stim', 'code': H, 'prompt': 'Collect only STIMULI: things your senses can detect',
+  'good': ['An owl hooting', 'Cold wind on your face', 'Starlight', 'Smell of smoke', 'A thorn prick'],
+  'bad': [bad('Your brain', 'The brain receives messages about stimuli. It is not a stimulus itself.', 'Tu cerebro', 'El cerebro recibe mensajes sobre los estímulos. No es un estímulo.'),
+          bad('A nerve', 'A nerve carries messages. It is part of the nervous system, not a stimulus.', 'Un nervio', 'Un nervio lleva mensajes. Es parte del sistema nervioso, no un estímulo.'),
+          bad('A memory', 'A memory is information your brain stores. It is not something your senses detect from outside.', 'Un recuerdo', 'Un recuerdo es información que tu cerebro guarda. No es algo que tus sentidos detecten afuera.')],
+  'es': {'prompt': 'Recoge solo ESTÍMULOS: cosas que tus sentidos pueden detectar', 'good': ['Un búho que ulula', 'Viento frío en la cara', 'Luz de las estrellas', 'Olor a humo', 'Un pinchazo de espina']}},
+]
+SORTS = [
+ {'id': 'sort2-system', 'code': C, 'prompt': 'Which body system does this belong to?', 'options': ['Circulatory', 'Respiratory', 'Digestive', 'Skeletal'],
+  'hint': 'Circulatory moves blood. Respiratory moves air. Digestive breaks down food. Skeletal is the bones.',
+  'items': [it('Heart', 0, 'The heart pumps blood: circulatory system.', 'Corazón', 'El corazón bombea sangre: sistema circulatorio.'),
+            it('Lungs', 1, 'The lungs bring in oxygen: respiratory system.', 'Pulmones', 'Los pulmones traen oxígeno: sistema respiratorio.'),
+            it('Small intestine', 2, 'The small intestine takes nutrients from food: digestive system.', 'Intestino delgado', 'El intestino delgado toma los nutrientes de los alimentos: sistema digestivo.'),
+            it('Skull', 3, 'The skull is a bone that protects the brain: skeletal system.', 'Cráneo', 'El cráneo es un hueso que protege el cerebro: sistema esquelético.'),
+            it('Capillaries', 0, 'Capillaries are tiny blood vessels: circulatory system.', 'Capilares', 'Los capilares son vasos sanguíneos diminutos: sistema circulatorio.'),
+            it('Windpipe (trachea)', 1, 'The windpipe carries air to the lungs: respiratory system.', 'Tráquea', 'La tráquea lleva el aire a los pulmones: sistema respiratorio.'),
+            it('Stomach', 2, 'The stomach breaks down food: digestive system.', 'Estómago', 'El estómago descompone los alimentos: sistema digestivo.')],
+  'es': {'prompt': '¿A qué sistema del cuerpo pertenece?', 'options': ['Circulatorio', 'Respiratorio', 'Digestivo', 'Esquelético'], 'hint': 'El circulatorio mueve la sangre. El respiratorio mueve el aire. El digestivo descompone los alimentos. El esquelético son los huesos.'}},
+ {'id': 'sort2-mem', 'code': H, 'prompt': 'Immediate behavior, or stored as a memory?', 'options': ['Immediate behavior', 'Stored as a memory'],
+  'hint': 'Immediate behavior happens right away. A memory is saved and used later.',
+  'items': [it('Blinking when dust flies at your eye', 0, 'You blink right away to protect your eye.', 'Parpadear cuando vuela polvo hacia tu ojo', 'Parpadeas enseguida para proteger tu ojo.'),
+            it('Remembering the smell of a campfire', 1, 'The brain stored the smell and can bring it back later.', 'Recordar el olor de una fogata', 'El cerebro guardó el olor y puede traerlo de vuelta después.'),
+            it('Jumping when a twig snaps behind you', 0, 'You react right away to the sudden sound.', 'Saltar cuando una rama cruje detrás de ti', 'Reaccionas enseguida al sonido repentino.'),
+            it('Knowing which berries tasted bitter last time', 1, 'You learned it before, and your brain stored it.', 'Saber qué bayas sabían amargas la última vez', 'Lo aprendiste antes y tu cerebro lo guardó.'),
+            it('Pulling your hand away from a hot pan', 0, 'A fast reflex protects you right away.', 'Quitar la mano de una sartén caliente', 'Un reflejo rápido te protege enseguida.'),
+            it('Recognizing a friend’s voice on the phone', 1, 'You compare the sound to a memory of your friend’s voice.', 'Reconocer la voz de un amigo por teléfono', 'Comparas el sonido con el recuerdo de la voz de tu amigo.')],
+  'es': {'prompt': '¿Conducta inmediata o se guarda como recuerdo?', 'options': ['Conducta inmediata', 'Se guarda como recuerdo'], 'hint': 'La conducta inmediata ocurre enseguida. Un recuerdo se guarda y se usa después.'}},
+]
+HIKE = ['Resting', 'Walking', 'Climbing', 'At the lookout', 'After resting']
+HIKE_ES = ['En reposo', 'Caminando', 'Subiendo', 'En el mirador', 'Después de descansar']
+DATA = [
+ {'id': 'd2-heart', 'code': C, 'title': 'A hiker’s heart rate on the trail', 'xlabel': 'Part of the hike', 'ylabel': 'Heartbeats per minute',
+  'categories': HIKE, 'values': [70, 100, 145, 110, 78],
+  'questions': [dq('When was the hiker’s heart rate the HIGHEST?', 2, 'Find the tallest bar.', 'While climbing. The leg muscles needed the most oxygen, so the heart pumped fastest.',
+                   ('¿Cuándo fue MÁS ALTO el ritmo cardiaco?', 'Busca la barra más alta.', 'Mientras subía. Los músculos de las piernas necesitaban más oxígeno, así que el corazón bombeó más rápido.')),
+                dq('Which part of the hike shows the heart slowing back down toward its resting rate?', 4, 'Look for a bar close to the resting bar, after the climb.', 'After resting, the heart rate dropped back near 70. The body returns to normal when the muscles need less oxygen.',
+                   ('¿Qué parte de la caminata muestra que el corazón vuelve a su ritmo de reposo?', 'Busca una barra parecida a la de reposo, después de la subida.', 'Después de descansar, el ritmo bajó cerca de 70. El cuerpo vuelve a la normalidad cuando los músculos necesitan menos oxígeno.'))],
+  'es': {'title': 'Ritmo cardiaco de una excursionista en el sendero', 'xlabel': 'Parte de la caminata', 'ylabel': 'Latidos por minuto', 'categories': HIKE_ES}},
+ {'id': 'd2-breath', 'code': C, 'title': 'The same hiker’s breathing rate', 'xlabel': 'Part of the hike', 'ylabel': 'Breaths per minute',
+  'categories': HIKE, 'values': [14, 20, 32, 22, 15],
+  'questions': [dq('Breathing was fastest at the same time the heart was fastest. When was that?', 2, 'Compare with the heart-rate graph.', 'Both peaked while climbing. The respiratory and circulatory systems speed up TOGETHER to deliver oxygen.',
+                   ('La respiración fue más rápida al mismo tiempo que el corazón. ¿Cuándo fue?', 'Compara con la gráfica del ritmo cardiaco.', 'Los dos llegaron al máximo al subir. Los sistemas respiratorio y circulatorio se aceleran JUNTOS para llevar oxígeno.')),
+                dq('Which part of the hike had the SLOWEST breathing?', 0, 'Find the shortest bar.', 'Resting, at the start. Resting muscles need the least oxygen.',
+                   ('¿Qué parte de la caminata tuvo la respiración MÁS LENTA?', 'Busca la barra más baja.', 'En reposo, al principio. Los músculos en reposo necesitan menos oxígeno.'))],
+  'es': {'title': 'Ritmo respiratorio de la misma excursionista', 'xlabel': 'Parte de la caminata', 'ylabel': 'Respiraciones por minuto', 'categories': HIKE_ES}},
+ {'id': 'd2-react', 'code': H, 'title': 'Reaction times at the exhibit', 'xlabel': 'Test', 'ylabel': 'Reaction time (thousandths of a second)',
+  'categories': ['Hand, try 1', 'Foot, try 1', 'Hand, try 5', 'Foot, try 5'], 'values': [260, 310, 220, 270],
+  'questions': [dq('Which test was SLOWEST?', 1, 'Find the tallest bar.', 'The foot on the first try. Messages from the foot travel farther to reach the brain.',
+                   ('¿Qué prueba fue la MÁS LENTA?', 'Busca la barra más alta.', 'El pie en el primer intento. Los mensajes del pie viajan más lejos para llegar al cerebro.')),
+                dq('After practice (try 5), which test was FASTEST?', 2, 'Find the shortest bar.', 'The hand on try 5. Practice helped: the brain stored what it learned and responded faster.',
+                   ('Después de practicar (intento 5), ¿qué prueba fue la MÁS RÁPIDA?', 'Busca la barra más baja.', 'La mano en el intento 5. Practicar ayudó: el cerebro guardó lo aprendido y respondió más rápido.'))],
+  'es': {'title': 'Tiempos de reacción en la exposición', 'xlabel': 'Prueba', 'ylabel': 'Tiempo de reacción (milésimas de segundo)', 'categories': ['Mano, intento 1', 'Pie, intento 1', 'Mano, intento 5', 'Pie, intento 5']}},
+]
+BECOME = [
+ {'id': 'b2-nerve', 'code': H, 'you': 'a message from the ear’s sound receptors', 'short': '⚡', 'color': '#ffd166',
+  'goal': 'An owl just hooted! Carry the news to the place that decides what to do.',
+  'doors': [door('lipid', 'Along the hearing nerve to the brain', True, les='Por el nervio del oído hasta el cerebro'),
+            door('protein', 'Down to the stomach', False, 'The stomach digests food. It does not decide what to do about a sound.', 'Baja hasta el estómago', 'El estómago digiere los alimentos. No decide qué hacer con un sonido.'),
+            door('pump', 'Straight out through the skin', False, 'Messages from receptors travel inside the body, along nerves, to the brain.', 'Sal directo por la piel', 'Los mensajes de los receptores viajan dentro del cuerpo, por los nervios, hasta el cerebro.')],
+  'explain': 'Receptors send messages along nerves to the brain. The brain decides on a response, like turning to look for the owl.',
+  'es': {'you': 'un mensaje de los receptores del sonido del oído', 'goal': '¡Un búho acaba de ulular! Lleva la noticia al lugar que decide qué hacer.',
+         'explain': 'Los receptores envían mensajes por los nervios al cerebro. El cerebro decide una respuesta, como girar para buscar al búho.'}},
+ {'id': 'b2-oxygen', 'code': C, 'you': 'oxygen that the hiker just breathed in', 'short': 'O₂', 'color': '#9fe0ff',
+  'goal': 'You are in the lungs. Get to the hard-working leg muscles!',
+  'doors': [door('lipid', 'Into the blood, then the heart pumps you to the legs', True, les='Entra en la sangre y el corazón te bombea a las piernas'),
+            door('protein', 'Into the stomach with the trail mix', False, 'Oxygen goes from the lungs into the blood, not into the digestive system.', 'Entra en el estómago con la mezcla de frutos', 'El oxígeno pasa de los pulmones a la sangre, no al sistema digestivo.'),
+            door('pump', 'Through the bones to the legs', False, 'Bones support the body. Blood vessels, not bones, carry oxygen.', 'Por los huesos hasta las piernas', 'Los huesos sostienen el cuerpo. Los vasos sanguíneos, no los huesos, llevan el oxígeno.')],
+  'explain': 'The respiratory system brings oxygen in, and the circulatory system carries it to the muscle cells. Two systems, one job.',
+  'es': {'you': 'oxígeno que la excursionista acaba de respirar', 'goal': 'Estás en los pulmones. ¡Llega a los músculos de las piernas, que trabajan mucho!',
+         'explain': 'El sistema respiratorio trae el oxígeno y el sistema circulatorio lo lleva a las células musculares. Dos sistemas, un trabajo.'}},
+]
+SEQUENCES = [
+ {'id': 'seq2-oxygen', 'code': C, 'title': 'How oxygen gets from the air to a leg muscle cell',
+  'steps': ['The hiker breathes in air', 'Oxygen moves from the lungs into the blood', 'The heart pumps the blood through blood vessels', 'Oxygen reaches the leg muscle cells'],
+  'hint': 'Start outside the body, with the air.', 'explain': 'The respiratory and circulatory systems work together to deliver oxygen to cells.',
+  'es': {'title': 'Cómo llega el oxígeno del aire a una célula muscular de la pierna',
+         'steps': ['La excursionista respira aire', 'El oxígeno pasa de los pulmones a la sangre', 'El corazón bombea la sangre por los vasos sanguíneos', 'El oxígeno llega a las células musculares de la pierna'],
+         'hint': 'Empieza fuera del cuerpo, con el aire.', 'explain': 'Los sistemas respiratorio y circulatorio trabajan juntos para llevar oxígeno a las células.'}},
+ {'id': 'seq2-sense', 'code': H, 'title': 'From a stimulus to a response',
+  'steps': ['A stimulus: a twig snaps', 'Receptors in the ear sense the sound', 'A nerve carries the message to the brain', 'The brain sends a message to the muscles', 'The response: you turn your head'],
+  'hint': 'Begin with what happens outside the body.', 'explain': 'Stimulus, receptor, nerve, brain, response: that is how the nervous system turns a sense into an action.',
+  'es': {'title': 'De un estímulo a una respuesta',
+         'steps': ['Un estímulo: una rama cruje', 'Los receptores del oído perciben el sonido', 'Un nervio lleva el mensaje al cerebro', 'El cerebro envía un mensaje a los músculos', 'La respuesta: giras la cabeza'],
+         'hint': 'Empieza con lo que pasa fuera del cuerpo.', 'explain': 'Estímulo, receptor, nervio, cerebro, respuesta: así el sistema nervioso convierte un sentido en una acción.'}},
+]
+MAZES = [
+ {'id': 'maze2-org', 'code': C, 'title': 'Zoom out through the body: go through the doorway for the next level up', 'start': 'Muscle cell',
+  'steps': [mst('Muscle tissue', 'What do many muscle cells form when they work together?', 'Similar cells working together form a tissue.', ('Tejido muscular', '¿Qué forman muchas células musculares cuando trabajan juntas?', 'Las células parecidas que trabajan juntas forman un tejido.')),
+            mst('Heart (an organ)', 'What is made of several kinds of tissue working together?', 'Different tissues working together form an organ, like the heart.', ('Corazón (un órgano)', '¿Qué está formado por varios tipos de tejido que trabajan juntos?', 'Distintos tejidos que trabajan juntos forman un órgano, como el corazón.')),
+            mst('Circulatory system', 'What do the heart, blood vessels and blood form together?', 'Organs that work together form an organ system.', ('Sistema circulatorio', '¿Qué forman juntos el corazón, los vasos sanguíneos y la sangre?', 'Los órganos que trabajan juntos forman un sistema de órganos.')),
+            mst('The whole hiker', 'What is made of all the systems working together?', 'All the organ systems together make one organism.', ('El excursionista completo', '¿Qué está formado por todos los sistemas trabajando juntos?', 'Todos los sistemas de órganos juntos forman un organismo.'))],
+  'extra': ['Nucleus', 'Sunlight', 'Rock'], 'explain': 'Cells form tissues, tissues form organs, organs form organ systems, and the systems together form the organism.',
+  'es': {'title': 'Aléjate por el cuerpo: cruza la puerta del siguiente nivel', 'start': 'Célula muscular', 'extra': ['Núcleo', 'Luz del sol', 'Roca'],
+         'explain': 'Las células forman tejidos, los tejidos forman órganos, los órganos forman sistemas y los sistemas juntos forman el organismo.'}},
+]
+WORDBANKS = [
+ {'id': 'wb2-senses', 'code': H, 'words': ['receptors', 'stimulus', 'nerves', 'brain', 'response', 'memory'],
+  'sentences': [ws('Light, sound or cold air is a ___ that your senses can detect.', 'stimulus', H, 'A stimulus is something that causes a reaction.', 'La luz, el sonido o el aire frío son un ___ que tus sentidos pueden detectar.', 'estímulo', 'Un estímulo es algo que causa una reacción.'),
+                ws('Special cells called ___ sense light, sound, touch, taste and smell.', 'receptors', H, 'Sensory receptors detect stimuli.', 'Unas células especiales llamadas ___ perciben la luz, el sonido, el tacto, el sabor y el olor.', 'receptores', 'Los receptores sensoriales detectan los estímulos.'),
+                ws('Messages travel from the receptors along ___.', 'nerves', H, 'Nerves carry messages through the body.', 'Los mensajes viajan desde los receptores por los ___.', 'nervios', 'Los nervios llevan mensajes por el cuerpo.'),
+                ws('The ___ decides what to do with the message.', 'brain', H, 'The brain sorts out the messages and decides on a response.', 'El ___ decide qué hacer con el mensaje.', 'cerebro', 'El cerebro ordena los mensajes y decide una respuesta.'),
+                ws('Turning toward a sound is your ___.', 'response', H, 'A response is what you do because of a stimulus.', 'Girar hacia un sonido es tu ___.', 'respuesta', 'Una respuesta es lo que haces por un estímulo.'),
+                ws('The smell of a campfire can be saved as a ___.', 'memory', H, 'The brain can store information to use later.', 'El olor de una fogata puede guardarse como un ___.', 'recuerdo', 'El cerebro puede guardar información para usarla después.')],
+  'es': {'words': ['receptores', 'estímulo', 'nervios', 'cerebro', 'respuesta', 'recuerdo']}},
+]
+BALANCES = [
+ {'id': 'bal2-oxygen', 'kind': 'elevator', 'code': C, 'title': 'Keep the leg muscles supplied with oxygen on the steep climb. The platform rises and falls with the oxygen supply.',
+  'what': 'Oxygen for the muscles', 'unit': '%', 'start': 80, 'min': 30, 'max': 120, 'band': [65, 95], 'danger': [45, 110], 'hold': 10, 'drift': -3,
+  'event': {'every': 6, 'delta': -14, 'msg': 'A steep, rocky stretch! The leg muscles are using oxygen fast.'},
+  'controls': [{'label': 'Lungs and heart: speed up', 'delta': 18}, {'label': 'Lungs and heart: slow down', 'delta': -12}],
+  'tooHigh': 'More oxygen than the muscles need. The lungs and heart can slow down a little.', 'tooLow': 'The muscles are running low on oxygen! Speed up the lungs and heart.',
+  'explain': 'When the muscles worked harder, the respiratory and circulatory systems both sped up to keep oxygen coming. The body’s systems interact.',
+  'es': {'title': 'Mantén el oxígeno de los músculos de las piernas en la subida empinada. La plataforma sube y baja con el oxígeno.',
+         'what': 'Oxígeno para los músculos', 'event': {'every': 6, 'delta': -14, 'msg': '¡Un tramo empinado y rocoso! Los músculos de las piernas usan oxígeno muy rápido.'},
+         'controls': [{'label': 'Pulmones y corazón: acelérense', 'delta': 18}, {'label': 'Pulmones y corazón: vayan más despacio', 'delta': -12}],
+         'tooHigh': 'Hay más oxígeno del que necesitan los músculos. Los pulmones y el corazón pueden ir un poco más despacio.', 'tooLow': '¡A los músculos les falta oxígeno! Acelera los pulmones y el corazón.',
+         'explain': 'Cuando los músculos trabajaron más, los sistemas respiratorio y circulatorio se aceleraron para mantener el oxígeno. Los sistemas del cuerpo interactúan.'}},
+]
+def clue(p, a, c, h, e, es, fig=None):
+    d = {'prompt': p, 'answer': a, 'code': c, 'hint': h, 'explain': e, 'es': {'prompt': es[0], 'hint': es[1], 'explain': es[2]}}
+    if fig: d['figure'] = fig[0]; d['es']['figure'] = fig[1]
+    return d
+LABLOCKS = [
+ {'id': 'lock2', 'title': 'Lab Lock', 'es': {'title': 'Candado del laboratorio'}, 'clues': [
+   clue('Clue 1: Count the levels from smallest to biggest: cell, tissue, organ, organ system, organism. How many levels is that?', 5, C, 'Count each word.', 'Cell, tissue, organ, organ system, organism: 5 levels.',
+        ('Pista 1: Cuenta los niveles del más pequeño al más grande: célula, tejido, órgano, sistema de órganos, organismo. ¿Cuántos niveles son?', 'Cuenta cada palabra.', 'Célula, tejido, órgano, sistema de órganos, organismo: 5 niveles.')),
+   clue('Clue 2: How many of these are SYSTEMS that sped up during the climb? Circulatory, respiratory, a rock, the trail.', 2, C, 'Only body systems count.', 'The circulatory and respiratory systems: 2.',
+        ('Pista 2: ¿Cuántos de estos son SISTEMAS que se aceleraron en la subida? Circulatorio, respiratorio, una roca, el sendero.', 'Solo cuentan los sistemas del cuerpo.', 'El sistema circulatorio y el respiratorio: 2.')),
+   clue('Clue 3: How many of these are STIMULI? An owl hooting, the brain, cold wind, a nerve.', 2, H, 'A stimulus comes from outside and causes a reaction.', 'The owl hooting and the cold wind: 2.',
+        ('Pista 3: ¿Cuántos de estos son ESTÍMULOS? Un búho que ulula, el cerebro, el viento frío, un nervio.', 'Un estímulo viene de afuera y causa una reacción.', 'El búho que ulula y el viento frío: 2.')),
+   clue('Clue 4: Look at the reaction times. How many tests were faster than 300 thousandths of a second?', 3, H, 'Count the bars below 300.', 'Hand try 1 (260), hand try 5 (220) and foot try 5 (270): 3.',
+        ('Pista 4: Mira los tiempos de reacción. ¿Cuántas pruebas fueron más rápidas que 300 milésimas de segundo?', 'Cuenta las barras por debajo de 300.', 'Mano intento 1 (260), mano intento 5 (220) y pie intento 5 (270): 3.'),
+        (dict(type='bars', categories=['Hand, try 1', 'Foot, try 1', 'Hand, try 5', 'Foot, try 5'], values=[260, 310, 220, 270], ylabel='Reaction time'),
+         dict(type='bars', categories=['Mano, intento 1', 'Pie, intento 1', 'Mano, intento 5', 'Pie, intento 5'], values=[260, 310, 220, 270], ylabel='Tiempo de reacción')))]},
+]
