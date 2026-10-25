@@ -10,9 +10,29 @@ const BQ = window.FieldGuide = {
   UNITS: ['What Living Things Are Made Of', 'The Body as a System', 'Food and Energy for Life',
     'Ecosystems', 'Passing On Traits', 'Change Over Time']
 };
-const QMAP = {};
-BQ.registerWorld = function (w) { BQ.worlds[w.id] = w; };
-BQ.registerQuestions = function (id, d) {
+const QMAP = {}, RAWQ = {};
+/* LANGUAGE for level content (middle school edition): any item may carry "es": { ...the same fields in Spanish... }.
+   FieldGuide.relang() rebuilds the question data and level titles in the chosen language (English is the fallback).
+   In level build steps, FieldGuide.t('English', 'Español') picks the right sign text. */
+BQ.lang = function () { return (S && S.set && S.set.lang) || 'en'; };
+BQ.t = function (en, es) { return BQ.lang() === 'es' && es ? es : en; };
+function locData(o, es) {
+  if (Array.isArray(o)) return o.map(function (x) { return locData(x, es); });
+  if (!o || typeof o !== 'object') return o;
+  const c = {}; Object.keys(o).forEach(function (k) { if (k !== 'es') c[k] = locData(o[k], es); });
+  if (es && o.es) Object.keys(o.es).forEach(function (k) { c[k] = locData(o.es[k], es); });
+  return c;
+}
+BQ.registerWorld = function (w) { BQ.worlds[w.id] = w; w.levels.forEach(function (lv) { lv._en = { title: lv.title, log: lv.log, outro: lv.outro }; }); w._en = { title: w.title }; };
+BQ.relang = function () {
+  const es = BQ.lang() === 'es';
+  Object.keys(QMAP).forEach(function (k) { delete QMAP[k]; });
+  Object.keys(RAWQ).forEach(function (id) { indexQuestions(+id, locData(RAWQ[id], es)); });
+  Object.keys(BQ.worlds).forEach(function (k) { const w = BQ.worlds[k]; w.title = es && w.es && w.es.title || w._en.title;
+    w.levels.forEach(function (lv) { ['title', 'log', 'outro'].forEach(function (f) { lv[f] = es && lv.es && lv.es[f] || lv._en[f]; }); }); });
+};
+BQ.registerQuestions = function (id, d) { RAWQ[id] = d; indexQuestions(id, locData(d, BQ.lang() === 'es')); };
+function indexQuestions(id, d) {
   BQ.data[id] = d;
   (d.questions || []).forEach(function (q) { QMAP[q.id] = Object.assign({ world: id }, q); });
   (d.sorts || []).forEach(function (s) {
@@ -33,7 +53,7 @@ BQ.registerQuestions = function (id, d) {
         hint: c.hint, explain: c.explain, figure: c.figure, fixed: true, tags: ['lock'] };
     });
   });
-};
+}
 function loadScript(src, ok, fail) {
   const s = document.createElement('script'); s.src = src; s.onload = ok;
   s.onerror = function () { s.remove(); fail(); }; document.head.appendChild(s);
@@ -118,6 +138,10 @@ const I18N = {
     'j.achTab': 'Achievements', 'j.world': 'World {n}', 'j.short': 'Quick wins', 'j.medium': 'Bigger goals', 'j.long': 'Grand goals', 'j.earned': '{n} of {m} earned',
     'j.word': 'Word', 'j.tip': 'Specimens you scan with E are saved here forever. Find them all to complete a collection.', 'j.open': 'Field Journal',
     'a.pop': 'Achievement unlocked!',
+    'm.emptyAnimal': 'Empty animal cell: bring me my parts!', 'm.emptyProk': 'Empty one-celled organism: bring me my parts!', 'm.emptyPlant': 'Empty plant cell: bring me my parts!',
+    'm.animal': 'animal cell', 'm.prok': 'bacterium', 'm.plant': 'plant cell', 'm.yours': '✓ Your {n}', 'm.done': '✓ Your {n} is complete! The gate is open.',
+    'p.boost': 'Energy boost: run faster and jump higher for 6 seconds!', 'p.boostL': 'Energy boost', 'p.shield': 'Shield', 'p.life': 'Extra life',
+    'q.start': 'Side quest: {name} ({n} to find). It is optional, and worth +300!', 'q.done': '✓ Side quest complete: {name}! +300.',
     'a.first-scan': 'First Discovery', 'a.first-scan.d': 'Scan your first specimen.',
     'a.first-rare': 'Treasure Hunter', 'a.first-rare.d': 'Find a Rare Specimen.',
     'a.hidden-10': 'Sharp Eyes', 'a.hidden-10.d': 'Collect 10 hidden purple sparks.',
@@ -143,6 +167,10 @@ const I18N = {
     'r.time': 'Time', 'r.bestTime': 'best {t}', 'r.newBestTime': 'new personal best!'
   },
   es: {
+    'm.emptyAnimal': 'Célula animal vacía: ¡tráeme mis partes!', 'm.emptyProk': 'Organismo de una célula vacío: ¡tráeme mis partes!', 'm.emptyPlant': 'Célula vegetal vacía: ¡tráeme mis partes!',
+    'm.animal': 'célula animal', 'm.prok': 'bacteria', 'm.plant': 'célula vegetal', 'm.yours': '✓ Tu {n}', 'm.done': '✓ ¡Tu {n} está completa! La puerta está abierta.',
+    'p.boost': 'Impulso de energía: ¡corre más rápido y salta más alto durante 6 segundos!', 'p.boostL': 'Impulso de energía', 'p.shield': 'Escudo', 'p.life': 'Vida extra',
+    'q.start': 'Misión extra: {name} (hay {n} por encontrar). Es opcional, ¡y vale +300!', 'q.done': '✓ ¡Misión extra completa: {name}! +300.',
     'h.ghost': 'Esa forma tenue es una plataforma escondida. Las gafas de laboratorio la vuelven sólida. Gánalas con 3 estrellas o cómpralas en la tienda de la estación.', 'h.crumble': '¡Plataforma frágil! Se rompe si te quedas encima mucho tiempo. ¡Sigue moviéndote!', 'h.boom': '¡Plataforma inestable! Va a estallar si te quedas encima. ¡Salta rápido!',
     'j.title': 'Diario de campo', 'j.found': '{n} de {m} descubiertos', 'j.where': 'Se encuentra en el nivel {lv}', 'j.unknown': 'Aún no descubierto',
     'j.collection': '¡Colección completa!', 'j.colReward': '¡Colección completa: {lv}! +{p} puntos', 'j.rare': 'Espécimen raro', 'j.rareYes': 'Encontrado', 'j.rareNo': 'Aún escondido',
@@ -612,6 +640,8 @@ function decor(th, x0, x1, grp, anim) {
   });
 }
 
+/* gates and room walls reach up to the water's surface in water levels, so nobody can swim over an activity */
+function gateTop(y) { let top = y + 18; (L && L.waters || []).forEach(function (w) { if (w === L.waterOpen || w.x1 > 1e8) top = Math.max(top, w.top + 3); }); return top; }
 /* ---------- game state ---------- */
 let L = null, P = null, mode = 'menu', paused = false, last = 0, menuAlien = null, menuGrp = null, backTo = 'menu';
 const keys = { left: false, right: false, jump: false, act: false, duck: false, run: false };
@@ -621,20 +651,21 @@ const HW = 0.42, STAND = 1.35, CROUCH = 0.78; let PH = STAND; const SPEED = 7.2,
 function addPickup(kind, x, y) {
   const g = new T.Group(), shield = kind === 'shield', life = kind === 'life', col = shield ? '#7fd4ff' : life ? '#ff8fb1' : '#c8ff7a';
   const core = new T.Mesh(shield ? G.tor : G.sph, emat(col, '#2a3a4a')); core.scale.setScalar(shield ? 0.4 : 0.38); g.add(core); g.add(glow(col, 2.8, 0.75));
-  const lb = label(shield ? 'Shield' : life ? 'Extra life' : 'ATP boost', 3); lb.position.y = 1.3; g.add(lb); g.position.set(x, y, 0); L.group.add(g);
+  const lb = label(tx(shield ? 'p.shield' : life ? 'p.life' : 'p.boostL'), 3); lb.position.y = 1.3; g.add(lb); g.position.set(x, y, 0); L.group.add(g);
   L.boosts.push({ x: x, y: y, m: g, got: false, kind: kind });
 }
 /* ---------- 3-D cell models that the player assembles part by part ---------- */
-function cellModel(kind) {
+function cellModel(kind, disp) {
+  if (kind === 'plant') return plantModel(disp);
   const g = new T.Group(), inner = new T.Group(); g.add(inner);
   const M = function (c, e) { return emat(c, e || '#1a2a3a'); }, parts = {}, euk = kind === 'animal';
-  const part = function (name, lx, ly) { const p = new T.Group(); p.visible = false; inner.add(p); const lb = label('✓ ' + name, 2.3, { bd: '#7be0ad' }); lb.position.set(lx, ly, 3.2); lb.visible = false; g.add(lb); parts[name] = { g: p, lb: lb, s: 0, lx: lx, ly: ly }; return p; };
+  const part = function (name, lx, ly) { const p = new T.Group(); p.visible = false; inner.add(p); const lb = label('✓ ' + ((disp && disp[name]) || name), 2.3, { bd: '#7be0ad' }); lb.position.set(lx, ly, 3.2); lb.visible = false; g.add(lb); parts[name] = { g: p, lb: lb, s: 0, lx: lx, ly: ly }; return p; };
   const blob = function (p, c, sx, sy, sz, x, y, z, op) { const m = new T.Mesh(G.sph, op ? basic(c, op, false) : M(c)); m.scale.set(sx, sy, sz); m.position.set(x, y, z || 0); p.add(m); return m; };
   const R = euk ? [2.7, 2.4, 2.1] : [3.1, 1.45, 1.45];
   /* ghost outline that shows where the cell will be */
   const ghost = new T.Mesh(new T.SphereGeometry(1, 16, 10), new T.MeshBasicMaterial({ color: '#9fe0ff', wireframe: true, transparent: true, opacity: 0.25 }));
   ghost.scale.set(R[0], R[1], R[2]); inner.add(ghost);
-  const tag = label(euk ? 'Empty animal cell: bring me my parts!' : 'Empty prokaryote: bring me my parts!', 4.2, { bd: '#9fe0ff' }); tag.position.set(0, R[1] + 1.25, 0); g.add(tag);
+  const tag = label(tx(euk ? 'm.emptyAnimal' : 'm.emptyProk'), 4.2, { bd: '#9fe0ff' }); tag.position.set(0, R[1] + 1.25, 0); g.add(tag);
   /* plasma membrane: a see-through skin with a bright rim */
   const mem = part('Plasma membrane', euk ? -3.3 : -3.4, euk ? 2.0 : 1.3);
   const shell = new T.Mesh(G.sph, new T.MeshLambertMaterial({ color: euk ? '#ffb0d0' : '#9be36b', emissive: euk ? '#3a1020' : '#123a10', transparent: true, opacity: 0.28, depthWrite: false }));
@@ -653,7 +684,26 @@ function cellModel(kind) {
     const rib = part('Ribosomes', 2.6, 0.2); for (let i = 0; i < 30; i++) { const a = i * 2.39, r = 1.4 + (i % 4) * 0.18; blob(rib, '#ffd166', 0.07, 0.07, 0.07, -0.4 + Math.cos(a) * r, 0.3 + Math.sin(a) * r * 0.8, Math.sin(a * 2.3) * 0.9); }
   }
   inner.rotation.x = 0.25;
-  return { g: g, inner: inner, parts: parts, ghost: ghost, tag: tag, kind: kind, R: R, name: euk ? 'animal cell' : 'prokaryotic cell', t: 0, finishAt: 0, done: false, scale: euk ? 0.95 : 1 };
+  return { g: g, inner: inner, parts: parts, ghost: ghost, tag: tag, kind: kind, R: R, name: tx(euk ? 'm.animal' : 'm.prok'), t: 0, finishAt: 0, done: false, scale: euk ? 0.95 : 1 };
+}
+/* PLANT CELL (middle school): a boxy cell with a cell wall, a big central vacuole and chloroplasts */
+function plantModel(disp) {
+  const g = new T.Group(), inner = new T.Group(); g.add(inner);
+  const M = function (c, e) { return emat(c, e || '#1a2a3a'); }, parts = {}, R = [3.0, 2.2, 1.7];
+  const part = function (name, lx, ly) { const p = new T.Group(); p.visible = false; inner.add(p); const lb = label('✓ ' + ((disp && disp[name]) || name), 2.3, { bd: '#7be0ad' }); lb.position.set(lx, ly, 3.2); lb.visible = false; g.add(lb); parts[name] = { g: p, lb: lb, s: 0, lx: lx, ly: ly }; return p; };
+  const blob = function (p, c, sx, sy, sz, x, y, z, op) { const m = new T.Mesh(G.sph, op ? basic(c, op, false) : M(c)); m.scale.set(sx, sy, sz); m.position.set(x, y, z || 0); p.add(m); return m; };
+  const ghost = new T.Mesh(new T.BoxGeometry(2, 2, 2), new T.MeshBasicMaterial({ color: '#9fe0ff', wireframe: true, transparent: true, opacity: 0.25 })); ghost.scale.set(R[0], R[1], R[2]); inner.add(ghost);
+  const tag = label(tx('m.emptyPlant'), 4.2, { bd: '#9fe0ff' }); tag.position.set(0, R[1] + 1.25, 0); g.add(tag);
+  const wall = part('Cell wall', -3.4, 1.6); const wb = new T.Mesh(new T.BoxGeometry(2, 2, 2), new T.MeshLambertMaterial({ color: '#7bcf5a', emissive: '#1a3a10', transparent: true, opacity: 0.32, depthWrite: false })); wb.scale.set(R[0] * 1.04, R[1] * 1.04, R[2] * 1.04); wall.add(wb);
+  const edges = new T.LineSegments(new T.EdgesGeometry(new T.BoxGeometry(2, 2, 2)), new T.LineBasicMaterial({ color: '#c8ff9a' })); edges.scale.copy(wb.scale); wall.add(edges);
+  const mem = part('Plasma membrane', -3.4, -0.2); const mb = new T.Mesh(new T.BoxGeometry(2, 2, 2), new T.MeshLambertMaterial({ color: '#ffe08a', emissive: '#3a2a08', transparent: true, opacity: 0.22, depthWrite: false })); mb.scale.set(R[0] * 0.95, R[1] * 0.95, R[2] * 0.95); mem.add(mb);
+  const cyto = part('Cytoplasm', -2.0, -1.7); blob(cyto, '#d8ffb0', R[0] * 0.9, R[1] * 0.88, R[2] * 0.85, 0, 0, 0, 0.18);
+  const vac = part('Vacuole', 0.9, 1.75); const vb = new T.Mesh(G.sph, new T.MeshLambertMaterial({ color: '#7fd4ff', emissive: '#10304a', transparent: true, opacity: 0.55, depthWrite: false })); vb.scale.set(1.7, 1.2, 0.9); vb.position.set(0.5, 0.15, 0); vac.add(vb);
+  const nuc = part('Nucleus', -0.6, 1.9); blob(nuc, '#8a5ac8', 0.62, 0.62, 0.6, -1.85, 0.9, 0.2); blob(nuc, '#c59cff', 0.22, 0.22, 0.22, -1.75, 1.0, 0.7);
+  const chl = part('Chloroplasts', 2.4, -0.4); [[-2.2, -1.4], [-1.0, -1.65], [0.6, -1.7], [2.1, -1.3], [2.4, 0.6], [2.2, 1.55], [-2.4, -0.2]].forEach(function (p, i) { const m = blob(chl, '#3fbf4a', 0.36, 0.2, 0.2, p[0], p[1], (i % 2 ? 0.5 : -0.4)); m.rotation.z = i; });
+  const mi = part('Mitochondria', 2.4, -1.75); [[-1.2, 0.0, 0.6], [1.5, -0.6, -0.5]].forEach(function (p) { const m = blob(mi, '#ff9f6e', 0.34, 0.17, 0.17, p[0], p[1], p[2]); m.rotation.z = 0.5; });
+  inner.rotation.x = 0.22;
+  return { g: g, inner: inner, parts: parts, ghost: ghost, tag: tag, kind: 'plant', R: R, name: tx('m.plant'), t: 0, finishAt: 0, done: false, scale: 0.95 };
 }
 function flyPart(md, name, x, y, tok) {
   const p = md.parts[name] || null;
@@ -687,10 +737,10 @@ function calloutLabels(md) {
 }
 function finishModel(md) {
   award('cell');
-  md.done = true; md.ghost.visible = false; md.tag.material.map = labelTex('✓ Your ' + md.name, { bd: '#7be0ad' }); md.tag.material.needsUpdate = true; md.tag.scale.set(3.6, 1.8, 1);
+  md.done = true; md.ghost.visible = false; md.tag.material.map = labelTex(tx('m.yours', { n: md.name }), { bd: '#7be0ad' }); md.tag.material.needsUpdate = true; md.tag.scale.set(3.6, 1.8, 1);
   calloutLabels(md); md.big = 1.35; md.tag.position.y = md.R[1] + 1.7;
   /* the finished cell lights itself up so it is easy to see, even in the dark deep sea */
-  const euk0 = md.kind === 'animal', lt = new T.PointLight(euk0 ? 0xffe0ec : 0xe8ffd8, 3.2, 28, 1); lt.position.set(0, 0, 5); md.g.add(lt);
+  const euk0 = md.kind !== 'prokaryote', lt = new T.PointLight(euk0 ? 0xffe0ec : 0xe8ffd8, 3.2, 28, 1); lt.position.set(0, 0, 5); md.g.add(lt);
   /* every part of the finished cell glows with its own color, so it is bright even in the darkest water */
   const shellP = md.parts['Plasma membrane'];
   md.inner.traverse(function (o) { if (!o.isMesh || !o.material) return; const m = o.material.clone(), isShell = shellP && o.parent === shellP.g && o.geometry === G.sph;
@@ -1128,7 +1178,7 @@ function builder() {
         const lb = label(it.text, 3.5); lb.position.y = 1.25; g.add(lb);
         g.position.set(x, y, 0); L.group.add(g); L.tokens.push({ x: x, y: y, it: it, door: door, m: g, gem: gem });
       });
-      door.solid = addSolid(wx, wx + 1.2, b.y, b.y + 18); door.mesh = gate(wx, wx + 1.2, b.y, b.y + 18); L.group.add(door.mesh);
+      door.solid = addSolid(wx, wx + 1.2, b.y, gateTop(b.y)); door.mesh = gate(wx, wx + 1.2, b.y, gateTop(b.y)); L.group.add(door.mesh);
       door.label = label('', 4.2); door.label.position.set(wx + 0.6, b.y + 5.2, 3); L.group.add(door.label); L.doors.push(door); doorText(door);
       b.x = wx + 5; L.cps.push({ x: wx + 3, y: b.y }); return b;
     },
@@ -1252,6 +1302,11 @@ function builder() {
       s.qb = { m: m, q: q, gl: gl, reward: reward || 'sparks', used: false, x: x0 + 0.6, y: y0 + 1.2 }; return b;
     },
     /* RARE SPECIMEN: one hidden bonus per level, usually somewhere only a double jump can reach. */
+    /* SIDE QUEST: an optional find-them-all task for the level, for example { icon: '🥚', name: 'Count the egg masses', look: 'eggs',
+       done: 'what you learn when you finish' }. Then put .qitem(dx, dy) where each one hides. Finishing it gives +300. */
+    quest: function (o) { L.quest = { o: o, items: [], got: 0, done: false }; return b; },
+    qitem: function (dx, dy) { if (!L.quest) return b; const g = new T.Group(), sp = specimen(L.quest.o.look || 'eggs', L.quest.o.color); sp.scale.setScalar(0.7); g.add(sp); g.add(glow('#ffe9a8', 2.4, 0.5));
+      g.position.set(b.x + dx, b.y + (dy || 0.4), 0); L.group.add(g); L.quest.items.push({ x: b.x + dx, y: b.y + (dy || 0.4), m: g, got: false }); return b; },
     rare: function (dx, dy, o) {
       const g = new T.Group(), model = o && o.look && RARE_LOOKS[o.look] ? RARE_LOOKS[o.look]() : null;
       if (model) { g.add(model); g.add(glow('#ffd700', 3, 0.45)); const ring = new T.Mesh(G.tor, basic('#ffd700', 0.7, true)); ring.scale.set(0.9, 0.9, 0.25); ring.rotation.x = Math.PI / 2; ring.position.y = -0.45; g.add(ring); }
@@ -1331,7 +1386,7 @@ function builder() {
       const txt = o.labels ? o.labels[i] : String.fromCharCode(65 + i), lb = label(txt, o.labels ? 2.6 : 1.9, { big: txt.length <= 2 }); lb.position.set(px + 1.35, top - 0.52, 1.6); L.group.add(lb);
       st.pads.push({ s: s, m: m, lb: lb, i: i });
     }
-    st.wall = addSolid(wx, wx + 1.2, b.y, b.y + 18); st.wallMesh = gate(wx, wx + 1.2, b.y, b.y + 18); L.group.add(st.wallMesh);
+    st.wall = addSolid(wx, wx + 1.2, b.y, gateTop(b.y)); st.wallMesh = gate(wx, wx + 1.2, b.y, gateTop(b.y)); L.group.add(st.wallMesh);
     if (o.chart) {
       const left = x0 + 3.2, W = wx - left, H = W * 420 / 1024, m = new T.Mesh(G.plane, new T.MeshBasicMaterial({ map: chartTex(o.chart, left, W, x0 + 6.35), transparent: true, fog: false, depthWrite: false }));
       m.scale.set(W, H, 1); m.position.set(left + W / 2, b.y + 3.4 + H / 2, -1.7); L.group.add(m);
@@ -1349,7 +1404,7 @@ function builder() {
     const x0 = b.x, y = b.y, wx = x0 + 17, end = x0 + 31;
     addGround(x0, end, y);
     const op = [[0, 2.3], [2.7, 4.9], [5.3, 7.5]].map(function (o) { return [y + o[0], y + o[1]]; });
-    [[y + 2.3, y + 2.7], [y + 4.9, y + 5.3], [y + 7.5, y + 18]].forEach(function (g) { addSolid(wx, wx + 1.4, g[0], g[1]); L.group.add(L.th.doorWall ? box(wx, wx + 1.4, g[0], g[1], 4.6, L.th.doorWall) : bilayer(wx, wx + 1.4, g[0], g[1])); });
+    [[y + 2.3, y + 2.7], [y + 4.9, y + 5.3], [y + 7.5, gateTop(y)]].forEach(function (g) { addSolid(wx, wx + 1.4, g[0], g[1]); L.group.add(L.th.doorWall ? box(wx, wx + 1.4, g[0], g[1], 4.6, L.th.doorWall) : bilayer(wx, wx + 1.4, g[0], g[1])); });
     [[wx - 6.5, y + 2.7], [wx - 4, y + 5.3]].forEach(function (p) { const sl = addSolid(p[0], wx, p[1] - 0.4, p[1], { oneWay: true }); L.group.add(box(sl.x0, sl.x1, sl.y0, sl.y1, 3, L.th.top)); });
     const KC = { lipid: '#f2c078', protein: '#c59cff', pump: '#ff9f6e', flow: '#7fd4ff', organelle: '#ffd166', vesicle: '#7be0ad' };
     const doors = shuffle(it.doors).map(function (d, i) {
@@ -1386,7 +1441,7 @@ function builder() {
     for (let i = 0; i < 6; i++) { const t = catchTok(z, i === 0 ? c.steps[0].need : null); t.lane = z.lanes[i]; z.toks.push(t); }
     /* calm and readable: two rows, evenly spaced, all bobbing up and down together (like the hunt) */
     z.toks.forEach(function (t, i) { t.hx = x0 + 4 + i * 5; t.hy = y + (i % 2 ? 5.2 : 2.4); });
-    z.gate = addSolid(wx, wx + 1.2, y, y + 18); z.gateMesh = gate(wx, wx + 1.2, y, y + 18); L.group.add(z.gateMesh);
+    z.gate = addSolid(wx, wx + 1.2, y, gateTop(y)); z.gateMesh = gate(wx, wx + 1.2, y, gateTop(y)); L.group.add(z.gateMesh);
     L.zones.push(z); L.total += c.steps.length; b.x = end; L.cps.push({ x: wx + 3, y: y });
   }
   function catchTok(z, text) {
@@ -1423,7 +1478,7 @@ function builder() {
       [-0.6, 0.6].forEach(function (ex) { const e = mesh('sph', '#ffffff'); e.scale.setScalar(0.32); e.position.set(ex, 0.4, 1.6); g.add(e); const p = mesh('sph', '#10202c'); p.scale.setScalar(0.15); p.position.set(ex, 0.4, 1.86); g.add(p); });
       g.position.set(x0 + 14, y + 8.3, -2.5); L.group.add(g); z.bossM = g;
     }
-    z.gate = addSolid(wx, wx + 1.2, y, y + 18); z.gateMesh = gate(wx, wx + 1.2, y, y + 18); L.group.add(z.gateMesh);
+    z.gate = addSolid(wx, wx + 1.2, y, gateTop(y)); z.gateMesh = gate(wx, wx + 1.2, y, gateTop(y)); L.group.add(z.gateMesh);
     L.zones.push(z); L.total += boss ? z.hp : 1; b.x = end; L.cps.push({ x: wx + 3, y: y });
   }
   /* HUNT: find every real answer floating around a wide arena. Decoys drift too; touching one costs
@@ -1436,14 +1491,16 @@ function builder() {
       lanes: shuffle([orbit(x0 + 8, y + 4.4, 1.5, 6, 1), orbit(x0 + 15, y + 6.4, 1.5, 5, -1), orbit(x0 + 22, y + 4.4, 1.5, 7, 1), orbit(x0 + 29, y + 6.4, 1.5, 6, -1),
         orbit(x0 + 36, y + 4.4, 1.5, 5, 1), orbit(x0 + 18.5, y + 8.8, 1.6, 7, -1), ferry(y + 2.4, x0 + 3, x0 + 40, 11), ferry(y + 5.6, x0 + 10, x0 + 33, 9),
         ferry(y + 3.6, x0 + 24, x0 + 42, 7), elev(x0 + 11, y + 2.2, y + 7.4, 6), elev(x0 + 32, y + 2.2, y + 7, 5)]) };
-    set.good.forEach(function (t) { z.toks.push(huntTok(z, t, true, null)); });
+    set.good.forEach(function (t, i) { const tk = huntTok(z, t, true, null); tk.key = set.parts ? set.parts[i] : t; z.toks.push(tk); });
     set.bad.forEach(function (t) { z.toks.push(huntTok(z, t.text, false, t.explain)); });
     /* calm and readable: two rows, evenly spaced, all bobbing up and down together */
     z.toks = shuffle(z.toks); const gap = (wx - x0 - (set.model ? 15 : 7)) / Math.max(1, z.toks.length - 1);
     z.toks.forEach(function (t, i) { t.hx = x0 + 3.5 + i * gap; t.hy = y + (i % 2 ? 5.2 : 2.4); });
-    z.gate = addSolid(wx, wx + 1.2, y, y + 18); z.gateMesh = gate(wx, wx + 1.2, y, y + 18); L.group.add(z.gateMesh);
+    z.gate = addSolid(wx, wx + 1.2, y, gateTop(y)); z.gateMesh = gate(wx, wx + 1.2, y, gateTop(y)); L.group.add(z.gateMesh);
     if (set.model) {
-      const mx = wx - 5.2; z.model = cellModel(set.model); z.model.home = { x: mx, y: y + 3.6, z: -1.4 }; z.model.g.position.set(mx, y + 3.6, -1.4); L.group.add(z.model.g); L.models.push(z.model);
+      const mx = wx - 5.2, disp = {}; set.good.forEach(function (t, i) { disp[set.parts ? set.parts[i] : t] = t; }); z.model = cellModel(set.model, disp);
+      if (set.parts) Object.keys(z.model.parts).forEach(function (n) { if (set.parts.indexOf(n) < 0) { z.model.inner.remove(z.model.parts[n].g); z.model.g.remove(z.model.parts[n].lb); delete z.model.parts[n]; } });
+      z.model.home = { x: mx, y: y + 3.6, z: -1.4 }; z.model.g.position.set(mx, y + 3.6, -1.4); L.group.add(z.model.g); L.models.push(z.model);
       const ped = new T.Mesh(G.cyl, emat('#2a4a5a', '#0a2030')); ped.scale.set(2.2, 0.5, 1.2); ped.position.set(mx, y + 0.25, -1.4); L.group.add(ped); ped.add(glow('#9fe0ff', 3, 0.4));
       z.carry = []; z.mx = mx;
     }
@@ -1465,7 +1522,7 @@ function builder() {
     const st0 = label('Start: ' + mz.start, 4.4, { bg: '#fff8e1', fg: '#10202c', bd: '#10202c' }); st0.position.set(x0 + 4, y + 3.4, -1.5); L.group.add(st0);
     mz.steps.forEach(function (st, k) {
       const wx = first + k * room;
-      [[y + 2.3, y + 2.7], [y + 4.9, y + 5.3], [y + 7.5, y + 18]].forEach(function (g) { addSolid(wx, wx + 1.4, g[0], g[1]); L.group.add(box(wx, wx + 1.4, g[0], g[1], 4.6, L.th.top)); });
+      [[y + 2.3, y + 2.7], [y + 4.9, y + 5.3], [y + 7.5, gateTop(y)]].forEach(function (g) { addSolid(wx, wx + 1.4, g[0], g[1]); L.group.add(box(wx, wx + 1.4, g[0], g[1], 4.6, L.th.top)); });
       [[wx - 6.5, y + 2.7], [wx - 4, y + 5.3]].forEach(function (p) { const sl = addSolid(p[0], wx, p[1] - 0.4, p[1], { oneWay: true }); L.group.add(box(sl.x0, sl.x1, sl.y0, sl.y1, 3, L.th.top)); });
       const pool = shuffle(labels.filter(function (l) { return l !== st.label; })).slice(0, 2);
       const doors = shuffle([{ label: st.label, ok: true }].concat(pool.map(function (l) { return { label: l, ok: false }; }))).map(function (d, i) {
@@ -1484,7 +1541,7 @@ function builder() {
     addGround(x0, end, y);
     const z = { kind: 'sequence', x0: x0 + 0.5, x1: wx, done: false, errors: 0, next: 0, sq: sq, toks: [] };
     order.forEach(function (si, k) { z.toks.push(token(x0 + 7 + k * 4.6, y + (k % 2 ? 3.2 : 1.3), sq.steps[si], '#ffd98a', { si: si })); });
-    z.gate = addSolid(wx, wx + 1.2, y, y + 18); z.gateMesh = gate(wx, wx + 1.2, y, y + 18); L.group.add(z.gateMesh);
+    z.gate = addSolid(wx, wx + 1.2, y, gateTop(y)); z.gateMesh = gate(wx, wx + 1.2, y, gateTop(y)); L.group.add(z.gateMesh);
     L.zones.push(z); L.total++; b.x = end; L.cps.push({ x: wx + 3, y: y });
   }
   /* WORD BANK: words float above the path. Stand at a word and press E to fill the blank. */
@@ -1493,7 +1550,7 @@ function builder() {
     addGround(x0, end, y);
     const z = { kind: 'wordbank', x0: x0 + 0.5, x1: wx, done: false, si: 0, err: false, wb: wb, toks: [] };
     words.forEach(function (w, k) { z.toks.push(token(x0 + 7 + k * 3.8, y + (k % 2 ? 3.2 : 1.3), w, '#9fe0ff', { word: w }, 3.4)); });
-    z.gate = addSolid(wx, wx + 1.2, y, y + 18); z.gateMesh = gate(wx, wx + 1.2, y, y + 18); L.group.add(z.gateMesh);
+    z.gate = addSolid(wx, wx + 1.2, y, gateTop(y)); z.gateMesh = gate(wx, wx + 1.2, y, gateTop(y)); L.group.add(z.gateMesh);
     L.zones.push(z); L.total += wb.sentences.length; b.x = end; L.cps.push({ x: wx + 3, y: y });
   }
   function token(x, y, text, col, extra, w) {
@@ -1843,7 +1900,7 @@ function deliver(z) {
   if (!list.length) { sortOutMsg(z); return; }
   list.forEach(function (c, i) {
     const t = c.t;
-    if (t.good) { P.trail = P.trail.filter(function (g) { return g !== c.bead; }); L.group.remove(c.bead); const wp = c.bead.position, bx = wp.x, by = wp.y, lv = L; setTimeout(function () { if (L === lv) flyPart(md, t.text, bx, by, t); }, i * 220);
+    if (t.good) { P.trail = P.trail.filter(function (g) { return g !== c.bead; }); L.group.remove(c.bead); const wp = c.bead.position, bx = wp.x, by = wp.y, lv = L; setTimeout(function () { if (L === lv) flyPart(md, t.key || t.text, bx, by, t); }, i * 220);
       good++; z.found++; L.score += 80; L.first++; L.streak++; record({ code: z.set.code }, true); }
     else { /* SORT IT OUT: the cell rejects it, and it stays with you until you put it back where you found it */
       bad.push(t); z.errors++; record({ code: z.set.code }, false); c.rejected = true; z.carry.push(c); if (c.bead.children[0]) c.bead.children[0].material = emat('#ff8a70', '#4a1a10');
@@ -1861,7 +1918,7 @@ function deliver(z) {
   hud();
 }
 function buildDone(z, delay) { const md = z.model; z.done = true; z.gate.off = true; z.gateMesh.visible = false; z.toks.forEach(function (k) { k.g.visible = false; if (k.ret) { L.group.remove(k.ret); k.ret = null; } }); md.finishAt = delay; closeQ();
-  toast('✓ Your ' + md.name + ' is complete! The gate is open.', 5); }
+  toast(tx('m.done', { n: md.name }), 5); }
 function sortOutMsg(z) { const r = z.carry.filter(function (c) { return c.rejected; }); if (!r.length) return;
   showZone(z); $('qfb').textContent = (z.found >= z.need ? 'The cell is built, but you are still holding ' : 'You are still holding ') + r.map(function (c) { return '"' + c.t.text + '"'; }).join(', ') + '. ' + (r[0].t.why ? r[0].t.why + ' ' : 'It does not belong in this cell. ') + 'Carry it back to the glowing ↩ spot where you found it.';
   toast('Sort it out: put back the parts that do not belong.', 3); }
@@ -1957,11 +2014,41 @@ const FOES = {
   shark: { name: 'reef shark', stomp: false, msg: 'A reef shark bumped you! Predators patrol the reef. Wait in the coral until it passes.' },
   angler: { name: 'anglerfish', stomp: false, msg: 'An anglerfish snapped at you! Its glowing lure is lit by bioluminescent bacteria living inside it. Keep your distance.' },
   atolla: { name: 'alarm jellyfish', stomp: false, msg: 'Stung by an Atolla jellyfish! When attacked, it flashes a ring of blue light, like a burglar alarm, to call bigger predators.' },
-  eel: { name: 'moray eel', stomp: false, msg: 'A moray eel lunged from its hole! Morays are ambush predators. Swim past while it is hiding.' }
+  eel: { name: 'moray eel', stomp: false, msg: 'A moray eel lunged from its hole! Morays are ambush predators. Swim past while it is hiding.' },
+  mosquito: { name: 'mosquito', stomp: false, msg: 'A mosquito! Their young (larvae) grow up in still water like vernal pools. Duck or dodge it.', msg_es: '¡Un mosquito! Sus crías (larvas) crecen en agua quieta como las charcas temporales. Agáchate o esquívalo.' },
+  crab: { name: 'green crab', stomp: false, msg: 'A green crab pinched you! Crabs scuttle sideways over the rocks. Jump over it.', msg_es: '¡Un cangrejo verde te pellizcó! Los cangrejos caminan de lado sobre las rocas. Salta por encima.' },
+  wasp: { name: 'yellowjacket', stomp: false, msg: 'A yellowjacket! Leave it alone and it will usually leave you alone. Wait for it to fly past.', msg_es: '¡Una avispa! Si la dejas en paz, casi siempre te deja en paz. Espera a que pase.' },
+  urchin: { name: 'sea urchin', stomp: false, msg: 'Ouch! Sea urchins are covered in sharp spines. Jump over them.', msg_es: '¡Ay! Los erizos de mar están cubiertos de espinas afiladas. Salta por encima.' },
+  wave: { name: 'wave', stomp: false, msg: 'A wave crashed over you! In a tide pool, living things must hold on tight when waves hit.', msg_es: '¡Una ola te golpeó! En una poza de marea, los seres vivos deben agarrarse fuerte cuando llegan las olas.' }
 };
+function foeMsg(f) { return (BQ.lang() === 'es' && f.msg_es) || f.msg; }
 function foeMesh(look) {
   const g = new T.Group();
-  if (look === 'jelly') {
+  if (look === 'mosquito') {
+    const M = emat('#3a3028', '#100a08'), body = new T.Mesh(G.sph, M); body.scale.set(0.42, 0.1, 0.1); g.add(body);
+    const head = new T.Mesh(G.sph, M); head.scale.setScalar(0.12); head.position.x = 0.42; g.add(head);
+    const nose = new T.Mesh(G.cyl, M); nose.scale.set(0.015, 0.22, 0.015); nose.rotation.z = Math.PI / 2; nose.position.x = 0.62; g.add(nose);
+    [-1, 1].forEach(function (s) { const w = new T.Mesh(G.sph, basic('#dfe8f0', 0.45, false)); w.scale.set(0.3, 0.02, 0.12); w.position.set(0.05, 0.12, s * 0.12); w.rotation.x = s * 0.4; g.add(w); });
+    for (let i = 0; i < 6; i++) { const l = new T.Mesh(G.cyl, M); l.scale.set(0.01, 0.28, 0.01); l.position.set(-0.1 + (i % 3) * 0.12, -0.18, i < 3 ? 0.08 : -0.08); l.rotation.z = 0.4; g.add(l); }
+    g.userData.buzz = true; g.scale.setScalar(1.3);
+  } else if (look === 'crab') {
+    const M = emat('#4f7a3a', '#14200c'), body = new T.Mesh(G.sph, M); body.scale.set(0.55, 0.25, 0.4); g.add(body);
+    [-1, 1].forEach(function (s) { const cl = new T.Mesh(G.sph, emat('#5f8a44', '#14200c')); cl.scale.set(0.2, 0.14, 0.12); cl.position.set(s * 0.72, 0.1, 0.25); g.add(cl);
+      for (let i = 0; i < 3; i++) { const l = new T.Mesh(G.cyl, M); l.scale.set(0.035, 0.3, 0.035); l.position.set(s * (0.45 + i * 0.05), -0.18, -0.2 + i * 0.2); l.rotation.z = s * 0.9; g.add(l); }
+      const e = new T.Mesh(G.sph, emat('#10202c', '#000000')); e.scale.setScalar(0.06); e.position.set(s * 0.15, 0.3, 0.32); g.add(e); });
+  } else if (look === 'wasp') {
+    for (let i = 0; i < 3; i++) { const s = new T.Mesh(G.sph, emat(i % 2 ? '#1a1a1a' : '#ffd23a', i % 2 ? '#000000' : '#5a4000')); s.scale.set(0.14, 0.13, 0.13); s.position.x = -0.12 - i * 0.16; g.add(s); }
+    const th = new T.Mesh(G.sph, emat('#2a2418', '#0a0805')); th.scale.setScalar(0.13); th.position.x = 0.1; g.add(th); const hd = new T.Mesh(G.sph, emat('#ffd23a', '#5a4000')); hd.scale.setScalar(0.1); hd.position.x = 0.28; g.add(hd);
+    [-1, 1].forEach(function (s) { const w = new T.Mesh(G.sph, basic('#e8f0ff', 0.45, false)); w.scale.set(0.24, 0.02, 0.1); w.position.set(0.02, 0.14, s * 0.1); g.add(w); });
+    g.userData.buzz = true; g.scale.setScalar(1.6);
+  } else if (look === 'urchin') {
+    const core = new T.Mesh(G.sph, emat('#5a2a6a', '#1a0a20')); core.scale.setScalar(0.4); g.add(core);
+    for (let i = 0; i < 26; i++) { const a = i * 2.39, el = Math.acos(1 - 2 * (i + 0.5) / 26), sp = new T.Mesh(G.cone, emat('#7a3a8a', '#200a28')); sp.scale.set(0.05, 0.5, 0.05);
+      sp.position.set(Math.sin(el) * Math.cos(a) * 0.45, Math.cos(el) * 0.45, Math.sin(el) * Math.sin(a) * 0.45); sp.lookAt(sp.position.clone().multiplyScalar(3)); sp.rotateX(Math.PI / 2); g.add(sp); }
+  } else if (look === 'wave') {
+    const crest = new T.Mesh(new T.TorusGeometry(1.0, 0.35, 8, 20, Math.PI), new T.MeshLambertMaterial({ color: '#7fd4ff', emissive: '#10405a', transparent: true, opacity: 0.7 })); crest.rotation.z = Math.PI * 0.05; g.add(crest);
+    const foam = new T.Mesh(G.sph, basic('#ffffff', 0.7, false)); foam.scale.set(0.5, 0.25, 0.4); foam.position.set(0.9, 0.2, 0); g.add(foam); g.add(glow('#bfe9ff', 2.6, 0.35));
+  } else if (look === 'jelly') {
     const bell = new T.Mesh(new T.SphereGeometry(0.55, 16, 10, 0, Math.PI * 2, 0, Math.PI / 2), new T.MeshLambertMaterial({ color: '#ffb3e0', emissive: '#6a2a5a', transparent: true, opacity: 0.75 })); g.add(bell);
     for (let i = 0; i < 6; i++) { const t = new T.Mesh(G.cyl, emat('#ffc8ea', '#5a2a4a')); t.scale.set(0.03, 0.75, 0.03); t.position.set(Math.cos(i) * 0.3, -0.45, Math.sin(i) * 0.3); g.add(t); }
     g.add(glow('#ff9fdf', 2.4, 0.45)); g.userData.tent = g.children.slice(1, 7);
@@ -2164,6 +2251,7 @@ function underwaterView(w) {
   else if (L.th) { scene.background = new T.Color(L.th.horizon); scene.fog.color.set(L.th.horizon); scene.fog.density = L.th.fogD; }
 }
 function startLevel(w, lv) {
+  BQ.relang();
   teardown();
   const th = THEMES[lv.theme] || THEMES.cell;
   L = { world: w, lv: lv, th: th, group: new T.Group(), solids: [], tokens: [], sparks: [], stations: [], doors: [], cps: [{ x: 2, y: 0 }], anim: [], used: {}, scans: [], helps: [], models: [], flies: [], secrets: [], ghosts: [], crumbs: [], told: {}, temps: [], clues: [], portal: null,
@@ -2185,6 +2273,7 @@ function startLevel(w, lv) {
   mode = 'play'; paused = false; actEdge = false; jumpBuf = 0; noteT = 0; $('note').hidden = true; if (S.alien.gear) setTimeout(function () { if (mode === 'play') toast(GEARINFO[S.alien.gear], 5); }, 6000); show(null); $('hud').hidden = false; $('touch').hidden = !touchMode;
   $('hudLevel').textContent = lv.id + ' ' + lv.title; hud(); closeQ();
   toast(lv.log || '', 7); loadSupplies();
+  if (L.quest) setTimeout(function () { if (mode === 'play' && L && L.quest) toast(tx('q.start', { name: L.quest.o.name, n: L.quest.items.length }), 6); }, 7500);
   /* beamed down from the mothership */
   { P.y = 6; P.vy = -1; const bm = new T.Mesh(new T.CylinderGeometry(0.6, 1.4, 9, 16, 1, true), new T.MeshBasicMaterial({ color: th.rim, transparent: true, opacity: 0.35, blending: T.AdditiveBlending, depthWrite: false }));
     bm.position.set(2, 4.5, 0); L.group.add(bm); L.fx.push({ o: bm, t: 0, vx: 0, vy: 0, life: 1.4 }); } Music.setDuck(1); Music.play(SONGS[lv.theme] ? lv.theme : 'cell');
@@ -2192,7 +2281,7 @@ function startLevel(w, lv) {
 function hud() {
   let h = ''; for (let i = 0; i < 5; i++) h += i < L.hp ? '●' : '○';
   $('hudHp').textContent = h + '  ♥×' + L.lives + '  ◆' + L.coins; $('hudHp').setAttribute('aria-label', 'Energy ' + L.hp + ' of 5, ' + L.lives + ' lives, ' + L.coins + ' sparks');
-  $('hudScore').textContent = L.score; $('hudStreak').textContent = L.streak > 1 ? 'Streak ×' + L.streak : '';
+  $('hudScore').textContent = L.score; $('hudStreak').textContent = (L.streak > 1 ? 'Streak ×' + L.streak : '') + (L.quest ? '  ' + L.quest.o.icon + ' ' + L.quest.got + '/' + L.quest.items.length + (L.quest.done ? ' ✓' : '') : '');
   $('hudInv').innerHTML = (S.inv.fly > 0 ? '<button type="button" data-use="fly" title="Flight capsule (F)">🚀×' + S.inv.fly + ' <small>F</small></button>' : '') + (S.inv.lens > 0 ? '<button type="button" data-use="lens" title="Hint lens (H)">🔍×' + S.inv.lens + ' <small>H</small></button>' : '');
 }
 function fmtTimeT(sec) { const t = Math.max(0, Math.round(sec * 10)) / 10, m = Math.floor(t / 60), r = t - m * 60; return m + ':' + (r < 10 ? '0' : '') + r.toFixed(1); }
@@ -2451,7 +2540,7 @@ function step(dt) {
       h.head.position.set(c > upStart - 0.6 && !up ? (Math.random() - 0.5) * 0.12 : 0, lift, 0);
       const open = up ? 0.2 + Math.abs(Math.sin(h.t * 6)) * 0.6 : 0.9; h.arms[0].rotation.z = -open; h.arms[1].rotation.z = open;
       h.y = h.gy + lift + 0.2;
-      if (lift > -0.2 && P.inv <= 0 && Math.abs(P.x - h.x) < 0.75 && P.y < h.gy + lift + 0.6 && P.y + PH > h.gy) { P.inv = 1.3; P.vx = P.x < h.x ? -8 : 8; P.vy = 8; toast(h.foe ? FOES[h.foe].msg : 'Engulfed! Phagocytes eat by wrapping around things. Jump past while it is hiding.', 3.5); hurt(true); }
+      if (lift > -0.2 && P.inv <= 0 && Math.abs(P.x - h.x) < 0.75 && P.y < h.gy + lift + 0.6 && P.y + PH > h.gy) { P.inv = 1.3; P.vx = P.x < h.x ? -8 : 8; P.vy = 8; toast(h.foe ? foeMsg(FOES[h.foe]) : 'Engulfed! Phagocytes eat by wrapping around things. Jump past while it is hiding.', 3.5); hurt(true); }
       return;
     }
     if (h.kind === 'rock') {
@@ -2473,12 +2562,13 @@ function step(dt) {
       if (h.look === 'angler') { h.m.rotation.y = h.x >= px ? 0 : Math.PI; const u = h.m.userData.lure; if (u) u.scale.setScalar(0.13 * (1 + Math.sin(h.t * 4) * 0.2)); }
       else if (h.look === 'atolla') { const r = h.m.userData.ring, f = Math.sin(h.t * 2.2) > 0.6; if (r) r.material.opacity = f ? 1 : 0.25; const pulse = 1 + Math.sin(h.t * 2) * 0.1; h.m.scale.set(pulse, 2 - pulse, pulse); }
       else if (h.look === 'shark') { h.m.rotation.y = h.x >= px ? 0 : Math.PI; h.m.rotation.z = Math.sin(h.t * 3) * 0.05; }
+      else if (h.m.userData.buzz) { h.m.rotation.z = Math.sin(h.t * 30) * 0.08; }
       else if (h.look === 'jelly') { const pulse = 1 + Math.sin(h.t * 3) * 0.12; h.m.scale.set(pulse, 2 - pulse, pulse); }
       else h.m.rotation.z += dt * 2.5; }
     const dx = P.x - h.x, dy = P.y + PH * 0.52 - h.y;
     if (Math.abs(dx) > 0.85 || Math.abs(dy) > PH * 0.52 + 0.3) return;
     const foe = h.look ? FOES[h.look] : null, name = foe ? foe.name : h.kind === 'virus' ? 'virus' : 'free radical';
-    if (foe && !foe.stomp) { if (P.inv > 0 || P.shield > 0) return; P.inv = 1.3; P.vx = dx >= 0 ? 7 : -7; P.vy = 5; toast(foe.msg, 3.5); hurt(true); return; } /* real wildlife is never stomped: you just get bumped */
+    if (foe && !foe.stomp) { if (P.inv > 0 || P.shield > 0) return; P.inv = 1.3; P.vx = dx >= 0 ? 7 : -7; P.vy = 5; toast(foeMsg(foe), 3.5); hurt(true); return; } /* real wildlife is never stomped: you just get bumped */
     if ((P.vy < -1 && P.y > h.y - 0.25) || P.shield > 0) { h.alive = false; h.m.visible = false; if (P.shield <= 0) P.vy = 12; L.score += 50; popup(h.x, h.y, '+50', '#ffd166'); burst(h.x, h.y, h.kind === 'virus' ? '#9be36b' : '#ff6b4a'); beep(900, 0.12, 'square', 'pop, ' + name + ' stopped'); hud(); return; }
     if (P.inv > 0) return;
     P.inv = 1.3; P.vx = dx >= 0 ? 9 : -9; P.vy = 7; toast(h.kind === 'virus' ? 'Ouch! A virus got you. Jump on top of it, or jump over it.' : 'Ouch! Free radicals damage cells. Jump on top of them instead.', 3); hurt(true);
@@ -2488,6 +2578,11 @@ function step(dt) {
     P.inv = 1.3; P.vy = 11; toast('Ouch! Toxin crystals. Jump over them.', 3); hurt(true);
   });
   if (P.shield > 0) { P.shield -= dt; if (P.shieldM) P.shieldM.rotation.y += dt * 4; if (P.shield <= 0 && P.shieldM) { P.m.remove(P.shieldM); P.shieldM = null; toast('Shield used up.', 2); } }
+  if (L.quest && !L.quest.done) L.quest.items.forEach(function (it) { if (it.got) return; it.m.position.y = it.y + Math.sin(P.t * 2.4 + it.x) * 0.12;
+    if (Math.abs(P.x - it.x) < 0.9 && Math.abs(P.y + 0.6 - it.y) < 1.1) { it.got = true; it.m.visible = false; L.quest.got++; L.score += 40; burst(it.x, it.y, '#ffe9a8'); beep(1040, 0.2, 'triangle', 'side quest item found');
+      const q = L.quest, n = q.items.length; popup(it.x, it.y, q.o.icon + ' ' + q.got + ' / ' + n, '#ffe9a8');
+      if (q.got >= n) { q.done = true; L.score += 300; S.quests = S.quests || {}; S.quests[L.lv.id] = true; save(); toast(tx('q.done', { name: q.o.name }) + ' ' + (q.o.done || ''), 8); beep(1320, 0.4, 'triangle', 'side quest complete'); }
+      hud(); } });
   if (L.rare && !L.rare.got) { L.rare.m.rotation.y += dt * (L.rare.m.children.length > 3 ? 0.7 : 2); L.rare.m.position.y = L.rare.y + Math.sin(P.t * 2) * 0.2;
     if (Math.abs(P.x - L.rare.x) < 1 && Math.abs(P.y + 0.7 - L.rare.y) < 1.1) { L.rare.got = true; L.rare.m.visible = false; L.score += 500; S.rare[L.lv.id] = true; save(); award('first-rare'); checkBig(); popup(L.rare.x, L.rare.y, (L.rare.name ? L.rare.name + '! ' : 'Rare specimen! ') + '+500', '#ffd700'); if (L.rare.fact) toast('✦ Rare specimen: ' + L.rare.name + '. ' + L.rare.fact, 7); burst(L.rare.x, L.rare.y, '#ffd700'); beep(1320, 0.4, 'triangle', 'sparkle, rare specimen found'); hud(); } }
   L.fx = L.fx.filter(function (f) {
@@ -2505,7 +2600,7 @@ function step(dt) {
     }
     if (Math.abs(P.x - bt.x) < 0.9 && Math.abs(P.y + 0.7 - bt.y) < 1.1) {
       bt.got = true; bt.m.visible = false; P.boost = 6; if (!P.boostM) { P.boostM = glow('#c8ff7a', 3.2, 0.6); P.boostM.position.y = 0.7; P.m.add(P.boostM); }
-      L.score += 25; beep(1100, 0.2, 'triangle', 'whoosh, ATP boost'); toast('ATP boost: extra energy to run faster and jump higher for 6 seconds!', 3); hud();
+      L.score += 25; beep(1100, 0.2, 'triangle', 'whoosh, energy boost'); toast(tx('p.boost'), 3); hud();
     }
   });
   P.hist.unshift({ x: P.x, y: P.y }); if (P.hist.length > 300) P.hist.pop();
@@ -2571,7 +2666,7 @@ function step(dt) {
     return true;
   });
   if (noteT > 0) { noteT -= dt; if (noteT <= 0) $('note').hidden = true; }
-  if (L.goal) { L.goal.m.position.y = L.goal.y + 6.6 + Math.sin(P.t * 2) * 0.2; L.goal.m.rotation.y += dt; L.goal.beam.material.opacity = 0.12 + Math.sin(P.t * 5) * 0.05; if (Math.abs(P.x - L.goal.x) < 1.3 && !L.over) beamUp(); }
+  if (L.goal) { L.goal.m.position.y = L.goal.y + 6.6 + Math.sin(P.t * 2) * 0.2; L.goal.m.rotation.y += dt; L.goal.beam.material.opacity = 0.12 + Math.sin(P.t * 5) * 0.05; if (Math.abs(P.x - L.goal.x) < 1.3 && P.y < L.goal.y + 7 && !L.over) beamUp(); }
 
   P.m.position.set(P.x, P.y + (P.ground ? Math.abs(Math.sin(P.t * 11)) * 0.07 * Math.min(1, Math.abs(P.vx) / 3) : 0), 0);
   P.m.rotation.y += (P.face * 0.75 - P.m.rotation.y) * Math.min(1, dt * 10);
@@ -3304,6 +3399,7 @@ const MAPLANDS = [
   { cx: 500, cy: 440, rx: 150, ry: 105, fill: '#4a3a7a', edge: '#c59cff', icon: '🧬' },
   { cx: 175, cy: 425, rx: 150, ry: 108, fill: '#6a5a4a', edge: '#e8d0b0', icon: '🦴' }];
 function buildLevels() {
+  BQ.relang();
   const list = allLevels(), next = nextUp(), nodes = [];
   for (let w = 1; w <= MAPLANDS.length; w++) {
     const ld = MAPLANDS[w - 1], lvls = BQ.worlds[w] ? BQ.worlds[w].levels : [0, 1, 2, 3, 4], n = lvls.length, dir = w <= 3 ? 1 : -1;

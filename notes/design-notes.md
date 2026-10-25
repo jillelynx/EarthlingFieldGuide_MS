@@ -32,3 +32,18 @@
 - Biodome: supplies still say to go back to high school levels (for example "World 2, level 1: Water and Carbon"). Relink them to middle school levels.
 - Word Lab: still has the high school word list.
 - Cozy mode: add the middle school activities (watershed, farm and orchard, stream buffer, ranger station exhibits).
+
+## World 1 built (October 24, 2026): What Living Things Are Made Of
+Standards: 3.1.6-8.A (living things are made of cells), 3.1.6-8.B (cell parts and their functions). Content source files: `tools/content/w1_*.py`; build with `python3 tools/content/build_w1.py` (it checks codes, answers, ids and that every Spanish list matches the English one).
+Every scan card, question, activity, sign and level title is in English and Spanish.
+
+| Level | Real place | How students discover | Obstacles | Side quest | Rare specimen |
+|---|---|---|---|---|---|
+| 1-1 Pocono Vernal Pool | Vernal pool in a Pennsylvania forest | Scans (12), Specimen Hunt "made of cells?", One cell or many? sort, microscope data chart, From one cell to a salamander sequence | Mosquitoes, amoebas that pop up, crawl under a fallen log, crumbling logs | Count spotted salamander egg masses | Fairy shrimp |
+| 1-2 Deep-Sea Vent | Hydrothermal vent field (reused place from the high school game) | Scans in the dark (8), deep-sea one-cell or many-types sort, Build a vent bacterium, mixed review | Jellyfish, anglerfish, alarm jellyfish, vent plumes to ride | Collect microbe samples for the ship's lab | Yeti crab |
+| 1-3 Backyard Garden | A backyard garden in Pennsylvania | Scans (11), Travel into a plant cell maze, Build a plant cell (new 3-D plant cell model), plant-only or both? sort, word bank, leaf-cell energy sequence | Yellowjackets (walk under them), crumbling flower pots, moving bridge | Return the lost seed packets | Monarch caterpillar |
+| 1-4 Rocky Tide Pool | Acadia National Park, Maine | Scans (7), dive into the pool, Become oxygen (get in) and Become carbon dioxide (get out), mixed review, World 1 Lab Lock | Green crabs, sea urchins, waves | Spot the periwinkle snails | Blood star |
+
+New engine pieces: English/Spanish for level content (`es` on any item, `FieldGuide.t()` for signs); plant cell model; side quests (`quest`, `qitem`, +300); new real animals that bump but are never stomped (mosquito, green crab, yellowjacket, sea urchin, wave); "Energy boost" instead of "ATP boost"; gates in deep water reach the surface and the mothership beam must be reached at its base (players could swim over activities before).
+Accuracy notes: tube worm blood is called blood, not blood cells (its hemoglobin floats in the blood). Microscope survey numbers are illustrative.
+Still English only: the engine's own messages and panel labels (about 150 strings), planned as one translation pass for all worlds.
