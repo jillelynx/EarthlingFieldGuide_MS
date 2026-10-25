@@ -46,4 +46,12 @@ Every scan card, question, activity, sign and level title is in English and Span
 
 New engine pieces: English/Spanish for level content (`es` on any item, `FieldGuide.t()` for signs); plant cell model; side quests (`quest`, `qitem`, +300); new real animals that bump but are never stomped (mosquito, green crab, yellowjacket, sea urchin, wave); "Energy boost" instead of "ATP boost"; gates in deep water reach the surface and the mothership beam must be reached at its base (players could swim over activities before).
 Accuracy notes: tube worm blood is called blood, not blood cells (its hemoglobin floats in the blood). Microscope survey numbers are illustrative.
-Still English only: the engine's own messages and panel labels (about 150 strings), planned as one translation pass for all worlds.
+Engine messages: translated in the Spanish pass below.
+
+## Spanish for the engine's own words (October 24, 2026)
+- New file `lang-es.js` (loaded before engine.js): about 290 phrases and 70 patterns that translate the engine's messages, panels, menus, captions and 3-D signs into neutral Latin American Spanish. Teachers can edit the Spanish there.
+- How it works: when Spanish is chosen, text on its way to the screen is looked up there (exact phrase, then patterns for messages with names or numbers). Text without a translation stays in English. Switching English/Español on the main menu changes everything at once.
+- Word choices match the high school game's Spanish (Tienda de suministros, Vestidor, Sala de Práctica).
+- Checked by playing all of World 1 and every menu in Spanish and listing anything still in English (`tools/harvest_menus.js --es`, `tools/play_levels.js ... --es`, `tools/spanish_misses.js`). Only document titles in About stay in English (they are the documents' real names).
+- Achievement "Energy Expert" (World 2) is now "Body Expert" / "Experto en el cuerpo", to match the middle school World 2.
+- Not translated yet: the high school mini-games (Immune Defense, Enzyme Mini Golf, Code Lab), which this game does not use yet.

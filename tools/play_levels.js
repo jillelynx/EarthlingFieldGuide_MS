@@ -1,8 +1,6 @@
-// Automatic playthrough (Playwright): node play_levels.js GAME_FOLDER OUT_FOLDER 1-1 1-2 ... [--es]
-// Add @x to start partway, for example 1-4@104. It answers question stations, dives in water, waits for moving
-// bridges, and opens an activity gate when it gets stuck (it cannot solve hunts or builds), so it checks that every part is reachable.
+// Automatic playthrough: node play_levels.js GAME OUT ids... [--es]
 const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path');
-const GAME = process.argv[2], OUT = process.argv[3]; const args = process.argv.slice(4); const ES = args.includes('--es'); const ids = args.filter(a => !a.startsWith('--'));
+const GAME = process.argv[2], OUT = process.argv[3]; const args = process.argv.slice(4); const ES = args.includes('--es'), HARV = args.includes('--harvest'); const seenAll = new Set(), missAll = new Set(); const ids = args.filter(a => !a.startsWith('--'));
 fs.mkdirSync(OUT, { recursive: true });
 (async () => {
   const b = await chromium.launch({ args: ['--use-gl=swiftshader', '--enable-unsafe-swiftshader'] }); const res = {};
@@ -11,6 +9,7 @@ fs.mkdirSync(OUT, { recursive: true });
     await p.route('**/*', r => { const u = new URL(r.request().url()); if (u.hostname === 'cdnjs.cloudflare.com') return r.fulfill({ path: path.join(__dirname, 'node_modules/three/build/three.min.js') });
       if (u.hostname === 'game.test') { const f = path.join(GAME, u.pathname); return fs.existsSync(f) ? r.fulfill({ path: f }) : r.fulfill({ status: 404, body: '' }); } return r.abort(); });
     p.on('pageerror', e => errs.push(e.message)); p.on('requestfailed', rq => { if (!/fonts\./.test(rq.url())) errs.push('failed: ' + rq.url()); });
+    if (HARV) await p.addInitScript(() => { window.FG_HARVEST = true; });
     if (ES) await p.addInitScript(() => { try { localStorage.setItem('efg-middle-school-save-v1', JSON.stringify({ set: { lang: 'es', text: 1, low: false, sound: false, music: false, vol: 0, cap: true, unlock: false } })); } catch (e) {} });
     await p.goto('http://game.test/index.html#nointro#level-' + id); await p.waitForFunction(() => window.FieldGuide && FieldGuide._debug && FieldGuide._debug.state().L, null, { timeout: 30000 });
     await p.waitForTimeout(1500);
@@ -18,7 +17,7 @@ fs.mkdirSync(OUT, { recursive: true });
     const info = await p.evaluate(() => { const L = FieldGuide._debug.state().L; return { len: Math.round(L.len), zones: L.zones.map(z => z.kind), scans: L.scans.length, stations: L.stations.length, quest: L.quest ? L.quest.items.length : 0, rare: !!L.rare, title: L.lv.title }; });
     let t0 = Date.now(), lastX = -99, stuckT = 0, wetStuck = 0, opened = 0, answered = 0, shots = 0, done = false, maxX = 0;
     await p.keyboard.down('ArrowRight');
-    while (Date.now() - t0 < 600000) {
+    while (Date.now() - t0 < 240000) {
       const st = await p.evaluate(() => { const D = FieldGuide._debug, s = D.state(), L = s.L, P = s.P; if (!L) return { gone: true, done: !!Object.values(s.S.levels).length };
         if (s.S.levels[L.lv.id] && s.S.levels[L.lv.id].stars) return { done: true };
         if (L.over) return { over: true };
@@ -38,6 +37,7 @@ fs.mkdirSync(OUT, { recursive: true });
       maxX = Math.max(maxX, st.x);
       if (st.edgeWait) { await p.keyboard.up('ArrowRight'); await p.waitForTimeout(120); stuckT = 0; lastX = -99; continue; } else await p.keyboard.down('ArrowRight');
       if (Math.abs(st.x - lastX) < 0.15) stuckT += 0.3; else stuckT = 0; lastX = st.x;
+      if (HARV || ES) await p.keyboard.press('e');
       if (st.water && stuckT > 0.6) { await p.keyboard.down('ArrowDown'); await p.waitForTimeout(1500); await p.keyboard.up('ArrowDown'); stuckT = Math.min(stuckT, 1.5); wetStuck += 2; if (wetStuck > 10) { stuckT = 3; wetStuck = 0; } }
       else if (st.flier && stuckT < 1.5) { await p.waitForTimeout(150); }
       else { await p.keyboard.down('Space'); await p.waitForTimeout(260); await p.keyboard.up('Space'); if (stuckT > 0.6) { await p.waitForTimeout(60); await p.keyboard.down('Space'); await p.waitForTimeout(240); await p.keyboard.up('Space'); } }
@@ -53,8 +53,10 @@ fs.mkdirSync(OUT, { recursive: true });
       return { mode: s.mode, vx: P.vx, ground: !!P.ground, qp: !document.getElementById('qpanel').hidden, qtext: document.getElementById('qpanel').innerText.slice(0, 200), P: [Math.round(P.x * 10) / 10, Math.round(P.y * 10) / 10], active: L.active ? Object.keys(L.active).slice(0, 12) : null, zones: L.zones.filter(near).map(z => [z.kind, Math.round(z.x0), Math.round(z.x1), z.done]),
         stations: L.stations.filter(st => Math.abs((st.x || 0) - P.x) < 12).map(st => [Math.round(st.x), st.done, Object.keys(st).slice(0, 15).join(',')]), solids: L.solids.filter(sl => !sl.off && sl.x0 > P.x - 2 && sl.x0 < P.x + 6).map(sl => [Math.round(sl.x0 * 10) / 10, Math.round(sl.x1 * 10) / 10, Math.round(sl.y0 * 10) / 10, Math.round(sl.y1 * 10) / 10]) }; });
     if (!done) await p.screenshot({ path: OUT + '/' + id + (ES ? '-es' : '') + '-stuck.png' });
+    (await p.evaluate(() => FieldGuide._tr ? [FieldGuide._tr.seen(), FieldGuide._tr.miss()] : [[], []])).forEach((a, k) => a.forEach(s => (k ? missAll : seenAll).add(s)));
     res[id] = { ...info, finished: done, secs: Math.round((Date.now() - t0) / 1000), maxX: Math.round(maxX), answered, forcedOpen: opened, end, errors: [...new Set(errs)] };
     await ctx.close();
   }
+  if (HARV || ES) fs.writeFileSync(OUT + '/strings-' + (ES ? 'miss' : 'seen') + '.json', JSON.stringify(Array.from(ES ? missAll : seenAll).sort(), null, 1));
   console.log(JSON.stringify(res, null, 1)); await b.close();
 })();

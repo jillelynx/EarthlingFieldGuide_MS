@@ -141,7 +141,10 @@ const I18N = {
     'm.emptyAnimal': 'Empty animal cell: bring me my parts!', 'm.emptyProk': 'Empty one-celled organism: bring me my parts!', 'm.emptyPlant': 'Empty plant cell: bring me my parts!',
     'm.animal': 'animal cell', 'm.prok': 'bacterium', 'm.plant': 'plant cell', 'm.yours': '✓ Your {n}', 'm.done': '✓ Your {n} is complete! The gate is open.',
     'p.boost': 'Energy boost: run faster and jump higher for 6 seconds!', 'p.boostL': 'Energy boost', 'p.shield': 'Shield', 'p.life': 'Extra life',
-    'q.start': 'Side quest: {name} ({n} to find). It is optional, and worth +300!', 'q.done': '✓ Side quest complete: {name}! +300.',
+    'q.start': 'Side quest: {name} ({n} to find). It is optional, and worth +300!',
+    'm.flag': 'A tail like a bacterium\u2019s!', 'm.c.prok.w': 'You built a bacterium', 'm.c.prok.n': 'A bacterium is ONE cell. It has a cell membrane, cytoplasm, DNA and ribosomes, but no nucleus: its DNA floats in the cytoplasm.',
+    'm.c.plant.w': 'You built a plant cell', 'm.c.plant.n': 'The cell wall gives support, chloroplasts make food from sunlight, the vacuole stores water, the nucleus controls the cell and mitochondria release energy. Each part has a job, and together they keep the cell alive.',
+    'm.c.animal.w': 'You built an animal cell', 'm.c.animal.n': 'An animal cell has no cell wall and no chloroplasts. Its nucleus controls the cell, mitochondria release energy and the cell membrane controls what goes in and out.', 'q.done': '✓ Side quest complete: {name}! +300.',
     'a.first-scan': 'First Discovery', 'a.first-scan.d': 'Scan your first specimen.',
     'a.first-rare': 'Treasure Hunter', 'a.first-rare.d': 'Find a Rare Specimen.',
     'a.hidden-10': 'Sharp Eyes', 'a.hidden-10.d': 'Collect 10 hidden purple sparks.',
@@ -160,7 +163,7 @@ const I18N = {
     'a.second-look': 'Second Look', 'a.second-look.d': 'Go back to a finished level and discover something you missed.',
     'a.persist': 'Never Give Up', 'a.persist.d': 'Solve a challenge after the gold hint appears.',
     'a.world1': 'Cell Expert', 'a.world1.d': 'Finish every level in World 1.',
-    'a.world2': 'Energy Expert', 'a.world2.d': 'Finish every level in World 2.',
+    'a.world2': 'Body Expert', 'a.world2.d': 'Finish every level in World 2.',
     'a.scan-all': 'Master Naturalist', 'a.scan-all.d': 'Discover every specimen in Worlds 1 and 2.',
     'a.rare-all': 'Rare Collector', 'a.rare-all.d': 'Find every Rare Specimen.',
     'a.stars-30': 'Star Scientist', 'a.stars-30.d': 'Earn 30 stars.',
@@ -170,6 +173,9 @@ const I18N = {
     'm.emptyAnimal': 'Célula animal vacía: ¡tráeme mis partes!', 'm.emptyProk': 'Organismo de una célula vacío: ¡tráeme mis partes!', 'm.emptyPlant': 'Célula vegetal vacía: ¡tráeme mis partes!',
     'm.animal': 'célula animal', 'm.prok': 'bacteria', 'm.plant': 'célula vegetal', 'm.yours': '✓ Tu {n}', 'm.done': '✓ ¡Tu {n} está completa! La puerta está abierta.',
     'p.boost': 'Impulso de energía: ¡corre más rápido y salta más alto durante 6 segundos!', 'p.boostL': 'Impulso de energía', 'p.shield': 'Escudo', 'p.life': 'Vida extra',
+    'm.flag': '¡Una cola como la de una bacteria!', 'm.c.prok.w': 'Construiste una bacteria', 'm.c.prok.n': 'Una bacteria es UNA sola célula. Tiene membrana celular, citoplasma, ADN y ribosomas, pero no tiene núcleo: su ADN flota en el citoplasma.',
+    'm.c.plant.w': 'Construiste una célula vegetal', 'm.c.plant.n': 'La pared celular da soporte, los cloroplastos producen alimento con la luz del sol, la vacuola guarda agua, el núcleo controla la célula y las mitocondrias liberan energía. Cada parte tiene un trabajo y, juntas, mantienen viva la célula.',
+    'm.c.animal.w': 'Construiste una célula animal', 'm.c.animal.n': 'Una célula animal no tiene pared celular ni cloroplastos. Su núcleo controla la célula, las mitocondrias liberan energía y la membrana celular controla lo que entra y sale.',
     'q.start': 'Misión extra: {name} (hay {n} por encontrar). Es opcional, ¡y vale +300!', 'q.done': '✓ ¡Misión extra completa: {name}! +300.',
     'h.ghost': 'Esa forma tenue es una plataforma escondida. Las gafas de laboratorio la vuelven sólida. Gánalas con 3 estrellas o cómpralas en la tienda de la estación.', 'h.crumble': '¡Plataforma frágil! Se rompe si te quedas encima mucho tiempo. ¡Sigue moviéndote!', 'h.boom': '¡Plataforma inestable! Va a estallar si te quedas encima. ¡Salta rápido!',
     'j.title': 'Diario de campo', 'j.found': '{n} de {m} descubiertos', 'j.where': 'Se encuentra en el nivel {lv}', 'j.unknown': 'Aún no descubierto',
@@ -195,7 +201,7 @@ const I18N = {
     'a.second-look': 'Segunda mirada', 'a.second-look.d': 'Vuelve a un nivel terminado y descubre algo que te perdiste.',
     'a.persist': 'Nunca me rindo', 'a.persist.d': 'Resuelve un reto después de que aparezca la pista dorada.',
     'a.world1': 'Experto en células', 'a.world1.d': 'Termina todos los niveles del Mundo 1.',
-    'a.world2': 'Experto en energía', 'a.world2.d': 'Termina todos los niveles del Mundo 2.',
+    'a.world2': 'Experto en el cuerpo', 'a.world2.d': 'Termina todos los niveles del Mundo 2.',
     'a.scan-all': 'Gran naturalista', 'a.scan-all.d': 'Descubre todos los especímenes de los Mundos 1 y 2.',
     'a.rare-all': 'Coleccionista de rarezas', 'a.rare-all.d': 'Encuentra todos los especímenes raros.',
     'a.stars-30': 'Científico estrella', 'a.stars-30.d': 'Gana 30 estrellas.',
@@ -208,6 +214,48 @@ function tx(key, vars) {
   if (vars) Object.keys(vars).forEach(function (k) { str = str.split('{' + k + '}').join(vars[k]); });
   return str;
 }
+
+/* ---------- SPANISH LAYER for the engine's own words (middle school edition) ----------
+   The engine's messages are written in English. When Spanish is chosen, every piece of text on its way to the screen
+   (panels, messages, captions, menus and the 3-D signs) is looked up in lang-es.js: first as an exact phrase, then
+   against the patterns there (for messages with names or numbers in them). Text with no translation stays in English.
+   Level content (scan cards, questions, signs) is translated in the world files instead. */
+const TR = { orig: new WeakMap(), seen: new Set(), miss: new Set() };
+function trES(s) {
+  if (typeof s !== 'string') return s; const core = s.trim(); if (!core || !/[A-Za-z]{2}/.test(core)) return s;
+  if (window.FG_HARVEST) TR.seen.add(core);
+  if (BQ.lang() !== 'es') return s;
+  const D = window.FG_ES; if (!D) return s;
+  const lead = s.slice(0, s.indexOf(core[0])), trail = s.slice(s.lastIndexOf(core[core.length - 1]) + 1);
+  const out = trCore(D, core, 0); if (out != null) return lead + out + trail;
+  TR.miss.add(core); return s;
+}
+/* exact phrase first, then patterns; the parts a pattern captures are translated too (names, numbers, smaller phrases) */
+function trCore(D, core, depth) {
+  const ex = D.exact[core]; if (ex != null) return ex; if (depth > 3) return null;
+  for (let k = 0; k < D.patterns.length; k++) { const p = D.patterns[k], m = core.match(p[0]);
+    if (m) return p[1].replace(/\$(\d)/g, function (_, n) { const g = (m[+n] || ''), gt = g.trim(); if (!gt) return g; const r = /[A-Za-z]{2}/.test(gt) ? trCore(D, gt, depth + 1) : null; return r != null ? g.replace(gt, r) : g; }); }
+  return null;
+}
+const TR_ATTR = ['title', 'aria-label', 'placeholder'];
+function trNode(n) {
+  if (n.nodeType === 3) { const v = n.nodeValue, rec = TR.orig.get(n); let en = v; if (rec && v === rec.out) en = rec.en;
+    const out = BQ.lang() === 'es' ? trES(en) : (trES(en), en); if (out !== v) n.nodeValue = out; TR.orig.set(n, { en: en, out: out }); return; }
+  if (n.nodeType !== 1 || n.closest('[data-notr]')) return;
+  TR_ATTR.forEach(function (a) { if (!n.hasAttribute(a)) return; const v = n.getAttribute(a), key = 'a:' + a, rec = (TR.orig.get(n) || {})[key]; let en = v; if (rec && v === rec.out) en = rec.en;
+    const out = BQ.lang() === 'es' ? trES(en) : (trES(en), en); const all = TR.orig.get(n) || {}; all[key] = { en: en, out: out }; TR.orig.set(n, all); if (out !== v) n.setAttribute(a, out); });
+}
+function trTree(root) {
+  if (!root) return; if (root.nodeType === 3) return trNode(root); if (root.nodeType !== 1 || /^(SCRIPT|STYLE|CANVAS)$/.test(root.nodeName) || root.closest('[data-notr]')) return;
+  trNode(root); const w = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT, { acceptNode: function (x) { return x.parentNode && /^(SCRIPT|STYLE)$/.test(x.parentNode.nodeName) ? 2 : 1; } });
+  let x; while ((x = w.nextNode())) trNode(x);
+}
+let trBusy = false;
+const trObs = new MutationObserver(function (muts) { if (trBusy || (BQ.lang() !== 'es' && !window.FG_HARVEST)) return; trBusy = true;
+  try { muts.forEach(function (m) { if (m.type === 'characterData') trNode(m.target); else if (m.type === 'attributes') trNode(m.target); else m.addedNodes.forEach(trTree); }); } finally { trBusy = false; } });
+function trStart() { if (!document.body) return; trObs.observe(document.body, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: TR_ATTR }); trBusy = true; try { trTree(document.body); } finally { trBusy = false; } }
+BQ.relangUI = function () { trBusy = true; try { trTree(document.body); } finally { trBusy = false; } BQ.relang(); };
+BQ._tr = { seen: function () { return Array.from(TR.seen); }, miss: function () { return Array.from(TR.miss); }, tr: trES };
 tx.miss = {};
 function fmtTime(sec) { sec = Math.round(sec); return Math.floor(sec / 60) + ':' + String(sec % 60).padStart(2, '0'); }
 /* ---------- small helpers ---------- */
@@ -517,7 +565,7 @@ function wrapText(g, text, maxW) {
   if (cur) lines.push(cur); return lines;
 }
 function labelTex(text, o) {
-  o = o || {};
+  o = o || {}; text = trES(text);
   const bg = o.bg || '#0e2433', fg = o.fg || '#ffffff', bd = o.bd || '#ffd166', key = text + '|' + bg + fg + bd + (o.big ? 1 : 0);
   if (texCache[key]) return texCache[key];
   const c = document.createElement('canvas'); c.width = 512; c.height = 256;
@@ -749,11 +797,10 @@ function finishModel(md) {
     o.material = m; });
   md.halo = glow(euk0 ? '#ffd0e4' : '#d8ffb0', md.R[0] * 3.6, 0.5, false); md.halo.position.z = -1.2; md.g.add(md.halo);
   burst(md.home.x, md.home.y, '#7be0ad'); beep(990, 0.4, 'sine', 'fanfare, cell model complete');
-  const euk = md.kind === 'animal', w = euk ? 'Eukaryote' : 'Prokaryote';
-  S.words[w] = 1; save(); giveFlight(20, euk ? '' : 'A flagellum tail, like a bacterium\'s! ');
-  showNote({ word: euk ? 'You built a eukaryotic cell' : 'You built a prokaryotic cell', note: euk
-    ? 'Its DNA is kept inside a NUCLEUS, and it has organelles wrapped in membranes: mitochondria, ER, and the Golgi apparatus. Ribosomes and a plasma membrane are found in every cell.'
-    : 'No nucleus! Its DNA floats in the CYTOPLASM. It has RIBOSOMES and a PLASMA MEMBRANE, like every cell, but no membrane-wrapped organelles.' });
+  /* what you learn when the model is finished (middle school wording, English and Spanish) */
+  const k = md.kind === 'plant' ? 'plant' : md.kind === 'animal' ? 'animal' : 'prok';
+  giveFlight(20, k === 'prok' ? tx('m.flag') + ' ' : '');
+  showNote({ word: tx('m.c.' + k + '.w'), note: tx('m.c.' + k + '.n') });
 }
 /* simple specimen models for scanning */
 function specimen(look, col) {
@@ -3733,6 +3780,7 @@ function boot() {
     glow: glow, label: label, labelTex: labelTex, emat: emat, basic: basic, mesh: mesh, buildAlien: buildAlien, specimen: specimen, beep: beep, save: save, $: $, esc: esc, tx: tx, I18N: I18N, ACH: ACH, award: award,
     show: show, teardown: teardown, menuScene: menuScene, caption: caption, audio: function () { try { AC = AC || new (window.AudioContext || window.webkitAudioContext)(); if (AC.state === 'suspended') AC.resume(); } catch (e) { return null; } return AC; }, openJournal: openJournal, journalTab: function (x) { journalTab(x); }, thumb: thumb, Music: Music, setMode: function (m) { mode = m; }, getMode: function () { return mode; }, disposeGroup: disposeGroup, teach: TEACH };
   if (BQ.onCore) BQ.onCore(); (BQ.onCoreList || []).forEach(function (f) { f(); });
+  trStart();
   BQ._debug = { state: function () { return { mode: mode, L: L, P: P, S: S }; }, answer: answer, p1: { openRefuel: openRefuel, refuelNav: refuelNav, nearRefuel: nearRefuel, huntPick: huntPick, deliver: deliver, finish: finish, miss: miss }, start: startLevel, mini: function () { return M; }, cam: function () { return cam; } };
 }
 })();

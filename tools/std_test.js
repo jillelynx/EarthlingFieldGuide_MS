@@ -14,7 +14,7 @@ const codeRe = /3\.[1-5]\.6-8|STEELS|standard/i;
   r.studentProgressMentions = ((await p.$eval('#progress', e => e.innerText)).match(new RegExp(codeRe, 'gi')) || []);
   await p.screenshot({ path: OUT + '/s-progress.png' });
   // student: level text (signs are 3D labels; check level data that is drawn)
-  r.levelSignTexts = await p.evaluate(() => { const out = []; Object.values(FieldGuide.worlds).forEach(w => w.levels.forEach(l => { const s = l.build.toString(); if (/STEELS|3\.[14]\.6-8/.test(s)) out.push(l.id); })); return out; });
+  r.levelSignTexts = await p.evaluate(() => { const out = []; Object.values(FieldGuide.worlds).forEach(w => w.levels.forEach(l => { const s = l.build.toString().replace(/\.mixed\([^)]*\)/g, ''); if (/STEELS|3\.[14]\.6-8/.test(s)) out.push(l.id); })); return out; });
   await p.close();
   // teacher: About shows the sheet
   p = await open(b, '#nointro#teacher', errs); await p.click('#btnAbout'); await p.waitForTimeout(300);
@@ -23,5 +23,5 @@ const codeRe = /3\.[1-5]\.6-8|STEELS|standard/i;
   r.printButton = !!(await p.$('#btnRefPrint'));
   await p.evaluate(() => document.querySelector('#aboutStd').scrollIntoView()); await p.screenshot({ path: OUT + '/t-about.png' });
   const [pop] = await Promise.all([p.waitForEvent('popup'), p.evaluate(() => { window.__print = 1; document.getElementById('btnRefPrint').click(); })]);
-  await pop.waitForLoadState(); r.printTitle = await pop.title(); r.printRows = await pop.$$eval('tr', x => x.length - 1); await pop.screenshot({ path: OUT + '/t-print.png', fullPage: false });
+  await pop.waitForLoadState(); r.printTitle = await pop.title(); r.printRows = await pop.$$eval('tr', x => x.length - 1); await pop.emulateMedia({ media: 'print' }); await pop.screenshot({ path: OUT + '/t-print.png', fullPage: false }); await pop.pdf({ path: OUT + '/t-print.pdf', printBackground: false });
   r.errors = errs; console.log(JSON.stringify(r, null, 1)); await b.close(); })();
