@@ -143,7 +143,19 @@ const I18N = {
     'p.boost': 'Energy boost: run faster and jump higher for 6 seconds!', 'p.boostL': 'Energy boost', 'p.shield': 'Shield', 'p.life': 'Extra life',
     'q.start': 'Side quest: {name} ({n} to find). It is optional, and worth +300!',
     'id.intro': '<h2>🛡️ Immune Defense</h2><p>The portal pulled you <b>inside a blood vessel</b>. Germs are floating toward you!</p><p>Every germ is covered in <b>antigens</b>: shapes on its surface. Your weapons are <b>antibodies</b>: Y-shaped proteins made by white blood cells. Each antibody fits only <b>one</b> antigen shape, like a key fits one lock.</p><p><b>Match the shape to tag the germ.</b> A wrong shape just bounces off.</p><p class="dim">Aim: move the mouse (or arrow keys). Fire: click (or space). Pick an antibody: keys 1 to 4. Do not let 3 germs get past you!</p>',
-    'id.hud': 'Tagged: {t}   Score: {s}   Time: {n}', 'id.start': 'Start', 'id.won': '🛡️ Infection stopped!', 'id.over': '🛡️ Defense over', 'id.score': 'You tagged <b>{t}</b> germs. Score: <b>{s}</b>', 'id.scoreH': 'You tagged <b>{t}</b> germs and kept {h} hearts (+{b}). Score: <b>{s}</b>',
+    'd.report': '🧪 Lab report:', 'id.hud': 'Tagged: {t}   Score: {s}   Time: {n}', 'fig.bars': 'Bar graph: {y}', 'fig.line': 'Line graph: {y} by {x}',
+    's.title': 'Selection Simulator: peppered moths', 's.status': 'Generation {g} · Bark: {b} · Dark moths: {p}%', 's.light': 'light, covered in lichen', 's.dark': 'dark with soot',
+    's.intro': '<h2>🦋 Selection Simulator</h2><p><b>Peppered moths</b> rest on tree bark during the day. Most are light with dark speckles, but a few are dark. Color is <b>inherited</b>: light parents have light offspring, and dark parents have dark offspring. A few dark moths are always around.</p><p>Birds eat the moths they can see. A moth that matches the bark is <b>more likely to survive and reproduce</b>.</p><p>Run the generations and watch the graph. What happens to the share of <b>dark moths</b> when the bark changes?</p><p class="dim">Press N or click “Next generation”.</p>',
+    's.t1': 'The bark is light. Run {n} more generations and watch the graph.', 's.t1done': 'On light bark, birds easily spot dark moths, so the dark trait stays rare. Now factories fill the air with soot.',
+    's.t2': 'The bark is dark with soot. Run {n} more generations.', 's.t2done': 'Now the LIGHT moths stand out. More dark moths survive and reproduce, so the dark trait increased! Next: clean air.',
+    's.t3': 'Clean air: lichen grows back and the bark turns light. Run {n} more generations.', 's.t3done': 'The bark is light again, and the dark trait decreased. Press Finish.',
+    's.next': '▶ Next generation', 's.soot': '🏭 Soot darkens the bark', 's.clean': '🌳 Clean air: the bark turns light', 's.finish': '✓ Finish',
+    's.hud': 'Generation {g}   Dark moths: {p}%   Score: {s}', 's.xlab': 'Generation', 's.ylab': 'Dark moths (%)',
+    's.end': '<h2>🦋 Simulation complete!</h2><p>Score: <b>{s}</b></p><p><b>What the graph shows:</b> natural selection changed the share of dark moths. When soot darkened the bark, dark moths survived more often, so the trait <b>increased</b>. When the air was cleaned, light moths survived more often, so the dark trait <b>decreased</b>.</p><p>This really happened. Around factory cities in England in the 1800s, dark peppered moths became common. After clean air laws in the 1900s, they became rare again.</p>',
+    'g.intro': '<h2>⛳ Digestion Mini Golf</h2><p>Your body breaks big food molecules into small ones with <b>chemical reactions</b>. Helper molecules called <b>enzymes</b> speed up each reaction.</p><p>Each enzyme fits only <b>one kind</b> of food molecule, like a key in a lock. Your ball is a food molecule: putt it into the enzyme with the <b>same shape</b>. A wrong shape will not hold it.</p><p class="dim">Aim: move the mouse (or left and right arrows). Putt: hold the mouse button (or space) to charge, then let go. 3 holes. Fewer putts = more points.</p>',
+    'g.end': '<h2>⛳ Course complete!</h2><p>Score: <b>{s}</b></p><p><b>What you showed:</b> digestion is a set of chemical reactions. Enzymes break starch into sugars, proteins into amino acids, and fats into fatty acids.</p><p>These small molecules travel in the blood to your cells. There they are rearranged into <b>new molecules for growth</b>, or react with oxygen to <b>release energy</b>.</p>',
+    'g.start': '{e}. Your food molecule: {f}. Find the enzyme with the matching shape.', 'g.hud': 'Hole {h} of {n}   Putts: {p}   Score: {s}',
+    'g.fit': '✓ It fits! {f} (+{p})', 'g.next': '✓ It fits! {f} Next: {e}.', 'g.out': '✗ Rolled right out! {w}', 'g.nomatch': 'The shapes do not match.', 'id.start': 'Start', 'id.won': '🛡️ Infection stopped!', 'id.over': '🛡️ Defense over', 'id.score': 'You tagged <b>{t}</b> germs. Score: <b>{s}</b>', 'id.scoreH': 'You tagged <b>{t}</b> germs and kept {h} hearts (+{b}). Score: <b>{s}</b>',
     'id.real': '<p><b>What really happens:</b> white blood cells make antibodies that fit one antigen shape. Antibodies tag germs so other white blood cells can eat them. <b>Memory cells</b> remember the germ, so next time your body fights back faster. That is how vaccines work. Your immune system and circulatory system work together: blood carries the white blood cells everywhere.</p>',
     'id.back': 'Return through the portal', 'id.memory': 'Memory cells! Your body remembers these germs, so your antibodies now fire twice as fast.', 'id.past': 'A germ got past you!',
     'id.tagged': 'Tagged! The antibody fits the {a} antigen. A white blood cell will eat this germ.', 'id.bounce': 'Bounced off! A {a} antibody does not fit a {b} antigen.', 'id.home': 'Back from the portal with +{s} points!',
@@ -170,14 +182,16 @@ const I18N = {
     'a.no-help': 'On My Own', 'a.no-help.d': 'Finish a level without a gold hint.',
     'a.speedy': 'Speedy Scientist', 'a.speedy.d': 'Finish a level in under 3 minutes.',
     'a.immune': 'Immune Hero', 'a.immune.d': 'Tag 15 germs in Immune Defense.',
-    'a.golf': 'Perfect Fit', 'a.golf.d': 'Sink an enzyme golf hole in one putt.',
+    'a.golf': 'Perfect Fit', 'a.golf.d': 'Sink a digestion golf hole in one putt.',
     'a.dna-lab': 'Gene Machine', 'a.dna-lab.d': 'Decode the secret message in the Code Lab.',
     'a.practice': 'Practice Pays', 'a.practice.d': 'Get 5 Practice Bay questions right on the first try.',
     'a.second-look': 'Second Look', 'a.second-look.d': 'Go back to a finished level and discover something you missed.',
     'a.persist': 'Never Give Up', 'a.persist.d': 'Solve a challenge after the gold hint appears.',
     'a.world1': 'Cell Expert', 'a.world1.d': 'Finish every level in World 1.',
     'a.world2': 'Body Expert', 'a.world2.d': 'Finish every level in World 2.',
-    'a.scan-all': 'Master Naturalist', 'a.scan-all.d': 'Discover every specimen in Worlds 1 and 2.',
+    'a.world3': 'Energy Expert', 'a.world3.d': 'Finish every level in World 3.', 'a.world4': 'Ecosystem Expert', 'a.world4.d': 'Finish every level in World 4.',
+    'a.world5': 'Heredity Expert', 'a.world5.d': 'Finish every level in World 5.', 'a.world6': 'Evolution Expert', 'a.world6.d': 'Finish every level in World 6.',
+    'a.scan-all': 'Master Naturalist', 'a.scan-all.d': 'Discover every specimen in every world.',
     'a.rare-all': 'Rare Collector', 'a.rare-all.d': 'Find every Rare Specimen.',
     'a.stars-30': 'Star Scientist', 'a.stars-30.d': 'Earn 30 stars.',
     'r.time': 'Time', 'r.bestTime': 'best {t}', 'r.newBestTime': 'new personal best!'
@@ -197,7 +211,19 @@ const I18N = {
     'c.cTitle': 'Certificado de logro', 'c.edition': 'Edición para la escuela intermedia', 'c.cThis': 'Se certifica que', 'c.cDid': 'completó', 'c.cAll': 'todos los mundos de la guía de campo',
     'c.cDate': 'Fecha', 'c.cSign': 'Control de la misión', 'c.cPrint': 'Imprimir', 'c.certs': 'Certificados', 'c.certNone': 'Termina todos los niveles de un mundo para ganar su certificado.', 'c.cAllBtn': 'Toda la guía de campo',
     'id.intro': '<h2>🛡️ Defensa inmunitaria</h2><p>El portal te llevó <b>dentro de un vaso sanguíneo</b>. ¡Unos microbios flotan hacia ti!</p><p>Cada microbio está cubierto de <b>antígenos</b>: formas en su superficie. Tus armas son los <b>anticuerpos</b>: proteínas en forma de Y que producen los glóbulos blancos. Cada anticuerpo encaja con <b>una sola</b> forma de antígeno, como una llave en una cerradura.</p><p><b>Une la forma para marcar al microbio.</b> Una forma incorrecta rebota.</p><p class="dim">Apunta: mueve el ratón (o las flechas). Dispara: haz clic (o espacio). Elige un anticuerpo: teclas 1 a 4. ¡No dejes pasar 3 microbios!</p>',
-    'id.hud': 'Marcados: {t}   Puntaje: {s}   Tiempo: {n}', 'id.start': 'Empezar', 'id.won': '🛡️ ¡Infección detenida!', 'id.over': '🛡️ Fin de la defensa', 'id.score': 'Marcaste <b>{t}</b> microbios. Puntaje: <b>{s}</b>', 'id.scoreH': 'Marcaste <b>{t}</b> microbios y conservaste {h} corazones (+{b}). Puntaje: <b>{s}</b>',
+    'd.report': '🧪 Informe del laboratorio:', 'id.hud': 'Marcados: {t}   Puntaje: {s}   Tiempo: {n}', 'fig.bars': 'Gráfica de barras: {y}', 'fig.line': 'Gráfica de líneas: {y} según {x}',
+    's.title': 'Simulador de selección: polillas moteadas', 's.status': 'Generación {g} · Corteza: {b} · Polillas oscuras: {p} %', 's.light': 'clara, cubierta de líquenes', 's.dark': 'oscura por el hollín',
+    's.intro': '<h2>🦋 Simulador de selección</h2><p>Las <b>polillas moteadas</b> descansan de día sobre la corteza de los árboles. La mayoría son claras con manchitas oscuras, pero unas pocas son oscuras. El color se <b>hereda</b>: los padres claros tienen crías claras y los padres oscuros tienen crías oscuras. Siempre hay unas pocas polillas oscuras.</p><p>Las aves se comen las polillas que pueden ver. Una polilla que se parece a la corteza tiene <b>más probabilidad de sobrevivir y reproducirse</b>.</p><p>Pasa las generaciones y mira la gráfica. ¿Qué pasa con la proporción de <b>polillas oscuras</b> cuando cambia la corteza?</p><p class="dim">Pulsa N o haz clic en “Siguiente generación”.</p>',
+    's.t1': 'La corteza es clara. Pasa {n} generaciones más y mira la gráfica.', 's.t1done': 'En la corteza clara, las aves ven fácilmente las polillas oscuras, así que el rasgo oscuro sigue siendo raro. Ahora las fábricas llenan el aire de hollín.',
+    's.t2': 'La corteza está oscura por el hollín. Pasa {n} generaciones más.', 's.t2done': 'Ahora las polillas CLARAS resaltan. Sobreviven y se reproducen más polillas oscuras, así que el rasgo oscuro aumentó. Siguiente: aire limpio.',
+    's.t3': 'Aire limpio: los líquenes vuelven a crecer y la corteza se aclara. Pasa {n} generaciones más.', 's.t3done': 'La corteza vuelve a ser clara y el rasgo oscuro disminuyó. Pulsa Terminar.',
+    's.next': '▶ Siguiente generación', 's.soot': '🏭 El hollín oscurece la corteza', 's.clean': '🌳 Aire limpio: la corteza se aclara', 's.finish': '✓ Terminar',
+    's.hud': 'Generación {g}   Polillas oscuras: {p} %   Puntaje: {s}', 's.xlab': 'Generación', 's.ylab': 'Polillas oscuras (%)',
+    's.end': '<h2>🦋 ¡Simulación completa!</h2><p>Puntaje: <b>{s}</b></p><p><b>Lo que muestra la gráfica:</b> la selección natural cambió la proporción de polillas oscuras. Cuando el hollín oscureció la corteza, las polillas oscuras sobrevivieron más, así que el rasgo <b>aumentó</b>. Cuando se limpió el aire, sobrevivieron más las polillas claras, así que el rasgo oscuro <b>disminuyó</b>.</p><p>Esto pasó de verdad. Cerca de las ciudades con fábricas de Inglaterra, en el siglo XIX, las polillas moteadas oscuras se volvieron comunes. Después de las leyes de aire limpio del siglo XX, volvieron a ser raras.</p>',
+    'g.intro': '<h2>⛳ Minigolf de la digestión</h2><p>Tu cuerpo rompe las moléculas grandes de los alimentos en moléculas pequeñas con <b>reacciones químicas</b>. Unas moléculas ayudantes llamadas <b>enzimas</b> aceleran cada reacción.</p><p>Cada enzima encaja con <b>un solo tipo</b> de molécula de alimento, como una llave en una cerradura. Tu pelota es una molécula de alimento: mándala a la enzima que tiene <b>la misma forma</b>. Una forma incorrecta no la detiene.</p><p class="dim">Apunta: mueve el ratón (o las flechas izquierda y derecha). Golpea: mantén presionado el botón del ratón (o espacio) para cargar y luego suelta. 3 hoyos. Menos golpes = más puntos.</p>',
+    'g.end': '<h2>⛳ ¡Recorrido completo!</h2><p>Puntaje: <b>{s}</b></p><p><b>Lo que mostraste:</b> la digestión es un conjunto de reacciones químicas. Las enzimas rompen el almidón en azúcares, las proteínas en aminoácidos y las grasas en ácidos grasos.</p><p>Estas moléculas pequeñas viajan en la sangre hasta tus células. Allí se reorganizan en <b>moléculas nuevas para crecer</b>, o reaccionan con el oxígeno para <b>liberar energía</b>.</p>',
+    'g.start': '{e}. Tu molécula de alimento: {f}. Busca la enzima con la forma que encaja.', 'g.hud': 'Hoyo {h} de {n}   Golpes: {p}   Puntaje: {s}',
+    'g.fit': '✓ ¡Encaja! {f} (+{p})', 'g.next': '✓ ¡Encaja! {f} Siguiente: {e}.', 'g.out': '✗ ¡Se salió! {w}', 'g.nomatch': 'Las formas no encajan.', 'id.start': 'Empezar', 'id.won': '🛡️ ¡Infección detenida!', 'id.over': '🛡️ Fin de la defensa', 'id.score': 'Marcaste <b>{t}</b> microbios. Puntaje: <b>{s}</b>', 'id.scoreH': 'Marcaste <b>{t}</b> microbios y conservaste {h} corazones (+{b}). Puntaje: <b>{s}</b>',
     'id.real': '<p><b>Lo que pasa en realidad:</b> los glóbulos blancos producen anticuerpos que encajan con una forma de antígeno. Los anticuerpos marcan a los microbios para que otros glóbulos blancos se los coman. Las <b>células de memoria</b> recuerdan al microbio, así que la próxima vez tu cuerpo se defiende más rápido. Así funcionan las vacunas. Tu sistema inmunitario y tu sistema circulatorio trabajan juntos: la sangre lleva los glóbulos blancos a todas partes.</p>',
     'id.back': 'Volver por el portal', 'id.memory': '¡Células de memoria! Tu cuerpo recuerda estos microbios, así que tus anticuerpos ahora disparan el doble de rápido.', 'id.past': '¡Un microbio se te escapó!',
     'id.tagged': '¡Marcado! El anticuerpo encaja con el antígeno de forma {a}. Un glóbulo blanco se comerá a este microbio.', 'id.bounce': '¡Rebotó! Un anticuerpo de forma {a} no encaja con un antígeno de forma {b}.', 'id.home': '¡De vuelta del portal con +{s} puntos!',
@@ -221,14 +247,16 @@ const I18N = {
     'a.no-help': 'Por mi cuenta', 'a.no-help.d': 'Termina un nivel sin una pista dorada.',
     'a.speedy': 'Científico veloz', 'a.speedy.d': 'Termina un nivel en menos de 3 minutos.',
     'a.immune': 'Héroe inmunitario', 'a.immune.d': 'Marca 15 microbios en Defensa Inmunitaria.',
-    'a.golf': 'Encaje perfecto', 'a.golf.d': 'Mete un hoyo del minigolf de enzimas en un solo golpe.',
+    'a.golf': 'Encaje perfecto', 'a.golf.d': 'Mete un hoyo del minigolf de la digestión en un solo golpe.',
     'a.dna-lab': 'Máquina de genes', 'a.dna-lab.d': 'Descifra el mensaje secreto en el Laboratorio del Código.',
     'a.practice': 'La práctica vale', 'a.practice.d': 'Acierta 5 preguntas de la Sala de Práctica al primer intento.',
     'a.second-look': 'Segunda mirada', 'a.second-look.d': 'Vuelve a un nivel terminado y descubre algo que te perdiste.',
     'a.persist': 'Nunca me rindo', 'a.persist.d': 'Resuelve un reto después de que aparezca la pista dorada.',
     'a.world1': 'Experto en células', 'a.world1.d': 'Termina todos los niveles del Mundo 1.',
     'a.world2': 'Experto en el cuerpo', 'a.world2.d': 'Termina todos los niveles del Mundo 2.',
-    'a.scan-all': 'Gran naturalista', 'a.scan-all.d': 'Descubre todos los especímenes de los Mundos 1 y 2.',
+    'a.world3': 'Experto en energía', 'a.world3.d': 'Termina todos los niveles del Mundo 3.', 'a.world4': 'Experto en ecosistemas', 'a.world4.d': 'Termina todos los niveles del Mundo 4.',
+    'a.world5': 'Experto en herencia', 'a.world5.d': 'Termina todos los niveles del Mundo 5.', 'a.world6': 'Experto en evolución', 'a.world6.d': 'Termina todos los niveles del Mundo 6.',
+    'a.scan-all': 'Gran naturalista', 'a.scan-all.d': 'Descubre todos los especímenes de todos los mundos.',
     'a.rare-all': 'Coleccionista de rarezas', 'a.rare-all.d': 'Encuentra todos los especímenes raros.',
     'a.stars-30': 'Científico estrella', 'a.stars-30.d': 'Gana 30 estrellas.',
     'r.time': 'Tiempo', 'r.bestTime': 'mejor {t}', 'r.newBestTime': '¡nuevo récord personal!'
@@ -335,6 +363,16 @@ const SONGS = {
   leaf: { name: 'sunlit leaf theme', bpm: 96, root: 64, scale: 'major', prog: [0, 5, 3, 4], seed: 31, drums: 1, lead: 'triangle' },
   meadow: { name: 'wild meadow theme', bpm: 112, root: 60, scale: 'major', prog: [0, 4, 3, 4], seed: 37, drums: 1, lead: 'square' },
   forest: { name: 'forest trail theme', bpm: 100, root: 62, scale: 'dorian', prog: [0, 4, 3, 4], seed: 41, drums: 1, lead: 'square' },
+  log: { name: 'forest floor theme', bpm: 84, root: 55, scale: 'dorian', prog: [0, 3, 4, 3], seed: 71, drums: 1, lead: 'triangle' },
+  burn: { name: 'regrowth theme', bpm: 92, root: 59, scale: 'major', prog: [0, 5, 3, 4], seed: 73, drums: 1, lead: 'triangle' },
+  river: { name: 'river valley theme', bpm: 100, root: 62, scale: 'major', prog: [0, 4, 5, 3], seed: 79, drums: 1, lead: 'square' },
+  wildflower: { name: 'wildflower theme', bpm: 104, root: 64, scale: 'major', prog: [0, 3, 4, 0], seed: 83, drums: 1, lead: 'triangle' },
+  coast: { name: 'coastal breeze theme', bpm: 96, root: 62, scale: 'mixo', prog: [0, 4, 3, 4], seed: 89, drums: 1, lead: 'square' },
+  cave: { name: 'dripping cave theme', bpm: 66, root: 50, scale: 'minor', prog: [0, 3, 5, 4], seed: 97, drums: 0, lead: 'triangle' },
+  farm: { name: 'farm fields theme', bpm: 112, root: 60, scale: 'major', prog: [0, 4, 5, 4], seed: 101, drums: 1, lead: 'square' },
+  desert: { name: 'desert wind theme', bpm: 88, root: 57, scale: 'minor', prog: [0, 1, 0, 6], seed: 103, drums: 1, lead: 'triangle' },
+  harbor: { name: 'harbor station theme', bpm: 94, root: 60, scale: 'dorian', prog: [0, 4, 3, 5], seed: 107, drums: 1, lead: 'triangle' },
+  kelp: { name: 'kelp forest theme', bpm: 76, root: 57, scale: 'dorian', prog: [0, 5, 3, 4], seed: 67, drums: 0, lead: 'triangle' },
   garden: { name: 'pea garden theme', bpm: 108, root: 60, scale: 'major', prog: [0, 4, 3, 4], seed: 43, drums: 1, lead: 'square' },
   island: { name: 'island breeze theme', bpm: 96, root: 64, scale: 'mixo', prog: [0, 4, 3, 4], seed: 47, drums: 1, lead: 'square' },
   canyon: { name: 'canyon dig theme', bpm: 90, root: 57, scale: 'dorian', prog: [0, 4, 3, 4], seed: 53, drums: 1, lead: 'square' },
@@ -438,6 +476,36 @@ const THEMES = {
     mote: '#cfefff', shafts: '#bfe8ff', pal: ['#bfe8ff', '#9fd8ff', '#d8c8ff'], shapes: ['blob'], density: 0.001, fogD: 0.012, hemi: ['#cfe8ff', '#10202c'], key: '#e8f4ff', doorWall: '#4a4c58' },
   forest: { skyTop: '#123a2a', horizon: '#f0c878', skyBottom: '#6a8a4a', sun: ['#fff0b0', 35, 16, 230], ridge: '#1f4a2a', ground: '#2e3a1e', top: '#5f8a3a', rim: '#fff0c0',
     mote: '#fff6c0', shafts: '#ffe8a0', pal: ['#1f4a2a', '#2f6a34', '#4a8a3a'], shapes: ['tree', 'tree', 'hill'], density: 0.85, fogD: 0.011, hemi: ['#f0f8d0', '#1a2a12'], key: '#fff0c8' },
+  /* KELP (middle school 3-2): a cold, green-blue giant kelp forest in Monterey Bay. Tall kelp stands on a rocky sea floor. */
+  kelp: { skyTop: '#2a7ab0', horizon: '#9fd8c8', skyBottom: '#1f5a6a', sun: ['#fff6c8', 25, 22, 230], ridge: '#1f4a4a', ground: '#4a4a3a', top: '#6a6a4a', rim: '#e8ffd0',
+    mote: '#e0ffe8', shafts: '#d8ffd0', pal: ['#8a7a2a', '#a08a30', '#6a6a20', '#c0a040'], shapes: ['kelp', 'kelp', 'kelp', 'fan'], density: 1.0, fogD: 0.014, hemi: ['#d8f8e8', '#1a3030'], key: '#f0ffe0', seabed: -9, doorWall: '#6a5a40' },
+  /* LOG (middle school 4-3): shrunk to ant size under a fallen log. Dim green light, roots and fungi, drifting spores. */
+  log: { skyTop: '#0e1a0c', horizon: '#6a7a3a', skyBottom: '#1e2a14', sun: ['#e8f0b0', 20, 18, 160], ridge: '#2a2a16', ground: '#2e2216', top: '#5a4a2a', rim: '#e8e0b0',
+    mote: '#e8f0c0', shafts: '#d8e8a0', pal: ['#4a3a24', '#5a4a2e', '#6a5a36', '#c0503a'], shapes: ['pillar', 'blob', 'pillar'], density: 0.6, fogD: 0.016, hemi: ['#d8e0b0', '#140e08'], key: '#e8e8c0' },
+  /* BURN (middle school 4-4): a burned lodgepole forest a few years later. Smoky sky, charred trunks, green regrowth. */
+  burn: { skyTop: '#4a5a7a', horizon: '#f0c090', skyBottom: '#8a8a90', sun: ['#fff0c8', 30, 18, 220], ridge: '#3a3a3a', ground: '#2a2420', top: '#5a6a3a', rim: '#fff0c8',
+    mote: '#ffb070', shafts: '#ffe0b0', pal: ['#1e1a18', '#2a2622', '#3a332c'], shapes: ['tree', 'tree', 'hill'], density: 0.8, fogD: 0.010, hemi: ['#f0e8e0', '#2a2420'], key: '#fff0d8' },
+  /* RIVER (middle school 4-5): the lower Susquehanna valley, green hills and a wide river. */
+  river: { skyTop: '#2f6fc8', horizon: '#cfe4f0', skyBottom: '#7fb4dc', sun: ['#fff6d0', 35, 18, 240], ridge: '#2f5a32', ground: '#3a4a2a', top: '#6a9a4a', rim: '#fff6c0',
+    mote: '#ffffff', shafts: '#fff6d0', pal: ['#2f5a2f', '#3a6a36', '#4a7a40'], shapes: ['tree', 'hill', 'tree'], density: 0.8, fogD: 0.005, hemi: ['#e8f6ff', '#2a3a2a'], key: '#fff6e0' },
+  /* WILDFLOWER (middle school 5-1): Bowman's Hill Wildflower Preserve in early summer. Soft light, flowering shrubs. */
+  wildflower: { skyTop: '#4a7ad8', horizon: '#ffe8f0', skyBottom: '#c0d8f8', sun: ['#fff6e0', 30, 20, 240], ridge: '#5a8a5a', ground: '#3a4a2a', top: '#7ab05a', rim: '#fff0f6',
+    mote: '#fff0a0', shafts: '#fff6e0', pal: ['#c59cff', '#ff9fbf', '#ffd166', '#6aaa4a', '#4a8a3a'], shapes: ['tree', 'blob', 'hill', 'blob'], density: 0.85, fogD: 0.008, hemi: ['#f8f0ff', '#3a4a2a'], key: '#fff6e8' },
+  /* COAST (middle school 5-2): strawberry fields on a California bluff above rocky tide pools, golden afternoon. */
+  coast: { skyTop: '#3a8ad0', horizon: '#ffe0b0', skyBottom: '#8ac8e8', sun: ['#fff0c8', -30, 14, 230], ridge: '#7a8a5a', ground: '#4a3a2a', top: '#8a9a4a', rim: '#fff0c8',
+    mote: '#ffffff', shafts: '#fff0c8', pal: ['#5a8a4a', '#8a9a5a', '#3a6a8a'], shapes: ['hill', 'blob', 'hill'], density: 0.6, fogD: 0.009, hemi: ['#f0f8ff', '#2a3a3a'], key: '#fff0d8', seabed: -9, doorWall: '#7a6a5a' },
+  /* CAVE (middle school 5-3): a dark limestone cave. Dripping stone, still pools; the alien carries its lamp. */
+  cave: { skyTop: '#04060a', horizon: '#1a2230', skyBottom: '#080a10', sun: ['#9fb8d8', -20, 10, 80], ridge: '#141820', ground: '#2a2c32', top: '#4a4c56', rim: '#9fb8d8',
+    mote: '#9fd8ff', pal: ['#2a2c34', '#34363e', '#3e4048'], shapes: ['pillar', 'pillar', 'blob'], density: 0.7, fogD: 0.02, hemi: ['#4a5a78', '#040406'], key: '#7a8aa8', night: true, doorWall: '#3a3c44' },
+  /* FARM (middle school 5-4): a Pennsylvania dairy farm with fields and a research greenhouse. */
+  farm: { skyTop: '#3a78d0', horizon: '#fff0c8', skyBottom: '#a8d0f0', sun: ['#fff6d0', 40, 18, 240], ridge: '#7a9a4a', ground: '#5a4a2a', top: '#b0a84a', rim: '#fff6c8',
+    mote: '#ffffff', shafts: '#fff6d0', pal: ['#c0a040', '#6a9a3a', '#8a6a3a'], shapes: ['hill', 'tree', 'hill'], density: 0.7, fogD: 0.008, hemi: ['#f0f8ff', '#3a3a22'], key: '#fff6e0' },
+  /* DESERT (middle school 6-2): Wadi Al-Hitan, Whale Valley, in Egypt's Western Desert. Sand, wind-carved rock, hot sky. */
+  desert: { skyTop: '#3a8ad8', horizon: '#ffe8c0', skyBottom: '#f0c890', sun: ['#fff6d8', 40, 26, 250], ridge: '#c89a6a', ground: '#a07a4a', top: '#e0c08a', rim: '#fff0d0',
+    mote: '#fff0c8', shafts: '#fff0c8', pal: ['#d8b080', '#c89a6a', '#b0805a'], shapes: ['hill', 'pillar', 'hill'], density: 0.6, fogD: 0.007, hemi: ['#fff6e8', '#5a4028'], key: '#fff6e0' },
+  /* HARBOR (middle school 6-3): the docks of a marine research station on a gray-green northern harbor. */
+  harbor: { skyTop: '#4a6a90', horizon: '#d8e8f0', skyBottom: '#8aa8c0', sun: ['#f8f4e8', 30, 16, 220], ridge: '#3a5a5a', ground: '#4a4a48', top: '#7a7a70', rim: '#f0f4f8',
+    mote: '#e8f4ff', shafts: '#e8f0f4', pal: ['#3a5a5a', '#4a6a6a', '#6a7a80'], shapes: ['hill', 'blob', 'pillar'], density: 0.5, fogD: 0.011, hemi: ['#e8f0f8', '#1a2a30'], key: '#f0f4f8', seabed: -9, doorWall: '#5a5a58' },
   garden: { skyTop: '#3a6ad0', horizon: '#ffe6c0', skyBottom: '#a8d0f0', sun: ['#fff6d0', -35, 16, 240], ridge: '#6a9a4a', ground: '#4a3a22', top: '#8ab84a', rim: '#fff6d0',
     mote: '#ffffff', shafts: '#fff6d0', pal: ['#6aaa4a', '#c59cff', '#ffffff', '#ff9fbf'], shapes: ['tree', 'blob', 'hill'], density: 0.7, fogD: 0.008, hemi: ['#f0f8ff', '#3a4a2a'], key: '#fff6e0' },
   island: { skyTop: '#0a4a8a', horizon: '#ffe0a0', skyBottom: '#4ab0d8', sun: ['#fff4c0', 25, 14, 240], ridge: '#2a6a5a', ground: '#4a3a2a', top: '#d8c08a', rim: '#fff4d0',
@@ -940,7 +1008,7 @@ const ACH = [
   { id: 'stylist', ic: '👕', tier: 'short' }, { id: 'cell', ic: '🧫', tier: 'short' }, { id: 'code', ic: '🔐', tier: 'short' }, { id: 'persist', ic: '💪', tier: 'short' },
   { id: 'scan-25', ic: '📓', tier: 'medium' }, { id: 'collection', ic: '📚', tier: 'medium' }, { id: 'no-help', ic: '🎯', tier: 'medium' }, { id: 'speedy', ic: '⏱️', tier: 'medium' },
   { id: 'immune', ic: '🛡️', tier: 'medium' }, { id: 'golf', ic: '⛳', tier: 'medium' }, { id: 'dna-lab', ic: '🧬', tier: 'medium' }, { id: 'practice', ic: '🎓', tier: 'medium' }, { id: 'second-look', ic: '🔁', tier: 'medium' },
-  { id: 'world1', ic: '🧫', tier: 'long' }, { id: 'world2', ic: '🌿', tier: 'long' }, { id: 'scan-all', ic: '🏆', tier: 'long' }, { id: 'rare-all', ic: '💠', tier: 'long' }, { id: 'stars-30', ic: '⭐', tier: 'long' }];
+  { id: 'world1', ic: '🧫', tier: 'long' }, { id: 'world2', ic: '🫀', tier: 'long' }, { id: 'world3', ic: '🌿', tier: 'long' }, { id: 'world4', ic: '🌲', tier: 'long' }, { id: 'world5', ic: '🧬', tier: 'long' }, { id: 'world6', ic: '🦴', tier: 'long' }, { id: 'scan-all', ic: '🏆', tier: 'long' }, { id: 'rare-all', ic: '💠', tier: 'long' }, { id: 'stars-30', ic: '⭐', tier: 'long' }];
 let achQ = [], achBusy = false;
 function award(id) {
   if (!S.ach) S.ach = {}; if (S.ach[id]) return; S.ach[id] = Date.now(); save();
@@ -971,7 +1039,7 @@ function checkCollections() {
 }
 function checkBig() {
   const list = allLevels(), done = function (w) { const ls = list.filter(function (e) { return e.w.id === w; }); return ls.length && ls.every(function (e) { return S.levels[e.lv.id] && S.levels[e.lv.id].stars; }); };
-  if (done(1)) award('world1'); if (done(2)) award('world2'); if (totalStars() >= 30) award('stars-30');
+  for (let w = 1; w <= 6; w++) if (done(w)) award('world' + w); if (totalStars() >= 30) award('stars-30');
   const ids = []; list.forEach(function (e) { levelPlan(e.lv).scans.forEach(function (id) { ids.push(id); }); });
   if (Object.keys(S.found || {}).length >= 25) award('scan-25'); if (ids.length && ids.every(function (id) { return S.found[id]; })) award('scan-all');
   const rares = list.filter(function (e) { return levelPlan(e.lv).rare; }); if (rares.length && rares.every(function (e) { return S.rare[e.lv.id]; })) award('rare-all');
@@ -1072,7 +1140,7 @@ function builder() {
     /* CRUMBLE BRIDGE: n breakable stepping stones over a shallow pit. Falling only costs time: a step leads back up. */
     crumbleBridge: function (n, kind) {
       const x = b.x, y = b.y, gapW = 1.5, w = 2.4, len = n * (w + gapW) + gapW;
-      addGround(x, x + len, y - 4); const st = addSolid(x + len - 2.4, x + len, y - 2.1, y - 1.7); L.group.add(box(st.x0, st.x1, st.y0, st.y1, 3, L.th.top));
+      addGround(x, x + len, y - 4); /* a solid step block on the pit floor (no overhang, so you can't get stuck under it) to climb back out */ const st = addSolid(x + len - gapW, x + len, y - 4, y - 1.7); /* only under the open gap after the last plank, so nothing hangs over it */ L.group.add(box(st.x0, st.x1, y - 4, y - 2.0, 3, L.th.ground)); L.group.add(box(st.x0, st.x1, y - 2.0, y - 1.7, 3.2, L.th.top));
       for (let i = 0; i < n; i++) b.crumble(gapW + i * (w + gapW), i % 2 ? 0.7 : 0, w, kind === 'mix' ? (i % 2 ? 'boom' : 'crumble') : kind);
       b.x += len; return b;
     },
@@ -1674,7 +1742,13 @@ function chartTex(gd, left, W, firstCenter) {
     g.fillStyle = y >= 0 ? '#7fd4ff' : '#ffb09c'; g.fillRect(cx - bw / 2, t, bw, h);
     g.fillStyle = '#ffffff'; g.textAlign = 'center'; g.font = '700 28px "Atkinson Hyperlegible", Arial, sans-serif';
     g.fillText(fv(y), cx, y >= 0 ? t - 10 : t + h + 30);
-    g.fillStyle = '#ffd166'; g.font = '700 26px "Atkinson Hyperlegible", Arial, sans-serif'; g.fillText(gd.categories[i], cx, 378);
+    /* category label: shrink to fit the space between bars, and wrap onto two lines if it is still too long */
+    const room = 3.4 / W * 1024, lbl = gd.categories[i]; let fs = 26; g.fillStyle = '#ffd166';
+    const setF = function (s) { g.font = '700 ' + s + 'px "Atkinson Hyperlegible", Arial, sans-serif'; };
+    setF(fs); while (fs > 19 && g.measureText(lbl).width > room) { fs--; setF(fs); }
+    if (g.measureText(lbl).width <= room || lbl.indexOf(' ') < 0) g.fillText(lbl, cx, 378);
+    else { const w = lbl.split(' '); let best = 1, bd = 1e9; for (let k = 1; k < w.length; k++) { const d = Math.abs(g.measureText(w.slice(0, k).join(' ')).width - g.measureText(w.slice(k).join(' ')).width); if (d < bd) { bd = d; best = k; } }
+      g.fillText(w.slice(0, best).join(' '), cx, 366); g.fillText(w.slice(best).join(' '), cx, 366 + fs + 2); }
   });
   g.save(); g.translate(26, (top + bot) / 2); g.rotate(-Math.PI / 2); g.textAlign = 'center'; g.font = '700 20px "Atkinson Hyperlegible", Arial, sans-serif'; g.fillStyle = '#d6e4ea'; g.fillText(gd.ylabel, 0, 0); g.restore();
   g.textAlign = 'center'; g.font = '700 22px "Atkinson Hyperlegible", Arial, sans-serif'; g.fillStyle = '#d6e4ea'; g.fillText(gd.xlabel, 512, 408);
@@ -2100,6 +2174,18 @@ const FOES = {
   urchin: { name: 'sea urchin', stomp: false, msg: 'Ouch! Sea urchins are covered in sharp spines. Jump over them.', msg_es: '¡Ay! Los erizos de mar están cubiertos de espinas afiladas. Salta por encima.' },
   snake: { name: 'timber rattlesnake', stomp: false, msg: 'A timber rattlesnake! It warns you with its rattle. Give it space and jump over it.', msg_es: '¡Una serpiente de cascabel! Te avisa con su cascabel. Dale espacio y salta por encima.' },
   bat: { name: 'little brown bat', stomp: false, msg: 'A bat swooped past! Bats hunt insects at night by listening to echoes. Duck under it.', msg_es: '¡Un murciélago pasó volando! Los murciélagos cazan insectos de noche escuchando ecos. Agáchate.' },
+  hopper: { name: 'grasshopper', stomp: false, msg: 'A grasshopper leapt into you! Grasshoppers are consumers: they eat the leaves that producers make. Jump over it.', msg_es: '¡Un saltamontes te saltó encima! Los saltamontes son consumidores: comen las hojas que fabrican los productores. Salta por encima.' },
+  beetle: { name: 'Japanese beetle', stomp: false, msg: 'A Japanese beetle! This garden pest chews holes in leaves, so the plant has less leaf for photosynthesis. Jump over it.', msg_es: '¡Un escarabajo japonés! Esta plaga del huerto hace agujeros en las hojas, y la planta tiene menos hoja para la fotosíntesis. Salta por encima.' },
+  bubble: { name: 'gas bubble', stomp: false, msg: 'A gas bubble bounced you! Gas forms when gut bacteria break down fiber. Wait for it to float past.', msg_es: '¡Una burbuja de gas te hizo rebotar! El gas se forma cuando las bacterias del intestino descomponen la fibra. Espera a que pase flotando.' },
+  bear: { name: 'black bear', stomp: false, msg: 'A black bear bumped you! Bears are usually shy, but always give them lots of space. Jump past it quickly.', msg_es: '¡Un oso negro te empujó! Los osos suelen ser tímidos, pero siempre hay que darles mucho espacio. Salta rápido para pasarlo.' },
+  spider: { name: 'wolf spider', stomp: false, msg: 'A wolf spider! It hunts small animals on the forest floor at night. Jump over it.', msg_es: '¡Una araña lobo! Caza animalitos en el suelo del bosque de noche. Salta por encima.' },
+  ember: { name: 'ember', stomp: false, msg: 'Ouch, a hot ember! Burned logs can smolder long after a fire. Dodge the glowing embers.', msg_es: '¡Ay, una brasa caliente! Los troncos quemados pueden arder despacio mucho después de un incendio. Esquiva las brasas.' },
+  watersnake: { name: 'northern water snake', stomp: false, msg: 'A northern water snake! It is not venomous, but it may bite if bothered. Jump over it.', msg_es: '¡Una culebra de agua! No es venenosa, pero puede morder si la molestan. Salta por encima.' },
+  bee: { name: 'bumble bee', stomp: false, msg: 'A bumble bee bumped you! It is busy carrying pollen from flower to flower. Let it buzz past.', msg_es: '¡Un abejorro chocó contigo! Está ocupado llevando polen de flor en flor. Déjalo pasar.' },
+  gull: { name: 'gull', stomp: false, msg: 'A gull swooped at you! Gulls patrol the shore looking for food. Duck under it.', msg_es: '¡Una gaviota se lanzó hacia ti! Las gaviotas recorren la orilla buscando comida. Agáchate.' },
+  cricket: { name: 'cave cricket', stomp: false, msg: 'A cave cricket jumped into you! It has long legs and antennae to feel its way in the dark. Jump over it.', msg_es: '¡Un grillo de cueva te saltó encima! Tiene patas y antenas largas para orientarse en la oscuridad. Salta por encima.' },
+  redcrab: { name: 'Sally Lightfoot crab', stomp: false, msg: 'A Sally Lightfoot crab! These bright red crabs scuttle over the Galápagos rocks. Jump over it.', msg_es: '¡Un cangrejo zayapa! Estos cangrejos rojos brillantes corren sobre las rocas de Galápagos. Salta por encima.' },
+  scorpion: { name: 'scorpion', stomp: false, msg: 'A scorpion! It hides from the desert heat under rocks and comes out to hunt. Jump over it.', msg_es: '¡Un escorpión! Se esconde del calor del desierto bajo las rocas y sale a cazar. Salta por encima.' },
   wave: { name: 'wave', stomp: false, msg: 'A wave crashed over you! In a tide pool, living things must hold on tight when waves hit.', msg_es: '¡Una ola te golpeó! En una poza de marea, los seres vivos deben agarrarse fuerte cuando llegan las olas.' }
 };
 function foeMsg(f) { return (BQ.lang() === 'es' && f.msg_es) || f.msg; }
@@ -2112,9 +2198,9 @@ function foeMesh(look) {
     [-1, 1].forEach(function (s) { const w = new T.Mesh(G.sph, basic('#dfe8f0', 0.45, false)); w.scale.set(0.3, 0.02, 0.12); w.position.set(0.05, 0.12, s * 0.12); w.rotation.x = s * 0.4; g.add(w); });
     for (let i = 0; i < 6; i++) { const l = new T.Mesh(G.cyl, M); l.scale.set(0.01, 0.28, 0.01); l.position.set(-0.1 + (i % 3) * 0.12, -0.18, i < 3 ? 0.08 : -0.08); l.rotation.z = 0.4; g.add(l); }
     g.userData.buzz = true; g.scale.setScalar(1.3);
-  } else if (look === 'crab') {
-    const M = emat('#4f7a3a', '#14200c'), body = new T.Mesh(G.sph, M); body.scale.set(0.55, 0.25, 0.4); g.add(body);
-    [-1, 1].forEach(function (s) { const cl = new T.Mesh(G.sph, emat('#5f8a44', '#14200c')); cl.scale.set(0.2, 0.14, 0.12); cl.position.set(s * 0.72, 0.1, 0.25); g.add(cl);
+  } else if (look === 'crab' || look === 'redcrab') {
+    const red = look === 'redcrab', M = red ? emat('#e0402a', '#3a0a04') : emat('#4f7a3a', '#14200c'), body = new T.Mesh(G.sph, M); body.scale.set(0.55, 0.25, 0.4); g.add(body);
+    [-1, 1].forEach(function (s) { const cl = new T.Mesh(G.sph, red ? emat('#f06a3a', '#3a0a04') : emat('#5f8a44', '#14200c')); cl.scale.set(0.2, 0.14, 0.12); cl.position.set(s * 0.72, 0.1, 0.25); g.add(cl);
       for (let i = 0; i < 3; i++) { const l = new T.Mesh(G.cyl, M); l.scale.set(0.035, 0.3, 0.035); l.position.set(s * (0.45 + i * 0.05), -0.18, -0.2 + i * 0.2); l.rotation.z = s * 0.9; g.add(l); }
       const e = new T.Mesh(G.sph, emat('#10202c', '#000000')); e.scale.setScalar(0.06); e.position.set(s * 0.15, 0.3, 0.32); g.add(e); });
   } else if (look === 'wasp') {
@@ -2126,8 +2212,8 @@ function foeMesh(look) {
     const core = new T.Mesh(G.sph, emat('#5a2a6a', '#1a0a20')); core.scale.setScalar(0.4); g.add(core);
     for (let i = 0; i < 26; i++) { const a = i * 2.39, el = Math.acos(1 - 2 * (i + 0.5) / 26), sp = new T.Mesh(G.cone, emat('#7a3a8a', '#200a28')); sp.scale.set(0.05, 0.5, 0.05);
       sp.position.set(Math.sin(el) * Math.cos(a) * 0.45, Math.cos(el) * 0.45, Math.sin(el) * Math.sin(a) * 0.45); sp.lookAt(sp.position.clone().multiplyScalar(3)); sp.rotateX(Math.PI / 2); g.add(sp); }
-  } else if (look === 'snake') {
-    const M = emat('#6a5030', '#1a1008'), D = emat('#2a1e10', '#0a0604');
+  } else if (look === 'snake' || look === 'watersnake') {
+    const M = look === 'snake' ? emat('#6a5030', '#1a1008') : emat('#7a6a50', '#1a140a'), D = look === 'snake' ? emat('#2a1e10', '#0a0604') : emat('#4a3020', '#100804');
     for (let i = 0; i < 9; i++) { const s = new T.Mesh(G.sph, i % 2 ? D : M); s.scale.set(0.2, 0.13, 0.16); s.position.set(-0.95 + i * 0.22, Math.sin(i * 1.1) * 0.05, Math.cos(i * 0.9) * 0.18); g.add(s); }
     const hd = new T.Mesh(G.sph, M); hd.scale.set(0.24, 0.14, 0.19); hd.position.set(1.08, 0.05, 0); g.add(hd);
     const rt = new T.Mesh(G.sph, emat('#c8b08a', '#3a2a10')); rt.scale.set(0.12, 0.08, 0.08); rt.position.set(-1.12, 0.12, 0); g.add(rt); g.userData.rattle = rt;
@@ -2138,6 +2224,54 @@ function foeMesh(look) {
     [-1, 1].forEach(function (s) { const e = new T.Mesh(G.cone, M); e.scale.set(0.04, 0.09, 0.04); e.position.set(s * 0.06, 0.34, 0); g.add(e);
       const w = new T.Mesh(G.sph, emat('#4a3434', '#140a0a')); w.scale.set(0.42, 0.03, 0.2); w.position.set(s * 0.42, 0.05, 0); g.add(w); (g.userData.wings = g.userData.wings || []).push(w); });
     g.userData.buzz = true; g.scale.setScalar(1.4);
+  } else if (look === 'scorpion') {
+    const M = emat('#c89a5a', '#3a2a10'), body = new T.Mesh(G.sph, M); body.scale.set(0.38, 0.12, 0.2); g.add(body);
+    for (let i = 0; i < 5; i++) { const sg = new T.Mesh(G.sph, M); sg.scale.setScalar(0.09 - i * 0.008); sg.position.set(-0.4 - i * 0.07, 0.06 + i * 0.1, 0); g.add(sg); }
+    const st = new T.Mesh(G.cone, emat('#3a2a10', '#000000')); st.scale.set(0.04, 0.1, 0.04); st.position.set(-0.62, 0.55, 0); st.rotation.z = -2.2; g.add(st);
+    [-1, 1].forEach(function (s) { const cl = new T.Mesh(G.sph, M); cl.scale.set(0.12, 0.06, 0.08); cl.position.set(0.52, 0, s * 0.2); g.add(cl);
+      for (let i = 0; i < 4; i++) { const l = new T.Mesh(G.cyl, M); l.scale.set(0.015, 0.2, 0.015); l.position.set(0.2 - i * 0.12, -0.08, s * 0.2); l.rotation.x = s * 1.0; g.add(l); } });
+    g.scale.setScalar(1.4);
+  } else if (look === 'bear') {
+    const M = emat('#1e1a1a', '#060404'), body = new T.Mesh(G.sph, M); body.scale.set(0.95, 0.62, 0.58); body.position.y = 0.15; g.add(body);
+    const hd = new T.Mesh(G.sph, M); hd.scale.set(0.36, 0.34, 0.34); hd.position.set(0.95, 0.42, 0); g.add(hd);
+    const sn = new T.Mesh(G.sph, emat('#8a6a4a', '#201408')); sn.scale.set(0.18, 0.13, 0.14); sn.position.set(1.25, 0.36, 0); g.add(sn);
+    [-1, 1].forEach(function (s) { const e = new T.Mesh(G.sph, M); e.scale.setScalar(0.11); e.position.set(0.88, 0.75, s * 0.2); g.add(e);
+      [-0.5, 0.55].forEach(function (lx) { const l = new T.Mesh(G.cyl, M); l.scale.set(0.16, 0.5, 0.16); l.position.set(lx, -0.38, s * 0.32); g.add(l); }); });
+  } else if (look === 'spider') {
+    const M = emat('#5a4630', '#140e08'), ab = new T.Mesh(G.sph, M); ab.scale.set(0.32, 0.22, 0.24); ab.position.x = -0.25; g.add(ab);
+    const ce = new T.Mesh(G.sph, emat('#6a5438', '#1a120a')); ce.scale.set(0.2, 0.15, 0.17); ce.position.x = 0.12; g.add(ce);
+    [-1, 1].forEach(function (s) { for (let i = 0; i < 4; i++) { const l = new T.Mesh(G.cyl, M); l.scale.set(0.02, 0.32, 0.02); l.position.set(0.22 - i * 0.12, -0.06, s * 0.24); l.rotation.x = s * 1.0; l.rotation.z = (i - 1.5) * 0.35; g.add(l); } });
+    g.scale.setScalar(1.3);
+  } else if (look === 'ember') {
+    const c0 = new T.Mesh(G.ico, emat('#ffb040', '#ff5a10')); c0.scale.setScalar(0.28); g.add(c0); g.add(glow('#ff8a30', 2.6, 0.8)); g.userData.buzz = true;
+  } else if (look === 'bee') {
+    for (let i = 0; i < 3; i++) { const s = new T.Mesh(G.sph, emat(i === 1 ? '#1a1a1a' : '#ffc82a', i === 1 ? '#000000' : '#5a4000')); s.scale.set(0.2, 0.2, 0.2); s.position.x = -0.05 - i * 0.18; g.add(s); }
+    const hd = new T.Mesh(G.sph, emat('#1a1a1a', '#000000')); hd.scale.setScalar(0.14); hd.position.x = 0.18; g.add(hd);
+    [-1, 1].forEach(function (s) { const w = new T.Mesh(G.sph, basic('#e8f0ff', 0.45, false)); w.scale.set(0.2, 0.02, 0.1); w.position.set(-0.1, 0.22, s * 0.12); g.add(w); (g.userData.wings = g.userData.wings || []).push(w); });
+    g.userData.buzz = true; g.scale.setScalar(1.6);
+  } else if (look === 'gull') {
+    const W = emat('#f4f4f4', '#3a3a3a'), body = new T.Mesh(G.sph, W); body.scale.set(0.42, 0.18, 0.18); g.add(body);
+    const hd = new T.Mesh(G.sph, W); hd.scale.setScalar(0.13); hd.position.set(0.42, 0.08, 0); g.add(hd);
+    const bk = new T.Mesh(G.cone, emat('#ffc040', '#5a3a00')); bk.scale.set(0.04, 0.14, 0.04); bk.rotation.z = -Math.PI / 2; bk.position.set(0.58, 0.06, 0); g.add(bk);
+    [-1, 1].forEach(function (s) { const w = new T.Mesh(G.sph, emat('#a8b0b8', '#2a2a2a')); w.scale.set(0.24, 0.03, 0.5); w.position.set(0, 0.06, s * 0.34); g.add(w); (g.userData.wings = g.userData.wings || []).push(w); });
+    g.userData.buzz = true; g.scale.setScalar(1.3);
+  } else if (look === 'hopper' || look === 'cricket') {
+    const M = look === 'hopper' ? emat('#6a9a2a', '#1a2a08') : emat('#c8b8a0', '#3a3028'), body = new T.Mesh(G.sph, M); body.scale.set(0.5, 0.16, 0.14); g.add(body);
+    const hd = new T.Mesh(G.sph, M); hd.scale.set(0.15, 0.17, 0.13); hd.position.set(0.5, 0.06, 0); g.add(hd);
+    [-1, 1].forEach(function (s) { const leg = new T.Mesh(G.cyl, look === 'hopper' ? emat('#5a8a22', '#14200a') : emat('#b0a088', '#2a2018')); leg.scale.set(0.035, 0.42, 0.035); leg.position.set(-0.12, 0.12, s * 0.14); leg.rotation.z = -1.0; g.add(leg);
+      const sh = new T.Mesh(G.cyl, look === 'hopper' ? emat('#5a8a22', '#14200a') : emat('#b0a088', '#2a2018')); sh.scale.set(0.025, 0.4, 0.025); sh.position.set(-0.3, -0.08, s * 0.14); sh.rotation.z = 0.7; g.add(sh);
+      const e = new T.Mesh(G.sph, emat('#2a2a10', '#000000')); e.scale.setScalar(0.05); e.position.set(0.6, 0.12, s * 0.08); g.add(e);
+      const an = new T.Mesh(G.cyl, M); an.scale.set(0.01, look === 'cricket' ? 0.7 : 0.3, 0.01); an.position.set(0.66, 0.3, s * 0.05); an.rotation.z = -0.5; g.add(an); });
+    g.scale.setScalar(1.3);
+  } else if (look === 'beetle') {
+    const sh = new T.Mesh(G.sph, emat('#c07a3a', '#3a1a08')); sh.scale.set(0.34, 0.2, 0.26); g.add(sh);
+    const th = new T.Mesh(G.sph, emat('#2a9a6a', '#0a3020')); th.scale.set(0.16, 0.15, 0.2); th.position.x = 0.34; g.add(th);
+    const hd = new T.Mesh(G.sph, emat('#2a9a6a', '#0a3020')); hd.scale.setScalar(0.1); hd.position.set(0.5, 0, 0); g.add(hd);
+    [-1, 1].forEach(function (s) { for (let i = 0; i < 3; i++) { const l = new T.Mesh(G.cyl, emat('#1a3a2a', '#000000')); l.scale.set(0.02, 0.22, 0.02); l.position.set(0.25 - i * 0.18, -0.14, s * 0.24); l.rotation.x = s * 0.7; g.add(l); } });
+    g.scale.setScalar(1.4);
+  } else if (look === 'bubble') {
+    const b0 = new T.Mesh(G.sph, new T.MeshLambertMaterial({ color: '#ffe8c0', emissive: '#5a3a10', transparent: true, opacity: 0.5 })); b0.scale.setScalar(0.55); g.add(b0);
+    const sh = new T.Mesh(G.sph, basic('#ffffff', 0.7, false)); sh.scale.setScalar(0.12); sh.position.set(-0.2, 0.25, 0.4); g.add(sh); g.add(glow('#ffd8a0', 2.2, 0.35));
   } else if (look === 'wave') {
     const crest = new T.Mesh(new T.TorusGeometry(1.0, 0.35, 8, 20, Math.PI), new T.MeshLambertMaterial({ color: '#7fd4ff', emissive: '#10405a', transparent: true, opacity: 0.7 })); crest.rotation.z = Math.PI * 0.05; g.add(crest);
     const foam = new T.Mesh(G.sph, basic('#ffffff', 0.7, false)); foam.scale.set(0.5, 0.25, 0.4); foam.position.set(0.9, 0.2, 0); g.add(foam); g.add(glow('#bfe9ff', 2.6, 0.35));
@@ -2177,6 +2311,10 @@ function closeSlab(x1) {
   const sl = L.slab; if (!sl) return; L.slab = null;
   addSolid(sl.x0, x1, sl.yTop - 1.5, sl.yTop + 30); L.group.add(box(sl.x0, x1, sl.yTop - 1.5, sl.yTop + 16, 7.4, sl.rock));
   for (let x = sl.x0 + 1; x < x1 - 1; x += rnd(2.5, 5)) { const st = new T.Mesh(G.cone || G.oct, emat('#6a5a48', '#140e08')); st.scale.set(0.35, rnd(0.6, 1.4), 0.35); st.rotation.x = Math.PI; st.position.set(x, sl.yTop - 1.8, 2.6); L.group.add(st); }
+  /* the canyon wall above the tunnel shows its rock layers as bands */
+  const base = new T.Color(sl.rock); for (let i = 0; i < 6; i++) { const y = sl.yTop + 0.8 + i * 2.4 + rnd(-0.3, 0.3), band = new T.Mesh(G.box, new T.MeshBasicMaterial({ color: base.clone().offsetHSL(0, 0, (i % 2 ? -0.06 : 0.07)) }));
+    band.scale.set(x1 - sl.x0, rnd(0.35, 0.9), 0.05); band.position.set((sl.x0 + x1) / 2, y, 3.72); L.group.add(band); }
+  for (let x = sl.x0 + 2; x < x1 - 2; x += rnd(4, 8)) { const ck = new T.Mesh(G.box, new T.MeshBasicMaterial({ color: base.clone().offsetHSL(0, 0, -0.14) })); ck.scale.set(0.12, rnd(1.5, 4), 0.05); ck.rotation.z = rnd(-0.5, 0.5); ck.position.set(x, sl.yTop + rnd(1.5, 12), 3.74); L.group.add(ck); }
 }
 /* rare specimens that look like the real animal (the gold ring and glow still mark them as rare) */
 const RARE_LOOKS = {
@@ -2198,11 +2336,11 @@ const RARE_LOOKS = {
   }
 };
 const ORES = {
-  quartz: { name: 'Quartz', col: '#e8f4ff', em: '#3a4a5a', fact: 'Quartz (silicon dioxide) is one of the most common minerals in sandstone. It is not alive: it has no cells and does not grow by itself.' },
-  calcite: { name: 'Calcite', col: '#fff0c8', em: '#5a4a20', fact: 'Limestone is mostly calcite. Much of it was made by sea animals that built shells and skeletons out of calcium carbonate.' },
-  hematite: { name: 'Hematite', col: '#c8483a', em: '#3a0a06', fact: 'Hematite is an iron oxide. Iron oxides stain many canyon rock layers red.' },
-  pyrite: { name: 'Pyrite', col: '#ffd84a', em: '#5a4a06', fact: 'Pyrite, or "fool\'s gold," is iron sulfide. It often forms where there was little oxygen, such as deep mud on an ancient sea floor.' },
-  gypsum: { name: 'Gypsum', col: '#f4f0ff', em: '#3a3a4a', fact: 'Gypsum crystals form when salty water evaporates, a clue that the area was once a drying sea or lake.' }
+  quartz: { name: ['Quartz', 'Cuarzo'], col: '#e8f4ff', em: '#3a4a5a', fact: ['Quartz is one of the most common minerals in sandstone. It is not alive: it has no cells and does not grow by itself.', 'El cuarzo es uno de los minerales más comunes de la arenisca. No está vivo: no tiene células y no crece por sí solo.'] },
+  calcite: { name: ['Calcite', 'Calcita'], col: '#fff0c8', em: '#5a4a20', fact: ['Limestone is mostly calcite. Much of it was made by sea animals that built shells and skeletons.', 'La piedra caliza es casi toda calcita. Gran parte la produjeron animales marinos que formaban conchas y esqueletos.'] },
+  hematite: { name: ['Hematite', 'Hematita'], col: '#c8483a', em: '#3a0a06', fact: ['Hematite is an iron mineral. Iron minerals stain many canyon rock layers red.', 'La hematita es un mineral de hierro. Los minerales de hierro tiñen de rojo muchas capas de roca de los cañones.'] },
+  pyrite: { name: ['Pyrite', 'Pirita'], col: '#ffd84a', em: '#5a4a06', fact: ['Pyrite, or "fool\'s gold," often forms where there was little oxygen, such as deep mud on an ancient sea floor.', 'La pirita, o “oro de los tontos”, suele formarse donde había poco oxígeno, como en el lodo profundo del fondo de un mar antiguo.'] },
+  gypsum: { name: ['Gypsum', 'Yeso'], col: '#f4f0ff', em: '#3a3a4a', fact: ['Gypsum crystals form when salty water evaporates, a clue that the area was once a drying sea or lake.', 'Los cristales de yeso se forman cuando se evapora agua salada, una pista de que el lugar fue un mar o un lago que se secaba.'] }
 };
 function digHud() { ['hudBag', 'hudHeat'].forEach(function (id) { if (!$(id)) { const el = document.createElement('span'); el.id = id; $('hud').insertBefore(el, $('hudLevel')); } });
   const hb = $('hudBag'), hh = $('hudHeat'), heat = P.heat || 0, n = Math.round(heat * 8);
@@ -2222,11 +2360,11 @@ function fieldStep(dt) {
     if (bo.vy && P.inv <= 0 && P.x + HW > s0.x0 && P.x - HW < s0.x1 && P.y + PH > s0.y0 && P.y < s0.y0) { P.inv = 1.4; P.x = P.x < (s0.x0 + s0.x1) / 2 ? s0.x0 - HW - 0.05 : s0.x1 + HW + 0.05; P.vy = 3; toast('Bonk! A falling boulder. Dig carefully under loose rocks.', 3); hurt(true); } });
   L.ores.forEach(function (o) { if (o.got || !o.g.visible) return; o.g.rotation.y += dt * 2;
     if (Math.abs(P.x - o.x) < 0.9 && Math.abs(P.y + 0.6 - o.y) < 1.1) { if (L.bag.length >= BAG_MAX) { if (!o.full) { o.full = 1; toast('🎒 Your sample bag is full! Walk into a 🧪 sample capsule to send samples to the lab.', 4); } return; }
-      o.got = true; o.g.visible = false; L.bag.push(o.kind); popup(o.x, o.y, '+ ' + ORES[o.kind].name, '#bfe9ff'); beep(1180, 0.15, 'triangle', 'chime, mineral sample'); } });
+      o.got = true; o.g.visible = false; L.bag.push(o.kind); popup(o.x, o.y, '+ ' + gl(ORES[o.kind].name), '#bfe9ff'); beep(1180, 0.15, 'triangle', 'chime, mineral sample'); } });
   L.capsules.forEach(function (c) { if (!L.toldCaps && Math.abs(P.x - c.x) < 5 && Math.abs(P.y - c.y) < 3) { L.toldCaps = 1; toast('🧪 A sample capsule! Walk into it to send the minerals in your bag up to the lab. Your bag holds 3 samples.', 5); }
     if (!L.bag.length || Math.abs(P.x - c.x) > 1.2 || Math.abs(P.y - c.y) > 1.5) return;
-    const names = L.bag.map(function (k) { return ORES[k].name; }), gain = L.bag.length * 60; L.score += gain; popup(c.x, c.y + 3, 'Samples sent! +' + gain, '#7fd4ff'); burst(c.x, c.y + 2, '#7fd4ff'); beep(660, 0.3, 'sine', 'whoosh, samples sent');
-    toast('🧪 Lab report: ' + L.bag.map(function (k) { return ORES[k].name + ': ' + ORES[k].fact; }).join(' '), 7 + 3 * L.bag.length); L.bag = []; hud(); });
+    const names = L.bag.map(function (k) { return gl(ORES[k].name); }), gain = L.bag.length * 60; L.score += gain; popup(c.x, c.y + 3, 'Samples sent! +' + gain, '#7fd4ff'); burst(c.x, c.y + 2, '#7fd4ff'); beep(660, 0.3, 'sine', 'whoosh, samples sent');
+    toast(tx('d.report') + ' ' + L.bag.map(function (k) { return gl(ORES[k].name) + ': ' + gl(ORES[k].fact); }).join(' '), 7 + 3 * L.bag.length); L.bag = []; hud(); });
   digHud();
 }
 function digTile(x0, x1, y0, y1, color) {
@@ -2423,7 +2561,7 @@ function figHTML(f) {
   if (f.type === 'line') {
     const W = 330, H = 180, l = 52, r = 12, t = 12, bt = 40, x0 = f.xmin || 0, y0 = f.ymin || 0;
     const sx = function (x) { return l + (x - x0) / (f.xmax - x0) * (W - l - r); }, sy = function (y) { return H - bt - (y - y0) / (f.ymax - y0) * (H - t - bt); };
-    let s = '<svg class="fsvg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(f.ylabel + ' by ' + f.xlabel) + '">';
+    let s = '<svg class="fsvg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(tx('fig.line', { y: f.ylabel, x: f.xlabel })) + '">';
     f.yticks.forEach(function (v) { s += '<line x1="' + l + '" x2="' + (W - r) + '" y1="' + sy(v) + '" y2="' + sy(v) + '" stroke="currentColor" stroke-opacity=".2"/><text x="' + (l - 6) + '" y="' + (sy(v) + 4) + '" text-anchor="end" font-size="11" fill="currentColor">' + v + '</text>'; });
     f.xticks.forEach(function (v) { s += '<text x="' + sx(v) + '" y="' + (H - bt + 15) + '" text-anchor="middle" font-size="11" fill="currentColor">' + v + '</text>'; });
     s += '<line x1="' + l + '" x2="' + l + '" y1="' + t + '" y2="' + (H - bt) + '" stroke="currentColor"/><line x1="' + l + '" x2="' + (W - r) + '" y1="' + (H - bt) + '" y2="' + (H - bt) + '" stroke="currentColor"/>';
@@ -2436,7 +2574,7 @@ function figHTML(f) {
   if (f.type === 'bars') {
     const W = 330, H = 190, l = 46, r = 8, t = 14, bt = 40, v = f.values, neg = v.some(function (y) { return y < 0; }), lim = niceLim(Math.max.apply(null, v.map(Math.abs)), neg), bw = (W - l - r) / v.length;
     const sy = function (y) { return neg ? t + (lim - y) / (2 * lim) * (H - t - bt) : t + (lim - y) / lim * (H - t - bt); }, fv = function (y) { return (neg && y > 0 ? '+' : '') + y + (f.unit || (neg ? '%' : '')); };
-    let s = '<svg class="fsvg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(f.ylabel) + ' bar graph">';
+    let s = '<svg class="fsvg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(tx('fig.bars', { y: f.ylabel })) + '">';
     (neg ? [-lim, -lim / 2, 0, lim / 2, lim] : [0, lim / 2, lim]).forEach(function (y) { s += '<line x1="' + l + '" x2="' + (W - r) + '" y1="' + sy(y) + '" y2="' + sy(y) + '" stroke="currentColor" stroke-opacity="' + (y === 0 ? 0.9 : 0.2) + '"/><text x="' + (l - 6) + '" y="' + (sy(y) + 4) + '" text-anchor="end" font-size="11" fill="currentColor">' + y + '</text>'; });
     v.forEach(function (y, i) {
       const x = l + i * bw + bw * 0.2, top = Math.min(sy(y), sy(0)), h = Math.abs(sy(y) - sy(0));
@@ -2446,6 +2584,57 @@ function figHTML(f) {
     });
     s += '<text transform="translate(12 ' + ((t + H - bt) / 2) + ') rotate(-90)" text-anchor="middle" font-size="11" fill="currentColor">' + esc(f.ylabel) + '</text></svg>';
     return s;
+  }
+  /* EMBRYOS (6-3): stylized drawings of four vertebrate embryos, early and later. Early embryos all have a tail and pouches in the neck. */
+  if (f.type === 'embryos') {
+    const lb = f.labels || ['Fish', 'Chicken', 'Pig', 'Human'], rows = f.rows || ['Early', 'Later'], W = 330, H = 214, cw = 70, x0 = 50;
+    let s = '<svg class="fsvg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(f.alt || 'Drawings of early and later embryos') + '">';
+    const skin = '#ffd8a8', mark = '#e0603a';
+    /* each species gets its own size, curl and head (simplified drawings: the shared features are real, but the embryos are not identical) */
+    const EV = [[0.82, 6, 11, 11], [0.95, 2, 13, 12], [1.0, 0, 13, 14], [1.06, -3, 16, 15]];
+    const early = function (cx, cy, k) {
+      const v = EV[k], s = v[0], c = v[1], hr = v[2], sw = v[3];
+      let g = '<path d="M' + (cx + 2) + ' ' + (cy - 26 * s) + ' Q' + (cx + 26 * s + c) + ' ' + (cy - 6 * s) + ' ' + (cx + 10 * s) + ' ' + (cy + 20 * s) + ' Q' + (cx - 2) + ' ' + (cy + 34 * s) + ' ' + (cx - 14 * s - c) + ' ' + (cy + 26 * s) + '" fill="none" stroke="' + skin + '" stroke-width="' + sw + '" stroke-linecap="round"/>';
+      g += '<circle cx="' + (cx - 4) + '" cy="' + (cy - 22 * s) + '" r="' + hr + '" fill="' + skin + '"/><circle cx="' + (cx - 8) + '" cy="' + (cy - 24 * s) + '" r="2.4" fill="#3a2a2a"/>';
+      for (let i = 0; i < 3; i++) g += '<path d="M' + (cx + 1 + i * 4) + ' ' + (cy - 8 + i * 5) + ' q4 2 6 -2" fill="none" stroke="' + mark + '" stroke-width="2"/>';
+      return g + '<path d="M' + (cx - 14 * s - c) + ' ' + (cy + 26 * s) + ' q-8 -2 -10 -10" fill="none" stroke="' + skin + '" stroke-width="6" stroke-linecap="round"/>';
+    };
+    const later = function (cx, cy, k) {
+      if (k === 0) return '<ellipse cx="' + cx + '" cy="' + (cy + 2) + '" rx="26" ry="11" fill="' + skin + '"/><path d="M' + (cx + 24) + ' ' + (cy + 2) + ' l12 -10 l0 20 z" fill="' + skin + '"/><path d="M' + (cx - 4) + ' ' + (cy + 10) + ' l-6 9 l10 -3 z" fill="' + skin + '"/><circle cx="' + (cx - 17) + '" cy="' + cy + '" r="2.6" fill="#3a2a2a"/>' +
+        [0, 1, 2].map(function (i) { return '<path d="M' + (cx - 10 + i * 4) + ' ' + (cy - 5) + ' q2 5 0 10" fill="none" stroke="' + mark + '" stroke-width="2"/>'; }).join('');
+      let g = '<path d="M' + (cx + 4) + ' ' + (cy - 20) + ' Q' + (cx + 26) + ' ' + cy + ' ' + (cx + 8) + ' ' + (cy + 22) + ' Q' + (cx - 2) + ' ' + (cy + 30) + ' ' + (cx - 10) + ' ' + (cy + 24) + '" fill="none" stroke="' + skin + '" stroke-width="15" stroke-linecap="round"/>';
+      const hr = k === 3 ? 17 : 13; g += '<circle cx="' + (cx - 4) + '" cy="' + (cy - 20) + '" r="' + hr + '" fill="' + skin + '"/><circle cx="' + (cx - 9) + '" cy="' + (cy - 22) + '" r="2.6" fill="#3a2a2a"/>';
+      if (k === 1) g += '<path d="M' + (cx - 16) + ' ' + (cy - 20) + ' l-8 3 l8 3 z" fill="#e8a040"/><path d="M' + (cx + 16) + ' ' + (cy - 4) + ' q10 -2 12 6" fill="none" stroke="' + skin + '" stroke-width="5" stroke-linecap="round"/>';
+      if (k === 2) g += '<ellipse cx="' + (cx - 17) + '" cy="' + (cy - 16) + '" rx="6" ry="4" fill="#ffc0a0"/>';
+      g += '<path d="M' + (cx + 14) + ' ' + (cy - 2) + ' l9 3" stroke="' + skin + '" stroke-width="5" stroke-linecap="round"/><path d="M' + (cx + 12) + ' ' + (cy + 14) + ' l9 4" stroke="' + skin + '" stroke-width="5" stroke-linecap="round"/>';
+      return g + (k === 3 ? '' : '<path d="M' + (cx - 10) + ' ' + (cy + 24) + ' q-8 -1 -11 -8" fill="none" stroke="' + skin + '" stroke-width="5" stroke-linecap="round"/>');
+    };
+    lb.forEach(function (name, k) { const cx = x0 + 16 + k * cw; s += early(cx, 62, k) + later(cx, 160, k) + '<text x="' + (cx + 2) + '" y="' + (H - 2) + '" text-anchor="middle" font-size="11" fill="currentColor">' + esc(name) + '</text>'; });
+    s += '<text x="8" y="66" font-size="11" fill="currentColor">' + esc(rows[0]) + '</text><text x="8" y="164" font-size="11" fill="currentColor">' + esc(rows[1]) + '</text>';
+    s += '<text x="' + (W - 4) + '" y="11" text-anchor="end" font-size="9.5" fill="currentColor" fill-opacity=".75">' + esc(f.note || 'Simplified drawings, not to scale') + '</text>';
+    return s + '</svg>';
+  }
+  /* LIMBS (6-2): the same three groups of bones in four forelimbs, colored to match: upper arm, forearm, wrist and fingers. */
+  if (f.type === 'limbs') {
+    const lb = f.labels || ['Human arm', 'Whale flipper', 'Bat wing', 'Bird wing'], key = f.key || ['Upper arm', 'Forearm', 'Wrist and fingers'], W = 330, H = 200, cw = 80;
+    const C = ['#ffd166', '#7fd4ff', '#ff8fb1'];
+    let s = '<svg class="fsvg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(f.alt || 'Bones of four forelimbs') + '">';
+    const bone = function (x1, y1, x2, y2, c, w) { return '<line x1="' + x1 + '" y1="' + y1 + '" x2="' + x2 + '" y2="' + y2 + '" stroke="' + c + '" stroke-width="' + (w || 5) + '" stroke-linecap="round"/>'; };
+    const limb = function (cx, k) {
+      const top = 22; let g = '';
+      if (k === 0) { g += bone(cx, top, cx, top + 50, C[0], 7) + bone(cx - 4, top + 56, cx - 6, top + 104, C[1]) + bone(cx + 4, top + 56, cx + 6, top + 104, C[1]);
+        for (let i = 0; i < 5; i++) g += bone(cx - 8 + i * 4, top + 110, cx - 14 + i * 7, top + 136, C[2], 3); }
+      if (k === 1) { g += bone(cx, top + 20, cx, top + 44, C[0], 10) + bone(cx - 5, top + 50, cx - 6, top + 74, C[1], 7) + bone(cx + 5, top + 50, cx + 6, top + 74, C[1], 7);
+        for (let i = 0; i < 5; i++) g += bone(cx - 10 + i * 5, top + 80, cx - 18 + i * 9, top + 140 - Math.abs(i - 2) * 10, C[2], 4); }
+      if (k === 2) { g += bone(cx, top, cx, top + 34, C[0], 5) + bone(cx, top + 38, cx + 2, top + 86, C[1], 4) + bone(cx + 4, top + 40, cx + 6, top + 72, C[1], 1.6);
+        for (let i = 0; i < 5; i++) g += bone(cx + 2, top + 90, cx - 30 + i * 15, top + 150 - (i === 0 ? 50 : 0), C[2], 2.5); }
+      if (k === 3) { g += bone(cx, top, cx, top + 44, C[0], 6) + bone(cx - 3, top + 48, cx - 4, top + 100, C[1], 4) + bone(cx + 3, top + 48, cx + 4, top + 100, C[1], 4);
+        g += bone(cx, top + 104, cx + 2, top + 140, C[2], 5) + bone(cx + 4, top + 106, cx + 12, top + 124, C[2], 3); }
+      return g;
+    };
+    lb.forEach(function (name, k) { const cx = 44 + k * cw; s += limb(cx, k) + '<text x="' + cx + '" y="' + (H - 22) + '" text-anchor="middle" font-size="11" fill="currentColor">' + esc(name) + '</text>'; });
+    key.forEach(function (nm, i) { s += '<rect x="' + (10 + i * 108) + '" y="' + (H - 13) + '" width="10" height="10" fill="' + C[i] + '"/><text x="' + (24 + i * 108) + '" y="' + (H - 4) + '" font-size="10.5" fill="currentColor">' + esc(nm) + '</text>'; });
+    return s + '</svg>';
   }
   if (f.type === 'membrane') {
     const W = 330, H = 120; let s = '<svg class="fsvg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + f.outside + ' molecules outside the cell and ' + f.inside + ' inside">';
@@ -2657,7 +2846,7 @@ function step(dt) {
       else if (h.look === 'atolla') { const r = h.m.userData.ring, f = Math.sin(h.t * 2.2) > 0.6; if (r) r.material.opacity = f ? 1 : 0.25; const pulse = 1 + Math.sin(h.t * 2) * 0.1; h.m.scale.set(pulse, 2 - pulse, pulse); }
       else if (h.look === 'shark') { h.m.rotation.y = h.x >= px ? 0 : Math.PI; h.m.rotation.z = Math.sin(h.t * 3) * 0.05; }
       else if (h.m.userData.buzz) { h.m.rotation.z = Math.sin(h.t * 30) * 0.08; if (h.m.userData.wings) h.m.userData.wings.forEach(function (w, k) { w.rotation.z = (k ? -1 : 1) * Math.sin(h.t * 18) * 0.6; }); }
-      else if (h.look === 'snake') { h.m.rotation.y = Math.cos(h.t * h.sp + h.ph) >= 0 ? 0 : Math.PI; if (h.m.userData.rattle) h.m.userData.rattle.rotation.x = Math.sin(h.t * 40) * 0.4; }
+      else if (h.look === 'snake' || h.look === 'watersnake' || h.look === 'bear' || h.look === 'beetle' || h.look === 'spider' || h.look === 'scorpion') { h.m.rotation.y = Math.cos(h.t * h.sp + h.ph) >= 0 ? 0 : Math.PI; if (h.m.userData.rattle) h.m.userData.rattle.rotation.x = Math.sin(h.t * 40) * 0.4; }
       else if (h.look === 'jelly') { const pulse = 1 + Math.sin(h.t * 3) * 0.12; h.m.scale.set(pulse, 2 - pulse, pulse); }
       else h.m.rotation.z += dt * 2.5; }
     const dx = P.x - h.x, dy = P.y + PH * 0.52 - h.y;
@@ -2881,6 +3070,7 @@ let M = null;
 function enterMini(p) {
   if (p.game === 'golf') return enterGolf(p);
   if (p.game === 'dna') return enterDNA(p);
+  if (p.game === 'sim') return enterSim(p);
   closeQ(); mode = 'mini'; Object.keys(keys).forEach(function (k) { keys[k] = false; });
   M = { p: p, grp: new T.Group(), germs: [], shots: [], fx: [], t: 0, hearts: 3, score: 0, tagged: 0, wrong: 0, sel: 0, cx: 0, cy: -0.05, spawn: 1.2, dur: 50, cool: 0, k: {}, intro: true, over: false, boost: false,
     bg: scene.background, fog: scene.fog };
@@ -2962,36 +3152,112 @@ function miniEnd() {
 function exitMini() {
   scene.remove(M.grp); disposeGroup(M.grp); scene.background = M.bg; scene.fog = M.fog; scene.add(L.group);
   ['dnaRule', 'dnaWheel'].forEach(function (id) { const el = $(id); if (el) el.remove(); });
-  L.score += M.score; (M.kind === 'golf' ? ['Enzyme', 'Active site', 'Substrate', 'Denature'] : M.kind === 'dna' ? ['Replication', 'Transcription', 'Translation', 'Codon'] : ['Antibody', 'Antigen']).forEach(function (w) { S.words[w] = 1; }); save(); $('miniAim').hidden = false; $('miniPow').hidden = true;
+  L.score += M.score; (M.kind === 'sim' ? ['Natural selection', 'Generation'] : M.kind === 'golf' ? ['Enzyme', 'Chemical reaction', 'Molecule'] : M.kind === 'dna' ? ['Replication', 'Transcription', 'Translation', 'Codon'] : ['Antibody', 'Antigen']).forEach(function (w) { S.words[w] = 1; }); save(); $('miniAim').hidden = false; $('miniPow').hidden = true;
   $('mini').hidden = true; $('hud').hidden = false; $('touch').hidden = !touchMode; mode = 'play'; P.x = M.p.x + 2.2; P.y = M.p.y; P.vx = P.vy = 0; P.inv = 1.5;
   cam.position.set(P.x + 2.5, P.y + 5.2, camZ); toast(tx('id.home', { s: M.score }), 4); hud(); M = null; Object.keys(keys).forEach(function (k) { keys[k] = false; });
 }
 function miniKey(e, down) {
-  if (!M) return; if (M.kind === 'golf') return golfKey(e, down); if (M.kind === 'dna') return dnaKey(e, down); const k = e.key;
+  if (!M) return; if (M.kind === 'golf') return golfKey(e, down); if (M.kind === 'dna') return dnaKey(e, down); if (M.kind === 'sim') return simKey(e, down); const k = e.key;
   if (down && M.intro && (k === 'Enter' || k === ' ')) { e.preventDefault(); miniStart(); return; }
   if (down && M.over && (k === 'Enter' || k === ' ' || k === 'e' || k === 'E')) { e.preventDefault(); exitMini(); return; }
   if (/^[1-4]$/.test(k) && down) { miniSel(+k - 1); return; }
   const map = { ArrowLeft: 'left', a: 'left', A: 'left', ArrowRight: 'right', d: 'right', D: 'right', ArrowUp: 'up', w: 'up', W: 'up', ArrowDown: 'down', s: 'down', S: 'down', ' ': 'fire', Enter: 'fire' };
   if (map[k]) { M.k[map[k]] = down; e.preventDefault(); }
 }
-function miniStart() { M.intro = false; miniPanel(''); beep(600, 0.2, 'triangle', 'go'); if (M.kind === 'golf') golfHole(0); else if (M.kind === 'dna') dnaCard(1); else miniHud(); }
+function miniStart() { M.intro = false; miniPanel(''); beep(600, 0.2, 'triangle', 'go'); if (M.kind === 'golf') golfHole(0); else if (M.kind === 'dna') dnaCard(1); else if (M.kind === 'sim') simStart(); else miniHud(); }
 /* ---------- PORTAL MINI-GAME: ENZYME MINI GOLF ----------
    Putt the substrate (the ball) into the enzyme whose ACTIVE SITE has the same shape. Wrong shapes, and
    enzymes whose shape was changed by heat or the wrong pH (denatured), will not hold the substrate. */
 const GOLFSHAPE = { square: { seg: 4, sym: '■' }, triangle: { seg: 3, sym: '▲' }, circle: { seg: 24, sym: '●' } };
+/* DIGESTION MINI GOLF (middle school, 3-3): each food molecule fits only its own digestive enzyme. [English, Spanish] pairs. */
+function gl(v) { return Array.isArray(v) ? (BQ.lang() === 'es' ? v[1] : v[0]) : v; }
 const HOLES = [
-  { sub: { name: 'Starch', shape: 'square', col: '#ffd166' }, env: 'Hole 1 · In the mouth · 37 °C · pH 7', start: [-10, 0],
-    cups: [{ x: 9, z: -4, name: 'Amylase', shape: 'square', ok: true }, { x: 9, z: 4, name: 'Protease', shape: 'triangle', why: 'Protease breaks down proteins. Its active site does not fit starch.' },
-      { x: 3, z: 0, name: 'Lipase', shape: 'circle', why: 'Lipase breaks down fats. Its active site does not fit starch.' }],
-    bumpers: [[-3, -3, 1], [-3, 3, 1], [3, -5.5, 0.8]], fact: 'Amylase (in saliva) breaks starch into sugars. Each enzyme fits only its own substrate, like a key in a lock.' },
-  { sub: { name: 'Protein', shape: 'triangle', col: '#ff8fb1' }, env: 'Hole 2 · In the stomach · 37 °C · pH 2 (very acidic)', start: [-10, 3],
-    cups: [{ x: 9, z: 3, name: 'Trypsin (works best at pH 8)', shape: 'triangle', denat: true, why: 'Trypsin works best at pH 8. In strong stomach acid its active site changes shape (it is denatured), so the protein no longer fits.' },
-      { x: 8, z: -4, name: 'Pepsin (works best at pH 2)', shape: 'triangle', ok: true }, { x: 0, z: 5, name: 'Amylase', shape: 'square', why: 'Amylase breaks down starch. Its active site does not fit a protein.' }],
-    bumpers: [[-2, 0, 1.2], [3, -2, 0.9], [4, 3.5, 0.8]], fact: 'Pepsin works in the acid of the stomach. pH changes an enzyme\'s shape, so each enzyme works best at its own pH.' },
-  { sub: { name: 'Fat', shape: 'circle', col: '#7be0ad' }, env: 'Hole 3 · In the small intestine · 37 °C · pH 8', start: [-10, -3],
-    cups: [{ x: 2, z: -5, name: 'Lipase (heated to 70 °C)', shape: 'circle', denat: true, why: 'This lipase was heated to 70 °C. High heat denatured it: its active site lost its shape.' },
-      { x: 9, z: 1, name: 'Lipase', shape: 'circle', ok: true }, { x: 4, z: 5, name: 'Pepsin', shape: 'triangle', why: 'Pepsin breaks down proteins, and it works in acid, not here. Its active site does not fit fat.' }],
-    bumpers: [[-4, -1, 1], [0, 1.5, 1], [5, -1.5, 0.9]], fact: 'Lipase breaks fats into fatty acids and glycerol. Enzymes work best near body temperature; too much heat denatures them.' }];
+  { sub: { name: ['Starch', 'Almidón'], shape: 'square', col: '#ffd166' }, env: ['Hole 1 · In the mouth', 'Hoyo 1 · En la boca'], start: [-10, 0],
+    cups: [{ x: 9, z: -4, name: ['Starch enzyme (in saliva)', 'Enzima del almidón (en la saliva)'], shape: 'square', ok: true },
+      { x: 9, z: 4, name: ['Protein enzyme', 'Enzima de las proteínas'], shape: 'triangle', why: ['This enzyme breaks down proteins. Its shape does not fit starch.', 'Esta enzima rompe las proteínas. Su forma no encaja con el almidón.'] },
+      { x: 3, z: 0, name: ['Fat enzyme', 'Enzima de las grasas'], shape: 'circle', why: ['This enzyme breaks down fats. Its shape does not fit starch.', 'Esta enzima rompe las grasas. Su forma no encaja con el almidón.'] }],
+    bumpers: [[-3, -3, 1], [-3, 3, 1], [3, -5.5, 0.8]],
+    fact: ['An enzyme in saliva starts breaking starch into sugars. The starch molecule is rearranged into smaller molecules: a chemical reaction.', 'Una enzima de la saliva empieza a romper el almidón en azúcares. La molécula de almidón se reorganiza en moléculas más pequeñas: una reacción química.'] },
+  { sub: { name: ['Protein', 'Proteína'], shape: 'triangle', col: '#ff8fb1' }, env: ['Hole 2 · In the stomach', 'Hoyo 2 · En el estómago'], start: [-10, 3],
+    cups: [{ x: 8, z: -4, name: ['Protein enzyme (in stomach juice)', 'Enzima de las proteínas (en el jugo del estómago)'], shape: 'triangle', ok: true },
+      { x: 9, z: 3, name: ['Starch enzyme', 'Enzima del almidón'], shape: 'square', why: ['This enzyme breaks down starch. Its shape does not fit a protein.', 'Esta enzima rompe el almidón. Su forma no encaja con una proteína.'] },
+      { x: 0, z: 5, name: ['Fat enzyme', 'Enzima de las grasas'], shape: 'circle', why: ['This enzyme breaks down fats. Its shape does not fit a protein.', 'Esta enzima rompe las grasas. Su forma no encaja con una proteína.'] }],
+    bumpers: [[-2, 0, 1.2], [3, -2, 0.9], [4, 3.5, 0.8]],
+    fact: ['Stomach juice starts breaking proteins into amino acids. Later, your cells join amino acids into new proteins for growth.', 'El jugo del estómago empieza a romper las proteínas en aminoácidos. Después, tus células unen los aminoácidos en proteínas nuevas para crecer.'] },
+  { sub: { name: ['Fat', 'Grasa'], shape: 'circle', col: '#7be0ad' }, env: ['Hole 3 · In the small intestine', 'Hoyo 3 · En el intestino delgado'], start: [-10, -3],
+    cups: [{ x: 9, z: 1, name: ['Fat enzyme', 'Enzima de las grasas'], shape: 'circle', ok: true },
+      { x: 2, z: -5, name: ['Protein enzyme', 'Enzima de las proteínas'], shape: 'triangle', why: ['This enzyme breaks down proteins. Its shape does not fit fat.', 'Esta enzima rompe las proteínas. Su forma no encaja con la grasa.'] },
+      { x: 4, z: 5, name: ['Starch enzyme', 'Enzima del almidón'], shape: 'square', why: ['This enzyme breaks down starch. Its shape does not fit fat.', 'Esta enzima rompe el almidón. Su forma no encaja con la grasa.'] }],
+    bumpers: [[-4, -1, 1], [0, 1.5, 1], [5, -1.5, 0.9]],
+    fact: ['In the small intestine, fats are broken into fatty acids. Now these small molecules can be absorbed into the blood.', 'En el intestino delgado, las grasas se rompen en ácidos grasos. Ahora estas moléculas pequeñas pueden absorberse hacia la sangre.'] }];
+/* SELECTION SIMULATOR (middle school 6-5): peppered moths rest on tree bark. Birds eat the moths they can see best;
+   survivors pass their color to their offspring. The graph shows the share of dark moths, generation by generation. */
+function enterSim(p) {
+  closeQ(); mode = 'mini'; Object.keys(keys).forEach(function (k) { keys[k] = false; });
+  M = { kind: 'sim', p: p, grp: new T.Group(), gen: 0, dark: 0.05, bark: 'light', hist: [[0, 5]], marks: [[0, 'light']], phase: 0, need: 0, score: 0, intro: true, over: false, k: {}, t: 0, moths: [], bg: scene.background, fog: scene.fog };
+  scene.remove(L.group); scene.add(M.grp); scene.background = new T.Color('#16241c'); scene.fog = null;
+  M.trunk = new T.Mesh(new T.CylinderGeometry(2.4, 2.8, 16, 20), new T.MeshBasicMaterial({ color: '#c8c4b0' })); M.trunk.position.set(-7.5, 0, -3); M.grp.add(M.trunk);
+  const M2 = new T.Mesh(new T.CylinderGeometry(1.8, 2.1, 16, 20), new T.MeshBasicMaterial({ color: '#b8b4a0' })); M2.position.set(7.8, 0, -5); M.grp.add(M2); M.trunk2 = M2;
+  for (let i = 0; i < 24; i++) { const side = i % 2, w = new T.Mesh(G.sph, new T.MeshBasicMaterial({ color: '#e8e4d0' })); w.scale.set(0.5, 0.32, 0.05);
+    w.position.set((side ? 7.8 : -7.5) + (((i * 37) % 13) / 13 - 0.5) * 2.4, -6 + ((i * 53) % 24) / 24 * 12, side ? -2.9 : -0.5); M.grp.add(w); M.moths.push(w); }
+  $('hud').hidden = true; $('touch').hidden = true; $('toast').hidden = true; $('note').hidden = true; $('mini').hidden = false; $('miniAim').hidden = true; $('miniPow').hidden = true; $('miniPick').innerHTML = '';
+  cam.position.set(0, 0, 12); cam.lookAt(0, 0, 0); simColors();
+  miniPanel(tx('s.intro') + '<button type="button" id="miniGo" class="primary">' + esc(tx('id.start')) + '</button>');
+  setTimeout(function () { const b = $('miniGo'); if (b) b.focus(); }, 50);
+}
+function simStart() { M.phase = 1; M.need = 4; simDraw(); }
+function simColors() { const n = M.moths.length, nd = Math.round(M.dark * n);
+  M.moths.forEach(function (w, i) { w.material.color.set(i % n < nd ? '#2a2826' : '#e8e4d0'); });
+  const bc = M.bark === 'dark' ? '#3a3632' : '#c8c4b0'; M.trunk.material.color.set(bc); M.trunk2.material.color.set(M.bark === 'dark' ? '#2e2a26' : '#b8b4a0'); }
+function simGen() {
+  if (!M || M.over || M.intro) return;
+  const sd = M.bark === 'dark' ? 0.8 : 0.4, sl = M.bark === 'dark' ? 0.4 : 0.8, d = M.dark;
+  M.dark = Math.max(0.01, d * sd / (d * sd + (1 - d) * sl)); M.gen++; /* a few dark moths always appear (new mutations and moths flying in) */ M.hist.push([M.gen, Math.round(M.dark * 100)]); M.score += 50;
+  beep(440 + M.dark * 400, 0.08, 'triangle', M.gen === 1 ? 'chirp, a new generation' : null); simDraw();
+}
+function simAct(a) {
+  if (!M || M.kind !== 'sim') return;
+  if (a === 'gen') simGen();
+  else if (a === 'soot' && M.phase === 1 && M.gen >= M.need) { M.bark = 'dark'; M.marks.push([M.gen, 'dark']); M.phase = 2; M.need = M.gen + 10; beep(220, 0.3, 'sawtooth', 'rumble, factories fill the air with soot'); simDraw(); }
+  else if (a === 'clean' && M.phase === 2 && M.gen >= M.need) { M.bark = 'light'; M.marks.push([M.gen, 'light']); M.phase = 3; M.need = M.gen + 10; beep(660, 0.3, 'triangle', 'chime, the air is clean again'); simDraw(); }
+  else if (a === 'end' && M.phase === 3 && M.gen >= M.need) simEnd();
+}
+function simChart() {
+  const W = 320, H = 150, l = 40, r = 10, tp = 10, bt = 30, gmax = Math.max(25, M.gen + 1);
+  const sx = function (g) { return l + g / gmax * (W - l - r); }, sy = function (pc) { return tp + (100 - pc) / 100 * (H - tp - bt); };
+  let s = '<svg class="fsvg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(tx('s.ylab') + ' / ' + tx('s.xlab')) + '">';
+  M.marks.forEach(function (mk, i) { const g0 = mk[0], g1 = i + 1 < M.marks.length ? M.marks[i + 1][0] : gmax;
+    s += '<rect x="' + sx(g0) + '" y="' + tp + '" width="' + (sx(g1) - sx(g0)) + '" height="' + (H - tp - bt) + '" fill="' + (mk[1] === 'dark' ? '#3a3632' : '#c8c4b0') + '" fill-opacity="' + (mk[1] === 'dark' ? 0.55 : 0.22) + '"/>'; });
+  [0, 50, 100].forEach(function (v) { s += '<line x1="' + l + '" x2="' + (W - r) + '" y1="' + sy(v) + '" y2="' + sy(v) + '" stroke="currentColor" stroke-opacity=".25"/><text x="' + (l - 5) + '" y="' + (sy(v) + 4) + '" text-anchor="end" font-size="10" fill="currentColor">' + v + '%</text>'; });
+  for (let g = 0; g <= gmax; g += 5) s += '<text x="' + sx(g) + '" y="' + (H - bt + 13) + '" text-anchor="middle" font-size="10" fill="currentColor">' + g + '</text>';
+  s += '<polyline fill="none" stroke="#ffd166" stroke-width="3" points="' + M.hist.map(function (h) { return sx(h[0]) + ',' + sy(h[1]); }).join(' ') + '"/>';
+  M.hist.forEach(function (h) { s += '<circle cx="' + sx(h[0]) + '" cy="' + sy(h[1]) + '" r="3" fill="#ffd166"/>'; });
+  s += '<text x="' + ((l + W - r) / 2) + '" y="' + (H - 4) + '" text-anchor="middle" font-size="11" fill="currentColor">' + esc(tx('s.xlab')) + '</text>';
+  s += '<text transform="translate(11 ' + ((tp + H - bt) / 2) + ') rotate(-90)" text-anchor="middle" font-size="11" fill="currentColor">' + esc(tx('s.ylab')) + '</text></svg>';
+  return s;
+}
+function simDraw() {
+  simColors();
+  const pct = Math.round(M.dark * 100), ph = M.phase, done = M.gen >= M.need, left = M.need - M.gen;
+  const task = tx('s.t' + ph + (done ? 'done' : ''), { n: left });
+  let btns = '<button type="button" data-sim="gen" class="primary">' + esc(tx('s.next')) + '</button>';
+  if (ph === 1 && done) btns += '<button type="button" data-sim="soot">' + esc(tx('s.soot')) + '</button>';
+  if (ph === 2 && done) btns += '<button type="button" data-sim="clean">' + esc(tx('s.clean')) + '</button>';
+  if (ph === 3 && done) btns += '<button type="button" data-sim="end" class="primary">' + esc(tx('s.finish')) + '</button>';
+  miniPanel('<h2>🦋 ' + esc(tx('s.title')) + '</h2><p class="dim">' + esc(tx('s.status', { g: M.gen, b: tx(M.bark === 'dark' ? 's.dark' : 's.light'), p: pct })) + '</p>' + simChart() +
+    '<p>' + esc(task) + '</p><div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">' + btns + '</div>');
+  $('miniTop').textContent = tx('s.hud', { g: M.gen, p: pct, s: M.score });
+}
+function simEnd() { M.over = true; M.score += 300; beep(784, 0.3, 'triangle', 'fanfare, simulation complete');
+  miniPanel(tx('s.end', { s: M.score }) + '<button type="button" id="miniBack" class="primary">' + esc(tx('id.back')) + '</button>'); $('miniTop').textContent = tx('s.hud', { g: M.gen, p: Math.round(M.dark * 100), s: M.score });
+  setTimeout(function () { const b = $('miniBack'); if (b) b.focus(); }, 50); }
+function simStep(dt) { M.t += dt; cam.position.set(Math.sin(M.t * 0.2) * 0.6, 0, 12); cam.lookAt(0, 0, 0); M.moths.forEach(function (w, i) { w.rotation.z = Math.sin(M.t * 2 + i) * 0.08; }); }
+function simKey(e, down) {
+  const k = e.key; if (!down) return;
+  if (M.intro && (k === 'Enter' || k === ' ')) { e.preventDefault(); miniStart(); return; }
+  if (M.over && (k === 'Enter' || k === ' ' || k === 'e' || k === 'E')) { e.preventDefault(); exitMini(); return; }
+  if (k === 'n' || k === 'N') { e.preventDefault(); simGen(); }
+}
 function enterGolf(p) {
   closeQ(); mode = 'mini'; Object.keys(keys).forEach(function (k) { keys[k] = false; });
   M = { kind: 'golf', p: p, grp: new T.Group(), hi: -1, strokes: 0, score: 0, k: {}, intro: true, over: false, aim: 0, pow: 0, charging: false, ball: null, cups: [], bumpers: [], t: 0, bg: scene.background, fog: scene.fog };
@@ -3001,11 +3267,7 @@ function enterGolf(p) {
   for (let i = 0; i < 40; i++) { const st = glow('#9fd8ff', 1 + Math.random() * 2, 0.4); st.position.set((Math.random() - 0.5) * 80, 4 + Math.random() * 20, -20 - Math.random() * 30); M.grp.add(st); }
   M.aimLine = new T.Mesh(G.box, basic('#ffffff', 0.85)); M.grp.add(M.aimLine);
   $('hud').hidden = true; $('touch').hidden = true; $('toast').hidden = true; $('note').hidden = true; $('mini').hidden = false; $('miniPick').innerHTML = ''; $('miniAim').hidden = true; $('miniPow').hidden = false;
-  miniPanel('<h2>⛳ Enzyme Mini Golf</h2><p><b>Enzymes</b> are proteins that speed up reactions. Each enzyme has an <b>active site</b>: a pocket with a special shape.</p>' +
-    '<p>Your ball is the <b>substrate</b>. Putt it into the enzyme whose active site has the <b>same shape</b>. A wrong shape will not hold it.</p>' +
-    '<p>Careful: <b>heat or the wrong pH</b> can change an enzyme\'s shape. That is called being <b>denatured</b>, and a denatured enzyme stops working.</p>' +
-    '<p class="dim">Aim: move the mouse (or left and right arrows). Putt: hold the mouse button (or space) to charge, then let go. 3 holes. Fewer putts = more points.</p>' +
-    '<button type="button" id="miniGo" class="primary">Start</button>');
+  miniPanel(tx('g.intro') + '<button type="button" id="miniGo" class="primary">' + esc(tx('id.start')) + '</button>');
   golfCam(); setTimeout(function () { const b = $('miniGo'); if (b) b.focus(); }, 50);
 }
 function golfCam() { const w = cam.aspect < 1.5 ? 1.25 : 1; cam.position.set(0, 20 * w, 15 * w); cam.lookAt(0, 0, 0.3); }
@@ -3020,16 +3282,16 @@ function golfHole(i) {
     const site = new T.Mesh(new T.CylinderGeometry(0.62, 0.62, 0.06, sh.seg), basic(c.denat ? '#ff6b6b' : '#ffffff', 0.9)); site.position.y = 0.05; site.rotation.y = c.shape === 'square' ? Math.PI / 4 : 0;
     if (c.denat) { site.scale.set(1.35, 1, 0.55); site.rotation.y = 0.7; }
     g.add(site); g.add(glow(c.denat ? '#ff6b6b' : '#9fe0ff', 3.2, 0.35));
-    const lb = label((c.denat ? '🔥 ' : '') + c.name + ' ' + sh.sym, 4.2, { bd: c.denat ? '#ff6b6b' : '#9fe0ff' }); lb.position.set(0, 2.3, -0.6); g.add(lb);
+    const lb = label((c.denat ? '🔥 ' : '') + gl(c.name) + ' ' + sh.sym, 4.2, { bd: c.denat ? '#ff6b6b' : '#9fe0ff' }); lb.position.set(0, 2.3, -0.6); g.add(lb);
     g.position.set(c.x, 0, c.z); M.grp.add(g); M.cups.push(Object.assign({ g: g, site: site, flash: 0 }, c));
   });
   const S2 = H.sub, sh = GOLFSHAPE[S2.shape], m = new T.Group(), body = new T.Mesh(new T.CylinderGeometry(0.42, 0.42, 0.5, sh.seg), emat(S2.col, '#444444'));
   body.position.y = 0.25; if (S2.shape === 'square') body.rotation.y = Math.PI / 4; m.add(body); m.add(glow(S2.col, 2, 0.5));
-  const bl = label(S2.name + ' ' + sh.sym, 2.6, { bd: S2.col }); bl.position.y = 1.4; m.add(bl);
+  const bl = label(gl(S2.name) + ' ' + sh.sym, 2.6, { bd: S2.col }); bl.position.y = 1.4; m.add(bl);
   M.grp.add(m); M.ball = { m: m, x: H.start[0], z: H.start[1], vx: 0, vz: 0, sink: 0 }; m.position.set(M.ball.x, 0, M.ball.z);
-  M.aim = Math.atan2(-(H.cups.find(function (c) { return c.ok; }).z - H.start[1]), 1) * 0; golfMsg(H.env + '. Your substrate: ' + S2.name + ' ' + sh.sym + '. Find the enzyme with the matching active site.', '#9fe0ff', 5); golfHud();
+  M.aim = Math.atan2(-(H.cups.find(function (c) { return c.ok; }).z - H.start[1]), 1) * 0; golfMsg(tx('g.start', { e: gl(H.env), f: gl(S2.name) + ' ' + sh.sym }), '#9fe0ff', 5); golfHud();
 }
-function golfHud() { $('miniTop').textContent = 'Hole ' + (M.hi + 1) + ' of ' + HOLES.length + '   Putts: ' + M.strokes + '   Score: ' + M.score; $('miniPowFill').style.width = Math.round(M.pow * 100) + '%'; }
+function golfHud() { $('miniTop').textContent = tx('g.hud', { h: M.hi + 1, n: HOLES.length, p: M.strokes, s: M.score }); $('miniPowFill').style.width = Math.round(M.pow * 100) + '%'; }
 function golfMsg(t, col, secs) { miniFlash(t, col, secs); }
 function golfStill() { const b = M.ball; return b && Math.hypot(b.vx, b.vz) < 0.12 && !b.sink; }
 function golfShoot() {
@@ -3047,7 +3309,7 @@ function golfStep(dt) {
   if (still) { const len = 1.5 + M.pow * 5; M.aimLine.scale.set(len, 0.06, 0.12); M.aimLine.position.set(b.x + Math.cos(M.aim) * (len / 2 + 0.6), 0.3, b.z + Math.sin(M.aim) * (len / 2 + 0.6)); M.aimLine.rotation.y = -M.aim; }
   if (b.sink) {
     b.sink += dt; const c = b.cup; b.x += (c.x - b.x) * Math.min(1, dt * 8); b.z += (c.z - b.z) * Math.min(1, dt * 8); b.m.position.set(b.x, -b.sink * 0.6, b.z); b.m.scale.setScalar(Math.max(0.05, 1 - b.sink));
-    if (b.sink > 1.1) { if (M.strokes === 1) award('golf'); const pts = Math.max(100, 400 - 75 * (M.strokes - 1)); M.score += pts; golfMsg('✓ It fits! ' + HOLES[M.hi].fact + ' (+' + pts + ')', '#7be0ad', 6); if (M.hi + 1 < HOLES.length) { const fact = HOLES[M.hi].fact; golfHole(M.hi + 1); golfMsg('✓ It fits! ' + fact + ' Next: ' + HOLES[M.hi].env + '.', '#7be0ad', 9); } else golfEnd(); }
+    if (b.sink > 1.1) { if (M.strokes === 1) award('golf'); const pts = Math.max(100, 400 - 75 * (M.strokes - 1)); M.score += pts; golfMsg(tx('g.fit', { f: gl(HOLES[M.hi].fact), p: pts }), '#7be0ad', 6); if (M.hi + 1 < HOLES.length) { const fact = gl(HOLES[M.hi].fact); golfHole(M.hi + 1); golfMsg(tx('g.next', { f: fact, e: gl(HOLES[M.hi].env) }), '#7be0ad', 9); } else golfEnd(); }
     return;
   }
   /* rolling, friction, walls, bumpers */
@@ -3063,7 +3325,7 @@ function golfStep(dt) {
       if (d < 0.8 && v < 9) {
         if (c.ok) { b.sink = 0.01; b.cup = c; b.vx = b.vz = 0; beep(880, 0.3, 'sine', 'plink, substrate fits the active site'); burst2(c); return; }
         if (!c.bounced || M.t - c.bounced > 0.6) { c.bounced = M.t; const nx = d > 0.01 ? dx / d : -1, nz = d > 0.01 ? dz / d : 0; b.vx = nx * 5; b.vz = nz * 5; b.x = c.x + nx * 0.9; b.z = c.z + nz * 0.9; c.flash = 0.8;
-          golfMsg('✗ Rolled right out! ' + (c.denat ? c.why : (c.why || 'The shapes do not match.')), '#ffb09c', 5); beep(200, 0.25, 'sawtooth', 'boing, does not fit'); M.wrongs = (M.wrongs || 0) + 1; }
+          golfMsg(tx('g.out', { w: c.why ? gl(c.why) : tx('g.nomatch') }), '#ffb09c', 5); beep(200, 0.25, 'sawtooth', 'boing, does not fit'); M.wrongs = (M.wrongs || 0) + 1; }
       }
     }
   }
@@ -3073,11 +3335,7 @@ function golfStep(dt) {
 function burst2(c) { const g = glow('#7be0ad', 5, 0.9); g.position.set(c.x, 0.6, c.z); M.grp.add(g); setTimeout(function () { if (M) M.grp.remove(g); }, 700); }
 function golfEnd() {
   M.over = true; M.aimLine.visible = false;
-  miniPanel('<h2>⛳ Course complete!</h2><p>Score: <b>' + M.score + '</b></p>' +
-    '<p><b>What you showed:</b> an enzyme only works on the substrate that fits its <b>active site</b>. Amylase fits starch, pepsin and trypsin fit proteins, lipase fits fats.</p>' +
-    '<p>An enzyme works best at its own <b>temperature and pH</b>. Too much heat, or the wrong pH, changes the active site\'s shape. The enzyme is <b>denatured</b> and stops working.</p>' +
-    '<p class="dim">Enzymes are catalysts: they speed up reactions by lowering the energy needed to start them, and they are not used up.</p>' +
-    '<button type="button" id="miniBack" class="primary">Return through the portal</button>');
+  miniPanel(tx('g.end', { s: M.score }) + '<button type="button" id="miniBack" class="primary">' + esc(tx('id.back')) + '</button>');
   setTimeout(function () { const b = $('miniBack'); if (b) b.focus(); }, 50);
 }
 function golfKey(e, down) {
@@ -3737,7 +3995,7 @@ function tick(t) {
   if (mode === 'intro' && BQ.intro) BQ.intro.step(dt);
   else if (mode === 'cozy' && BQ.cozy) BQ.cozy.step(dt);
   else if (mode === 'dome' && BQ.dome) BQ.dome.step(dt);
-  else if (mode === 'mini' && M) { if (M.kind === 'golf') golfStep(dt); else if (M.kind === 'dna') dnaStep(dt); else miniStep(dt); }
+  else if (mode === 'mini' && M) { if (M.kind === 'golf') golfStep(dt); else if (M.kind === 'dna') dnaStep(dt); else if (M.kind === 'sim') simStep(dt); else miniStep(dt); }
   else if (mode === 'play' && !paused) {
     step(dt);
     if (toastT > 0) { toastT -= dt; if (toastT <= 0) $('toast').hidden = true; }
@@ -3859,7 +4117,7 @@ function wire() {
   $('stage').addEventListener('pointermove', aimAt);
   $('stage').addEventListener('pointerdown', function (e) { if (mode !== 'mini' || !M || M.kind === 'dna') return; if (M.kind === 'golf') return golfPointer(e, 'down'); aimAt(e); miniFire(); });
   window.addEventListener('pointerup', function (e) { if (mode === 'mini' && M && M.kind === 'golf') golfPointer(e, 'up'); });
-  $('mini').addEventListener('click', function (e) { const b = e.target.closest('button'); if (!b || !M) return; if (b.id === 'miniGo') miniStart(); else if (b.id === 'miniBack') exitMini(); else if (b.id === 'dnaNext') dnaNext(); else if (b.dataset.base) { dnaInput(b.dataset.base); b.blur(); } else if (b.dataset.ab != null) { miniSel(+b.dataset.ab); b.blur(); } });
+  $('mini').addEventListener('click', function (e) { const b = e.target.closest('button'); if (!b || !M) return; if (b.id === 'miniGo') miniStart(); else if (b.id === 'miniBack') exitMini(); else if (b.id === 'dnaNext') dnaNext(); else if (b.dataset.sim) { simAct(b.dataset.sim); } else if (b.dataset.base) { dnaInput(b.dataset.base); b.blur(); } else if (b.dataset.ab != null) { miniSel(+b.dataset.ab); b.blur(); } });
   $('hudInv').addEventListener('click', function (e) { const b = e.target.closest('[data-use]'); if (!b) return; b.blur(); if (b.dataset.use === 'fly') useFly(); else useLens(); });
   $('stTabs').addEventListener('click', function (e) { const b = e.target.closest('[data-tab]'); if (!b) return; if (b.dataset.tab === 'journal') { openJournal('done'); return; } stationTab(b.dataset.tab); });
   $('stBody').addEventListener('click', stationClick);

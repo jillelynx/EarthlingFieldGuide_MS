@@ -137,6 +137,16 @@ window.FG_ES = {
   'Falling rock! Watch for falling dust: it means a rock is about to drop.': '¡Cae una roca! Fíjate en el polvo que cae: significa que una roca está por caer.',
   'Ouch! A virus got you. Jump on top of it, or jump over it.': '¡Ay! Te atrapó un virus. Salta encima de él o por encima.',
   'Press 1 to 5 for each digit of the code (or click it).': 'Pulsa del 1 al 5 para cada dígito del código (o haz clic).',
+  'Simplified drawings, not to scale': 'Dibujos simplificados, no a escala',
+  /* digging (6-1) */
+  '🧪 Sample capsule': '🧪 Cápsula de muestras', '☀️ Daylight! The canyon floor': '☀️ ¡Luz del día! El fondo del cañón', '⛏️ Soft rock: hold ↓ to drill down': '⛏️ Roca blanda: mantén ↓ para perforar hacia abajo',
+  '⛏️ Dig anywhere through the soft rock: hold ↓ to drill down, push ← → to drill across': '⛏️ Excava por cualquier parte de la roca blanda: mantén ↓ para perforar hacia abajo y empuja ← → para perforar de lado',
+  '♨️ Your drill overheated! Wait a moment for it to cool, then keep digging.': '♨️ ¡Tu taladro se calentó demasiado! Espera un momento a que se enfríe y sigue excavando.',
+  '⛏️ Burrow drill! Hold Down (or S) to drill through soft, cracked rock. Push sideways into it to drill across. Smooth hard rock can\'t be drilled.': '⛏️ ¡Taladro excavador! Mantén abajo (o S) para perforar la roca blanda y agrietada. Empújala de lado para perforar de lado. La roca dura y lisa no se puede perforar.',
+  'Look out! You dug out what was holding up that boulder.': '¡Cuidado! Quitaste lo que sostenía esa roca.', 'Bonk! A falling boulder. Dig carefully under loose rocks.': '¡Pum! Una roca que cae. Excava con cuidado debajo de las rocas sueltas.',
+  '🎒 Your sample bag is full! Walk into a 🧪 sample capsule to send samples to the lab.': '🎒 ¡Tu bolsa de muestras está llena! Entra en una 🧪 cápsula de muestras para enviarlas al laboratorio.',
+  '🧪 A sample capsule! Walk into it to send the minerals in your bag up to the lab. Your bag holds 3 samples.': '🧪 ¡Una cápsula de muestras! Entra en ella para enviar al laboratorio los minerales de tu bolsa. Tu bolsa guarda 3 muestras.',
+  'Fossil uncovered!': '¡Fósil descubierto!',
   /* sources (titles stay in English: they are the documents' names) */
   'U.S. National Park Service, Fire program.': 'Servicio de Parques Nacionales de EE. UU., programa de incendios.', 'Last updated March 18, 2024.': 'Actualizado el 18 de marzo de 2024.',
   'U.S. Environmental Protection Agency.': 'Agencia de Protección Ambiental de EE. UU.', 'Pennsylvania Department of Environmental Protection.': 'Departamento de Protección Ambiental de Pensilvania.', 'California Air Resources Board.': 'Junta de Recursos del Aire de California.'
@@ -149,9 +159,11 @@ window.FG_ES = {
   [/^Find all (\d+) green clue terminals in this level and answer them\. (\d+) still to go\.$/, 'Encuentra las $1 terminales verdes de pistas en este nivel y respóndelas. Faltan $2.'],
   [/^✗ Code not accepted\. (\d+) of (\d+) letters are right\. Hint: clue (\d+) is not right yet\. (.*)$/, '✗ Código no aceptado. $1 de $2 letras son correctas. Pista: la pista $3 todavía no es correcta. $4'],
   [/^✗ Code not accepted\. (\d+) of (\d+) letters are right\. Go back to a clue and change your answer\.$/, '✗ Código no aceptado. $1 de $2 letras son correctas. Vuelve a una pista y cambia tu respuesta.'],
-  [/^([\d.]+) of ([\d.]+) s$/, '$1 de $2 s'], [/^(.*) · normal ([\d.]+) to ([\d.]+)$/, '$1 · normal: de $2 a $3'],
+  [/^([\d.]+) of ([\d.]+) s$/, '$1 de $2 s'], [/^(.*) · normal ([\d.]+) to ([\d.]+)$/, '$1 · normal: de $2 a $3'], [/^· normal ([\d.]+) to ([\d.]+)$/, '· normal: de $1 a $2'],
   [/^Lab Lock: (\d+) of (\d+)$/, 'Candado del laboratorio: $1 de $2'], [/^Code: ([0-9_ ]+)$/, 'Código: $1'],
   [/^New gear unlocked: (.+)\. Put it on in the Wardrobe\.$/, 'Nuevo equipo desbloqueado: $1. Póntelo en el Vestidor.'],
+  [/^🦴 Fossil uncovered: (.+)\. Press E to study it\.$/, '🦴 Fósil descubierto: $1. Pulsa E para estudiarlo.'], [/^Samples sent! \+(\d+)$/, '¡Muestras enviadas! +$1'],
+  [/^♨️ Cooling (.*)$/, '♨️ Enfriando $1'], [/^🔥 Drill (.*)$/, '🔥 Taladro $1'],
   /* endings and joining words the engine adds to a message */
   [/^(.+) Telling them apart: (.+)$/, '$1 Para distinguirlos: $2'],
   [/^(.+) The right answer is glowing gold\.$/, '$1 La respuesta correcta brilla dorada.'], [/^(.+) The right opening is glowing gold\.$/, '$1 La abertura correcta brilla dorada.'],

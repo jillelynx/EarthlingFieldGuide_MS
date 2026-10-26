@@ -72,3 +72,60 @@ Celebration and certificate: finishing every level of a world opens a celebratio
 Chart fix: data charts made for plain numbers (heartbeats, breaths, milliseconds) now start at 0 with round gridlines and no "+" or "%". Percent-change charts look as before.
 Checked: a test player finished all four levels in English and in Spanish; the Immune Defense game was played in both languages; the standards check still shows no codes to students and all 30 rows on the educator sheet.
 Numbers on the data charts are illustrative, typical values.
+
+
+## Worlds 3 to 6 built (October 25, 2026)
+Jill asked to build all the remaining worlds before changing the version number, so the game still says Version 1 until she decides.
+Every scan card, question, activity, sign and level title is in English and Spanish. Questions focus on vocabulary and concepts (no written answers). Build any world's content with `python3 tools/content/build_world.py N`.
+Numbers on data charts are illustrative unless noted, following the real patterns scientists recorded. The dairy milk chart uses rounded U.S. Department of Agriculture averages.
+
+### World 3 · Food and Energy for Life (3.1.6-8.F, G, E)
+| Level | Real place | How students discover | Obstacles | Side quest | Rare specimen |
+|---|---|---|---|---|---|
+| 3-1 Jennings Prairie | Jennings Environmental Education Center, Butler County, PA | Inputs-of-photosynthesis hunt, become carbon dioxide, in-or-out sort, pondweed oxygen-bubble data, light-to-food sequence | Grasshoppers (new), yellowjackets | Count the bumble bees | Eastern massasauga |
+| 3-2 Monterey Kelp Forest | Giant kelp forest, Monterey Bay, California (new kelp look) | Dive; follow-the-energy maze (sun → kelp → urchin → otter); oxygen-through-the-day data; photosynthesis word bank | Jellies, urchins | Find 4 kelp gas bladders | Sea otter |
+| 3-3 A Lunch's Journey | Inside a student's body (shrink ray) | Small-molecules hunt, growth-or-energy sort, become a sugar molecule, sandwich-to-muscle sequence, **Digestion Mini Golf** side game behind a 3-clue portal | Gas bubbles (new), moving platforms, villi squeeze | Find 4 helpful gut bacteria | A villus up close |
+| 3-4 Garden Test Plots | A community garden in Philadelphia | Pea data (genes vs. light), bean water data, environmental-or-genetic sort, soil-moisture balance, World 3 Lab Lock | Japanese beetles (new), grasshoppers | Pick 4 ripe tomatoes | Giant pumpkin |
+Digestion Mini Golf replaces the high school Enzyme Mini Golf: starch, protein and fat each fit only their own enzyme. No pH or "denatured" (high school ideas).
+
+### World 4 · Ecosystems (3.1.6-8.J, I, K, L, U)
+| Level | Real place | How students discover | Obstacles | Side quest | Rare specimen |
+|---|---|---|---|---|---|
+| 4-1 Great Barrier Reef | The high school game's reef (Great Barrier Reef, Australia) | Competition/predation/mutualism sort with examples from the reef, a PA forest, the prairie and a desert; become a cleaner shrimp; interactions word bank | Reef shark, moray eel, jellies | Count 4 clownfish | Giant clam |
+| 4-2 Allegheny National Forest | Pennsylvania's only national forest | Acorn and mouse data, deer-resources hunt, deer-herd balance (carrying capacity) | Black bears (new), timber rattlesnake | Find 4 squirrel acorn stashes | Eastern hellbender |
+| 4-3 Under a Fallen Log | A rotting oak log (shrink ray; new forest-floor look) | Decomposer hunt, producer/consumer/decomposer/nonliving sort, food-web maze, leaf-decay data, become a carbon atom, matter-cycle sequence | Wolf spiders (new), squeeze | Find 4 kinds of mushrooms | Eastern box turtle |
+| 4-4 Yellowstone After the Fire | Yellowstone National Park after the 1988 fires (new burned-forest look) | Population-change data (+/–), grew-or-shrank sort, fire-recovery sequence | Drifting embers (new), crumbling charred logs | Collect 4 lodgepole pine cones | Black-backed woodpecker |
+| 4-5 Susquehanna River Valley | Lower Susquehanna, Lancaster County, PA (new river look) | Fish lift vs. dam removal sort, fence vs. overpass sort, collision data, design word bank, **the Silt Storm boss**, World 4 Lab Lock | Northern water snakes (new) | Count 4 migrating shad | Bald eagle |
+
+### World 5 · Passing On Traits (3.1.6-8.D, N, M, R)
+| Level | Real place | How students discover | Obstacles | Side quest | Rare specimen |
+|---|---|---|---|---|---|
+| 5-1 Bowman's Hill Wildflowers | Bowman's Hill Wildflower Preserve, New Hope, PA (new wildflower look) | Plant-structures hunt, net-vs-open pollination data, hummingbird color data, become pollen, behavior-or-structure sort | Bumble bees (new), grasshoppers | Spot 4 hummingbirds | Hummingbird nest |
+| 5-2 Strawberry Coast | Strawberry fields and tide pools, Monterey Bay (new coast look) | Become a runner, clones-vs-seedlings data, two-parent seed sequence, asexual-or-sexual sort, tide-pool dive, reproduction word bank | Gulls (new), crabs, urchins | Pick 4 strawberries | Aggregating anemones |
+| 5-3 Cave of the Pale Fish | A limestone cave in Mexico (blind cavefish; new dark cave look with the alien's lamp) | Zoom-in maze (fish → cell → nucleus → chromosome → gene), genes hunt, become a gene, harmful/beneficial/neutral sort, mutation sequence, cave pool swim | Bats, cave crickets (new), dripping stone, squeeze | Find 4 blind cavefish | Pale cave shrimp |
+| 5-4 Farm and Research Lab | A Pennsylvania dairy farm and research greenhouse (new farm look) | Milk-per-cow data (USDA), desired-traits hunt, selective breeding vs. genetic engineering sort, technology timeline sequence, World 5 Lab Lock | Japanese beetles, grasshoppers, bumble bees | Count 4 dairy calves | Teosinte plant |
+World 5 has no portal side game: the high school Code Lab teaches transcription and translation, which is beyond the middle school standard.
+
+### World 6 · Change Over Time (3.1.6-8.O, P, Q, S, T)
+| Level | Real place | How students discover | Obstacles | Side quest | Rare specimen |
+|---|---|---|---|---|---|
+| 6-1 Canyon Fossil Dig | The high school game's dig (five real fossil sites stacked in true age order) | Drill down through 5 layers, buried fossils, diversity and trilobite data, alive-or-extinct sort, layer-order sequence, mineral samples | Falling boulders, hard rock, drill overheating | Find 4 fossil seashells | Hallucigenia fossil |
+| 6-2 Whale Valley | Wadi Al-Hitan, Egypt (new desert look) | Same-bones hunt, back-in-time whale maze, back-leg data, limb-bone picture questions | Scorpions (new), crumbling rock | Find 4 whale vertebrae | Fossil shark tooth |
+| 6-3 Woods Hole Marine Lab | Marine Biological Laboratory, Woods Hole, MA (new harbor look) | Embryo drawing questions (pictorial data), become an early embryo, early-embryo-or-adult sort, harbor dive | Gulls, jellies, crabs | Spot 4 longfin squid | Skate egg case |
+| 6-4 Daphne Major Finches | Daphne Major, Galápagos (the Grants' finch study) | Become a deep-beaked finch, survival-by-beak and beak-depth data, helps-or-not sort, selection sequence | Sally Lightfoot crabs (new), gulls | Count 4 banded finches | "Big Bird" finch |
+| 6-5 The Selection Simulator | The mothership | Peppered moth data, line-graph questions, increase-or-decrease sort, word bank, **Selection Simulator** side game, **the Graph Gremlin boss**, World 6 Lab Lock | Moving platforms | Collect 4 data chips | Moth collector's drawer |
+New in the engine: picture figures for questions (embryo drawings, color-coded limb bones); the Selection Simulator (peppered moths on light or sooty bark, a live line graph of the percent of dark moths, generation by generation); achievements for finishing Worlds 3 to 6.
+Boss questions are tagged so they appear only in the boss fight.
+
+### Review fixes (Worlds 3–6)
+An independent check of every answer key found no wrong answers. Changes made after the check:
+- Charts: axes start at zero for plain numbers, long labels shrink or wrap, and screen-reader labels are translated.
+- 3-1 oxygen data now asks for the LEAST oxygen; 3-4 pea data now measures plant mass in grams, and the Lab Lock clue matches.
+- 4-5 dam sort now says "a dam that makes electricity, like Holtwood"; dam removal notes it is mostly small mill dams.
+- 4-3 leaf litter uses maple leaves; beetle card says "wood-boring beetle larvae".
+- 5-x nectar-gland wording; potato-eye question for asexual reproduction; seed card says "pollen and the egg".
+- 6-x whale leg length about 35 cm; leg data value 2%; embryo and limb drawings say "not to scale".
+- Answer choices rebalanced so the correct answer is not usually the longest one; joke choices replaced with believable wrong answers.
+- Crumbling bridges (all worlds): the step for climbing out of the pit is now a solid block on the pit floor, placed under the open gap, so players can no longer get stuck underneath it.
+- 6-1: the canyon wall above the dig tunnel now shows rock layers and cracks.
+- Spanish: the "normal A to B" range label on balance games is translated.

@@ -2,6 +2,7 @@
 const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path');
 const GAME = process.argv[2], OUT = process.argv[3]; const args = process.argv.slice(4); const ES = args.includes('--es'), HARV = args.includes('--harvest'); const seenAll = new Set(), missAll = new Set(); const ids = args.filter(a => !a.startsWith('--'));
 fs.mkdirSync(OUT, { recursive: true });
+const P_ground_ok = st => st.y < 1.2 || true;
 (async () => {
   const b = await chromium.launch({ args: ['--use-gl=swiftshader', '--enable-unsafe-swiftshader'] }); const res = {};
   for (const spec of ids) { const [id, startX] = spec.split('@');
@@ -34,7 +35,9 @@ fs.mkdirSync(OUT, { recursive: true });
         const onMv = P.ground && (L.movers || []).find(m => P.x >= m.s.x0 - 0.3 && P.x <= m.s.x1 + 0.3 && Math.abs(m.s.y1 - P.y) < 0.5);
         if (onMv && P.x > onMv.s.x1 - 0.9) { const other = L.solids.some(sl => sl !== onMv.s && !sl.off && P.x + 2.2 >= sl.x0 && P.x + 1.2 <= sl.x1 && sl.y1 < P.y + 1.3 && sl.y1 > P.y - 2.5); if (!other) edgeWait = true; }
         const flier = L.hazards.some(h => h.alive !== false && h.x > P.x - 1 && h.x < P.x + 4.5 && h.y > P.y + 1.2 && h.y < P.y + 4.5);
-        return { edgeWait, flier, x: P.x, y: P.y, water: !!(L.waters && L.waters.some(w => P.x > w.x0 - 2 && P.x < w.x1 && P.y < w.top + 4)), len: L.len }; });
+        const dig = L.solids.some(sl => sl.dig && !sl.off && P.x > sl.x0 - 0.2 && P.x < sl.x1 + 0.2 && Math.abs(sl.y1 - P.y) < 0.6);
+        const low = P.ground && L.solids.some(sl => !sl.off && !sl.oneWay && sl.x0 < P.x + 2.5 && sl.x1 > P.x - 0.3 && sl.y0 > P.y + 0.4 && sl.y0 < P.y + 1.5 && sl.x1 - sl.x0 > 2.5);
+        return { edgeWait, flier, dig, low, x: P.x, y: P.y, water: !!(L.waters && L.waters.some(w => P.x > w.x0 - 2 && P.x < w.x1 && P.y < w.top + 4)), len: L.len }; });
       if (st.over) { await p.waitForTimeout(400); continue; }
       if (st.done) { done = await p.evaluate(i => !!(FieldGuide._debug.state().S.levels[i] || {}).stars, id); break; } if (st.gone) break;
       if (st.ans) { answered++; await p.waitForTimeout(150); continue; }
@@ -43,12 +46,14 @@ fs.mkdirSync(OUT, { recursive: true });
       if (st.edgeWait) { await p.keyboard.up('ArrowRight'); await p.waitForTimeout(120); stuckT = 0; lastX = -99; continue; } else await p.keyboard.down('ArrowRight');
       if (Math.abs(st.x - lastX) < 0.15) stuckT += 0.3; else stuckT = 0; lastX = st.x;
       if (HARV || ES) await p.keyboard.press('e');
-      if (st.water && stuckT > 0.6) { await p.keyboard.down('ArrowDown'); await p.waitForTimeout(1500); await p.keyboard.up('ArrowDown'); stuckT = Math.min(stuckT, 1.5); wetStuck += 2; if (wetStuck > 10) { stuckT = 3; wetStuck = 0; } }
+      if (st.low && stuckT < 1.5) { await p.keyboard.down('ArrowDown'); await p.waitForTimeout(900); await p.keyboard.up('ArrowDown'); continue; }
+      if (st.dig) { await p.keyboard.down('ArrowDown'); await p.waitForTimeout(1800); await p.keyboard.up('ArrowDown'); stuckT = 0; continue; }
+      if (st.water && stuckT > 0.6) { const kk = (wetStuck % 4) < 2 ? 'Space' : 'ArrowDown'; await p.keyboard.down(kk); await p.waitForTimeout(kk === 'Space' ? 4000 : 1500); await p.keyboard.up(kk); stuckT = Math.min(stuckT, 1.5); wetStuck += 2; if (wetStuck > 10) { stuckT = 3; wetStuck = 0; } }
       else if (st.flier && stuckT < 1.5) { await p.waitForTimeout(150); }
-      else { await p.keyboard.down('Space'); await p.waitForTimeout(260); await p.keyboard.up('Space'); if (stuckT > 0.6) { await p.waitForTimeout(60); await p.keyboard.down('Space'); await p.waitForTimeout(240); await p.keyboard.up('Space'); } }
+      else { await p.keyboard.down('Space'); await p.waitForTimeout(260); await p.keyboard.up('Space'); if (stuckT > 0.6) { await p.waitForTimeout(60); await p.keyboard.down('Space'); await p.waitForTimeout(stuckT > 1.2 ? 480 : 240); await p.keyboard.up('Space'); } }
       if (stuckT > 2.4) { opened += await p.evaluate(() => { const s = FieldGuide._debug.state(), L = s.L, P = s.P; let n = 0;
           L.zones.forEach(z => { if (!z.done && P.x > z.x0 - 3 && P.x < z.x1 + 3) { z.done = true; if (z.gate) z.gate.off = true; if (z.gateMesh) z.gateMesh.visible = false; n++; } });
-          L.solids.forEach(sl => { if (!sl.off && sl.x0 > P.x - 0.5 && sl.x0 < P.x + 3 && sl.y1 > P.y + 0.4 && sl.y0 < P.y + 3) { sl.off = true; n++; } });
+          L.solids.forEach(sl => { if (!sl.off && sl.x1 - sl.x0 < 2.5 && sl.x0 > P.x - 0.5 && sl.x0 < P.x + 3 && sl.y1 > P.y + 0.4 && sl.y0 < P.y + 3) { sl.off = true; n++; } });
           (L.doors || []).forEach(d => { if (d.s && !d.s.off && d.s.x0 > P.x - 1 && d.s.x0 < P.x + 4) { d.s.off = true; n++; } }); return n; }); stuckT = 0; }
       if (shots < 6 && Date.now() - t0 > 6000 + shots * 15000) { await p.screenshot({ path: OUT + '/' + id + (ES ? '-es' : '') + '-' + shots + '.png' }); shots++; }
       await p.waitForTimeout(300);

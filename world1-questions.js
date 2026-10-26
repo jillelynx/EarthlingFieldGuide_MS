@@ -1,5 +1,5 @@
 /* WORLD 1 QUESTION FILE: What Living Things Are Made Of (middle school edition)
-   Made by tools/content/build_w1.py from the content files in tools/content (edit those, then run it again).
+   Made by tools/content/build_world.py from the content files in tools/content (edit those, then run it again).
    "code" is the PA STEELS grades 6-8 standard. "es" holds the Spanish text for the same item.
    In "questions", "answer" is the position of the correct option, counting from 0. The game shuffles the options. */
 FieldGuide.registerQuestions(1, {

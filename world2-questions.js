@@ -1024,13 +1024,13 @@ FieldGuide.registerQuestions(2, {
      }
     },
     {
-     "prompt": "Which part of the hike shows the heart slowing back down toward its resting rate?",
+     "prompt": "After the climb, which part of the hike shows the heart rate CLOSEST to its resting rate again?",
      "answer": 4,
-     "hint": "Look for a bar close to the resting bar, after the climb.",
+     "hint": "Look for the bar after the climb that is closest to the resting bar.",
      "explain": "After resting, the heart rate dropped back near 70. The body returns to normal when the muscles need less oxygen.",
      "es": {
-      "prompt": "¿Qué parte de la caminata muestra que el corazón vuelve a su ritmo de reposo?",
-      "hint": "Busca una barra parecida a la de reposo, después de la subida.",
+      "prompt": "Después de la subida, ¿qué parte de la caminata muestra el ritmo cardiaco MÁS CERCANO otra vez al de reposo?",
+      "hint": "Busca la barra después de la subida que más se parece a la de reposo.",
       "explain": "Después de descansar, el ritmo bajó cerca de 70. El cuerpo vuelve a la normalidad cuando los músculos necesitan menos oxígeno."
      }
     }

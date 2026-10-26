@@ -73,7 +73,7 @@ FieldGuide.registerWorld({
           .rise(-10)
           .oceanZone(t('Hydrothermal vents', 'Fuentes hidrotermales'), t('About 2,500 m deep. Hot, mineral-rich water gushes from the sea floor.', 'A unos 2,500 m. Agua caliente y llena de minerales brota del fondo del mar.')).ventField(80)
           .glowers(10, 6, 'snow', 8).scan(4, 's1d-mat').scan(9, 's1d-archaea').qitem(12, 0.8).scan(15, 's1d-tube').ground(19)
-          .smoker(3, 4.2, 9).plat(6.5, 8.5, 3.5).rare(8.2, 9.6, { look: 'yeticrab', name: t('Yeti crab', 'Cangrejo yeti'), fact: t('Discovered in 2005. It waves its hairy arms over the vents to grow bacteria on them, then eats the bacteria.', 'Se descubrió en 2005. Agita sus brazos peludos sobre las fuentes para cultivar bacterias en ellos, y luego se las come.') }).ground(12)
+          .smoker(3, 4.2, 9).plat(6.5, 8.5, 3.5).rare(8.2, 9.6, { look: 'yeticrab', name: t('Yeti crab', 'Cangrejo yeti'), fact: t('Yeti crabs were first discovered in 2005. They grow bacteria on their hairy arms and eat them. One kind waves its arms over the vents to help the bacteria grow.', 'Los cangrejos yeti se descubrieron en 2005. Cultivan bacterias en sus brazos peludos y se las comen. Un tipo agita los brazos sobre las fuentes para que las bacterias crezcan.') }).ground(12)
           .scan(3, 's1d-plume').qitem(7, 1).ground(10)
           .hunt('h1-bact')
           .station(['ms1q08', 'ms1q10'])
