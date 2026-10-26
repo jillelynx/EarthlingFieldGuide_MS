@@ -1673,7 +1673,7 @@ function builder() {
       const doors = shuffle([{ label: st.label, ok: true }].concat(pool.map(function (l) { return { label: l, ok: false }; }))).map(function (d, i) {
         const o = op[i], sd = addSolid(wx, wx + 1.4, o[0], o[1]), g = new T.Group(), mid = (o[0] + o[1]) / 2;
         const plate = new T.Mesh(G.box, basic('#9fe0ff', 0.3, true)); plate.scale.set(1.4, o[1] - o[0], 4.6); plate.position.set(wx + 0.7, mid, 0); g.add(plate);
-        const lb = label(d.label, 3.2, { bd: '#9fe0ff' }); lb.position.set(wx - 1.9, mid + 0.2, -0.9); g.add(lb);
+        const lb = label(d.label, 3.2, { bd: '#9fe0ff' }), lh = (lb.userData.lbl || {}).h || 1; lb.position.set(wx - 1.9, Math.min(mid + 0.2, o[1] - 0.12 - lh / 2), -0.9); lb.material.depthTest = false; lb.renderOrder = 5; g.add(lb); /* drawn on top so ledges seen from above never hide the doorway names */ /* keep two-line names below the ledge above */
         L.group.add(g); return { d: d, s: sd, g: g, plate: plate, cool: 0 };
       });
       z.walls.push(doors);
