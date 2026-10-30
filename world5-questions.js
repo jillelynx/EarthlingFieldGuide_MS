@@ -1022,26 +1022,26 @@ FieldGuide.registerQuestions(5, {
   {
    "id": "ms5q24",
    "code": "3.1.6-8.M",
-   "prompt": "Cavefish live in total darkness. A mutation made them pale. What is the effect of being pale in the cave?",
+   "prompt": "Cavefish live in total darkness. A mutation made them pale. Does being pale help them hide from predators or find food in the dark?",
    "options": [
-    "neutral",
-    "harmful",
-    "beneficial",
-    "deadly"
+    "No, it makes no difference in the dark (neutral)",
+    "Yes, it hides them from predators (beneficial)",
+    "It makes them easier for predators to see (harmful)",
+    "Yes, it helps them find food (beneficial)"
    ],
    "answer": 0,
-   "hint": "Can anything see color in the dark?",
-   "explain": "No one can see color in total darkness, so scientists think being pale mostly neither helps nor hurts there: neutral.",
+   "hint": "Can anything see color in total darkness?",
+   "explain": "In total darkness no animal can see color, so being pale does not help the fish hide or find food, and it does not hurt them either. For hiding and finding food, it is neutral.",
    "es": {
-    "prompt": "Los peces de cueva viven en oscuridad total. Una mutación los volvió pálidos. ¿Qué efecto tiene ser pálido en la cueva?",
+    "prompt": "Los peces de cueva viven en oscuridad total. Una mutación los volvió pálidos. ¿Ser pálidos les ayuda a esconderse de los depredadores o a encontrar comida en la oscuridad?",
     "options": [
-     "neutral",
-     "perjudicial",
-     "beneficioso",
-     "mortal"
+     "No, en la oscuridad no hace ninguna diferencia (neutral)",
+     "Sí, los esconde de los depredadores (beneficioso)",
+     "Hace que los depredadores los vean más fácilmente (perjudicial)",
+     "Sí, les ayuda a encontrar comida (beneficioso)"
     ],
-    "hint": "¿Algo puede ver el color en la oscuridad?",
-    "explain": "Nadie puede ver el color en la oscuridad total, así que los científicos piensan que allí ser pálido casi no ayuda ni perjudica: neutral."
+    "hint": "¿Algo puede ver el color en la oscuridad total?",
+    "explain": "En la oscuridad total ningún animal puede ver colores, así que ser pálido no ayuda a los peces a esconderse ni a encontrar comida, y tampoco los perjudica. Para esconderse y comer, es neutral."
    }
   },
   {
