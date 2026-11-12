@@ -153,3 +153,4 @@ An independent check of every answer key found no wrong answers. Changes made af
 - Teacher guide: Claude Doc "Earthling Field Guide – Middle School Edition: Teacher Guide" (https://claude.ai/artifact/1yYnKfEsPBNG4TUymnvtrt); PDF copy in notes/. Update both with every new version.
 - notes/metaprompt-ms-lite-grade6.md: prompt for a new chat to build "Earthling Field Guide MS-Lite" (6th grade, Wilson's three 6th grade units) in a separate folder.
 - Testing: every level loads (32); all six bonus runs finish (4-6 checked in parts: glide gap by walking, jumping and running; all three sled runs and ski-jump gaps; the rest and the boss by the robot); science levels replayed by the robot after the alignment fixes.
+- References: the About page, the educator reference sheet and the teacher guide now cite the STEELS K-12 Standards (May 2023), PDE's STEELS Foundation Boxes (September 2025), the 2025 PSSA Science Test Design and the 2025 Grade 8 Item and Scoring Sampler.
