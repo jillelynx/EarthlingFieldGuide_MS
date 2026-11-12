@@ -207,6 +207,24 @@ FieldGuide.registerQuestions(5, {
       "text": "Glándulas de néctar en lo hondo de una flor",
       "explain": "Las glándulas son parte de la flor: una estructura que atrae polinizadores."
      }
+    },
+    {
+     "text": "Elk herd around their calves",
+     "answer": 0,
+     "explain": "Crowding around the young to protect them from predators is a behavior.",
+     "es": {
+      "text": "Alces que rodean a sus crías en manada",
+      "explain": "Juntarse alrededor de las crías para protegerlas de los depredadores es una conducta."
+     }
+    },
+    {
+     "text": "Sweet-smelling flowers",
+     "answer": 1,
+     "explain": "The scent comes from a part of the flower and attracts pollinators: a structure.",
+     "es": {
+      "text": "Flores de olor dulce",
+      "explain": "El aroma viene de una parte de la flor y atrae polinizadores: una estructura."
+     }
     }
    ],
    "es": {
@@ -441,6 +459,80 @@ FieldGuide.registerQuestions(5, {
     ],
     "hint": "La cría selectiva elige a los progenitores. La ingeniería genética cambia los genes directamente en un laboratorio."
    }
+  },
+  {
+   "id": "sort5-benefit",
+   "code": "3.1.6-8.R",
+   "prompt": "Technologies that shape traits: is this a BENEFIT or a CONCERN?",
+   "options": [
+    "Benefit",
+    "Concern"
+   ],
+   "hint": "A benefit helps people or the environment. A concern is a possible problem to watch for.",
+   "items": [
+    {
+     "text": "More food from fewer acres",
+     "answer": 0,
+     "explain": "Crops bred or engineered to give more food: a benefit.",
+     "es": {
+      "text": "Más alimento en menos hectáreas",
+      "explain": "Cultivos criados o modificados para dar más alimento: un beneficio."
+     }
+    },
+    {
+     "text": "Cheaper insulin made by bacteria",
+     "answer": 0,
+     "explain": "Engineered bacteria make insulin that helps people with diabetes: a benefit.",
+     "es": {
+      "text": "Insulina más barata hecha por bacterias",
+      "explain": "Las bacterias modificadas producen insulina que ayuda a las personas con diabetes: un beneficio."
+     }
+    },
+    {
+     "text": "Pests becoming resistant",
+     "answer": 1,
+     "explain": "Pests that survive insect-fighting crops can pass on their resistance: a concern.",
+     "es": {
+      "text": "Plagas que se vuelven resistentes",
+      "explain": "Las plagas que sobreviven a los cultivos que combaten insectos pueden heredar su resistencia: una preocupación."
+     }
+    },
+    {
+     "text": "Less variety in crops",
+     "answer": 1,
+     "explain": "If farmers all grow the same few kinds, one disease could wipe them out: a concern.",
+     "es": {
+      "text": "Menos variedad en los cultivos",
+      "explain": "Si todos los agricultores siembran las mismas pocas variedades, una sola enfermedad podría acabar con ellas: una preocupación."
+     }
+    },
+    {
+     "text": "Gene therapy that treats a disease",
+     "answer": 0,
+     "explain": "A working gene can help a sick person: a benefit.",
+     "es": {
+      "text": "Terapia génica que trata una enfermedad",
+      "explain": "Un gen que funciona puede ayudar a una persona enferma: un beneficio."
+     }
+    },
+    {
+     "text": "Changed genes spreading to wild plants",
+     "answer": 1,
+     "explain": "Pollen can carry changed genes into wild relatives: a concern.",
+     "es": {
+      "text": "Genes cambiados que pasan a plantas silvestres",
+      "explain": "El polen puede llevar genes cambiados a plantas silvestres parecidas: una preocupación."
+     }
+    }
+   ],
+   "es": {
+    "prompt": "Tecnologías que moldean los rasgos: ¿es un BENEFICIO o una PREOCUPACIÓN?",
+    "options": [
+     "Beneficio",
+     "Preocupación"
+    ],
+    "hint": "Un beneficio ayuda a las personas o al ambiente. Una preocupación es un posible problema que hay que vigilar."
+   }
   }
  ],
  "questions": [
@@ -526,7 +618,7 @@ FieldGuide.registerQuestions(5, {
    "options": [
     "They fit the hummingbird, so it visits and carries pollen.",
     "Red flowers do not need pollen to make their seeds.",
-    "The tube shape keeps bees and birds away from the nectar.",
+    "The tube shape keeps all birds away from the nectar.",
     "Hummingbirds cannot see red."
    ],
    "answer": 0,
@@ -537,7 +629,7 @@ FieldGuide.registerQuestions(5, {
     "options": [
      "Encajan con el colibrí, así que este las visita y lleva polen.",
      "Las flores rojas no necesitan polen para producir sus semillas.",
-     "La forma de tubo aleja a las abejas y las aves del néctar.",
+     "La forma de tubo aleja a todas las aves del néctar.",
      "Los colibríes no pueden ver el rojo."
     ],
     "hint": "La flor y el ave encajan.",
@@ -692,6 +784,31 @@ FieldGuide.registerQuestions(5, {
     ],
     "hint": "La probabilidad tiene que ver con qué tan posible es algo.",
     "explain": "Una conducta que aumenta la probabilidad hace más posible, aunque no seguro, que nazcan crías y sobrevivan."
+   }
+  },
+  {
+   "id": "ms5q39",
+   "code": "3.1.6-8.D",
+   "prompt": "Squirrels bury acorns and forget some. How does the acorn’s hard shell help the oak?",
+   "options": [
+    "It protects the seed so it can sprout where it was buried.",
+    "It makes the acorn too hard for any animal to carry away.",
+    "It attracts bees that carry the oak’s pollen to its flowers.",
+    "It lets the acorn make its own food from the sunlight."
+   ],
+   "answer": 0,
+   "hint": "What could happen to a soft seed buried in the ground all winter?",
+   "explain": "The hard shell is a specialized structure. It keeps the seed safe, so a forgotten acorn can sprout far from the parent tree. That raises the probability of successful reproduction.",
+   "es": {
+    "prompt": "Las ardillas entierran bellotas y se olvidan de algunas. ¿Cómo ayuda al roble la cáscara dura de la bellota?",
+    "options": [
+     "Protege la semilla para que pueda germinar donde quedó enterrada.",
+     "Hace que la bellota sea demasiado dura para que un animal la lleve.",
+     "Atrae abejas que llevan el polen del roble a sus flores.",
+     "Permite que la bellota produzca su propio alimento con la luz del sol."
+    ],
+    "hint": "¿Qué le podría pasar a una semilla blanda enterrada todo el invierno?",
+    "explain": "La cáscara dura es una estructura especializada. Mantiene segura la semilla, así que una bellota olvidada puede germinar lejos del árbol progenitor. Eso aumenta la probabilidad de una reproducción exitosa."
    }
   },
   {
@@ -945,6 +1062,68 @@ FieldGuide.registerQuestions(5, {
    }
   },
   {
+   "id": "ms5q40",
+   "code": "3.1.6-8.N",
+   "prompt": "In pea plants, P (purple flowers) is dominant over p (white). Two Pp plants are crossed. Use the Punnett square: what fraction of the offspring could have white flowers?",
+   "options": [
+    "1 out of 4",
+    "2 out of 4",
+    "3 out of 4",
+    "0 out of 4"
+   ],
+   "answer": 0,
+   "hint": "White flowers need two small p’s: pp. Count the boxes with pp.",
+   "explain": "Only one of the four boxes is pp, so 1 out of 4 offspring could have white flowers. The other 3 have at least one P, so they are purple.",
+   "es": {
+    "prompt": "En las plantas de chícharo, P (flores moradas) es dominante sobre p (blancas). Se cruzan dos plantas Pp. Usa el cuadro de Punnett: ¿qué fracción de las crías podría tener flores blancas?",
+    "options": [
+     "1 de cada 4",
+     "2 de cada 4",
+     "3 de cada 4",
+     "0 de cada 4"
+    ],
+    "hint": "Las flores blancas necesitan dos p minúsculas: pp. Cuenta las casillas con pp.",
+    "explain": "Solo una de las cuatro casillas es pp, así que 1 de cada 4 crías podría tener flores blancas. Las otras 3 tienen al menos una P, así que son moradas.",
+    "figure": {
+     "type": "punnett",
+     "p1": "Pp",
+     "p2": "Pp",
+     "note": "P = morado, p = blanco"
+    }
+   },
+   "figure": {
+    "type": "punnett",
+    "p1": "Pp",
+    "p2": "Pp",
+    "note": "P = purple, p = white"
+   }
+  },
+  {
+   "id": "ms5q41",
+   "code": "3.1.6-8.N",
+   "prompt": "How do offspring from ONE parent compare with offspring from TWO parents?",
+   "options": [
+    "One parent: identical copies. Two parents: half from each, new mixes.",
+    "One parent: half of its genes. Two parents: exact copies of the mother only.",
+    "One parent: new mixes of genes. Two parents: exact copies of both parents.",
+    "Both ways: offspring are always exact copies of one parent, never mixed."
+   ],
+   "answer": 0,
+   "hint": "Asexual means one parent. Sexual means two parents.",
+   "explain": "In asexual reproduction, the offspring get identical genetic information from one parent. In sexual reproduction, each parent gives half, so the offspring get new combinations and show variation.",
+   "es": {
+    "prompt": "¿Cómo se comparan las crías de UN progenitor con las crías de DOS progenitores?",
+    "options": [
+     "Un progenitor: copias idénticas. Dos progenitores: la mitad de cada uno, mezclas nuevas.",
+     "Un progenitor: la mitad de sus genes. Dos progenitores: copias exactas solo de la madre.",
+     "Un progenitor: mezclas nuevas de genes. Dos progenitores: copias exactas de los dos.",
+     "Las dos formas: las crías siempre son copias exactas de un progenitor, sin mezclas."
+    ],
+    "hint": "Asexual significa un progenitor. Sexual significa dos progenitores.",
+    "explain": "En la reproducción asexual, las crías reciben información genética idéntica de un progenitor. En la reproducción sexual, cada progenitor da la mitad, así que las crías reciben combinaciones nuevas y muestran variación."
+   }
+  },
+  {
    "id": "ms5q21",
    "code": "3.1.6-8.M",
    "prompt": "What is a MUTATION?",
@@ -1172,7 +1351,7 @@ FieldGuide.registerQuestions(5, {
   {
    "id": "ms5q30",
    "code": "3.1.6-8.M",
-   "prompt": "A mutation changes one letter of DNA, but the protein comes out exactly the same. What is the effect?",
+   "prompt": "A mutation changes a gene’s DNA, but the protein the gene makes stays the same. What is the effect?",
    "options": [
     "neutral",
     "harmful",
@@ -1183,7 +1362,7 @@ FieldGuide.registerQuestions(5, {
    "hint": "If the protein is the same...",
    "explain": "If the protein does not change, the organism does not change, so the mutation is neutral.",
    "es": {
-    "prompt": "Una mutación cambia una letra del ADN, pero la proteína sale exactamente igual. ¿Cuál es el efecto?",
+    "prompt": "Una mutación cambia el ADN de un gen, pero la proteína que produce el gen sigue igual. ¿Cuál es el efecto?",
     "options": [
      "neutral",
      "perjudicial",
@@ -1393,6 +1572,56 @@ FieldGuide.registerQuestions(5, {
     "hint": "Piensa en cómo eligen los progenitores los productores hoy.",
     "explain": "Tecnologías como la inseminación artificial y las pruebas genéticas permiten criar con los mejores animales. La mejor alimentación y el mejor cuidado también ayudaron."
    }
+  },
+  {
+   "id": "ms5q42",
+   "code": "3.1.6-8.R",
+   "prompt": "Doctors give a patient a working copy of a gene to treat a disease. What is this called?",
+   "options": [
+    "gene therapy",
+    "selective breeding",
+    "cloning",
+    "hybrid seeds"
+   ],
+   "answer": 0,
+   "hint": "It is a therapy that uses a gene.",
+   "explain": "Gene therapy gives a person a working copy of a gene to treat a disease caused by a gene that does not work.",
+   "es": {
+    "prompt": "Los médicos le dan a un paciente una copia de un gen que funciona para tratar una enfermedad. ¿Cómo se llama esto?",
+    "options": [
+     "terapia génica",
+     "cría selectiva",
+     "clonación",
+     "semillas híbridas"
+    ],
+    "hint": "Es una terapia que usa un gen.",
+    "explain": "La terapia génica le da a una persona una copia de un gen que funciona para tratar una enfermedad causada por un gen que no funciona."
+   }
+  },
+  {
+   "id": "ms5q43",
+   "code": "3.1.6-8.R",
+   "prompt": "Which source is most reliable for facts about GMO corn?",
+   "options": [
+    "A report from a university or government science agency",
+    "A social media post shared by many thousands of people",
+    "A blog by someone who dislikes all farm technology",
+    "An ad from a company that sells only non-GMO snacks"
+   ],
+   "answer": 0,
+   "hint": "Look for scientists who share their evidence and do not profit from your choice.",
+   "explain": "Universities and government science agencies collect evidence and have it checked by other scientists. Posts, blogs and ads may be one-sided or trying to sell something.",
+   "es": {
+    "prompt": "¿Qué fuente es la más confiable para obtener datos sobre el maíz transgénico?",
+    "options": [
+     "Un informe de una universidad o de una agencia científica del gobierno",
+     "Una publicación en redes sociales compartida por muchísimas personas",
+     "Un blog de alguien a quien no le gusta ninguna tecnología agrícola",
+     "Un anuncio de una empresa que solo vende bocadillos no transgénicos"
+    ],
+    "hint": "Busca científicos que compartan su evidencia y no ganen nada con lo que elijas.",
+    "explain": "Las universidades y las agencias científicas del gobierno reúnen evidencia y otros científicos la revisan. Las publicaciones, los blogs y los anuncios pueden ser parciales o querer venderte algo."
+   }
   }
  ],
  "pairs": [
@@ -1569,7 +1798,7 @@ FieldGuide.registerQuestions(5, {
    "you": "a gene for dark skin color in a cavefish",
    "short": "🧬",
    "color": "#c59cff",
-   "goal": "A mutation just changed one of your letters. What happens next?",
+   "goal": "A mutation just changed your DNA. What happens next?",
    "doors": [
     {
      "kind": "lipid",
@@ -1603,7 +1832,7 @@ FieldGuide.registerQuestions(5, {
    "explain": "Gene → protein → trait. The mutation changed the gene, so the protein changed, so the fish became pale. In a dark cave, that effect is neutral.",
    "es": {
     "you": "un gen del color oscuro de la piel en un pez de cueva",
-    "goal": "Una mutación acaba de cambiar una de tus letras. ¿Qué pasa después?",
+    "goal": "Una mutación acaba de cambiar tu ADN. ¿Qué pasa después?",
     "explain": "Gen → proteína → rasgo. La mutación cambió el gen, así que cambió la proteína, así que el pez se volvió pálido. En una cueva oscura, ese efecto es neutral."
    }
   }
@@ -1637,13 +1866,13 @@ FieldGuide.registerQuestions(5, {
      }
     },
     {
-     "prompt": "Which result is EVIDENCE that pollinators raise the probability of successful reproduction?",
+     "prompt": "Which group shows what happens when bees CANNOT reach the flowers?",
      "answer": 1,
-     "hint": "Look at what happened when bees could NOT reach the flowers.",
+     "hint": "Look for the flowers the bees could not get to.",
      "explain": "With a net, only 10% made fruit. Without pollinators, reproduction became much less likely.",
      "es": {
-      "prompt": "¿Qué resultado es una EVIDENCIA de que los polinizadores aumentan la probabilidad de una reproducción exitosa?",
-      "hint": "Mira qué pasó cuando las abejas NO podían llegar a las flores.",
+      "prompt": "¿Qué grupo muestra lo que pasa cuando las abejas NO PUEDEN llegar a las flores?",
+      "hint": "Busca las flores a las que las abejas no podían llegar.",
       "explain": "Con la red, solo el 10 % dio frutos. Sin polinizadores, la reproducción se volvió mucho menos probable."
      }
     }

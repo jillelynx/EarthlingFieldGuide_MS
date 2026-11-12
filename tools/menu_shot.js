@@ -1,0 +1,13 @@
+const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path');
+const GAME = process.argv[2], OUT = process.argv[3], ES = process.argv.includes('--es');
+(async () => { const b = await chromium.launch({ args: ['--use-gl=swiftshader', '--enable-unsafe-swiftshader'] });
+  const p = await (await b.newContext({ viewport: { width: 1280, height: 720 } })).newPage(); const errs = []; p.on('pageerror', e => errs.push(e.message));
+  await p.route('**/*', r => { const u = new URL(r.request().url()); if (u.hostname === 'cdnjs.cloudflare.com') return r.fulfill({ path: path.join(__dirname, 'node_modules/three/build/three.min.js') });
+    if (u.hostname === 'game.test') { const f = path.join(GAME, decodeURIComponent(u.pathname)); return fs.existsSync(f) ? r.fulfill({ path: f }) : r.fulfill({ status: 404, body: '' }); } return r.abort(); });
+  if (ES) await p.addInitScript(() => { localStorage.setItem('efg-middle-school-save-v1', JSON.stringify({ set: { lang: 'es', text: 1, low: false, sound: false, music: false, vol: 0, cap: true, unlock: false } })); });
+  await p.goto('http://game.test/index.html#nointro'); await p.waitForSelector('#menu:not([hidden])', { timeout: 60000 }); await p.waitForTimeout(2500);
+  await p.screenshot({ path: OUT + '/menu' + (ES ? '-es' : '') + '.png' });
+  await p.click('#btnCustom'); await p.waitForTimeout(1500); await p.screenshot({ path: OUT + '/menu-cust' + (ES ? '-es' : '') + '.png' });
+  await p.click('#cust .chip:nth-of-type(2)').catch(() => {}); await p.waitForTimeout(800);
+  await p.click('#btnCustDone'); await p.waitForTimeout(800); const back = await p.evaluate(() => !document.getElementById('menuMain').hidden);
+  console.log('back to main', back, 'errors', JSON.stringify(errs)); await b.close(); })();

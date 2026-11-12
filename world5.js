@@ -125,6 +125,7 @@ FieldGuide.registerWorld({
           .station([{ sort: 'sort5-tech', n: 4 }])
           .refuel().scan(3, 's5t-crispr').scan(8, 's5t-fish').qitem(11, 0.5).ground(13)
           .sequence('seq5-tech')
+          .station([{ sort: 'sort5-benefit', n: 4 }])
           .hazard(5, 0.4, { look: 'hopper', ax: 1.2, ay: 1.2, sp: 1.1 }).hazard(11, 2.8, { look: 'bee', ax: 1.6, ay: 0.4, sp: 1.0 }).ground(15)
           .plat(3, 2.4, 2.6).plat(6.5, 4.4, 2.6).plat(10, 6.4, 2.6).hplat(13.5, 8.4, 2.6)
           .rare(14.8, 9.7, { name: t('Teosinte plant', 'Planta de teocintle'), fact: t('Corn’s wild ancestor, from Mexico, has tiny ears with only a few hard kernels. Thousands of years of selective breeding turned it into corn.', 'El ancestro silvestre del maíz, de México, tiene espigas diminutas con solo unos pocos granos duros. Miles de años de cría selectiva lo convirtieron en maíz.') })
@@ -133,6 +134,28 @@ FieldGuide.registerWorld({
           .station(['ms5q31', 'ms5q34'])
           .hint(1, 6.6, t('World 5 Lab Lock: solve the clues to open the last gate.', 'Candado del Mundo 5: resuelve las pistas para abrir la última puerta.'))
           .lablock('lock5')
+          .goal();
+      } },
+    { id: '5-5', title: "Bonus: Reef Rush", theme: 'pxreef', bonus: true, par: 65, codes: [],
+      es: { title: "Nivel extra: Prisa en el arrecife", log: "¡CARRERA EXTRA CONTRA RELOJ! Corre por el fondo del arrecife de coral. ¡Burbujas, monedas y muchos obstáculos! Solo por diversión: no hay preguntas de ciencias. Junta las monedas, esquiva los obstáculos y gánale al tiempo para ganar 3 estrellas.",
+            outro: "¡Carrera extra superada! Termina dentro del tiempo meta para ganar 3 estrellas y vuelve a intentarlo para mejorar tu tiempo." },
+      log: "BONUS SPEED RUN! Dash along the coral reef floor. Bubbles, coins and lots of obstacles! Just for fun: no science questions. Grab the coins, dodge the obstacles and beat the time for 3 stars.",
+      outro: "Bonus speed run cleared! Beat the par time for 3 stars, then try again for a faster time.",
+      build: function (b) {
+        /* PIXEL BONUS SPEED RUN (from the high school game, v68-v75): a fun 8-bit course in the Reef Rush habitat (pixelscape.js). No questions; stars come from the time (par = 3 stars). Optional: not needed for the certificates. */
+        b.hint(4, 4.6, t("SPEED RUN! Grab coins, dodge obstacles, beat the time!", "¡CARRERA CONTRA RELOJ! Junta monedas, esquiva obstáculos y gánale al tiempo.")).sparks(7, 1.2, 6).ground(14)
+          .power(3, 1.4, 'spin').ground(8)
+          .hint(1, 4.6, t("Press E to SPIN through the virus swarm!", "Presiona E para GIRAR y atravesar el enjambre de virus.")).ground(16).virus(-14, 2, 1.5).virus(-11, 2, 1.7).virus(-8, 2, 1.4).virus(-5, 2, 1.8).hazard(-10, 2.6, { ax: 3, sp: 1.6 })
+          .ground(16).virus(-13, 4.5, 1.1).virus(-5, 3.5, 1.4).sparks(-10, 1.2, 5)
+          .snapper(4, 3.2, 0).snapper(9, 3.2, 1.2).sparks(2, 3.4, 6).ground(14)
+          .gap(15).mover(-13.5, 0.4, 3, 2.2, 0, 1.2).mover(-7, 1.6, 3, 0, 1.6, 1.4).sparks(-7, 4.4, 3).ground(10)
+          .brick(-8, 3.4, 5).sparks(-7.5, 4.8, 5).hazard(-3, 1.4, { ax: 1.8, sp: 1.5 })
+          .gap(12).pillar(-10.2, 0).pillar(-6.6, 0.9).pillar(-3, 0.3).ground(10).virus(-6, 3, 1.6)
+          .spikes(3, 1.8).sparks(2, 3.2, 4).ground(10).rise(2).ground(6).rise(-2).gap(3).ground(6)
+          .crumbleBridge(4, 'crumble').ground(8).hazard(4, 1.2, { ax: 2, sp: 1.4 }).hazard(9, 3, { ax: 1.6, sp: 1.3, ay: 0.8 }).ground(12)
+          .qblock(3, 3.4, 'life').checkpoint().ground(6)
+          .hint(1, 4.6, t("BOSS AHEAD! Stomp it 3 times to open the gate.", "¡JEFE ADELANTE! Salta sobre él 3 veces para abrir la puerta.")).bigboss(24)
+          .sparks(2, 1.2, 6).ground(10)
           .goal();
       } }
   ]

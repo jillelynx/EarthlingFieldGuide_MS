@@ -5,7 +5,7 @@ fs.mkdirSync(OUT, { recursive: true });
 const P_ground_ok = st => st.y < 1.2 || true;
 (async () => {
   const b = await chromium.launch({ args: ['--use-gl=swiftshader', '--enable-unsafe-swiftshader'] }); const res = {};
-  for (const spec of ids) { const [id, startX] = spec.split('@');
+  for (const spec of ids) { const [id, startX] = spec.split('@'); let isBonus;
     const errs = []; const ctx = await b.newContext({ viewport: { width: 1280, height: 720 } }); const p = await ctx.newPage();
     await p.route('**/*', r => { const u = new URL(r.request().url()); if (u.hostname === 'cdnjs.cloudflare.com') return r.fulfill({ path: path.join(__dirname, 'node_modules/three/build/three.min.js') });
       if (u.hostname === 'game.test') { const f = path.join(GAME, u.pathname); return fs.existsSync(f) ? r.fulfill({ path: f }) : r.fulfill({ status: 404, body: '' }); } return r.abort(); });
@@ -14,7 +14,7 @@ const P_ground_ok = st => st.y < 1.2 || true;
     if (ES) await p.addInitScript(() => { try { localStorage.setItem('efg-middle-school-save-v1', JSON.stringify({ set: { lang: 'es', text: 1, low: false, sound: false, music: false, vol: 0, cap: true, unlock: false } })); } catch (e) {} });
     await p.goto('http://game.test/index.html#nointro#level-' + id); await p.waitForFunction(() => window.FieldGuide && FieldGuide._debug && FieldGuide._debug.state().L, null, { timeout: 30000 });
     await p.waitForTimeout(1500);
-    if (startX) await p.evaluate(x => { const s = FieldGuide._debug.state(), L = s.L, P = s.P; P.x = +x; P.y = 6; P.vy = 0; L.zones.forEach(z => { if (z.x1 < +x) { z.done = true; if (z.gate) z.gate.off = true; if (z.gateMesh) z.gateMesh.visible = false; } }); L.stations.forEach(st => { if (st.wall && st.wall.x0 < +x) st.wall.off = true; }); }, startX);
+    if (startX) await p.evaluate(x => { const s = FieldGuide._debug.state(), L = s.L, P = s.P; P.x = +x; P.y = 6; P.vy = 0; L.cps.push({ x: +x, y: 6 }); L.cp = L.cps.length - 1; L.zones.forEach(z => { if (z.x1 < +x) { z.done = true; if (z.gate) z.gate.off = true; if (z.gateMesh) z.gateMesh.visible = false; } }); L.stations.forEach(st => { if (st.wall && st.wall.x0 < +x) st.wall.off = true; }); }, startX);
     const info = await p.evaluate(() => { const L = FieldGuide._debug.state().L; return { len: Math.round(L.len), zones: L.zones.map(z => z.kind), scans: L.scans.length, stations: L.stations.length, quest: L.quest ? L.quest.items.length : 0, rare: !!L.rare, title: L.lv.title }; });
     let waitN = 0, t0 = Date.now(), lastX = -99, stuckT = 0, wetStuck = 0, opened = 0, answered = 0, shots = 0, done = false, maxX = 0;
     await p.keyboard.down('ArrowRight');
@@ -46,6 +46,30 @@ const P_ground_ok = st => st.y < 1.2 || true;
       if (st.edgeWait) { await p.keyboard.up('ArrowRight'); await p.waitForTimeout(120); stuckT = 0; lastX = -99; continue; } else await p.keyboard.down('ArrowRight');
       if (Math.abs(st.x - lastX) < 0.15) stuckT += 0.3; else stuckT = 0; lastX = st.x;
       if (HARV || ES) await p.keyboard.press('e');
+      /* BONUS speed runs: use the moves like a player would */
+      if (isBonus === undefined) isBonus = await p.evaluate(() => !!FieldGuide._debug.state().L.lv.bonus);
+      const bz = !isBonus ? null : await p.evaluate(() => { const s = FieldGuide._debug.state(), L = s.L, P = s.P; if (!L || !L.lv.bonus) return null; const A = s.S.abil || {};
+        const bs = (L.bosses || []).find(q => q.alive && q.seen); const sol = x => L.solids.some(sl => !sl.off && x > sl.x0 && x < sl.x1 && sl.y1 > P.y - 6);
+        const gap = P.ground && !sol(P.x + 1.6) && !sol(P.x + 3); const wall = L.solids.some(sl => !sl.off && !sl.oneWay && sl.x0 > P.x && sl.x0 < P.x + 1.6 && sl.y1 > P.y + 3 && sl.y0 < P.y + 1);
+        const brick = L.bricks.some(sl => !sl.off && sl.x0 > P.x - 0.5 && sl.x0 < P.x + 2.5 && sl.y0 < P.y + 2.5 && sl.y1 > P.y + 0.2);
+        const under = L.bricks.some(sl => !sl.off && P.ground === sl);
+        return { A, boss: bs ? { dx: bs.x - P.x, dy: bs.y - P.y, dir: bs.dir } : null, gap, wall, brick, under, ground: !!P.ground }; });
+      if (bz) {
+        if (bz.boss && Math.abs(bz.boss.dx) < 9) { stuckT = 0;
+          if (bz.A.spin && Math.abs(bz.boss.dx) < 3) { await p.keyboard.press('e'); await p.waitForTimeout(200); continue; }
+          if (bz.boss.dx > 1.5 && bz.boss.dx < 5 && bz.ground) { await p.keyboard.down('Space'); await p.waitForTimeout(420); await p.keyboard.up('Space');
+            for (let k = 0; k < 16; k++) { await p.waitForTimeout(50); const r = await p.evaluate(() => { const s = FieldGuide._debug.state(), P = s.P, bs = (s.L.bosses || []).find(q => q.alive); return bs ? { dx: bs.x - P.x, up: P.y - bs.y, g: !!P.ground } : null; });
+              if (!r || r.g) break; if (Math.abs(r.dx) < 1.3 && r.up > 0.8) { if (bz.A.pound) { await p.keyboard.down('ArrowDown'); await p.waitForTimeout(200); await p.keyboard.up('ArrowDown'); } break; }
+              if (r.dx < -0.5) { await p.keyboard.up('ArrowRight'); await p.keyboard.down('ArrowLeft'); await p.waitForTimeout(80); await p.keyboard.up('ArrowLeft'); await p.keyboard.down('ArrowRight'); } }
+            continue; }
+          if (bz.boss.dx <= 0 && bz.boss.dx > -3) { await p.keyboard.up('ArrowRight'); await p.keyboard.down('ArrowLeft'); await p.waitForTimeout(250); await p.keyboard.up('ArrowLeft'); await p.keyboard.down('ArrowRight'); continue; }
+        }
+        if (bz.under && bz.A.pound) { await p.keyboard.down('Space'); await p.waitForTimeout(200); await p.keyboard.up('Space'); await p.waitForTimeout(200); await p.keyboard.down('ArrowDown'); await p.waitForTimeout(400); await p.keyboard.up('ArrowDown'); continue; }
+        if (bz.gap) { const runUp = bz.A.glide && !bz.A.dash; if (runUp) { await p.keyboard.down('Shift'); await p.waitForTimeout(250); } await p.keyboard.down('Space'); await p.waitForTimeout(380);
+          if (bz.A.dash) { await p.keyboard.up('Space'); await p.waitForTimeout(120); await p.keyboard.down('Space'); await p.waitForTimeout(300); await p.keyboard.down('Shift'); await p.waitForTimeout(80); await p.keyboard.up('Shift'); }
+          await p.waitForTimeout(bz.A.glide ? 2600 : 200); await p.keyboard.up('Space'); if (runUp) await p.keyboard.up('Shift'); stuckT = 0; continue; }
+        if (bz.wall && bz.A.wall && stuckT > 0.3) { for (let k = 0; k < 6; k++) { await p.keyboard.down('Space'); await p.waitForTimeout(230); await p.keyboard.up('Space'); await p.waitForTimeout(170); } continue; }
+      }
       if (st.low && stuckT < 1.5) { await p.keyboard.down('ArrowDown'); await p.waitForTimeout(900); await p.keyboard.up('ArrowDown'); continue; }
       if (st.dig) { await p.keyboard.down('ArrowDown'); await p.waitForTimeout(1800); await p.keyboard.up('ArrowDown'); stuckT = 0; continue; }
       if (st.water && stuckT > 0.6) { const kk = (wetStuck % 4) < 2 ? 'Space' : 'ArrowDown'; await p.keyboard.down(kk); await p.waitForTimeout(kk === 'Space' ? 4000 : 1500); await p.keyboard.up(kk); stuckT = Math.min(stuckT, 1.5); wetStuck += 2; if (wetStuck > 10) { stuckT = 3; wetStuck = 0; } }

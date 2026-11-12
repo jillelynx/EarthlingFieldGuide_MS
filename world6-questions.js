@@ -55,75 +55,75 @@ FieldGuide.registerQuestions(6, {
   {
    "id": "sort6-extinct",
    "code": "3.1.6-8.O",
-   "prompt": "Is this kind of living thing still alive today, or extinct?",
+   "prompt": "Use the rock layers (layer 1 is the top): is this kind of living thing still alive today, or extinct?",
    "options": [
     "Alive today",
     "Extinct"
    ],
-   "hint": "Extinct means none are left anywhere. Some very old groups still have living members.",
+   "hint": "The top layer is today. If a kind of fossil reaches the top layer, it is still alive. If it stops below the top, it went extinct.",
    "items": [
     {
-     "text": "Woolly mammoth",
+     "text": "Fossil A: found in layers 5 to 3, none above",
      "answer": 1,
-     "explain": "The last mammoths died out thousands of years ago: extinct.",
+     "explain": "It disappears before the top layer, so this kind died out: extinct.",
      "es": {
-      "text": "Mamut lanudo",
-      "explain": "Los últimos mamuts murieron hace miles de años: extinto."
+      "text": "Fósil A: está en las capas 5 a 3, en ninguna de arriba",
+      "explain": "Desaparece antes de la capa de arriba, así que este tipo se acabó: extinto."
      }
     },
     {
-     "text": "Trilobites",
-     "answer": 1,
-     "explain": "All trilobites died out about 252 million years ago: extinct.",
-     "es": {
-      "text": "Trilobites",
-      "explain": "Todos los trilobites murieron hace unos 252 millones de años: extintos."
-     }
-    },
-    {
-     "text": "Sharks",
+     "text": "Fossil B: found in the deepest layer and in every layer up to the top",
      "answer": 0,
-     "explain": "Sharks first appear in very old rocks, and they are still alive today.",
+     "explain": "It reaches the top layer, which is today: alive today.",
      "es": {
-      "text": "Tiburones",
-      "explain": "Los tiburones aparecen en rocas muy antiguas, y todavía viven hoy."
+      "text": "Fósil B: está en la capa más profunda y en todas las capas hasta la de arriba",
+      "explain": "Llega a la capa de arriba, que es hoy: vive hoy."
      }
     },
     {
-     "text": "Tyrannosaurus rex",
-     "answer": 1,
-     "explain": "T. rex fossils stop at the layer about 66 million years old: extinct.",
-     "es": {
-      "text": "Tyrannosaurus rex",
-      "explain": "Los fósiles de T. rex terminan en la capa de unos 66 millones de años: extinto."
-     }
-    },
-    {
-     "text": "Horseshoe crabs",
+     "text": "Fossil C: found only in the top layer",
      "answer": 0,
-     "explain": "Their group is over 400 million years old, and horseshoe crabs still live on beaches today.",
+     "explain": "The top layer is today, so this kind lives now.",
      "es": {
-      "text": "Cangrejos herradura",
-      "explain": "Su grupo tiene más de 400 millones de años, y los cangrejos herradura todavía viven en las playas."
+      "text": "Fósil C: está solo en la capa de arriba",
+      "explain": "La capa de arriba es hoy, así que este tipo vive ahora."
      }
     },
     {
-     "text": "Tiktaalik",
+     "text": "Fossil D: found only in the deepest layer",
      "answer": 1,
-     "explain": "Tiktaalik is known only from fossils: extinct.",
+     "explain": "It never shows up in any younger layer: extinct.",
      "es": {
-      "text": "Tiktaalik",
-      "explain": "Tiktaalik solo se conoce por los fósiles: extinto."
+      "text": "Fósil D: está solo en la capa más profunda",
+      "explain": "Nunca aparece en ninguna capa más joven: extinto."
+     }
+    },
+    {
+     "text": "Fossil E: found in layers 4, 3, 2 and 1",
+     "answer": 0,
+     "explain": "Layer 1 is the top, so this kind is still found today: alive today.",
+     "es": {
+      "text": "Fósil E: está en las capas 4, 3, 2 y 1",
+      "explain": "La capa 1 es la de arriba, así que este tipo todavía se encuentra hoy: vive hoy."
+     }
+    },
+    {
+     "text": "Fossil F: found only in layers older than about 66 million years",
+     "answer": 1,
+     "explain": "None are found in younger layers, so this kind died out about 66 million years ago: extinct.",
+     "es": {
+      "text": "Fósil F: está solo en capas de más de unos 66 millones de años",
+      "explain": "No hay ninguno en capas más jóvenes, así que este tipo se acabó hace unos 66 millones de años: extinto."
      }
     }
    ],
    "es": {
-    "prompt": "¿Este tipo de ser vivo todavía vive hoy o está extinto?",
+    "prompt": "Usa las capas de roca (la capa 1 es la de arriba): ¿este tipo de ser vivo todavía vive hoy o está extinto?",
     "options": [
      "Vive hoy",
      "Extinto"
     ],
-    "hint": "Extinto significa que no queda ninguno en ningún lugar. Algunos grupos muy antiguos todavía tienen miembros vivos."
+    "hint": "La capa de arriba es hoy. Si un tipo de fósil llega a la capa de arriba, todavía vive. Si termina antes de llegar arriba, se extinguió."
    }
   },
   {
@@ -553,26 +553,26 @@ FieldGuide.registerQuestions(6, {
   {
    "id": "ms6q09",
    "code": "3.1.6-8.O",
-   "prompt": "Which group is still alive today, even though its fossils are found in very old layers?",
+   "prompt": "Fossil X appears in the deepest layer AND in every layer up to the top. What can you conclude?",
    "options": [
-    "sharks",
-    "trilobites",
-    "woolly mammoths",
-    "Tyrannosaurus rex"
+    "This kind of living thing has survived from long ago until recent times.",
+    "This kind of living thing died out long before the top layer was formed.",
+    "This kind of living thing first appeared only in the youngest layer.",
+    "The rock layers must have been flipped upside down at some point."
    ],
    "answer": 0,
-   "hint": "One of these still swims in the ocean.",
-   "explain": "Sharks appear in very old rocks and still live today. The others are extinct.",
+   "hint": "The deepest layer is the oldest, and the top layer is the youngest.",
+   "explain": "Fossil X is found from the oldest layer all the way to the youngest, so this kind of living thing lived through all that time and survived until recent times.",
    "es": {
-    "prompt": "¿Qué grupo todavía vive hoy, aunque sus fósiles se encuentran en capas muy antiguas?",
+    "prompt": "El fósil X aparece en la capa más profunda Y en todas las capas hasta la de arriba. ¿Qué puedes concluir?",
     "options": [
-     "los tiburones",
-     "los trilobites",
-     "los mamuts lanudos",
-     "el Tyrannosaurus rex"
+     "Este tipo de ser vivo ha sobrevivido desde hace mucho tiempo hasta tiempos recientes.",
+     "Este tipo de ser vivo se extinguió mucho antes de que se formara la capa de arriba.",
+     "Este tipo de ser vivo apareció por primera vez solo en la capa más joven.",
+     "Las capas de roca deben de haberse volteado de cabeza en algún momento."
     ],
-    "hint": "Uno de estos todavía nada en el océano.",
-    "explain": "Los tiburones aparecen en rocas muy antiguas y todavía viven. Los demás están extintos."
+    "hint": "La capa más profunda es la más antigua, y la de arriba es la más joven.",
+    "explain": "El fósil X está desde la capa más antigua hasta la más joven, así que este tipo de ser vivo vivió todo ese tiempo y sobrevivió hasta tiempos recientes."
    }
   },
   {
@@ -598,6 +598,31 @@ FieldGuide.registerQuestions(6, {
     ],
     "hint": "Busca un patrón de capa en capa.",
     "explain": "Distintas formas de vida aparecen en un orden constante a través de las capas, lo que documenta el cambio con el tiempo."
+   }
+  },
+  {
+   "id": "ms6q49",
+   "code": "3.1.6-8.O",
+   "prompt": "The deepest layers hold only simple sea animals. Higher layers add fish with backbones, then animals with four limbs. What pattern does this show?",
+   "options": [
+    "More complex body structures appear in younger layers.",
+    "All of these animals lived at exactly the same time.",
+    "Simpler animals appear only in the youngest layers.",
+    "Animals with four limbs are the very oldest life on Earth."
+   ],
+   "answer": 0,
+   "hint": "Higher layers are younger. What gets added as you go up?",
+   "explain": "As you move up to younger layers, new life forms with more complex body structures appear. This pattern shows that life changed over Earth’s history.",
+   "es": {
+    "prompt": "Las capas más profundas solo tienen animales marinos simples. Las capas más altas agregan peces con columna vertebral y luego animales con cuatro extremidades. ¿Qué patrón muestra esto?",
+    "options": [
+     "Las estructuras corporales más complejas aparecen en capas más jóvenes.",
+     "Todos estos animales vivieron exactamente al mismo tiempo.",
+     "Los animales más simples solo aparecen en las capas más jóvenes.",
+     "Los animales con cuatro extremidades son, sin duda, la vida más antigua de la Tierra."
+    ],
+    "hint": "Las capas más altas son más jóvenes. ¿Qué se agrega al subir?",
+    "explain": "Al subir a capas más jóvenes, aparecen formas de vida nuevas con estructuras corporales más complejas. Este patrón muestra que la vida cambió a lo largo de la historia de la Tierra."
    }
   },
   {
@@ -788,7 +813,7 @@ FieldGuide.registerQuestions(6, {
   {
    "id": "ms6q16",
    "code": "3.1.6-8.P",
-   "prompt": "Whales and hippos share a rare ankle bone shape and very similar DNA. What is the best explanation?",
+   "prompt": "Early fossil whales had the same rare ankle bone shape as hippos and their relatives, and whale and hippo DNA is very similar. What is the best explanation?",
    "options": [
     "They share a recent common ancestor.",
     "Hippos are a kind of fish.",
@@ -799,7 +824,7 @@ FieldGuide.registerQuestions(6, {
    "hint": "Two kinds of evidence point the same way.",
    "explain": "Matching anatomy and DNA are strong evidence that whales and hippos are close relatives.",
    "es": {
-    "prompt": "Las ballenas y los hipopótamos comparten una forma rara del hueso del tobillo y un ADN muy parecido. ¿Cuál es la mejor explicación?",
+    "prompt": "Las primeras ballenas fósiles tenían la misma forma rara del hueso del tobillo que los hipopótamos y sus parientes, y el ADN de las ballenas y el de los hipopótamos es muy parecido. ¿Cuál es la mejor explicación?",
     "options": [
      "Comparten un ancestro común reciente.",
      "Los hipopótamos son un tipo de pez.",
@@ -1476,6 +1501,61 @@ FieldGuide.registerQuestions(6, {
     ],
     "hint": "Trabaja con las diferencias que ya están.",
     "explain": "La selección natural actúa sobre la variación heredada que ya existe; no crea rasgos a pedido."
+   }
+  },
+  {
+   "id": "ms6q50",
+   "code": "3.1.6-8.S",
+   "prompt": "The bar graph shows finches that survived the 1977 drought. How many times more likely was a large-beaked finch to survive than a small-beaked one?",
+   "options": [
+    "3 times",
+    "2 times",
+    "20 times",
+    "30 times"
+   ],
+   "answer": 0,
+   "hint": "Divide the large-beak percent by the small-beak percent.",
+   "explain": "30% of large-beaked finches survived and 10% of small-beaked finches did. 30 ÷ 10 = 3, so a large-beaked finch was 3 times as likely to survive.",
+   "es": {
+    "prompt": "La gráfica de barras muestra los pinzones que sobrevivieron a la sequía de 1977. ¿Cuántas veces más probable era que sobreviviera un pinzón de pico grande que uno de pico pequeño?",
+    "options": [
+     "3 veces",
+     "2 veces",
+     "20 veces",
+     "30 veces"
+    ],
+    "hint": "Divide el porcentaje del pico grande entre el porcentaje del pico pequeño.",
+    "explain": "Sobrevivió el 30 % de los pinzones de pico grande y el 10 % de los de pico pequeño. 30 ÷ 10 = 3, así que era 3 veces más probable que sobreviviera un pinzón de pico grande.",
+    "figure": {
+     "type": "bars",
+     "categories": [
+      "Pico pequeño",
+      "Pico mediano",
+      "Pico grande"
+     ],
+     "values": [
+      10,
+      15,
+      30
+     ],
+     "ylabel": "Aves que sobrevivieron (%)",
+     "unit": "%"
+    }
+   },
+   "figure": {
+    "type": "bars",
+    "categories": [
+     "Small beak",
+     "Medium beak",
+     "Large beak"
+    ],
+    "values": [
+     10,
+     15,
+     30
+    ],
+    "ylabel": "Birds that survived (%)",
+    "unit": "%"
    }
   },
   {
@@ -2590,7 +2670,7 @@ FieldGuide.registerQuestions(6, {
   {
    "id": "d6-legs",
    "code": "3.1.6-8.P",
-   "title": "Back leg length compared with body length",
+   "title": "Back leg length compared with body length (estimated)",
    "xlabel": "Whale (oldest on the left)",
    "ylabel": "Back leg length (% of body)",
    "unit": "%",
@@ -2631,7 +2711,7 @@ FieldGuide.registerQuestions(6, {
     }
    ],
    "es": {
-    "title": "Largo de las patas traseras comparado con el largo del cuerpo",
+    "title": "Largo de las patas traseras comparado con el largo del cuerpo (estimado)",
     "xlabel": "Ballena (la más antigua a la izquierda)",
     "ylabel": "Largo de las patas traseras (% del cuerpo)",
     "categories": [
@@ -2777,13 +2857,13 @@ FieldGuide.registerQuestions(6, {
      }
     },
     {
-     "prompt": "Clean air laws were passed in the 1950s. Which year shows that the dark trait had DECREASED the most?",
+     "prompt": "After the clean air laws, which year shows the LOWEST share of dark moths?",
      "answer": 4,
-     "hint": "Find the lowest bar after 1960.",
+     "hint": "The clean air laws were passed in the 1950s. Find the lowest bar after 1960.",
      "explain": "2010: only 5%. With clean, light bark, dark moths were eaten more often, so the trait decreased.",
      "es": {
-      "prompt": "Las leyes de aire limpio se aprobaron en la década de 1950. ¿Qué año muestra que el rasgo oscuro había DISMINUIDO más?",
-      "hint": "Busca la barra más baja después de 1960.",
+      "prompt": "Después de las leyes de aire limpio, ¿qué año muestra la MENOR proporción de polillas oscuras?",
+      "hint": "Las leyes de aire limpio se aprobaron en la década de 1950. Busca la barra más baja después de 1960.",
       "explain": "En 2010: solo el 5 %. Con la corteza limpia y clara, se comían más polillas oscuras, así que el rasgo disminuyó."
      }
     }
@@ -2864,24 +2944,24 @@ FieldGuide.registerQuestions(6, {
    "code": "3.1.6-8.O",
    "title": "Put the layers in order from the TOP (youngest) to the BOTTOM (oldest)",
    "steps": [
-    "Ice Age: woolly mammoths",
-    "Early whales with legs",
-    "Dinosaurs",
-    "Fish with legs (Tiktaalik)",
-    "Early sea animals (trilobites)"
+    "Top layer: bones of large mammals",
+    "Fossils of early whales with small legs",
+    "Large reptile bones",
+    "Fish with leg-like fins",
+    "Bottom layer: simple sea animals with shells"
    ],
-   "hint": "The youngest layer is on top.",
+   "hint": "The youngest layer is on top. Simpler life forms are found in deeper, older layers.",
    "explain": "Deeper layers formed first, so they are older. The fossil record shows life forms appearing, changing and going extinct in order.",
    "es": {
     "title": "Ordena las capas de ARRIBA (la más joven) a ABAJO (la más antigua)",
     "steps": [
-     "Edad de Hielo: mamuts lanudos",
-     "Primeras ballenas con patas",
-     "Dinosaurios",
-     "Peces con patas (Tiktaalik)",
-     "Primeros animales marinos (trilobites)"
+     "Capa de arriba: huesos de mamíferos grandes",
+     "Fósiles de primeras ballenas con patas pequeñas",
+     "Huesos de reptiles grandes",
+     "Peces con aletas como patas",
+     "Capa de abajo: animales marinos simples con concha"
     ],
-    "hint": "La capa más joven está arriba.",
+    "hint": "La capa más joven está arriba. Las formas de vida más simples están en las capas más profundas y antiguas.",
     "explain": "Las capas más profundas se formaron primero, así que son más antiguas. El registro fósil muestra que las formas de vida aparecen, cambian y se extinguen en orden."
    }
   },
@@ -3199,24 +3279,24 @@ FieldGuide.registerQuestions(6, {
    "color": "#a07a5a",
    "word": "Extinct",
    "def": "No longer living anywhere on Earth.",
-   "note": "Dinosaur fossils fill this layer, about 68 million years old. Above it they vanish: except for birds, dinosaurs are EXTINCT.",
+   "note": "Dinosaur fossils fill this layer, about 66 million years old. Above it they vanish: except for birds, dinosaurs are EXTINCT.",
    "es": {
     "name": "Hueso de dinosaurio",
     "word": "Extinto",
     "def": "Que ya no vive en ningún lugar de la Tierra.",
-    "note": "Esta capa, de unos 68 millones de años, está llena de fósiles de dinosaurios. Encima de ella desaparecen: excepto las aves, los dinosaurios están EXTINTOS."
+    "note": "Esta capa, de unos 66 millones de años, está llena de fósiles de dinosaurios. Encima de ella desaparecen: excepto las aves, los dinosaurios están EXTINTOS."
    }
   },
   {
    "id": "s6f-tiktaalik",
-   "name": "Fish with legs",
+   "name": "Fish with leg-like fins",
    "look": "rock",
    "color": "#8a9a8a",
    "word": "Transitional fossil",
    "def": "A fossil with traits of both an older group and a newer group.",
    "note": "Tiktaalik, 375 million years old, had gills and scales like a fish, but a neck and sturdy fins like legs. It is a TRANSITIONAL FOSSIL between fish and land animals.",
    "es": {
-    "name": "Pez con patas",
+    "name": "Pez con aletas como patas",
     "word": "Fósil de transición",
     "def": "Un fósil con rasgos de un grupo más antiguo y de un grupo más nuevo.",
     "note": "Tiktaalik, de 375 millones de años, tenía branquias y escamas como un pez, pero cuello y aletas fuertes como patas. Es un FÓSIL DE TRANSICIÓN entre los peces y los animales terrestres."
@@ -3319,12 +3399,12 @@ FieldGuide.registerQuestions(6, {
    "color": "#8a7a8a",
    "word": "Closest relative",
    "def": "The living species that shares the most recent common ancestor with another.",
-   "note": "Whales’ CLOSEST living RELATIVES are hippos. Their ankle bones and their DNA show it.",
+   "note": "Whales’ CLOSEST living RELATIVES are hippos. Fossil whale ankle bones and modern DNA show it.",
    "es": {
     "name": "Cartel de un cráneo de hipopótamo",
     "word": "Pariente más cercano",
     "def": "La especie viva que comparte el ancestro común más reciente con otra.",
-    "note": "Los PARIENTES vivos MÁS CERCANOS de las ballenas son los hipopótamos. Sus huesos del tobillo y su ADN lo demuestran."
+    "note": "Los PARIENTES vivos MÁS CERCANOS de las ballenas son los hipopótamos. Los huesos del tobillo de ballenas fósiles y el ADN moderno lo demuestran."
    }
   },
   {

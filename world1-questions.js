@@ -67,17 +67,17 @@ FieldGuide.registerQuestions(1, {
    "code": "3.1.6-8.B",
    "model": "prokaryote",
    "parts": [
+    "Cell wall",
     "Plasma membrane",
     "Cytoplasm",
-    "DNA",
-    "Ribosomes"
+    "DNA"
    ],
    "prompt": "Build a vent bacterium: bring it only the parts a one-celled bacterium has",
    "good": [
+    "Cell wall",
     "Cell membrane",
     "Cytoplasm",
-    "DNA",
-    "Ribosomes"
+    "DNA"
    ],
    "bad": [
     {
@@ -108,10 +108,10 @@ FieldGuide.registerQuestions(1, {
    "es": {
     "prompt": "Construye una bacteria de las fuentes: tráele solo las partes que tiene una bacteria de una célula",
     "good": [
+     "Pared celular",
      "Membrana celular",
      "Citoplasma",
-     "ADN",
-     "Ribosomas"
+     "ADN"
     ]
    }
   },
@@ -261,7 +261,7 @@ FieldGuide.registerQuestions(1, {
     "One cell",
     "Many types of cells"
    ],
-   "hint": "Microorganisms are single cells. Animals are made of many types of cells.",
+   "hint": "The microorganisms here are each a single cell. Animals are made of many types of cells.",
    "items": [
     {
      "text": "Archaea from a hot vent",
@@ -315,7 +315,7 @@ FieldGuide.registerQuestions(1, {
      "Una célula",
      "Muchos tipos de células"
     ],
-    "hint": "Los microorganismos son células sueltas. Los animales están formados por muchos tipos de células."
+    "hint": "Cada uno de los microorganismos de aquí es una sola célula. Los animales están formados por muchos tipos de células."
    }
   },
   {
@@ -331,10 +331,10 @@ FieldGuide.registerQuestions(1, {
     {
      "text": "Cell wall",
      "answer": 0,
-     "explain": "Only plant cells have a stiff cell wall.",
+     "explain": "Plant cells have a stiff cell wall; animal cells do not.",
      "es": {
       "text": "Pared celular",
-      "explain": "Solo las células vegetales tienen una pared celular rígida."
+      "explain": "Las células vegetales tienen una pared celular rígida; las células animales no."
      }
     },
     {
@@ -349,10 +349,10 @@ FieldGuide.registerQuestions(1, {
     {
      "text": "Chloroplasts",
      "answer": 0,
-     "explain": "Only plant cells have chloroplasts to make food from sunlight.",
+     "explain": "Plant cells have chloroplasts to make food from sunlight; animal cells do not.",
      "es": {
       "text": "Cloroplastos",
-      "explain": "Solo las células vegetales tienen cloroplastos para producir alimento con la luz del sol."
+      "explain": "Las células vegetales tienen cloroplastos para producir alimento con la luz del sol; las células animales no."
      }
     },
     {
@@ -447,26 +447,26 @@ FieldGuide.registerQuestions(1, {
   {
    "id": "ms1q03",
    "code": "3.1.6-8.A",
-   "prompt": "A scientist looks at a rock, a leaf and a feather under a microscope. Cells are found in the leaf and the feather, but not in the rock. What can the scientist conclude?",
+   "prompt": "A scientist looks at a rock, a leaf and a thin slice of cork under a microscope. Cells are found in the leaf and the cork, but not in the rock. What can the scientist conclude?",
    "options": [
-    "The rock is nonliving, and the leaf and feather came from living things.",
+    "The rock is nonliving, and the leaf and cork came from living things.",
     "All three are alive right now.",
     "The rock is alive but too small to see.",
-    "Only the feather was ever alive."
+    "Only the cork was ever alive."
    ],
    "answer": 0,
    "hint": "Cells are evidence of life, now or in the past.",
-   "explain": "Cells in the leaf and feather show they came from living things. The rock has no cells, so it is nonliving.",
+   "explain": "Cells in the leaf and cork show they came from living things (cork is bark from a cork oak tree). The rock has no cells, so it is nonliving.",
    "es": {
-    "prompt": "Una científica mira una roca, una hoja y una pluma con un microscopio. Encuentra células en la hoja y en la pluma, pero no en la roca. ¿Qué puede concluir?",
+    "prompt": "Una científica mira una roca, una hoja y un corte fino de corcho con un microscopio. Encuentra células en la hoja y en el corcho, pero no en la roca. ¿Qué puede concluir?",
     "options": [
-     "La roca es inerte, y la hoja y la pluma vinieron de seres vivos.",
+     "La roca es inerte, y la hoja y el corcho vinieron de seres vivos.",
      "Las tres cosas están vivas ahora.",
      "La roca está viva, pero es demasiado pequeña para verse.",
-     "Solo la pluma estuvo viva alguna vez."
+     "Solo el corcho estuvo vivo alguna vez."
     ],
     "hint": "Las células son evidencia de vida, ahora o en el pasado.",
-    "explain": "Las células de la hoja y la pluma muestran que vinieron de seres vivos. La roca no tiene células, así que es inerte."
+    "explain": "Las células de la hoja y el corcho muestran que vinieron de seres vivos (el corcho es la corteza de un alcornoque). La roca no tiene células, así que es inerte."
    }
   },
   {
@@ -706,7 +706,7 @@ FieldGuide.registerQuestions(1, {
    ],
    "answer": 0,
    "hint": "Both kinds of cells need to release energy from food.",
-   "explain": "Plant and animal cells both have mitochondria. Only plant cells have a cell wall, chloroplasts and a large vacuole.",
+   "explain": "Plant and animal cells both have mitochondria. Of these, only plant cells, not animal cells, have a cell wall, chloroplasts and a large vacuole.",
    "es": {
     "prompt": "¿Qué parte tienen TANTO las células vegetales como las animales?",
     "options": [
@@ -716,32 +716,32 @@ FieldGuide.registerQuestions(1, {
      "Una vacuola central grande"
     ],
     "hint": "Los dos tipos de células necesitan liberar energía de los alimentos.",
-    "explain": "Las células vegetales y animales tienen mitocondrias. Solo las vegetales tienen pared celular, cloroplastos y una vacuola grande."
+    "explain": "Las células vegetales y animales tienen mitocondrias. De estas partes, solo las células vegetales, no las animales, tienen pared celular, cloroplastos y una vacuola grande."
    }
   },
   {
    "id": "ms1q14",
    "code": "3.1.6-8.B",
-   "prompt": "A plant is not watered for a week, and its leaves droop. Which cell part most likely shrank?",
+   "prompt": "A plant is not watered for a week, and its leaves droop. What happened to its cells?",
    "options": [
-    "Vacuole",
-    "Nucleus",
-    "Mitochondria",
-    "Cell membrane"
+    "The cells lost water and went limp.",
+    "The cells grew more chloroplasts.",
+    "The cell walls disappeared.",
+    "The cells gained a nucleus."
    ],
    "answer": 0,
-   "hint": "Which part stores water?",
-   "explain": "The vacuole stores water. When it loses water, the cell goes limp and the leaves droop.",
+   "hint": "What does a plant need that it did not get?",
+   "explain": "Plant cells hold water that keeps them firm. Without water, the cells lose water and go limp, so the leaves droop.",
    "es": {
-    "prompt": "Una planta no se riega durante una semana y sus hojas se caen. ¿Qué parte de la célula probablemente se encogió?",
+    "prompt": "Una planta no se riega durante una semana y sus hojas se caen. ¿Qué les pasó a sus células?",
     "options": [
-     "Vacuola",
-     "Núcleo",
-     "Mitocondrias",
-     "Membrana celular"
+     "Las células perdieron agua y se ablandaron.",
+     "Las células formaron más cloroplastos.",
+     "Las paredes celulares desaparecieron.",
+     "Las células ganaron un núcleo."
     ],
-    "hint": "¿Qué parte guarda agua?",
-    "explain": "La vacuola guarda agua. Cuando pierde agua, la célula se ablanda y las hojas se caen."
+    "hint": "¿Qué necesita la planta que no recibió?",
+    "explain": "Las células vegetales guardan agua que las mantiene firmes. Sin agua, las células pierden agua y se ablandan, así que las hojas se caen."
    }
   },
   {
@@ -922,26 +922,51 @@ FieldGuide.registerQuestions(1, {
   {
    "id": "ms1q22",
    "code": "3.1.6-8.B",
-   "prompt": "A one-celled bacterium has no nucleus. Where is its DNA?",
+   "prompt": "A bacterium is a whole organism made of one cell. Which part controls what enters and leaves it?",
    "options": [
-    "Floating in the cytoplasm",
-    "Inside its chloroplasts",
-    "In its cell wall only",
-    "Outside the cell"
+    "Cell membrane",
+    "Chloroplasts",
+    "Heart",
+    "Lungs"
    ],
    "answer": 0,
-   "hint": "Bacteria have no nucleus to hold their DNA.",
-   "explain": "In bacteria, the DNA floats in the cytoplasm because there is no nucleus.",
+   "hint": "A one-celled organism has no organs. Which cell part is the gatekeeper?",
+   "explain": "A bacterium has no heart or lungs. Its cell membrane controls what enters and leaves, just as in every other cell.",
    "es": {
-    "prompt": "Una bacteria de una sola célula no tiene núcleo. ¿Dónde está su ADN?",
+    "prompt": "Una bacteria es un organismo completo formado por una célula. ¿Qué parte controla lo que entra y sale de ella?",
     "options": [
-     "Flotando en el citoplasma",
-     "Dentro de sus cloroplastos",
-     "Solo en su pared celular",
-     "Fuera de la célula"
+     "Membrana celular",
+     "Cloroplastos",
+     "Corazón",
+     "Pulmones"
     ],
-    "hint": "Las bacterias no tienen núcleo para guardar su ADN.",
-    "explain": "En las bacterias, el ADN flota en el citoplasma porque no hay núcleo."
+    "hint": "Un organismo de una célula no tiene órganos. ¿Qué parte de la célula es el guardián de la puerta?",
+    "explain": "Una bacteria no tiene corazón ni pulmones. Su membrana celular controla lo que entra y sale, igual que en todas las demás células."
+   }
+  },
+  {
+   "id": "ms1q23",
+   "code": "3.1.6-8.B",
+   "prompt": "If a cell’s membrane were badly damaged, what would most likely happen?",
+   "options": [
+    "The cell could not control what goes in and out, and it could die.",
+    "The cell would quickly grow extra chloroplasts to fix the damage.",
+    "The nucleus would slip out of the cell and keep working outside it.",
+    "The cell would turn into a different type of cell."
+   ],
+   "answer": 0,
+   "hint": "What is the cell membrane’s job?",
+   "explain": "The cell membrane controls what enters and leaves. If it is badly damaged, harmful things get in and needed things leak out, so the cell could die.",
+   "es": {
+    "prompt": "Si la membrana de una célula se dañara mucho, ¿qué pasaría MÁS probablemente?",
+    "options": [
+     "La célula no podría controlar lo que entra y sale, y podría morir.",
+     "La célula formaría rápido más cloroplastos para arreglar el daño.",
+     "El núcleo se saldría de la célula y seguiría trabajando afuera.",
+     "La célula se convertiría en otro tipo de célula."
+    ],
+    "hint": "¿Cuál es el trabajo de la membrana celular?",
+    "explain": "La membrana celular controla lo que entra y sale. Si se daña mucho, entran cosas dañinas y se escapan cosas necesarias, así que la célula podría morir."
    }
   }
  ],
@@ -976,7 +1001,7 @@ FieldGuide.registerQuestions(1, {
   },
   {
    "name": "Cell wall or cell membrane?",
-   "explain": "Every cell has a cell membrane that controls what goes in and out. Only plant cells also have a stiff cell wall outside it.",
+   "explain": "Every cell has a cell membrane. Plant cells, unlike animal cells, also have a stiff cell wall outside it.",
    "members": [
     {
      "label": "Cell wall",
@@ -998,7 +1023,7 @@ FieldGuide.registerQuestions(1, {
    ],
    "es": {
     "name": "¿Pared celular o membrana celular?",
-    "explain": "Toda célula tiene una membrana celular que controla lo que entra y sale. Solo las células vegetales tienen además una pared celular rígida por fuera."
+    "explain": "Toda célula tiene una membrana celular. Las células vegetales, a diferencia de las animales, también tienen una pared celular rígida por fuera."
    }
   },
   {
@@ -1820,12 +1845,12 @@ FieldGuide.registerQuestions(1, {
    "look": "sprout",
    "color": "#7bcf5a",
    "word": "Cell wall",
-   "def": "A stiff layer outside the cell membrane of plant cells. It gives support and shape.",
+   "def": "A stiff layer outside the cell membrane of plant cells and bacteria. It gives support and shape.",
    "note": "Tall sunflowers stand up straight because each plant cell has a stiff CELL WALL.",
    "es": {
     "name": "Tallo de girasol",
     "word": "Pared celular",
-    "def": "Una capa rígida por fuera de la membrana de las células vegetales. Da soporte y forma.",
+    "def": "Una capa rígida por fuera de la membrana de las células vegetales y de las bacterias. Da soporte y forma.",
     "note": "Los girasoles altos se mantienen derechos porque cada célula vegetal tiene una PARED CELULAR rígida."
    }
   },
@@ -2241,10 +2266,10 @@ FieldGuide.registerQuestions(1, {
   },
   {
    "term": "Cell wall",
-   "def": "A stiff layer outside the cell membrane of plant cells. It gives support and shape.",
+   "def": "A stiff layer outside the cell membrane of plant cells and bacteria. It gives support and shape.",
    "es": {
     "term": "Pared celular",
-    "def": "Una capa rígida por fuera de la membrana de las células vegetales. Da soporte y forma."
+    "def": "Una capa rígida por fuera de la membrana de las células vegetales y de las bacterias. Da soporte y forma."
    }
   },
   {

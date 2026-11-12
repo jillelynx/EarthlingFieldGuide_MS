@@ -135,6 +135,28 @@ FieldGuide.registerWorld({
           .hint(1, 6.6, t('World 3 Lab Lock: solve the clues to open the last gate.', 'Candado del Mundo 3: resuelve las pistas para abrir la última puerta.'))
           .lablock('lock3')
           .goal();
+      } },
+    { id: '3-5', title: "Bonus: Rainforest Run", theme: 'pxrain', bonus: true, par: 65, codes: [],
+      es: { title: "Nivel extra: Carrera en la selva", log: "¡CARRERA EXTRA CONTRA RELOJ! Avanza por las repisas de la selva bajo las lianas. ¡Junta todas las monedas! Solo por diversión: no hay preguntas de ciencias. Junta las monedas, esquiva los obstáculos y gánale al tiempo para ganar 3 estrellas.",
+            outro: "¡Carrera extra superada! Termina dentro del tiempo meta para ganar 3 estrellas y vuelve a intentarlo para mejorar tu tiempo." },
+      log: "BONUS SPEED RUN! Swing through the jungle ledges under the vines. Grab every coin! Just for fun: no science questions. Grab the coins, dodge the obstacles and beat the time for 3 stars.",
+      outro: "Bonus speed run cleared! Beat the par time for 3 stars, then try again for a faster time.",
+      build: function (b) {
+        /* PIXEL BONUS SPEED RUN (from the high school game, v68-v75): a fun 8-bit course in the Rainforest Run habitat (pixelscape.js). No questions; stars come from the time (par = 3 stars). Optional: not needed for the certificates. */
+        b.hint(4, 4.6, t("SPEED RUN! Grab coins, dodge obstacles, beat the time!", "¡CARRERA CONTRA RELOJ! Junta monedas, esquiva obstáculos y gánale al tiempo.")).sparks(7, 1.2, 6).ground(14)
+          .power(3, 1.4, 'wall').ground(8)
+          .hint(1, 4.6, t("Walk under the first wall, then jump back and forth between the two walls to climb!", "Pasa por debajo de la primera pared y luego salta de una pared a la otra para subir.")).tower(4, 8, 1.4, 2.6).tower(8, 11.5, 1.6).sparks(8.6, 12.6, 3).ground(14)
+          .ground(16).virus(-13, 4.5, 1.1).virus(-5, 3.5, 1.4).sparks(-10, 1.2, 5)
+          .snapper(4, 3.2, 0).snapper(9, 3.2, 1.2).sparks(2, 3.4, 6).ground(14)
+          .gap(15).mover(-13.5, 0.4, 3, 2.2, 0, 1.2).mover(-7, 1.6, 3, 0, 1.6, 1.4).sparks(-7, 4.4, 3).ground(10)
+          .brick(-8, 3.4, 5).sparks(-7.5, 4.8, 5).hazard(-3, 1.4, { ax: 1.8, sp: 1.5 })
+          .gap(12).pillar(-10.2, 0).pillar(-6.6, 0.9).pillar(-3, 0.3).ground(10).virus(-6, 3, 1.6)
+          .spikes(3, 1.8).sparks(2, 3.2, 4).ground(10).rise(2).ground(6).rise(-2).gap(3).ground(6)
+          .crumbleBridge(4, 'crumble').ground(8).hazard(4, 1.2, { ax: 2, sp: 1.4 }).hazard(9, 3, { ax: 1.6, sp: 1.3, ay: 0.8 }).ground(12)
+          .qblock(3, 3.4, 'life').checkpoint().ground(6)
+          .hint(1, 4.6, t("BOSS AHEAD! Stomp it 3 times to open the gate.", "¡JEFE ADELANTE! Salta sobre él 3 veces para abrir la puerta.")).bigboss(24)
+          .sparks(2, 1.2, 6).ground(10)
+          .goal();
       } }
   ]
 });

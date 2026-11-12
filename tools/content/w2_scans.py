@@ -33,8 +33,8 @@ SCANS = [
     'All of the hiker’s systems work together to make one ORGANISM. If one system stops working, the others are affected.',
     ('El excursionista', 'Organismo', 'Un ser vivo completo, formado por todos sus sistemas trabajando juntos.', 'Todos los sistemas del excursionista trabajan juntos para formar un ORGANISMO. Si un sistema deja de funcionar, los demás se ven afectados.')),
  sc('s2-subsystem', 'Body map', 'stack', '#9fe0ff', 'Subsystem', 'A smaller system that is part of a bigger system.',
-    'The body is a system made of SUBSYSTEMS: circulatory, respiratory, digestive, skeletal, muscular, nervous, immune and more. Each one is made of groups of cells.',
-    ('Mapa del cuerpo', 'Subsistema', 'Un sistema más pequeño que es parte de un sistema más grande.', 'El cuerpo es un sistema formado por SUBSISTEMAS: circulatorio, respiratorio, digestivo, esquelético, muscular, nervioso, inmunitario y más. Cada uno está formado por grupos de células.')),
+    'The body is a system made of SUBSYSTEMS: circulatory, respiratory, digestive, excretory, skeletal, muscular, nervous, immune and more. Each one is made of groups of cells.',
+    ('Mapa del cuerpo', 'Subsistema', 'Un sistema más pequeño que es parte de un sistema más grande.', 'El cuerpo es un sistema formado por SUBSISTEMAS: circulatorio, respiratorio, digestivo, excretor, esquelético, muscular, nervioso, inmunitario y más. Cada uno está formado por grupos de células.')),
  # 2-2 Hawk Mountain trail (systems working together during exercise)
  sc('s2h-trail', 'Rocky trail', 'rock', '#9a9aa2', 'Exercise', 'Using your muscles hard, like when you climb, run or swim.',
     'This trail at Hawk Mountain climbs steeply over rocks. During EXERCISE, many body systems must speed up together.',

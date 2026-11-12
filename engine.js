@@ -167,7 +167,7 @@ const I18N = {
     'c.badName': 'Please choose a name that is appropriate and respectful.', 'c.sound': 'fanfare, world complete',
     'c.cTitle': 'Certificate of Achievement', 'c.edition': 'Middle School Edition', 'c.cThis': 'This certifies that', 'c.cDid': 'completed', 'c.cAll': 'every world of the Field Guide',
     'c.cDate': 'Date', 'c.cSign': 'Mission Control', 'c.cPrint': 'Print', 'c.certs': 'Certificates', 'c.certNone': 'Finish every level in a world to earn its certificate.', 'c.cAllBtn': 'Whole Field Guide',
-    'm.flag': 'A tail like a bacterium\u2019s!', 'm.c.prok.w': 'You built a bacterium', 'm.c.prok.n': 'A bacterium is ONE cell. It has a cell membrane, cytoplasm, DNA and ribosomes, but no nucleus: its DNA floats in the cytoplasm.',
+    'm.flag': 'A tail like a bacterium\u2019s!', 'm.c.prok.w': 'You built a bacterium', 'm.c.prok.n': 'A bacterium is ONE cell. It has a cell wall, a cell membrane, cytoplasm and DNA, but no nucleus: its DNA floats in the cytoplasm.',
     'm.c.plant.w': 'You built a plant cell', 'm.c.plant.n': 'The cell wall gives support, chloroplasts make food from sunlight, the vacuole stores water, the nucleus controls the cell and mitochondria release energy. Each part has a job, and together they keep the cell alive.',
     'm.c.animal.w': 'You built an animal cell', 'm.c.animal.n': 'An animal cell has no cell wall and no chloroplasts. Its nucleus controls the cell, mitochondria release energy and the cell membrane controls what goes in and out.', 'q.done': '✓ Side quest complete: {name}! +300.',
     'a.first-scan': 'First Discovery', 'a.first-scan.d': 'Scan your first specimen.',
@@ -200,7 +200,7 @@ const I18N = {
     'm.emptyAnimal': 'Célula animal vacía: ¡tráeme mis partes!', 'm.emptyProk': 'Organismo de una célula vacío: ¡tráeme mis partes!', 'm.emptyPlant': 'Célula vegetal vacía: ¡tráeme mis partes!',
     'm.animal': 'célula animal', 'm.prok': 'bacteria', 'm.plant': 'célula vegetal', 'm.yours': '✓ Tu {n}', 'm.done': '✓ ¡Tu {n} está completa! La puerta está abierta.',
     'p.boost': 'Impulso de energía: ¡corre más rápido y salta más alto durante 6 segundos!', 'p.boostL': 'Impulso de energía', 'p.shield': 'Escudo', 'p.life': 'Vida extra',
-    'm.flag': '¡Una cola como la de una bacteria!', 'm.c.prok.w': 'Construiste una bacteria', 'm.c.prok.n': 'Una bacteria es UNA sola célula. Tiene membrana celular, citoplasma, ADN y ribosomas, pero no tiene núcleo: su ADN flota en el citoplasma.',
+    'm.flag': '¡Una cola como la de una bacteria!', 'm.c.prok.w': 'Construiste una bacteria', 'm.c.prok.n': 'Una bacteria es UNA sola célula. Tiene pared celular, membrana celular, citoplasma y ADN, pero no tiene núcleo: su ADN flota en el citoplasma.',
     'm.c.plant.w': 'Construiste una célula vegetal', 'm.c.plant.n': 'La pared celular da soporte, los cloroplastos producen alimento con la luz del sol, la vacuola guarda agua, el núcleo controla la célula y las mitocondrias liberan energía. Cada parte tiene un trabajo y, juntas, mantienen viva la célula.',
     'm.c.animal.w': 'Construiste una célula animal', 'm.c.animal.n': 'Una célula animal no tiene pared celular ni cloroplastos. Su núcleo controla la célula, las mitocondrias liberan energía y la membrana celular controla lo que entra y sale.',
     'c.kicker': '🎉 ¡Mundo completo!', 'c.allKicker': '🏆 ¡Guía de campo completa!', 'c.title': 'Mundo {n}: {t}', 'c.allTitle': '¡Terminaste los seis mundos!',
@@ -376,7 +376,8 @@ const SONGS = {
   garden: { name: 'pea garden theme', bpm: 108, root: 60, scale: 'major', prog: [0, 4, 3, 4], seed: 43, drums: 1, lead: 'square' },
   island: { name: 'island breeze theme', bpm: 96, root: 64, scale: 'mixo', prog: [0, 4, 3, 4], seed: 47, drums: 1, lead: 'square' },
   canyon: { name: 'canyon dig theme', bpm: 90, root: 57, scale: 'dorian', prog: [0, 4, 3, 4], seed: 53, drums: 1, lead: 'square' },
-  boss: { name: 'boss battle theme', bpm: 138, root: 55, scale: 'minor', prog: [0, 0, 5, 4], seed: 17, drums: 3, lead: 'square' }
+  boss: { name: 'boss battle theme', bpm: 138, root: 55, scale: 'minor', prog: [0, 0, 5, 4], seed: 17, drums: 3, lead: 'square' },
+  retro: { name: '8-bit bonus theme', bpm: 140, root: 60, scale: 'major', prog: [0, 5, 3, 4], seed: 21, drums: 3, lead: 'square', chip: 1 }
 };SONGS.night = Object.assign({}, SONGS.forest, { name: 'starry night theme', bpm: 72 });
 
 const Music = { want: null, cur: null, song: null, mel: null, step: 0, next: 0, timer: 0, gain: null, duck: 1, gesture: false, noise: null };
@@ -407,10 +408,10 @@ function schedule() {
   const sp = 60 / song.bpm / 4;
   while (Music.next < AC.currentTime + 0.25) {
     const i = Music.step, bar = Math.floor(i / 16) % 4, st = i % 16, t = Music.next, ch = song.prog[bar], dr = song.drums;
-    if (st === 0) [0, 2, 4].forEach(function (k) { voice(mtof(noteOf(song, ch + k, 0)), t, sp * 15, 'sine', 0.03); });
+    if (st === 0 && !song.chip) [0, 2, 4].forEach(function (k) { voice(mtof(noteOf(song, ch + k, 0)), t, sp * 15, 'sine', 0.03); });
     if (st === 0 || st === 8) voice(mtof(noteOf(song, ch, -1)), t, sp * 3, 'triangle', 0.15);
     if (st === 6 || st === 14) voice(mtof(noteOf(song, ch + 4, -1)), t, sp * 1.5, 'triangle', 0.09);
-    if (st % 2 === 0) voice(mtof(noteOf(song, ch + [0, 2, 4, 7][(st / 2) % 4], 1)), t, sp * 1.2, 'sine', 0.03);
+    if (st % 2 === 0) voice(mtof(noteOf(song, ch + [0, 2, 4, 7][(st / 2) % 4], 1)), t, sp * (song.chip ? 0.6 : 1.2), song.chip ? 'square' : 'sine', song.chip ? 0.018 : 0.03); /* chip songs: a buzzy 8-bit arpeggio */
     if (Math.floor(i / 64) % 3 !== 2) Music.mel[bar].forEach(function (n) { if (n.st === st) voice(mtof(noteOf(song, ch + n.d, 1)), t, sp * n.len * 0.9, song.lead, song.lead === 'square' ? 0.03 : 0.07); });
     if (dr === 1 || dr === 3) { if (st === 0 || st === 8 || (dr === 3 && (st === 6 || st === 14))) drum(t, 'kick'); if (dr === 3 ? st % 2 === 0 : (st === 4 || st === 12)) drum(t, 'hat'); }
     if (dr === 2 && (st === 0 || st === 3 || st === 8 || st === 11)) drum(t, 'kick');
@@ -437,15 +438,32 @@ Music.setDuck = function (d) { Music.duck = d; musicLevel(); };
 /* ---------- 3D building blocks ---------- */
 let renderer, scene, cam, camZ = 22, G = {}, mats = {}, texCache = {};
 /* Change this line each time a new version is uploaded. */
-const VERSION = 'Version 1 · October 24, 2026';
+const VERSION = 'Version 2 · November 11, 2026';
 const COLORS = [['Sky blue', '#56B4E9'], ['Orange', '#E69F00'], ['Green', '#009E73'], ['Pink', '#CC79A7'], ['Yellow', '#F0E442'], ['Red-orange', '#D55E00'], ['Turquoise', '#2EC4B6'], ['Purple', '#8E5CE6'], ['Helix gold', '#E8B730', 'helix']];
 const GEAR = [['None', 0], ['Lab goggles', 3], ['Explorer cape', 8], ['Ribosome hat', 12]];
+/* MOVES earned in the bonus speed runs (v71) */
+const ABIL = { pound: { name: 'Ground Pound', icon: '💥', col: '#ff8a4a', tip: 'New move: GROUND POUND! In the air, press down (down arrow or S) to slam down. It breaks bricks and squashes enemies.' },
+  dash: { name: 'Air Dash', icon: '💨', col: '#7fd4ff', tip: 'New move: AIR DASH! In the air, press Shift to zoom forward. One dash per jump.' },
+  wall: { name: 'Wall Jump', icon: '🧗', col: '#c8ff7a', tip: 'New move: WALL JUMP! Jump toward a wall, then press jump again while touching it to kick off and climb.' },
+  glide: { name: 'Glide', icon: '🪂', col: '#ffd166', tip: 'New move: GLIDE! While falling, hold jump to float down slowly across wide gaps.' },
+  spin: { name: 'Spin Attack', icon: '🌀', col: '#c59cff', tip: 'New move: SPIN ATTACK! Press E to spin. A spin knocks out enemies and gives a little lift in the air.' } };
+function hasA(n) { return !!(L && L.lv.bonus && S.abil && S.abil[n]); }
 const GEARINFO = ['Gear gives you a special power. Earn stars to unlock more gear.',
   'Lab goggles: see hidden platforms and secret paths that other players cannot see.',
   'Explorer cape: hold the jump key while falling to fly for a short time. Land to recharge.',
   'Ribosome hat: ribosomes build proteins! Press E in the air to build a protein platform under your feet (one each time you leave the ground).'];
 /* Each world's look: sky gradient, sun glow, layered ridges, haze, drifting lights, light beams. */
 const THEMES = {
+  /* PIXEL HABITATS for the bonus speed runs (v70), drawn by pixelscape.js; ground/top colors are unique so the pixel skins can find those blocks */
+  pxpond: { pixel: 'pond', skyTop: '#2c5a52', horizon: '#3d6e5a', skyBottom: '#24463e', sun: ['#fff0a0', 40, 18, 1], ridge: '#2f5a4c', ground: '#7a4e2d', top: '#6ac04b', rim: '#a8e870', mote: '#fff0a0', pal: ['#4f9a3a'], shapes: [], density: 0, fogD: 0.0001, hemi: ['#ffffff', '#88a888'], key: '#ffffff' },
+  pxdesert: { pixel: 'desert', skyTop: '#5aa8e8', horizon: '#a8d8f8', skyBottom: '#e8b878', sun: ['#fff8d0', 40, 18, 1], ridge: '#a86a6a', ground: '#c87a3b', top: '#f0c879', rim: '#fff0b8', mote: '#fff8d0', pal: ['#c87a3a'], shapes: [], density: 0, fogD: 0.0001, hemi: ['#ffffff', '#c8a878'], key: '#ffffff' },
+  pxrain: { pixel: 'rain', skyTop: '#1a3a2a', horizon: '#2a5a3a', skyBottom: '#183424', sun: ['#f0ffa0', 40, 18, 1], ridge: '#1e4030', ground: '#5a3a25', top: '#4aa83b', rim: '#8ae05a', mote: '#f0ffa0', pal: ['#2f7a2a'], shapes: [], density: 0, fogD: 0.0001, hemi: ['#ffffff', '#88a888'], key: '#ffffff' },
+  pxtundra: { pixel: 'tundra', skyTop: '#6aa8e8', horizon: '#c8e4f8', skyBottom: '#e8f4ff', sun: ['#ffffff', 40, 18, 1], ridge: '#7a8aa8', ground: '#6a7079', top: '#f4f8fe', rim: '#ffffff', mote: '#ffffff', pal: ['#7a8088'], shapes: [], density: 0, fogD: 0.0001, hemi: ['#ffffff', '#a8b8c8'], key: '#ffffff' },
+  pxwoods: { pixel: 'woods', skyTop: '#4a8ad0', horizon: '#9ac8ec', skyBottom: '#f0e0c0', sun: ['#fff4c8', 40, 18, 1], ridge: '#6a7aa0', ground: '#6b4a2f', top: '#a8682b', rim: '#d8a050', mote: '#f2c33a', pal: ['#8a5a2a'], shapes: [], density: 0, fogD: 0.0001, hemi: ['#ffffff', '#b8a078'], key: '#ffffff' }, /* MS edition: Penn's Woods, a PA hardwood forest in fall (pixelscape-pa.js) */
+  pxreef: { pixel: 'reef', skyTop: '#2a9ac8', horizon: '#1a6a9a', skyBottom: '#0e3a5a', sun: ['#c8f8ff', 40, 18, 1], ridge: '#2a5a8a', ground: '#6a6a8b', top: '#e8d8a9', rim: '#fff4d0', mote: '#c8f8ff', pal: ['#6a6a8a'], shapes: [], density: 0, fogD: 0.0001, hemi: ['#ffffff', '#6a9ac8'], key: '#ffffff' },
+  /* RETRO bonus levels (v68): a bright 8-bit palette; the screen is drawn at low resolution with chunky pixels (retroMode) */
+  retro: { skyTop: '#2038ec', horizon: '#5c94fc', skyBottom: '#5c94fc', sun: ['#fcfcfc', 40, 18, 160], ridge: '#00a800', ground: '#c84c0c', top: '#00a800', rim: '#fcfcfc',
+    mote: '#fcd8a8', pal: ['#00a800', '#58d854', '#b8f818'], shapes: ['tree'], density: 0.5, fogD: 0.004, hemi: ['#ffffff', '#5c94fc'], key: '#ffffff' },
   /* NIGHT (middle school): a dark-sky park at night. Stars, a moon, fireflies; the alien carries a small lamp. */
   night: { skyTop: '#02040c', horizon: '#1c2a58', skyBottom: '#070b1e', sun: ['#eef2ff', -30, 20, 110], ridge: '#0a1222', ground: '#151b16', top: '#2b3b2c', rim: '#bfe0ff',
     mote: '#e4ff6a', pal: ['#0c1a14', '#11241a', '#173020'], shapes: ['tree', 'tree', 'hill'], density: 0.8, fogD: 0.013, hemi: ['#4a5a90', '#04050a'], key: '#8fa0d8', stars: true, night: true },
@@ -587,7 +605,7 @@ function gate(x0, x1, y0, y1) {
   const core = new T.Mesh(G.box, basic(L.th.rim, 0.28, true)); core.scale.set(0.15, y1 - y0, 5.2); core.position.copy(m.position); g.add(core);
   return g;
 }
-let RIDGES = [];
+let RIDGES = [], PIX = null;
 function scenery(th, x0, x1, grp, anim) {
   RIDGES = [];
   const low = S.set.low, hz = new T.Color(th.horizon);
@@ -638,6 +656,7 @@ function scenery(th, x0, x1, grp, anim) {
   decor(th, x0, x1, grp, anim);
 }
 function sceneryTick(dt, t) {
+  if (PIX) PIX.tick(dt, t);
   if (SKY) {
     SKY.position.copy(cam.position);
     if (SKY.userData.pulse) { const b = (t * 112 / 60) % 1, p = 1 + 0.12 * Math.exp(-b * 9) + 0.06 * Math.exp(-Math.max(0, b - 0.2) * 9) * (b > 0.2 ? 1 : 0); SKY.userData.sun.scale.setScalar(SKY.userData.base * p); }
@@ -691,6 +710,24 @@ function stackLabels(list, x, yTop, z, gap) {
   let y = yTop; list.forEach(function (sp) { if (!sp) return; const h = sp.userData.lbl ? sp.userData.lbl.h : sp.scale.y; sp.position.set(x, y - h / 2, z); y -= h + (gap == null ? 0.15 : gap); });
   return y;
 }
+/* the 8-bit alien for the retro bonus levels: a flat picture with crisp pixels, in place of the 3D body */
+function pixelAlien(P) { const PA = BQ.PIXEL_ALIEN; let tex; /* the teacher's drawing for her design, otherwise a pixel alien drawn from this student's choices */
+  if (BQ.makePixelAlien) { const sheet = BQ.makePixelAlien(S.alien, BQ.isTeacherAlien(S.alien) ? '#2a8ef0' : COLORS[S.alien.color][1]); tex = new T.CanvasTexture(sheet);
+    /* the teacher's design: her hand-drawn front pictures (standing, ducking, ground pound, hurt, win) with matching side views for moving */
+    if (BQ.isTeacherAlien(S.alien)) { const img = new Image(); img.onload = function () { const x = sheet.getContext('2d'); [0, 8, 10, 14, 15].forEach(function (i) { x.clearRect(i * PA.fw, 0, PA.fw, PA.fh); x.drawImage(img, i * PA.fw, 0, PA.fw, PA.fh, i * PA.fw, 0, PA.fw, PA.fh); }); tex.needsUpdate = true; }; img.src = PA.sheet; } }
+  else { const img = new Image(); tex = new T.Texture(img); img.onload = function () { tex.needsUpdate = true; }; img.src = PA.sheet; }
+  tex.magFilter = T.NearestFilter; tex.minFilter = T.NearestFilter; tex.generateMipmaps = false; tex.repeat.set(1 / PA.n, 1);
+  const hgt = 2.2, sp = new T.Mesh(new T.PlaneGeometry(hgt * PA.fw / PA.fh, hgt), new T.MeshBasicMaterial({ map: tex, transparent: true, alphaTest: 0.5, side: T.DoubleSide }));
+  P.m.children.forEach(function (c) { c.visible = false; }); sp.position.y = 1.08; P.m.add(sp); P.sprite = sp; P.frames = PA.frames;
+  { const c = document.createElement('canvas'); c.width = 40; c.height = 12; const x = c.getContext('2d'); x.fillStyle = '#121a3a'; x.fillRect(2, 2, 34, 6); x.fillStyle = '#e04a3a'; x.fillRect(3, 3, 32, 4); x.fillStyle = '#ff8a7a'; x.fillRect(4, 3, 28, 1);
+    x.fillStyle = '#121a3a'; x.fillRect(6, 8, 2, 2); x.fillRect(28, 8, 2, 2); x.fillRect(1, 10, 38, 2); x.fillRect(36, 6, 2, 4); x.fillStyle = '#c8d0d8'; x.fillRect(2, 10, 36, 1);
+    const t = new T.CanvasTexture(c); t.magFilter = t.minFilter = T.NearestFilter; const sm = new T.Mesh(new T.PlaneGeometry(1.9, 0.57), new T.MeshBasicMaterial({ map: t, transparent: true, alphaTest: 0.5, side: T.DoubleSide })); sm.position.set(0, 0.25, 0.05); sm.visible = false; P.m.add(sm); P.sledM = sm; } }
+/* which picture of the pixel alien to show for what it is doing (the sprite sheet in pixelalien.js) */
+function spriteFrame() { const f = P.frames, sp = Math.abs(P.vx), step = Math.floor((P.stride || 0) * 1.3) % 2; let n = 'idle';
+  if (P.inv > 0.9) n = 'hurt'; else if (P.sledM && P.sledM.visible) n = 'duck'; else if (P.spinT > 0) n = 'spin attack'; else if (P.pound > 0 || P.pounding) n = 'ground pound'; else if (P.slideT > 0) n = 'slide'; else if (P.duck) n = 'duck';
+  else if (!P.ground && P.wallT > 0 && hasA('wall')) n = 'wall slide'; else if (P.gliding) n = 'glide'; else if (!P.ground) n = P.vy > 0 ? (P.dbl === false ? 'double jump' : 'jump') : 'fall';
+  else if (sp > SPEED * 1.15) n = step ? 'run 1' : 'run 2'; else if (sp > 0.6) n = step ? 'walk 1' : 'walk 2';
+  const i = Math.max(0, f.indexOf(n)); P.sprite.material.map.offset.x = i / f.length; P.sprite.rotation.z = n === 'spin attack' ? -P.t * 25 : 0; }
 function buildAlien(a) {
   const g = new T.Group(), col = COLORS[a.color][1], shape = a.shape || 0;
   const sc = [[0.55, 0.6, 0.5], [0.44, 0.76, 0.42], [0.7, 0.48, 0.55], [0.6, 0.55, 0.52], [0.52, 0.55, 0.5]][shape] || [0.55, 0.6, 0.5];
@@ -820,7 +857,9 @@ function cellModel(kind, disp) {
   if (!euk) {
     const cyto = part('Cytoplasm', -1.9, -1.6); blob(cyto, '#c8ff7a', R[0] * 0.93, R[1] * 0.9, R[2] * 0.9, 0, 0, 0, 0.22);
     const dna = part('DNA', 0.2, 1.15); const knot = new T.Mesh(new T.TorusKnotGeometry(0.55, 0.06, 80, 6, 3, 5), M('#7fd4ff', '#1a4a7a')); knot.scale.set(1.2, 0.8, 0.8); dna.add(knot); dna.userData.spin = knot;
-    const rib = part('Ribosomes', 2.3, -1.5); for (let i = 0; i < 26; i++) { const a = i * 2.39, r = 0.5 + (i % 5) * 0.12; blob(rib, '#ffd166', 0.09, 0.09, 0.09, Math.cos(a) * r * 2.6, Math.sin(a * 1.7) * r * 1.4, Math.sin(a) * 0.8); }
+    /* cell wall: most bacteria have a stiff wall outside the membrane (the middle school build uses the five parts PDE names) */
+    const wall = part('Cell wall', 2.3, -1.5); const ws = new T.Mesh(G.sph, new T.MeshLambertMaterial({ color: '#c8a85a', emissive: '#3a2a08', transparent: true, opacity: 0.22, depthWrite: false })); ws.scale.set(R[0] * 1.12, R[1] * 1.2, R[2] * 1.2); wall.add(ws);
+    const wr = new T.Mesh(G.tor, basic('#e8c878', 0.6, true)); wr.scale.set(R[0] * 1.12, R[1] * 1.2, 0.14); wall.add(wr);
   } else {
     const nuc = part('Nucleus', -0.4, 1.55); const ne = new T.Mesh(G.sph, new T.MeshLambertMaterial({ color: '#8a5ac8', emissive: '#2a0a4a', transparent: true, opacity: 0.55, depthWrite: false })); ne.scale.setScalar(0.85); ne.position.set(-0.4, 0.3, 0); nuc.add(ne); blob(nuc, '#c59cff', 0.28, 0.28, 0.28, -0.25, 0.4, 0.1);
     const dna = part('DNA', -2.0, 0.3); const knot = new T.Mesh(new T.TorusKnotGeometry(0.38, 0.045, 70, 6, 2, 7), M('#7fd4ff', '#1a4a7a')); knot.position.set(-0.4, 0.3, 0); dna.add(knot); dna.userData.spin = knot;
@@ -1038,7 +1077,7 @@ function checkCollections() {
   });
 }
 function checkBig() {
-  const list = allLevels(), done = function (w) { const ls = list.filter(function (e) { return e.w.id === w; }); return ls.length && ls.every(function (e) { return S.levels[e.lv.id] && S.levels[e.lv.id].stars; }); };
+  const list = allLevels(), done = function (w) { const ls = list.filter(function (e) { return e.w.id === w && !e.lv.bonus; }); return ls.length && ls.every(function (e) { return S.levels[e.lv.id] && S.levels[e.lv.id].stars; }); };
   for (let w = 1; w <= 6; w++) if (done(w)) award('world' + w); if (totalStars() >= 30) award('stars-30');
   const ids = []; list.forEach(function (e) { levelPlan(e.lv).scans.forEach(function (id) { ids.push(id); }); });
   if (Object.keys(S.found || {}).length >= 25) award('scan-25'); if (ids.length && ids.every(function (id) { return S.found[id]; })) award('scan-all');
@@ -1047,6 +1086,40 @@ function checkBig() {
 /* no getting stuck: after two wrong tries, the right choice glows gold */
 function helpGlow(g) { if (L) L.helped = true; if (!g || g.userData.help) return; const h = glow('#ffd700', 3.4, 0.8); g.add(h); g.userData.help = h; L.helps.push(h); }
 function unhelp(g) { if (g && g.userData.help) { g.remove(g.userData.help); L.helps = L.helps.filter(function (h) { return h !== g.userData.help; }); g.userData.help = null; } }
+function breakBrick(s2) { if (s2.off) return; s2.off = true; L.group.remove(s2.brick); (s2.lines || []).forEach(function (l) { L.group.remove(l); }); L.score += 20; burst((s2.x0 + s2.x1) / 2, s2.y0 + 0.5, '#e8945a'); beep(180, 0.12, 'square', 'crack, brick broken'); hud(); }
+function bonusStep(dt) {
+  /* sled runs: ride down the slope, speed up, launch off the ski jump */
+  P.sledT = (P.sledT || 0) - dt; L.sleds.forEach(function (r) { if (P.x < r.x0 || P.x > r.x1 + 0.3) return; const n = Math.ceil((r.x1 - r.x0) / 0.5), i = Math.max(0, Math.min(n - 1, Math.floor((P.x - HW - r.x0) / (r.x1 - r.x0) * n))), surf = r.y0 - r.drop * i / n; /* the top of the step under the alien */
+    if (P.vy <= 0.5 && P.y - surf < 0.6 && P.y - surf > -0.6) { P.sledT = 0.25; if (P.vy <= 0) { P.y = surf; P.vy = 0; } if (!L.told.sled) { L.told.sled = 1; toast('🛷 Sled run! You speed up downhill. Press jump to hop over things.', 5); }
+      if (r.kick && P.x > r.x1 - 2.2 && !P.kicked) { P.kicked = true; P.vy = 17; P.sledT = 0; popup(P.x, P.y + 1, 'Ski jump!', '#7fd4ff'); beep(660, 0.2, 'triangle', 'whoosh, ski jump'); } } });
+  if (P.ground && !(P.sledT > 0)) P.kicked = false;
+  if (P.sledM) P.sledM.visible = P.sledT > 0 || (P.kicked && !P.ground);
+  /* ground pound landing: shockwave */
+  if (P.pounding && P.ground) { P.pounding = false; L.shake = 0.3; beep(90, 0.25, 'sawtooth', 'thud, ground pound');
+    if (P.ground.brick) { breakBrick(P.ground); P.ground = null; P.pounding = true; }
+    L.hazards.forEach(function (h) { if (h.alive && h.kind === 'virus' && Math.abs(h.x - P.x) < 3 && Math.abs(h.y - P.y) < 2) { h.alive = false; h.m.visible = false; L.score += 50; popup(h.x, h.y, '+50', '#ffd166'); burst(h.x, h.y, '#9be36b'); } }); hud(); }
+  /* power orbs */
+  L.powers.forEach(function (o) { if (o.got) return; o.g.position.y = o.y + Math.sin(P.t * 3) * 0.2; o.g.rotation.y += dt * 2;
+    if (Math.abs(P.x - o.x) < 1 && Math.abs(P.y + 0.7 - o.y) < 1.4) { o.got = true; o.g.visible = false; S.abil = S.abil || {}; const isNew = !S.abil[o.ab]; S.abil[o.ab] = 1; save(); toast(ABIL[o.ab].tip, 8); popup(o.x, o.y, ABIL[o.ab].icon + ' ' + ABIL[o.ab].name + '!', ABIL[o.ab].col); burst(o.x, o.y, ABIL[o.ab].col);
+      [523, 659, 784].forEach(function (f, k) { setTimeout(function () { beep(f, 0.15, 'square', k ? null : 'power up'); }, k * 90); }); if (isNew) L.score += 100; hud(); } });
+  /* wobbly columns */
+  L.pillars.forEach(function (c) {
+    if (c.fall) { c.fall += dt; c.vy -= GRAV * 0.5 * dt; c.g.position.y += c.vy * dt; c.g.position.x = 0; c.s.off = true;
+      if (c.fall > 4.5 && !(P.x + HW > c.s.x0 && P.x - HW < c.s.x1 && P.y < c.y1 + 2 && P.y > c.y0)) { c.fall = 0; c.t = 0; c.vy = 0; c.g.position.y = 0; c.s.off = false; } return; }
+    if (P.ground === c.s) { c.t += dt; c.g.position.x = Math.sin(P.t * 45) * 0.08 * Math.min(1, c.t / 0.9); if (c.t > 0.9) { c.fall = 0.001; c.vy = 0; beep(140, 0.3, 'sawtooth', 'rumble, column collapsing'); } }
+    else { c.t = Math.max(0, c.t - dt); c.g.position.x = c.t > 0 ? Math.sin(P.t * 45) * 0.04 : 0; } });
+  /* bosses */
+  L.bosses.forEach(function (bs) { if (!bs.alive) return; bs.t += dt; bs.inv -= dt;
+    if (!bs.seen && P.x > bs.x0 - 4) { bs.seen = true; toast('BOSS! A giant virus guards the exit. Stomp it 3 times!', 5); Music.play('boss'); }
+    if (!bs.seen) return; const sp = 2.6 + (3 - bs.hp) * 1.2; bs.x += bs.dir * sp * dt; if (bs.x < bs.x0) { bs.x = bs.x0; bs.dir = 1; } if (bs.x > bs.x1) { bs.x = bs.x1; bs.dir = -1; }
+    if (bs.y <= bs.gy && Math.random() < dt * 0.5) bs.vy = 11; bs.vy -= GRAV * 0.7 * dt; bs.y += bs.vy * dt; if (bs.y < bs.gy) { bs.y = bs.gy; bs.vy = 0; }
+    bs.g.position.set(bs.x, bs.y, 0); bs.g.rotation.z += dt * bs.dir * -2; bs.g.visible = !(bs.inv > 0 && Math.floor(bs.t * 14) % 2);
+    const dx = P.x - bs.x, dy = P.y + 0.7 - bs.y; if (Math.abs(dx) > 1.9 || Math.abs(dy) > 2) return;
+    if ((P.vy < -1 && P.y > bs.y + 0.4) || P.pounding || P.spinT > 0) { if (bs.inv > 0) return; bs.hp--; bs.inv = 1.2; P.vy = 15; P.pounding = false; L.score += 150; popup(bs.x, bs.y + 2, bs.hp ? 'Hit! ' + bs.hp + ' more' : 'Boss defeated!', '#ffd166'); burst(bs.x, bs.y, '#9be36b'); beep(300, 0.2, 'square', 'boss hit'); L.shake = 0.3;
+      if (bs.hp <= 0) { bs.alive = false; bs.g.visible = false; bs.gate.off = true; bs.gm.visible = false; L.score += 500; toast('Boss defeated! The gate is open. Run to the finish!', 4); Music.play('retro'); [523, 659, 784, 1047].forEach(function (f, k) { setTimeout(function () { beep(f, 0.18, 'square'); }, k * 110); }); }
+      hud(); return; }
+    if (P.inv > 0 || P.shield > 0) return; P.inv = 1.3; P.vx = dx >= 0 ? 10 : -10; P.vy = 8; toast('Ouch! Jump on top of the boss, not into its side.', 3); hurt(true); });
+}
 function bumpBlock(qb) {
   qb.used = true; qb.m.material = emat('#8a6a40', '#2a1a08'); qb.q.visible = false; qb.gl.visible = false; qb.m.position.y += 0.25; setTimeout(function () { qb.m.position.y -= 0.25; }, 120);
   if (qb.reward === 'sparks') { L.coins += 5; L.score += 50; popup(qb.x, qb.y, '+5 sparks', '#ffd166'); burst(qb.x, qb.y + 0.5, '#ffd166'); beep(1200, 0.12, 'square', 'ding, sparks'); hud(); }
@@ -1057,10 +1130,10 @@ function disposeGroup(g) {
   g.traverse(function (o) { if (o.geometry && shared.indexOf(o.geometry) < 0) o.geometry.dispose(); });
 }
 function teardown() {
-  caveLight(false); ['hudBag', 'hudHeat'].forEach(function (id) { const e = $(id); if (e) e.hidden = true; });
+  if (RETRO) retroMode(false); caveLight(false); ['hudBag', 'hudHeat'].forEach(function (id) { const e = $(id); if (e) e.hidden = true; });
   if (L) { scene.remove(L.group); disposeGroup(L.group); }
   if (menuGrp) { scene.remove(menuGrp); disposeGroup(menuGrp); menuGrp = null; }
-  SKY = null; MOTES = null;
+  SKY = null; MOTES = null; PIX = null; if (P) { P.pound = 0; P.pounding = false; P.dashT = 0; P.kickT = 0; P.spinT = 0; }
   Object.keys(texCache).forEach(function (k) { texCache[k].dispose(); }); texCache = {};
   L = null;
 }
@@ -1375,6 +1448,40 @@ function builder() {
       L.movers.push({ s: sl, m: m, bx: sl.x0, by: sl.y1, ax: o.ay ? 0 : (len - w) / 2 - 0.3, ay: o.ay || 0, sp: o.sp || 1.1, t: o.ph || 0 });
       b.x += len; return b;
     },
+    /* ---------- BONUS SPEED-RUN PARTS (v71) ---------- */
+    /* MOVING PLATFORM: rides side to side (ax) and/or up and down (ay) */
+    mover: function (dx, dy, w, ax, ay, sp) { const x0 = b.x + dx, y1 = b.y + dy, sl = addSolid(x0, x0 + w, y1 - 0.4, y1, { oneWay: true }), m = new T.Group(); m.add(box(sl.x0, sl.x1, sl.y0, sl.y1, 3, L.th.top)); L.group.add(m);
+      L.movers.push({ s: sl, m: m, bx: sl.x0, by: sl.y1, ax: ax || 0, ay: ay || 0, sp: sp || 1, t: Math.random() * 3 }); return b; },
+    /* WOBBLY COLUMN: a stone column; stand on it and it wiggles, then collapses into the pit and rises again later */
+    pillar: function (dx, top, depth) { const x0 = b.x + dx - 0.85, x1 = x0 + 1.7, y1 = b.y + top, y0 = y1 - (depth || 9), s2 = addSolid(x0, x1, y0, y1), g = new T.Group();
+      g.add(box(x0, x1, y0, y1 - 0.35, 2.4, L.th.ground)); g.add(box(x0 - 0.15, x1 + 0.15, y1 - 0.35, y1, 2.8, L.th.top)); L.group.add(g);
+      L.pillars.push({ s: s2, g: g, t: 0, fall: 0, vy: 0, y0: s2.y0, y1: s2.y1 }); return b; },
+    /* BRICKS: break them by bumping from below or with a Ground Pound from above */
+    brick: function (dx, dy, n) { for (let i = 0; i < (n || 1); i++) { const x0 = b.x + dx + i * 1.1, y1 = b.y + dy, s2 = addSolid(x0, x0 + 1.1, y1 - 1.1, y1), m = box(x0 + 0.03, x0 + 1.07, y1 - 1.07, y1 - 0.03, 2.4, '#b8643a');
+        const ln = basic('#6a3018'); [[0, 0.27], [0, -0.27]].forEach(function (o) { const l = new T.Mesh(G.box, ln); l.scale.set(1.06, 0.06, 0.05); l.position.set(x0 + 0.55, y1 - 0.55 + o[1], 1.23); L.group.add(l); s2.lines = (s2.lines || []).concat(l); });
+        L.group.add(m); s2.brick = m; L.bricks.push(s2); } return b; },
+    /* TALL WALL: for wall jumps */
+    tower: function (dx, h, w, base) { w = w || 1.4; const x0 = b.x + dx, y0 = b.y + (base || 0), s2 = addSolid(x0, x0 + w, y0, y0 + h); L.group.add(box(x0, x0 + w, y0, y0 + h - 0.35, 3, L.th.ground)); L.group.add(box(x0 - 0.1, x0 + w + 0.1, y0 + h - 0.35, y0 + h, 3.2, L.th.top)); L.towers.push(s2); return b; },
+    /* POWER ORB: grants a new move for the bonus levels (kept for all later bonus levels) */
+    power: function (dx, dy, ab) { const x = b.x + dx, y = b.y + dy, g = new T.Group(), A = ABIL[ab]; const core = new T.Mesh(G.sph, emat(A.col, A.col)); core.scale.setScalar(0.45); g.add(core); g.add(glow(A.col, 3, 0.7));
+      const lb = label(A.icon + ' ' + A.name, 1.5, { bd: A.col }); lb.position.y = 1.2; g.add(lb); g.position.set(x, y, 0.4); L.group.add(g); L.powers.push({ x: x, y: y, ab: ab, g: g, got: false }); return b; },
+    /* SLED RUN: a snowy downhill slope. On it the alien rides a sled and speeds up; jump to hop obstacles; with kick: true a ski-jump ramp at the bottom launches you */
+    sled: function (len, drop, o) { o = o || {}; const x0 = b.x, x1 = b.x + len, y0 = b.y, y1 = b.y - drop, n = Math.ceil(len / 0.5);
+      for (let i = 0; i < n; i++) { const xa = x0 + i * len / n, top = y0 - drop * i / n; addSolid(xa, xa + len / n + 0.01, top - 14, top); }
+      const sh = new T.Shape(); sh.moveTo(x0, y0); sh.lineTo(x1, y1); sh.lineTo(x1, y1 - 14); sh.lineTo(x0, y1 - 14); sh.closePath();
+      const eg = new T.ExtrudeGeometry(sh, { depth: 7, bevelEnabled: false }); eg.translate(0, 0, -3.5); L.group.add(new T.Mesh(eg, new T.MeshLambertMaterial({ color: '#6a7078', emissive: '#2a3038' })));
+      const ang = Math.atan2(drop, len), cap = new T.Mesh(G.box, new T.MeshLambertMaterial({ color: '#f4f8ff', emissive: '#a8b8c8' })); cap.scale.set(Math.hypot(len, drop), 0.35, 7.3); cap.rotation.z = -ang; cap.position.set((x0 + x1) / 2, (y0 + y1) / 2 - 0.12, 0); L.group.add(cap);
+      for (let k = 2; k < len - 2; k += 3) { const fl = new T.Mesh(G.box, basic(k % 6 < 3 ? '#e04a3a' : '#3a7ad8')); fl.scale.set(0.12, 1.2, 0.12); fl.position.set(x0 + k, y0 - drop * k / len + 0.6, -3); L.group.add(fl); } /* slalom flags */
+      if (o.kick) { const w = new T.Shape(); w.moveTo(x1 - 2.2, y1); w.lineTo(x1, y1); w.lineTo(x1, y1 + 0.9); w.closePath(); const wg = new T.ExtrudeGeometry(w, { depth: 7, bevelEnabled: false }); wg.translate(0, 0, -3.5); L.group.add(new T.Mesh(wg, new T.MeshLambertMaterial({ color: '#e8f4ff', emissive: '#90a8c0' }))); }
+      L.sleds.push({ x0: x0, x1: x1, y0: y0, drop: drop, kick: !!o.kick }); b.x = x1; b.y = y1; return b; },
+    /* BOSS ARENA: a big enemy guards the exit; stomp it 3 times to open the gate */
+    bigboss: function (len, look) { const x0 = b.x, x1 = b.x + len; this.ground(len); const gate = addSolid(x1 - 0.6, x1, b.y, b.y + 14), gm = box(x1 - 0.6, x1, b.y, b.y + 14, 3, '#e05a3a', 0.85); L.group.add(gm);
+      const g = new T.Group(), core = new T.Mesh(G.ico, emat('#9be36b', '#2f5a10')); core.scale.setScalar(1.2); g.add(core);
+      for (let i = 0; i < 12; i++) { const a = i / 12 * Math.PI * 2, k = new T.Mesh(G.sph, emat('#d8ff9a', '#4a7a20')); k.scale.setScalar(0.28); k.position.set(Math.cos(a) * 1.5, Math.sin(a) * 1.5, 0); g.add(k); }
+      [-0.42, 0.42].forEach(function (ex, j) { const e = mesh('sph', '#ffffff'); e.scale.setScalar(0.3); e.position.set(ex, 0.25, 1.05); g.add(e); const pp = mesh('sph', '#10202c'); pp.scale.setScalar(0.15); pp.position.set(ex, 0.2, 1.3); g.add(pp);
+        const brow = mesh('box', '#2a4a10'); brow.scale.set(0.45, 0.1, 0.1); brow.position.set(ex, 0.62, 1.25); brow.rotation.z = j ? 0.4 : -0.4; g.add(brow); });
+      g.add(glow('#9be36b', 5, 0.4)); const y = b.y + 1.55; g.position.set(x1 - 5, y, 0); L.group.add(g);
+      L.bosses.push({ g: g, x: x1 - 5, y: y, gy: y, vy: 0, x0: x0 + 2, x1: x1 - 2, dir: -1, hp: 3, inv: 0, t: 0, gate: gate, gm: gm, alive: true, seen: false }); return b; },
     /* VIRUS: walks back and forth over a stretch of ground. Jump on it or over it. */
     virus: function (dx, range, sp) {
       const g = new T.Group(), core = new T.Mesh(G.ico, emat('#9be36b', '#2f5a10')); core.scale.setScalar(0.5); g.add(core);
@@ -2486,11 +2593,15 @@ function startLevel(w, lv) {
   teardown();
   const th = THEMES[lv.theme] || THEMES.cell;
   L = { world: w, lv: lv, th: th, group: new T.Group(), solids: [], tokens: [], sparks: [], stations: [], doors: [], cps: [{ x: 2, y: 0 }], anim: [], used: {}, scans: [], helps: [], models: [], flies: [], secrets: [], ghosts: [], crumbs: [], told: {}, temps: [], clues: [], portal: null,
-    refuels: [], waters: [], currents: [], airs: [], glowers: [], smokers: [], ores: [], boulders: [], capsules: [], bag: [], score: 0, streak: 0, hp: 5, time: 0, started: false, pen: 0, wrongs: 0, first: 0, total: 0, active: null, cp: 0, goal: null, over: false, zones: [], zone: null, atps: [], spin: [], hazards: [], movers: [], boosts: [], spikes: [], fx: [], flags: [], rare: null, lives: 3, coins: 0, shake: 0, debrief: null };
+    refuels: [], waters: [], currents: [], airs: [], glowers: [], smokers: [], ores: [], boulders: [], capsules: [], bag: [], score: 0, streak: 0, hp: 5, time: 0, started: false, pen: 0, wrongs: 0, first: 0, total: 0, active: null, cp: 0, goal: null, over: false, zones: [], zone: null, atps: [], spin: [], pillars: [], powers: [], bricks: [], bosses: [], towers: [], sleds: [], hazards: [], movers: [], boosts: [], spikes: [], fx: [], flags: [], rare: null, lives: 3, coins: 0, shake: 0, debrief: null };
   scene.add(L.group);
+  if (lv.bonus) retroMode(true);
   const b = builder(); lv.build(b); closeSlab(b.x); L.len = b.x; if (L.waters.length) buildWater();
   L.floor = Math.min(-16, L.solids.reduce(function (m, s) { return Math.min(m, s.y1); }, 0) - 14);
-  scenery(th, 0, L.len, L.group, L.anim);
+  if (th.pixel && BQ.pixelScape) { /* bonus speed runs: flat pixel-art habitat instead of the 3D scenery */
+    RIDGES = []; SKY = null; MOTES = null; scene.background = new T.Color(th.horizon); scene.fog = new T.FogExp2(th.horizon, 0.0001); HEMI.color.set('#ffffff'); HEMI.groundColor.set(th.hemi[1]); KEYL.color.set('#ffffff');
+    PIX = BQ.pixelScape(th.pixel, 0, L.len, L.group, L.solids); BQ.pixelSkin(th.pixel, L.group, mat(th.ground), mat(th.top)); }
+  else { PIX = null; scenery(th, 0, L.len, L.group, L.anim); }
   /* checkpoint flags: they light up when you pass them */
   L.cps.forEach(function (c, i) {
     if (!i) return; const g = new T.Group(), pole = mesh('cyl', '#d6e4ea'); pole.scale.set(0.06, 2.6, 0.06); pole.position.y = 1.3; g.add(pole);
@@ -2498,6 +2609,7 @@ function startLevel(w, lv) {
     g.position.set(c.x, c.y, -1.2); L.group.add(g); L.flags[i] = { fl: fl, g: g };
   });
   P = { x: 2, y: 0, vx: 0, vy: 0, ground: null, face: 1, m: buildAlien(S.alien), t: 0, atp: false, atpM: null, badge: null, inv: 0, boost: 0, boostM: null, shield: 0, shieldM: null, dbl: true, trail: [], hist: [] };
+  if (lv.bonus && BQ.PIXEL_ALIEN) pixelAlien(P); /* retro bonus levels: the alien becomes the teacher's 8-bit drawing */
   L.group.add(P.m);
   if (th.night) { P.lamp = new T.PointLight(0xffe8b0, 2.2, 18, 1); P.lamp.position.set(0, 1.8, 1.5); P.m.add(P.lamp); }
   const sh = new T.Mesh(G.plane, new T.MeshBasicMaterial({ map: FX.glow, color: th.rim, transparent: true, opacity: 0.5, blending: T.AdditiveBlending, depthWrite: false })); sh.rotation.x = -Math.PI / 2; sh.scale.set(3.2, 3.2, 1); L.group.add(sh); P.shadow = sh;
@@ -2508,7 +2620,7 @@ function startLevel(w, lv) {
   if (L.quest) setTimeout(function () { if (mode === 'play' && L && L.quest) toast(tx('q.start', { name: L.quest.o.name, n: L.quest.items.length }), 6); }, 7500);
   /* beamed down from the mothership */
   { P.y = 6; P.vy = -1; const bm = new T.Mesh(new T.CylinderGeometry(0.6, 1.4, 9, 16, 1, true), new T.MeshBasicMaterial({ color: th.rim, transparent: true, opacity: 0.35, blending: T.AdditiveBlending, depthWrite: false }));
-    bm.position.set(2, 4.5, 0); L.group.add(bm); L.fx.push({ o: bm, t: 0, vx: 0, vy: 0, life: 1.4 }); } Music.setDuck(1); Music.play(SONGS[lv.theme] ? lv.theme : 'cell');
+    bm.position.set(2, 4.5, 0); L.group.add(bm); L.fx.push({ o: bm, t: 0, vx: 0, vy: 0, life: 1.4 }); } Music.setDuck(1); Music.play(lv.bonus ? 'retro' : SONGS[lv.theme] ? lv.theme : 'cell');
 }
 function hud() {
   let h = ''; for (let i = 0; i < 5; i++) h += i < L.hp ? '●' : '○';
@@ -2688,7 +2800,7 @@ function answer(i) {
       if (st.qi >= st.queue.length) { L.debrief = st.lock.debrief; st.lockLabel.visible = false; toast('✓ Lab Lock open. Code ' + dg + '. Read the debrief when you send your report.', 6); }
     }
     if (st.qi >= st.queue.length) {
-      st.done = true; st.wall.off = true; st.wallMesh.visible = false; if (st.boss) { st.boss.m.visible = false; Music.play(SONGS[L.lv.theme] ? L.lv.theme : 'cell'); }
+      st.done = true; st.wall.off = true; st.wallMesh.visible = false; if (st.boss) { st.boss.m.visible = false; Music.play(L.lv.bonus ? 'retro' : SONGS[L.lv.theme] ? L.lv.theme : 'cell'); }
       st.pads.forEach(function (p) { p.lb.visible = false; }); closeQ(); if (st.boss) toast('✓ ' + st.boss.name + ' is back in balance. ' + q.explain, 6);
     } else openQ(st);
   } else {
@@ -2706,14 +2818,14 @@ function answer(i) {
 function hit(s) { return P.x + HW > s.x0 && P.x - HW < s.x1 && P.y + PH > s.y0 && P.y < s.y1; }
 function moveX(dx) {
   P.x += dx; if (P.x < HW) P.x = HW;
-  L.solids.forEach(function (s) { if (!s.off && !s.oneWay && hit(s)) { P.x = dx > 0 ? s.x0 - HW : s.x1 + HW; P.vx = 0; } });
+  L.solids.forEach(function (s) { if (!s.off && !s.oneWay && hit(s)) { P.x = dx > 0 ? s.x0 - HW : s.x1 + HW; P.vx = 0; if (!P.ground) { P.wallDir = dx > 0 ? 1 : -1; P.wallT = 0.15; } } });
 }
 function moveY(dy) {
   const prev = P.y; P.y += dy; P.ground = null;
   L.solids.forEach(function (s) {
     if (s.off || !hit(s)) return;
     if (s.oneWay) { if (dy <= 0 && prev >= s.y1 - 0.001) { P.y = s.y1; P.vy = 0; P.ground = s; } }
-    else if (dy <= 0) { P.y = s.y1; P.vy = 0; P.ground = s; } else { P.y = s.y0 - PH; P.vy = 0; if (s.qb && !s.qb.used) bumpBlock(s.qb); }
+    else if (dy <= 0) { P.y = s.y1; P.vy = 0; P.ground = s; } else { P.y = s.y0 - PH; P.vy = 0; if (s.qb && !s.qb.used) bumpBlock(s.qb); if (s.brick) breakBrick(s); }
   });
 }
 function crumbStep(dt) {
@@ -2771,19 +2883,31 @@ function step(dt) {
     mv.s.x0 += dx; mv.s.x1 += dx; mv.s.y0 += dy; mv.s.y1 += dy; mv.m.position.x += dx; mv.m.position.y += dy;
     if (P.ground === mv.s) { P.x += dx; P.y += dy; }
   });
-  crumbStep(dt);
+  crumbStep(dt); bonusStep(dt);
   /* duck: crouch low while on the ground; stay crouched under a low ceiling */
   const wantDuck = keys.duck && !L.active && P.ground && !(jumpBuf > 0);
   if (wantDuck) P.duck = true;
   else if (P.duck) { PH = STAND; const blocked = L.solids.some(function (s) { return !s.off && !s.oneWay && hit(s); }); if (blocked) { PH = CROUCH; jumpBuf = 0; } else P.duck = false; }
   PH = P.duck ? CROUCH : STAND;
-  const running = keys.run && !P.duck; P.vx += (ax * SPEED * (bo ? 1.45 : 1) * (P.duck ? 0.5 : running ? 1.6 : 1) - P.vx) * Math.min(1, dt * (running ? 10 : 14));
+  const running = keys.run && !P.duck; if (P.sledT > 0) { P.vx = Math.min(18, Math.max(P.vx, 9) + (keys.left ? -10 : 9) * dt); } else if (P.kicked && !P.ground) { /* flying off the ski jump keeps its speed */ } else if (P.dashT > 0 || P.kickT > 0 || P.pound > 0) { /* a move is steering */ } else P.vx += (ax * SPEED * (bo ? 1.45 : 1) * (P.duck ? 0.5 : running ? 1.6 : 1) - P.vx) * Math.min(1, dt * (running ? 10 : 14));
   jumpBuf -= dt; coyote = P.ground ? 0.1 : coyote - dt;
   if (P.ground) P.dbl = true;
   if (inW) jumpBuf = 0; /* in water, jump means swim up (handled in swimStep) */
+  if (P.ground) { P.dashed = false; P.spun = false; if (!P.pounding) P.pound = 0; }
+  if (hasA('wall') && P.wallT > 0 && !P.ground && !inW) { if (ax === P.wallDir && P.vy < -3) P.vy = -3; /* wall slide */
+    if (jumpBuf > 0) { P.vy = JUMP * 0.95; P.vx = -P.wallDir * 11; P.kickT = 0.22; P.face = -P.wallDir; P.wallT = 0; jumpBuf = 0; P.dbl = true; beep(560, 0.08, 'triangle', 'wall kick'); burst(P.x + P.wallDir * 0.4, P.y + 0.6, '#ffffff'); } }
+  P.wallT = (P.wallT || 0) - dt; P.kickT = (P.kickT || 0) - dt; if (P.kickT > 0) P.vx = -P.wallDir * 11 * Math.max(0.4, P.kickT / 0.22);
   if (jumpBuf > 0 && coyote > 0) { P.vy = JUMP * (bo ? 1.15 : 1); jumpBuf = 0; coyote = 0; beep(420, 0.08, 'triangle'); }
   else if (jumpBuf > 0 && !P.ground && P.dbl && P.vy < 10) { P.vy = JUMP * 1.05 * (bo ? 1.1 : 1); P.dbl = false; jumpBuf = 0; beep(620, 0.08, 'triangle'); burst(P.x, P.y + 0.2, '#ffffff'); }
-  if (!keys.jump && P.vy > 0 && !inW) P.vy -= 50 * dt; /* short hop when jump is let go (not in water: currents and plumes can lift you) */
+  if (!keys.jump && P.vy > 0 && !inW && !P.kicked) P.vy -= 50 * dt; /* short hop when jump is let go (not in water: currents and plumes can lift you) */
+  /* bonus moves */
+  if (hasA('dash') && keys.run && !P.runWas && !P.ground && !P.dashed && !inW) { P.dashed = true; P.dashT = 0.2; beep(700, 0.12, 'sawtooth', 'whoosh, air dash'); burst(P.x, P.y + 0.6, '#7fd4ff'); }
+  P.runWas = keys.run; if (P.dashT > 0) { P.dashT -= dt; P.vx = P.face * 21; P.vy = 0.5; }
+  if (hasA('pound') && keys.duck && !P.ground && !P.pound && !inW && !L.active) { P.pound = 0.14; beep(240, 0.15, 'square', 'ground pound'); }
+  if (P.pound > 0) { P.pound -= dt; P.vx = 0; P.vy = P.pound > 0 ? 0 : -34; P.pounding = P.pound <= 0; }
+  if (hasA('glide') && keys.jump && !P.ground && P.vy < -2.5 && !inW && !P.pounding) { P.vy = -2.5 + GRAV * dt; P.gliding = true; } else P.gliding = false;
+  if (hasA('spin') && keys.act && !P.actWas && !P.spinT && !L.active) { P.spinT = 0.4; if (!P.ground && !P.spun) { P.vy = Math.max(P.vy, 6); P.spun = true; } beep(820, 0.12, 'triangle', 'spin'); }
+  P.actWas = keys.act; if (P.spinT > 0) { P.spinT -= dt; if (P.spinT <= 0) P.spinT = 0; }
   if (S.alien.gear === 2 && !(P.fly > 0) && !inW) { /* Explorer cape: hold jump while falling to fly a little */
     if (P.cape == null) P.cape = 1.5;
     if (P.ground) P.cape = Math.min(1.5, P.cape + dt * 1.5);
@@ -2852,8 +2976,8 @@ function step(dt) {
     const dx = P.x - h.x, dy = P.y + PH * 0.52 - h.y;
     if (Math.abs(dx) > 0.85 || Math.abs(dy) > PH * 0.52 + 0.3) return;
     const foe = h.look ? FOES[h.look] : null, name = foe ? foe.name : h.kind === 'virus' ? 'virus' : 'free radical';
-    if (foe && !foe.stomp) { if (P.inv > 0 || P.shield > 0) return; P.inv = 1.3; P.vx = dx >= 0 ? 7 : -7; P.vy = 5; toast(foeMsg(foe), 3.5); hurt(true); return; } /* real wildlife is never stomped: you just get bumped */
-    if ((P.vy < -1 && P.y > h.y - 0.25) || P.shield > 0) { h.alive = false; h.m.visible = false; if (P.shield <= 0) P.vy = 12; L.score += 50; popup(h.x, h.y, '+50', '#ffd166'); burst(h.x, h.y, h.kind === 'virus' ? '#9be36b' : '#ff6b4a'); beep(900, 0.12, 'square', 'pop, ' + name + ' stopped'); hud(); return; }
+    if (foe && !foe.stomp) { if (P.inv > 0 || P.shield > 0 || P.spinT > 0) return; P.inv = 1.3; P.vx = dx >= 0 ? 7 : -7; P.vy = 5; toast(foeMsg(foe), 3.5); hurt(true); return; } /* real wildlife is never stomped: you just get bumped */
+    if ((P.vy < -1 && P.y > h.y - 0.25) || P.shield > 0 || P.spinT > 0 || P.pounding) { h.alive = false; h.m.visible = false; if (P.shield <= 0) P.vy = 12; L.score += 50; popup(h.x, h.y, '+50', '#ffd166'); burst(h.x, h.y, h.kind === 'virus' ? '#9be36b' : '#ff6b4a'); beep(900, 0.12, 'square', 'pop, ' + name + ' stopped'); hud(); return; }
     if (P.inv > 0) return;
     P.inv = 1.3; P.vx = dx >= 0 ? 9 : -9; P.vy = 7; toast(h.kind === 'virus' ? 'Ouch! A virus got you. Jump on top of it, or jump over it.' : 'Ouch! Free radicals damage cells. Jump on top of them instead.', 3); hurt(true);
   });
@@ -2954,12 +3078,14 @@ function step(dt) {
 
   P.m.position.set(P.x, P.y + (P.ground ? Math.abs(Math.sin(P.t * 11)) * 0.07 * Math.min(1, Math.abs(P.vx) / 3) : 0), 0);
   P.m.rotation.y += (P.face * 0.75 - P.m.rotation.y) * Math.min(1, dt * 10);
+  if (P.sprite) { P.sprite.rotation.y = -P.m.rotation.y; P.sprite.scale.x = (P.face < 0 ? -1 : 1) * (P.wallT > 0 && !P.ground && hasA('wall') ? -1 : 1); spriteFrame(); if (P.sledM) { P.sledM.rotation.y = -P.m.rotation.y; P.sledM.scale.x = P.face < 0 ? -1 : 1; } } /* the pixel alien always faces the camera; its picture changes with each move */
   { const sp = Math.abs(P.vx), u = P.m.userData; P.stride = (P.stride || 0) + dt * sp * 2.2; const amp = P.ground ? Math.min(1, sp / SPEED) * 0.75 : 0;
     if (u.legs) u.legs.forEach(function (h, i) { h.rotation.x = P.ground ? Math.sin(P.stride + i * Math.PI) * amp : -0.5; });
     if (u.tents) u.tents.forEach(function (t, i) { t.rotation.x = Math.sin(P.stride + i * 1.6) * (amp * 0.6 + 0.08); });
     if (P.ground && sp > SPEED * 1.2 && (P.dustT = (P.dustT || 0) - dt) < 0 && !S.set.low) { P.dustT = 0.1; const d = glow('#e8dcc8', 0.7, 0.6); d.position.set(P.x - P.face * 0.45, P.y + 0.15, 0.4); L.group.add(d); L.fx.push({ o: d, t: 0, vx: -P.face * 1.5, vy: 0.8, life: 0.35 }); } }
   P.m.visible = !(P.inv > 0 && Math.floor(P.t * 12) % 2);
   const sq = P.duck ? 0.58 : P.ground ? 1 : 1 + Math.min(0.18, Math.abs(P.vy) * 0.012); P.m.scale.set(P.duck ? 1.2 : 1 / sq, sq, P.duck ? 1.2 : 1 / sq);
+  if (P.sprite) { P.m.scale.set(1, 1, 1); P.m.rotation.z = 0; } /* the sprite sheet already shows ducking, sliding and squashing */
   P.shadow.position.set(P.x, (P.ground ? P.y : P.y - 0.5) + 0.04, 0); P.shadow.visible = !!P.ground;
   cam.position.x += (P.x + P.face * 2.5 - cam.position.x) * Math.min(1, dt * 4);
   const lift = L.active && L.active.chart ? 2.4 : L.inCave ? -1.8 : 0;
@@ -2972,8 +3098,9 @@ function step(dt) {
 let LAST = null, STTAB = 'report', PQ = null;
 function finish() {
   L.over = true; mode = 'done'; closeQ(); LAST = { w: L.world, lv: L.lv }; noteT = 0; $('note').hidden = true;
-  const acc = L.total ? L.first / L.total : 1, stars = acc >= 0.9 ? 3 : acc >= 0.7 ? 2 : 1;
-  const runT = L.time + L.pen, bonus = Math.max(0, Math.round(240 - runT)) * 2; L.score += bonus;
+  const runT0 = L.time + L.pen, acc = L.total ? L.first / L.total : 1, par = L.lv.par || 0;
+  const stars = par ? (runT0 <= par ? 3 : runT0 <= par * 1.4 ? 2 : 1) : acc >= 0.9 ? 3 : acc >= 0.7 ? 2 : 1; /* bonus speed runs: stars come from the time */
+  const runT = runT0, bonus = Math.max(0, Math.round(240 - runT)) * 2; L.score += bonus;
   const before = totalStars(), old = S.levels[L.lv.id] || { stars: 0, best: 0 };
   const tm = Math.round(runT * 10) / 10, newBestT = !old.time || tm < old.time;
   S.levels[L.lv.id] = { stars: Math.max(old.stars, stars), best: Math.max(old.best, L.score), time: newBestT ? tm : old.time }; save();
@@ -3000,7 +3127,7 @@ function finish() {
    Finishing the last level of a world opens a celebration with confetti and a printable certificate.
    Finishing all six worlds opens a bigger celebration and a whole-game certificate. The name typed for the
    certificate is used only for printing; it is never saved. Certificates can be printed again from Progress. */
-function worldDone(w) { const ls = allLevels().filter(function (e) { return e.w.id === w; }); return ls.length > 0 && ls.every(function (e) { return S.levels[e.lv.id] && S.levels[e.lv.id].stars; }); }
+function worldDone(w) { const ls = allLevels().filter(function (e) { return e.w.id === w && !e.lv.bonus; }); /* bonus speed runs are optional */ return ls.length > 0 && ls.every(function (e) { return S.levels[e.lv.id] && S.levels[e.lv.id].stars; }); }
 function allDone() { return BQ.UNITS.every(function (u, i) { return worldDone(i + 1); }); }
 function worldStats(w) {
   const ls = allLevels().filter(function (e) { return w === 'all' || e.w.id === w; }); let stars = 0, words = 0, wordsMax = 0, rares = 0, raresMax = 0, quests = 0;
@@ -3034,7 +3161,7 @@ function certificate(w, name) {
   const all = w === 'all', s = worldStats(w), es = BQ.lang() === 'es', win = window.open('', '_blank'); if (!win) return;
   const date = new Date().toLocaleDateString(es ? 'es-US' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' });
   const what = all ? tx('c.cAll') : tx('c.title', { n: w, t: BQ.worlds[w].title });
-  const topics = (all ? allLevels() : allLevels().filter(function (e) { return e.w.id === w; })).map(function (e) { return e.lv.title; });
+  const topics = (all ? allLevels() : allLevels().filter(function (e) { return e.w.id === w; })).filter(function (e) { return !e.lv.bonus; }).map(function (e) { return e.lv.title; });
   const nm = name ? '<span class="nm">' + esc(name) + '</span>' : '<span class="line"></span>';
   win.document.write('<!doctype html><html lang="' + (es ? 'es' : 'en') + '"><meta charset="utf-8"><title>' + esc(tx('c.cTitle')) + '</title><style>' +
     '*{-webkit-print-color-adjust:exact;print-color-adjust:exact;box-sizing:border-box}@page{size:landscape;margin:0}html,body{margin:0;background:#151a33;color:#f4f3fb;font-family:"Atkinson Hyperlegible",Arial,sans-serif}' +
@@ -3779,7 +3906,7 @@ function menuScene() {
   menuGrp = new T.Group(); scene.add(menuGrp);
   const pad = mesh('cyl', th.ground); pad.scale.set(1.8, 0.3, 1.8); pad.position.y = -0.15; menuGrp.add(pad);
   const rim = mesh('tor', th.top); rim.scale.setScalar(1.75); rim.rotation.x = Math.PI / 2; rim.scale.z = 0.3; menuGrp.add(rim);
-  menuGrp.userData.anim = []; scenery(th, -10, 10, menuGrp, menuGrp.userData.anim); const halo = glow(th.rim, 5, 0.35); halo.position.y = 0.1; menuGrp.add(halo); refreshAlien(); show('menu'); buildMenu();
+  menuGrp.userData.anim = []; scenery(th, -10, 10, menuGrp, menuGrp.userData.anim); const halo = glow(th.rim, 5, 0.35); halo.position.y = 0.1; menuGrp.add(halo); refreshAlien(); show('menu'); custView(false); buildMenu();
 }
 function refreshAlien() { if (!menuGrp) return; if (menuAlien) menuGrp.remove(menuAlien); menuAlien = buildAlien(S.alien); menuAlien.scale.setScalar(1.5); menuGrp.add(menuAlien); }
 function custHTML() {
@@ -3795,15 +3922,20 @@ function custHTML() {
     }).join('') + '</span></div>';
   }).join('') + '<p class="dim gearinfo">' + GEARINFO[S.alien.gear || 0] + '</p>';
 }
+/* the main menu shows the play choices first; the alien choices open on their own page with the Customize button (as in the high school game, v65) */
+function custView(on) { if (on) pixPreview(); $('menu').classList.toggle('custOn', on); $('menuMain').hidden = on; $('menuCust').hidden = !on; const f = on ? $('menuCust').querySelector('.chip') : $('btnCustom'); if (f && !$('menu').hidden) f.focus(); }
+function pixPreview() { const c = $('pixPrev'); if (!c || !BQ.PIXEL_ALIEN) return; const x = c.getContext('2d'); x.imageSmoothingEnabled = false; x.clearRect(0, 0, c.width, c.height);
+  if (BQ.makePixelAlien && !BQ.isTeacherAlien(S.alien)) x.drawImage(BQ.makePixelAlien(S.alien, COLORS[S.alien.color][1]), 0, 0, 128, 176, 0, 0, 128, 176);
+  else { const im = new Image(); im.onload = function () { x.drawImage(im, 0, 0, 128, 176, 0, 0, 128, 176); }; im.src = BQ.PIXEL_ALIEN.sheet; } }
 function buildMenu() {
-  $('cust').innerHTML = custHTML();
+  $('cust').innerHTML = custHTML(); pixPreview();
   const stars = totalStars(), list = allLevels(), started = Object.keys(S.levels).length > 0;
   $('btnPlay').textContent = started ? '🎮 Platformer: continue' : '🎮 Platformer Adventure';
   $('menuStars').textContent = list.length ? stars + ' of ' + list.length * 3 + ' stars' : 'No world files found in this folder.';
   $('btnPlay').disabled = !list.length;
 }
 function nextUp() {
-  const list = allLevels(); let i = list.findIndex(function (e) { return !(S.levels[e.lv.id] && S.levels[e.lv.id].stars); });
+  const list = allLevels(); let i = list.findIndex(function (e) { return !e.lv.bonus && !(S.levels[e.lv.id] && S.levels[e.lv.id].stars); });
   if (i < 0) i = list.length - 1; return list[i];
 }
 /* MISSION MAP: like a Mario world map. Six lands (three on top, three below), a dotted trail through every level,
@@ -3821,7 +3953,7 @@ function buildLevels() {
   for (let w = 1; w <= MAPLANDS.length; w++) {
     const ld = MAPLANDS[w - 1], lvls = BQ.worlds[w] ? BQ.worlds[w].levels : [0, 1, 2, 3, 4], n = lvls.length, dir = w <= 3 ? 1 : -1;
     lvls.forEach(function (lv, k) {
-      const u = n > 1 ? k / (n - 1) : 0.5, x = ld.cx + dir * (u - 0.5) * ld.rx * 1.45, y = ld.cy + Math.sin(u * Math.PI * 2 + w) * ld.ry * 0.22 + 32;
+      const u = n > 1 ? k / (n - 1) : 0.5, x = ld.cx + dir * (u - 0.5) * ld.rx * (n > 5 ? 1.62 : 1.45), y = ld.cy + Math.sin(u * Math.PI * 2 + w) * ld.ry * 0.22 + 32;
       const i = BQ.worlds[w] ? list.findIndex(function (e) { return e.lv === lv; }) : -1;
       nodes.push({ w: w, x: x, y: y, i: i, lv: BQ.worlds[w] ? lv : null, k: k });
     });
@@ -3850,8 +3982,9 @@ function buildLevels() {
     const lab = nd.lv.id + ' ' + nd.lv.title + (open ? (stars ? ', conquered with ' + stars + ' of 3 stars' : ', open') : ', locked');
     svg += '<g class="lvl mnode' + (open ? '' : ' locked') + (cur ? ' cur' : '') + '" data-i="' + nd.i + '"' + (open ? '' : ' data-lock="1"') + ' tabindex="0" role="button" aria-label="' + esc(lab) + '" transform="translate(' + nd.x.toFixed(1) + ' ' + nd.y.toFixed(1) + ')">' +
       (cur ? '<circle r="27" class="pulse" fill="none" stroke="#ffd166" stroke-width="3"/>' : '') +
-      '<circle r="20" fill="' + (stars ? '#ffd166' : open ? '#e8f4ff' : '#4a5560') + '" stroke="' + (stars ? '#7a5a00' : open ? '#2a5a7a' : '#2a3440') + '" stroke-width="3"/>' +
-      '<text y="5" text-anchor="middle" class="mid">' + (open ? nd.lv.id : '🔒') + '</text>' +
+      (nd.lv.bonus ? '<rect x="-19" y="-19" width="38" height="38" rx="3" fill="' + (stars ? '#ffd166' : open ? '#5c94fc' : '#4a5560') + '" stroke="' + (stars ? '#7a5a00' : open ? '#fcfcfc' : '#2a3440') + '" stroke-width="3"/>' :
+      '<circle r="20" fill="' + (stars ? '#ffd166' : open ? '#e8f4ff' : '#4a5560') + '" stroke="' + (stars ? '#7a5a00' : open ? '#2a5a7a' : '#2a3440') + '" stroke-width="3"/>') +
+      '<text y="5" text-anchor="middle" class="mid">' + (open ? (nd.lv.bonus ? '👾' : nd.lv.id) : '🔒') + '</text>' +
       (stars ? '<text y="-27" text-anchor="middle" class="mflag">🚩</text>' : '') +
       '<text y="36" text-anchor="middle" class="mstar">' + (open ? '★'.repeat(stars) + '☆'.repeat(3 - stars) : '') + '</text>' +
       (rare ? '<text x="20" y="-14" class="mrare">💎</text>' : '') +
@@ -3984,6 +4117,17 @@ function pause(on) {
     $('btnResume').focus();
   }
 }
+/* RETRO MODE for the bonus levels: draw the 3D scene at about a quarter of the screen's resolution and scale it up without smoothing (chunky pixels), with fewer colors */
+function retroMode(on) { RETRO = !!on; if (renderer) resize(); }
+/* the bonus levels draw the scene into a small picture (about 640 pixels wide) and then stretch it over the screen with hard pixel edges.
+   Doing the stretch inside the game (not with the browser's CSS) keeps it crisp on every browser, including Safari on Retina Macs. */
+let RT = null, RTQ = null;
+function retroRender() { const c = $('stage'), w = c.clientWidth || 800, h = c.clientHeight || 450, k = Math.min(1, 640 / w), rw = Math.max(64, Math.round(w * k)), rh = Math.max(36, Math.round(h * k));
+  if (!RT || RT.width !== rw || RT.height !== rh) { if (RT) RT.dispose(); RT = new T.WebGLRenderTarget(rw, rh, { minFilter: T.NearestFilter, magFilter: T.NearestFilter, generateMipmaps: false }); if (RTQ) RTQ.mesh.material.map = RT.texture; }
+  if (!RTQ) { RTQ = { scene: new T.Scene(), cam: new T.OrthographicCamera(-1, 1, 1, -1, 0, 1) }; RTQ.mesh = new T.Mesh(new T.PlaneGeometry(2, 2), new T.MeshBasicMaterial({ map: RT.texture, depthTest: false, depthWrite: false })); RTQ.scene.add(RTQ.mesh); }
+  renderer.setRenderTarget(RT); renderer.render(scene, cam); renderer.setRenderTarget(null); renderer.render(RTQ.scene, RTQ.cam); }
+let RETRO = false;
+
 function resize() {
   const c = $('stage'), w = c.clientWidth || 800, h = c.clientHeight || 450;
   renderer.setPixelRatio(S.set.low ? 1 : Math.min(window.devicePixelRatio || 1, 2)); renderer.setSize(w, h, false);
@@ -4005,7 +4149,7 @@ function tick(t) {
     sceneryTick(1 / 60, t / 1000);
     menuGrp.userData.anim.forEach(function (a) { a.m.position.y = a.y + Math.sin(t / 1600 + a.ph) * a.amp; });
   }
-  renderer.render(scene, cam);
+  if (RETRO) retroRender(); else renderer.render(scene, cam);
 }
 
 /* ---------- controls ---------- */
@@ -4060,6 +4204,7 @@ function wire() {
     b.addEventListener('pointerdown', function (e) { press(k, true); e.preventDefault(); }); b.addEventListener('pointerup', up); b.addEventListener('pointerleave', up); b.addEventListener('pointercancel', up);
   });
   $('qopts').addEventListener('click', function (e) { const b = e.target.closest('.opt'); if (!b) return; b.blur(); if (b.dataset.close) { closeQ(); return; } if (b.dataset.rf) { refuelNav(b.dataset.rf); return; } if (b.dataset.try) { tryCode(); return; } answer(+b.dataset.i); });
+  $('btnCustom').onclick = function () { custView(true); }; $('btnCustDone').onclick = $('btnCustDone2').onclick = function () { custView(false); };
   $('cust').addEventListener('click', function (e) { const b = e.target.closest('.chip'); if (!b) return; S.alien[b.dataset.k] = +b.dataset.v; save(); refreshAlien(); buildMenu(); const again = $('cust').querySelector('[data-k="' + b.dataset.k + '"][data-v="' + b.dataset.v + '"]'); if (again) again.focus(); });
   $('btnPlay').onclick = function () { openMap(); };
   $('btnCozy').hidden = !BQ.cozy; $('btnCozy').onclick = function () { if (BQ.cozy) BQ.cozy.start(); };
@@ -4151,7 +4296,7 @@ function boot() {
     cyl: new T.CylinderGeometry(1, 1, 1, 12), ico: new T.IcosahedronGeometry(1, 0), oct: new T.OctahedronGeometry(1, 0), plane: new T.PlaneGeometry(1, 1) };
   wire(); applySettings(); menuScene(); requestAnimationFrame(tick);
   const jump = (location.hash || '').match(/level-(\d+-\d+)/i);
-  if (jump) { const e = allLevels().find(function (x) { return x.lv.id === jump[1]; }); if (e) startLevel(e.w, e.lv); }
+  if (jump) setTimeout(function () { const e = allLevels().find(function (x) { return x.lv.id === jump[1]; }); if (e) startLevel(e.w, e.lv); }, 0); /* after BQ.core is set up below */
   BQ.core = { T: T, get scene() { return scene; }, get cam() { return cam; }, get renderer() { return renderer; }, get G() { return G; }, get S() { return S; }, get HEMI() { return HEMI; }, get KEYL() { return KEYL; },
     glow: glow, label: label, labelTex: labelTex, emat: emat, basic: basic, mesh: mesh, buildAlien: buildAlien, specimen: specimen, beep: beep, save: save, $: $, esc: esc, tx: tx, I18N: I18N, ACH: ACH, award: award,
     show: show, teardown: teardown, menuScene: menuScene, caption: caption, audio: function () { try { AC = AC || new (window.AudioContext || window.webkitAudioContext)(); if (AC.state === 'suspended') AC.resume(); } catch (e) { return null; } return AC; }, openJournal: openJournal, journalTab: function (x) { journalTab(x); }, thumb: thumb, Music: Music, setMode: function (m) { mode = m; }, getMode: function () { return mode; }, disposeGroup: disposeGroup, teach: TEACH };

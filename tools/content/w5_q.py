@@ -1,6 +1,8 @@
 # World 5 questions (English + Spanish): Passing On Traits. Vocabulary and concepts; no written answers.
 from w1_q import q
 D_, N, M_, R = '3.1.6-8.D', '3.1.6-8.N', '3.1.6-8.M', '3.1.6-8.R'
+PUN = (dict(type='punnett', p1='Pp', p2='Pp', note='P = purple, p = white'), dict(type='punnett', p1='Pp', p2='Pp', note='P = morado, p = blanco'))
+def fig(d, f): d['figure'] = f[0]; d['es']['figure'] = f[1]; return d
 QUESTIONS = [
  # ---- 3.1.6-8.D: animal behaviors and specialized plant structures affect the probability of successful reproduction
  q('ms5q01', D_, 'How do bright petals help a plant reproduce?', ['They attract pollinators that carry pollen to other flowers.', 'They make the plant grow taller so it gets more sunlight.', 'They shade the roots and keep rainwater from reaching them.', 'They scare away all animals.'], 0,
@@ -15,9 +17,9 @@ QUESTIONS = [
    'Think about the chicks’ survival.', 'Parental care raises the chance that the young survive, which makes reproduction more successful.',
    ('Los padres del azulejo alimentan a sus polluelos durante semanas. ¿Cómo afecta esta conducta a la reproducción?', ['Sobreviven más polluelos hasta crecer.', 'Los padres ponen más huevos ese día.', 'Los polluelos se vuelven adultos de la noche a la mañana.', 'No tiene ningún efecto.'],
     'Piensa en la supervivencia de los polluelos.', 'El cuidado de las crías aumenta la probabilidad de que sobrevivan, lo que hace más exitosa la reproducción.')),
- q('ms5q04', D_, 'Why are many flowers that hummingbirds visit red and shaped like a tube?', ['They fit the hummingbird, so it visits and carries pollen.', 'Red flowers do not need pollen to make their seeds.', 'The tube shape keeps bees and birds away from the nectar.', 'Hummingbirds cannot see red.'], 0,
+ q('ms5q04', D_, 'Why are many flowers that hummingbirds visit red and shaped like a tube?', ['They fit the hummingbird, so it visits and carries pollen.', 'Red flowers do not need pollen to make their seeds.', 'The tube shape keeps all birds away from the nectar.', 'Hummingbirds cannot see red.'], 0,
    'The flower and the bird fit together.', 'These structures attract the right pollinator, which raises the probability that the flower makes seeds.',
-   ('¿Por qué muchas flores que visitan los colibríes son rojas y tienen forma de tubo?', ['Encajan con el colibrí, así que este las visita y lleva polen.', 'Las flores rojas no necesitan polen para producir sus semillas.', 'La forma de tubo aleja a las abejas y las aves del néctar.', 'Los colibríes no pueden ver el rojo.'],
+   ('¿Por qué muchas flores que visitan los colibríes son rojas y tienen forma de tubo?', ['Encajan con el colibrí, así que este las visita y lleva polen.', 'Las flores rojas no necesitan polen para producir sus semillas.', 'La forma de tubo aleja a todas las aves del néctar.', 'Los colibríes no pueden ver el rojo.'],
     'La flor y el ave encajan.', 'Estas estructuras atraen al polinizador correcto, lo que aumenta la probabilidad de que la flor produzca semillas.')),
  q('ms5q05', D_, 'Milkweed seeds have silky parachutes. How does this structure help?', ['The wind carries the seeds to new places to grow.', 'It makes the seeds heavier so they drop next to the parent.', 'It feeds the parent plant while the seeds are still attached.', 'It keeps the seeds from ever growing.'], 0,
    'Think about the wind.', 'Parachutes spread seeds far from the parent, where they have space and light to grow.',
@@ -43,6 +45,12 @@ QUESTIONS = [
    'Probability is about how likely something is.', 'A behavior that raises the probability makes it more likely, though not certain, that offspring are born and survive.',
    ('¿Qué significa decir que una conducta aumenta la PROBABILIDAD de una reproducción exitosa?', ['Que hace más probable tener crías que sobrevivan.', 'Que garantiza cientos de crías cada vez.', 'Que hace imposible la reproducción para el animal.', 'Que cambia la especie del animal.'],
     'La probabilidad tiene que ver con qué tan posible es algo.', 'Una conducta que aumenta la probabilidad hace más posible, aunque no seguro, que nazcan crías y sobrevivan.')),
+ q('ms5q39', D_, 'Squirrels bury acorns and forget some. How does the acorn’s hard shell help the oak?',
+   ['It protects the seed so it can sprout where it was buried.', 'It makes the acorn too hard for any animal to carry away.', 'It attracts bees that carry the oak’s pollen to its flowers.', 'It lets the acorn make its own food from the sunlight.'], 0,
+   'What could happen to a soft seed buried in the ground all winter?', 'The hard shell is a specialized structure. It keeps the seed safe, so a forgotten acorn can sprout far from the parent tree. That raises the probability of successful reproduction.',
+   ('Las ardillas entierran bellotas y se olvidan de algunas. ¿Cómo ayuda al roble la cáscara dura de la bellota?',
+    ['Protege la semilla para que pueda germinar donde quedó enterrada.', 'Hace que la bellota sea demasiado dura para que un animal la lleve.', 'Atrae abejas que llevan el polen del roble a sus flores.', 'Permite que la bellota produzca su propio alimento con la luz del sol.'],
+    '¿Qué le podría pasar a una semilla blanda enterrada todo el invierno?', 'La cáscara dura es una estructura especializada. Mantiene segura la semilla, así que una bellota olvidada puede germinar lejos del árbol progenitor. Eso aumenta la probabilidad de una reproducción exitosa.')),
  # ---- 3.1.6-8.N: asexual reproduction gives identical genetic information; sexual reproduction gives genetic variation
  q('ms5q11', N, 'How many parents are needed for ASEXUAL reproduction?', ['one', 'two', 'three', 'none'], 0,
    'A- means without (a second parent).', 'Asexual reproduction needs only one parent.',
@@ -84,6 +92,18 @@ QUESTIONS = [
    'Splitting is asexual.', 'Splitting is asexual reproduction, so the two halves are clones with identical genes.',
    ('Una anémona de mar se divide en dos. ¿Cómo son las dos anémonas nuevas?', ['Tienen información genética idéntica.', 'Tienen genes completamente distintos entre sí.', 'Una es una estrella de mar.', 'Cada una tiene genes de dos progenitores.'],
     'Dividirse es asexual.', 'Dividirse es reproducción asexual, así que las dos mitades son clones con genes idénticos.')),
+ fig(q('ms5q40', N, 'In pea plants, P (purple flowers) is dominant over p (white). Two Pp plants are crossed. Use the Punnett square: what fraction of the offspring could have white flowers?',
+   ['1 out of 4', '2 out of 4', '3 out of 4', '0 out of 4'], 0,
+   'White flowers need two small p’s: pp. Count the boxes with pp.', 'Only one of the four boxes is pp, so 1 out of 4 offspring could have white flowers. The other 3 have at least one P, so they are purple.',
+   ('En las plantas de chícharo, P (flores moradas) es dominante sobre p (blancas). Se cruzan dos plantas Pp. Usa el cuadro de Punnett: ¿qué fracción de las crías podría tener flores blancas?',
+    ['1 de cada 4', '2 de cada 4', '3 de cada 4', '0 de cada 4'],
+    'Las flores blancas necesitan dos p minúsculas: pp. Cuenta las casillas con pp.', 'Solo una de las cuatro casillas es pp, así que 1 de cada 4 crías podría tener flores blancas. Las otras 3 tienen al menos una P, así que son moradas.')), PUN),
+ q('ms5q41', N, 'How do offspring from ONE parent compare with offspring from TWO parents?',
+   ['One parent: identical copies. Two parents: half from each, new mixes.', 'One parent: half of its genes. Two parents: exact copies of the mother only.', 'One parent: new mixes of genes. Two parents: exact copies of both parents.', 'Both ways: offspring are always exact copies of one parent, never mixed.'], 0,
+   'Asexual means one parent. Sexual means two parents.', 'In asexual reproduction, the offspring get identical genetic information from one parent. In sexual reproduction, each parent gives half, so the offspring get new combinations and show variation.',
+   ('¿Cómo se comparan las crías de UN progenitor con las crías de DOS progenitores?',
+    ['Un progenitor: copias idénticas. Dos progenitores: la mitad de cada uno, mezclas nuevas.', 'Un progenitor: la mitad de sus genes. Dos progenitores: copias exactas solo de la madre.', 'Un progenitor: mezclas nuevas de genes. Dos progenitores: copias exactas de los dos.', 'Las dos formas: las crías siempre son copias exactas de un progenitor, sin mezclas.'],
+    'Asexual significa un progenitor. Sexual significa dos progenitores.', 'En la reproducción asexual, las crías reciben información genética idéntica de un progenitor. En la reproducción sexual, cada progenitor da la mitad, así que las crías reciben combinaciones nuevas y muestran variación.')),
  # ---- 3.1.6-8.M: mutations in genes on chromosomes may affect proteins: harmful, beneficial or neutral effects
  q('ms5q21', M_, 'What is a MUTATION?', ['a change in the DNA of a gene', 'a new kind of food for cells', 'a type of cell wall', 'an animal behavior like singing'], 0,
    'It happens in the genetic material.', 'A mutation is a change in the DNA that makes up a gene.',
@@ -121,9 +141,9 @@ QUESTIONS = [
    'Think about camouflage.', 'White fur stands out in a brown forest, so this structural change can be harmful.',
    ('Un venado albino tiene una mutación que bloquea su color. ¿Cómo podría afectarlo en un bosque soleado?', ['Los depredadores pueden ver más fácilmente su pelaje blanco.', 'Su pelaje blanco lo hace invisible para los depredadores.', 'Puede digerir más del alimento que encuentra.', 'Corre más rápido.'],
     'Piensa en el camuflaje.', 'El pelaje blanco resalta en un bosque café, así que este cambio de estructura puede ser perjudicial.')),
- q('ms5q30', M_, 'A mutation changes one letter of DNA, but the protein comes out exactly the same. What is the effect?', ['neutral', 'harmful', 'beneficial', 'the organism changes species'], 0,
+ q('ms5q30', M_, 'A mutation changes a gene’s DNA, but the protein the gene makes stays the same. What is the effect?', ['neutral', 'harmful', 'beneficial', 'the organism changes species'], 0,
    'If the protein is the same...', 'If the protein does not change, the organism does not change, so the mutation is neutral.',
-   ('Una mutación cambia una letra del ADN, pero la proteína sale exactamente igual. ¿Cuál es el efecto?', ['neutral', 'perjudicial', 'beneficioso', 'el organismo cambia de especie'],
+   ('Una mutación cambia el ADN de un gen, pero la proteína que produce el gen sigue igual. ¿Cuál es el efecto?', ['neutral', 'perjudicial', 'beneficioso', 'el organismo cambia de especie'],
     'Si la proteína es igual...', 'Si la proteína no cambia, el organismo no cambia, así que la mutación es neutral.')),
  # ---- 3.1.6-8.R: technologies that changed how humans influence the inheritance of desired traits
  q('ms5q31', R, 'What is SELECTIVE BREEDING?', ['choosing parents with desired traits to reproduce', 'changing an organism’s genes directly in a lab', 'letting wild animals choose their own mates', 'growing plants in the dark'], 0,
@@ -158,6 +178,18 @@ QUESTIONS = [
    'Think about how farmers choose parents today.', 'Technologies like artificial insemination and genetic testing let farmers breed from the best animals. Better feed and care helped too.',
    ('La leche de la vaca promedio de Estados Unidos pasó de unas 5,000 libras al año en 1950 a unas 24,000 en 2020. ¿Qué explica la MAYOR parte de este cambio?', ['mejor tecnología de cría, alimentación y cuidado', 'cada vaca comía menos alimento', 'el clima más cálido, que hizo crecer más pasto', 'los productores empezaron a contar la leche de otra manera'],
     'Piensa en cómo eligen los progenitores los productores hoy.', 'Tecnologías como la inseminación artificial y las pruebas genéticas permiten criar con los mejores animales. La mejor alimentación y el mejor cuidado también ayudaron.')),
+ q('ms5q42', R, 'Doctors give a patient a working copy of a gene to treat a disease. What is this called?',
+   ['gene therapy', 'selective breeding', 'cloning', 'hybrid seeds'], 0,
+   'It is a therapy that uses a gene.', 'Gene therapy gives a person a working copy of a gene to treat a disease caused by a gene that does not work.',
+   ('Los médicos le dan a un paciente una copia de un gen que funciona para tratar una enfermedad. ¿Cómo se llama esto?',
+    ['terapia génica', 'cría selectiva', 'clonación', 'semillas híbridas'],
+    'Es una terapia que usa un gen.', 'La terapia génica le da a una persona una copia de un gen que funciona para tratar una enfermedad causada por un gen que no funciona.')),
+ q('ms5q43', R, 'Which source is most reliable for facts about GMO corn?',
+   ['A report from a university or government science agency', 'A social media post shared by many thousands of people', 'A blog by someone who dislikes all farm technology', 'An ad from a company that sells only non-GMO snacks'], 0,
+   'Look for scientists who share their evidence and do not profit from your choice.', 'Universities and government science agencies collect evidence and have it checked by other scientists. Posts, blogs and ads may be one-sided or trying to sell something.',
+   ('¿Qué fuente es la más confiable para obtener datos sobre el maíz transgénico?',
+    ['Un informe de una universidad o de una agencia científica del gobierno', 'Una publicación en redes sociales compartida por muchísimas personas', 'Un blog de alguien a quien no le gusta ninguna tecnología agrícola', 'Un anuncio de una empresa que solo vende bocadillos no transgénicos'],
+    'Busca científicos que compartan su evidencia y no ganen nada con lo que elijas.', 'Las universidades y las agencias científicas del gobierno reúnen evidencia y otros científicos la revisan. Las publicaciones, los blogs y los anuncios pueden ser parciales o querer venderte algo.')),
 ]
 PAIRS = [
  {'name': 'Asexual or sexual?', 'explain': 'Asexual reproduction has one parent and makes identical offspring. Sexual reproduction has two parents and makes offspring with variation.',

@@ -40,11 +40,11 @@ FieldGuide.registerWorld({
           .capsule(14).ground(16)
           .refuel().ground(4)
           .digField({ color: '#9a6a4a', fossils: [[2, 2, 's6f-dino']], ores: [[6, 4, 'hematite'], [8, 1, 'quartz']], boulders: [[5, 1, 1], [5, 2, 0], [1, 4, 0], [7, 5, 1]] })
-          .stratum({ name: t('Layer 3 · Dinosaurs', 'Capa 3 · Dinosaurios'), sub: t('About 68 million years ago (like Montana’s Hell Creek rocks)', 'Hace unos 68 millones de años (como las rocas de Hell Creek, en Montana)'), color: '#9a6a4a' })
+          .stratum({ name: t('Layer 3 · Dinosaurs', 'Capa 3 · Dinosaurios'), sub: t('About 66 million years ago (like Montana’s Hell Creek rocks)', 'Hace unos 66 millones de años (como las rocas de Hell Creek, en Montana)'), color: '#9a6a4a' })
           .rockfall(8, 3.6, 0.4).qitem(5, 3).capsule(13).ground(16)
           .readData('d6-trilo').ground(4)
           .digField({ color: '#8a7a6a', fossils: [[6, 3, 's6f-tiktaalik']], ores: [[2, 2, 'calcite'], [4, 5, 'pyrite']], boulders: [[3, 1, 0], [8, 2, 1], [1, 4, 0]] })
-          .stratum({ name: t('Layer 4 · Fish with legs', 'Capa 4 · Peces con patas'), sub: t('About 375 million years ago (Tiktaalik, Ellesmere Island, Canada)', 'Hace unos 375 millones de años (Tiktaalik, isla de Ellesmere, Canadá)'), color: '#8a7a6a' })
+          .stratum({ name: t('Layer 4 · Fish with leg-like fins', 'Capa 4 · Peces con aletas como patas'), sub: t('About 375 million years ago (Tiktaalik, Ellesmere Island, Canada)', 'Hace unos 375 millones de años (Tiktaalik, isla de Ellesmere, Canadá)'), color: '#8a7a6a' })
           .rockfall(9, 3.8, 1.2).capsule(13).ground(16)
           .mixed(2, ['3.1.6-8.D', '3.1.6-8.M', '3.1.6-8.N', '3.1.6-8.R'])
           .station(['ms6q04', 'ms6q48']).ground(4)
@@ -170,6 +170,36 @@ FieldGuide.registerWorld({
           .boss(t('The Graph Gremlin', 'El Duende de las Gráficas'), 'boss6', 8, 2, ['3.1.6-8.O', '3.1.6-8.P', '3.1.6-8.Q', '3.1.6-8.S'])
           .hint(1, 6.6, t('World 6 Lab Lock: solve the clues to open the last gate.', 'Candado del Mundo 6: resuelve las pistas para abrir la última puerta.'))
           .lablock('lock6')
+          .goal();
+      } },
+    { id: '6-6', title: "Bonus: Penn's Woods", theme: 'pxwoods', bonus: true, par: 100, codes: [],
+      es: { title: "Nivel extra: Los bosques de Pensilvania", log: "¡CARRERA EXTRA CONTRA RELOJ! Corre por un bosque de Pensilvania en otoño, bajo los arces, los robles y las tsugas. Antes de cada parte, un orbe de poder te da los cinco movimientos: Golpe al suelo, Impulso aéreo, Salto en pared, Planeo y Ataque giratorio. Solo por diversión: no hay preguntas de ciencias. Junta las monedas, esquiva los obstáculos y gánale al tiempo para ganar 3 estrellas.",
+            outro: "¡Carrera extra superada! Termina dentro del tiempo meta para ganar 3 estrellas y vuelve a intentarlo para mejorar tu tiempo." },
+      log: "BONUS SPEED RUN! Race through a Pennsylvania forest in fall, under the maples, oaks and hemlocks. A power orb before each section gives you all five moves: Ground Pound, Air Dash, Wall Jump, Glide and Spin Attack. Just for fun: no science questions. Grab the coins, dodge the obstacles and beat the time for 3 stars.",
+      outro: "Bonus speed run cleared! Beat the par time for 3 stars, then try again for a faster time.",
+      build: function (b) {
+        /* PIXEL BONUS SPEED RUN (from the high school game, v68-v75): a fun 8-bit course in the Penn's Woods habitat (pixelscape-pa.js). No questions; stars come from the time (par = 3 stars). Optional: not needed for the certificates. */
+        b.hint(4, 4.6, t("SPEED RUN! Grab coins, dodge obstacles, beat the time!", "¡CARRERA CONTRA RELOJ! Junta monedas, esquiva obstáculos y gánale al tiempo.")).sparks(7, 1.2, 6).ground(14)
+          .power(3, 1.4, 'pound').ground(8)
+          .hint(1, 4.6, t("Jump on the brick stack, then press DOWN in the air to Ground Pound through it!", "Salta sobre la pila de ladrillos y luego presiona ABAJO en el aire para romperla con un Golpe al suelo.")).brick(3, 1.1, 2).brick(3, 2.2, 2).brick(3, 3.3, 2).sparks(7, 1.2, 3).ground(12)
+          .power(3, 1.4, 'dash').ground(8)
+          .hint(1, 4.6, t("Jump, then press SHIFT in the air to dash across the wide gap!", "Salta y luego presiona SHIFT en el aire para cruzar el hueco ancho con un Impulso aéreo.")).ground(3).gap(13).sparks(-10, 2.4, 6).ground(10)
+          .power(3, 1.4, 'wall').ground(8)
+          .hint(1, 4.6, t("Walk under the first wall, then jump back and forth between the two walls to climb!", "Pasa por debajo de la primera pared y luego salta de una pared a la otra para subir.")).tower(4, 8, 1.4, 2.6).tower(8, 11.5, 1.6).sparks(8.6, 12.6, 3).ground(14)
+          .power(3, 1.4, 'glide').ground(8)
+          .rise(4).ground(6).hint(-3, 4.6, t("Run off the edge and HOLD jump to glide across!", "Corre hasta el borde y MANTÉN presionado saltar para planear al otro lado.")).gap(17).sparks(-14, -1, 6).rise(-4).ground(12)
+          .power(3, 1.4, 'spin').ground(8)
+          .hint(1, 4.6, t("Press E to SPIN through the virus swarm!", "Presiona E para GIRAR y atravesar el enjambre de virus.")).ground(16).virus(-14, 2, 1.5).virus(-11, 2, 1.7).virus(-8, 2, 1.4).virus(-5, 2, 1.8).hazard(-10, 2.6, { ax: 3, sp: 1.6 })
+          .ground(16).virus(-13, 4.5, 1.1).virus(-5, 3.5, 1.4).sparks(-10, 1.2, 5)
+          .snapper(4, 3.2, 0).snapper(9, 3.2, 1.2).sparks(2, 3.4, 6).ground(14)
+          .gap(15).mover(-13.5, 0.4, 3, 2.2, 0, 1.2).mover(-7, 1.6, 3, 0, 1.6, 1.4).sparks(-7, 4.4, 3).ground(10)
+          .brick(-8, 3.4, 5).sparks(-7.5, 4.8, 5).hazard(-3, 1.4, { ax: 1.8, sp: 1.5 })
+          .gap(12).pillar(-10.2, 0).pillar(-6.6, 0.9).pillar(-3, 0.3).ground(10).virus(-6, 3, 1.6)
+          .spikes(3, 1.8).sparks(2, 3.2, 4).ground(10).rise(2).ground(6).rise(-2).gap(3).ground(6)
+          .crumbleBridge(4, 'crumble').ground(8).hazard(4, 1.2, { ax: 2, sp: 1.4 }).hazard(9, 3, { ax: 1.6, sp: 1.3, ay: 0.8 }).ground(12)
+          .qblock(3, 3.4, 'life').checkpoint().ground(6)
+          .hint(1, 4.6, t("BOSS AHEAD! Stomp it 3 times to open the gate.", "¡JEFE ADELANTE! Salta sobre él 3 veces para abrir la puerta.")).bigboss(24)
+          .sparks(2, 1.2, 6).ground(10)
           .goal();
       } }
   ]

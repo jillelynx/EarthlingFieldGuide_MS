@@ -856,7 +856,7 @@ FieldGuide.registerQuestions(3, {
   {
    "id": "ms3q22",
    "code": "3.1.6-8.G",
-   "prompt": "The body cannot digest fiber. What happens to most of it?",
+   "prompt": "Your body cannot digest fiber. What happens to fiber in the large intestine?",
    "options": [
     "Bacteria in the large intestine break some of it down.",
     "It is absorbed right away into the blood through the mouth.",
@@ -867,7 +867,7 @@ FieldGuide.registerQuestions(3, {
    "hint": "Helpful bacteria live in the large intestine.",
    "explain": "Fiber is not broken down by your own enzymes. Gut bacteria break some down, and the rest leaves the body.",
    "es": {
-    "prompt": "El cuerpo no puede digerir la fibra. ¿Qué pasa con la mayor parte?",
+    "prompt": "Tu cuerpo no puede digerir la fibra. ¿Qué pasa con la fibra en el intestino grueso?",
     "options": [
      "Las bacterias del intestino grueso descomponen una parte.",
      "Se absorbe enseguida hacia la sangre a través de la boca.",
@@ -1006,26 +1006,26 @@ FieldGuide.registerQuestions(3, {
   {
    "id": "ms3q28",
    "code": "3.1.6-8.E",
-   "prompt": "Two hydrangeas grown from cuttings of the SAME plant bloom blue in one yard and pink in another. What is the most likely reason?",
+   "prompt": "Fish of the same kind were put in a big pond and a small, crowded pond. The fish in the big pond grew larger. What is the most likely reason?",
    "options": [
-    "The soil is different in each yard.",
-    "The two bushes have different genes.",
-    "The pink flowers are older than the blue ones.",
-    "The blue flowers get no sunlight at all."
+    "They had more space and food.",
+    "They had different genes.",
+    "The small pond made them a different species.",
+    "Fish in small ponds never eat."
    ],
    "answer": 0,
-   "hint": "Cuttings have the same genes as the plant they came from.",
-   "explain": "Hydrangea flower color changes with how acidic the soil is: an environmental factor.",
+   "hint": "The fish were the same kind. What was different about the two ponds?",
+   "explain": "Space and food are environmental factors. Fish in the big pond had more of both, so they grew larger.",
    "es": {
-    "prompt": "Dos hortensias que crecieron de esquejes de la MISMA planta dan flores azules en un jardín y rosadas en otro. ¿Cuál es la razón más probable?",
+    "prompt": "Se pusieron peces de la misma clase en un estanque grande y en un estanque pequeño y lleno de peces. Los peces del estanque grande crecieron más. ¿Cuál es la razón más probable?",
     "options": [
-     "El suelo es distinto en cada jardín.",
-     "Los dos arbustos tienen genes distintos.",
-     "Las flores rosadas son más viejas que las azules.",
-     "Las flores azules no reciben nada de luz del sol."
+     "Tenían más espacio y alimento.",
+     "Tenían genes distintos.",
+     "El estanque pequeño los convirtió en otra especie.",
+     "Los peces de estanques pequeños nunca comen."
     ],
-    "hint": "Los esquejes tienen los mismos genes que la planta de la que vienen.",
-    "explain": "El color de las flores de la hortensia cambia según la acidez del suelo: un factor ambiental."
+    "hint": "Los peces eran de la misma clase. ¿Qué era distinto en los dos estanques?",
+    "explain": "El espacio y el alimento son factores ambientales. Los peces del estanque grande tenían más de los dos, así que crecieron más."
    }
   },
   {
@@ -1106,7 +1106,7 @@ FieldGuide.registerQuestions(3, {
   {
    "id": "ms3q32",
    "code": "3.1.6-8.E",
-   "prompt": "Bean plants with almost no water grew only 6 cm, but beans with the right amount grew 30 cm. Which explanation fits the evidence?",
+   "prompt": "Bean plants from the SAME seed packet got different amounts of water. Those with almost no water grew only 6 cm, but beans with the right amount grew 30 cm. Which explanation fits the evidence?",
    "options": [
     "Water, an environmental factor, affected growth.",
     "The dry beans must have had different genes.",
@@ -1117,7 +1117,7 @@ FieldGuide.registerQuestions(3, {
    "hint": "The seeds were the same.",
    "explain": "The evidence shows that changing the water (environment) changed the growth.",
    "es": {
-    "prompt": "Las plantas de frijol casi sin agua crecieron solo 6 cm, pero las que tuvieron la cantidad justa crecieron 30 cm. ¿Qué explicación concuerda con la prueba?",
+    "prompt": "Plantas de frijol del MISMO sobre de semillas recibieron distintas cantidades de agua. Las que casi no tuvieron agua crecieron solo 6 cm, pero las que tuvieron la cantidad justa crecieron 30 cm. ¿Qué explicación concuerda con la prueba?",
     "options": [
      "El agua, un factor ambiental, influyó en el crecimiento.",
      "Los frijoles secos debían de tener genes distintos.",
@@ -1427,12 +1427,12 @@ FieldGuide.registerQuestions(3, {
    ],
    "questions": [
     {
-     "prompt": "Tall seeds and dwarf seeds both grew in the SUN. Which one stayed shorter because of a GENETIC factor?",
+     "prompt": "Tall seeds and dwarf seeds both grew in the SUN. Which one grew LESS because of a GENETIC factor?",
      "answer": 2,
      "hint": "Look only at the two plants in the sun.",
      "explain": "The dwarf seeds in the sun grew to only 20 grams, while the tall seeds in the same sun grew to 60 grams. Same light, different genes.",
      "es": {
-      "prompt": "Las semillas altas y las enanas crecieron al SOL. ¿Cuál se quedó más baja por un factor GENÉTICO?",
+      "prompt": "Las semillas altas y las enanas crecieron al SOL. ¿Cuál creció MENOS por un factor GENÉTICO?",
       "hint": "Mira solo las dos plantas al sol.",
       "explain": "Las semillas enanas al sol llegaron solo a 20 gramos, mientras que las altas, con el mismo sol, llegaron a 60 gramos. La misma luz, genes distintos."
      }
@@ -1581,7 +1581,7 @@ FieldGuide.registerQuestions(3, {
     "Sunlight reaches the leaf",
     "Chloroplasts capture the light energy",
     "Carbon dioxide and water are rearranged into sugar",
-    "Oxygen leaves through the stomata",
+    "Sugar and oxygen are made; oxygen goes out into the air",
     "The plant uses the sugar to grow"
    ],
    "hint": "Start with the energy arriving from the Sun.",
@@ -1592,7 +1592,7 @@ FieldGuide.registerQuestions(3, {
      "La luz del sol llega a la hoja",
      "Los cloroplastos capturan la energía luminosa",
      "El dióxido de carbono y el agua se reorganizan en azúcar",
-     "El oxígeno sale por los estomas",
+     "Se producen azúcar y oxígeno; el oxígeno sale al aire",
      "La planta usa el azúcar para crecer"
     ],
     "hint": "Empieza con la energía que llega del Sol.",

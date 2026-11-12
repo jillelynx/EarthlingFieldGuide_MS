@@ -118,9 +118,9 @@ FieldGuide.registerQuestions(2, {
     "Circulatory",
     "Respiratory",
     "Digestive",
-    "Skeletal"
+    "Excretory"
    ],
-   "hint": "Circulatory moves blood. Respiratory moves air. Digestive breaks down food. Skeletal is the bones.",
+   "hint": "Circulatory moves blood. Respiratory moves air. Digestive breaks down food. Excretory removes wastes from the blood.",
    "items": [
     {
      "text": "Heart",
@@ -150,12 +150,12 @@ FieldGuide.registerQuestions(2, {
      }
     },
     {
-     "text": "Skull",
+     "text": "Kidney",
      "answer": 3,
-     "explain": "The skull is a bone that protects the brain: skeletal system.",
+     "explain": "The kidneys filter wastes out of the blood: excretory system.",
      "es": {
-      "text": "Cráneo",
-      "explain": "El cráneo es un hueso que protege el cerebro: sistema esquelético."
+      "text": "Riñón",
+      "explain": "Los riñones filtran los desechos de la sangre: sistema excretor."
      }
     },
     {
@@ -192,9 +192,9 @@ FieldGuide.registerQuestions(2, {
      "Circulatorio",
      "Respiratorio",
      "Digestivo",
-     "Esquelético"
+     "Excretor"
     ],
-    "hint": "El circulatorio mueve la sangre. El respiratorio mueve el aire. El digestivo descompone los alimentos. El esquelético son los huesos."
+    "hint": "El circulatorio mueve la sangre. El respiratorio mueve el aire. El digestivo descompone los alimentos. El excretor elimina los desechos de la sangre."
    }
   },
   {
@@ -426,26 +426,26 @@ FieldGuide.registerQuestions(2, {
   {
    "id": "ms2q07",
    "code": "3.1.6-8.C",
-   "prompt": "Muscles pull on bones to move the body. Which two systems are working together?",
+   "prompt": "The brain sends messages that make the leg muscles take each step. Which two systems are working together?",
    "options": [
-    "Muscular and skeletal",
+    "Nervous and muscular",
     "Digestive and respiratory",
     "Circulatory and digestive",
-    "Nervous and immune"
+    "Excretory and respiratory"
    ],
    "answer": 0,
-   "hint": "Think of muscles and bones.",
-   "explain": "The muscular system pulls and the skeletal system moves: they work together for every step.",
+   "hint": "Which system sends messages? Which system moves the legs?",
+   "explain": "The nervous system (brain and nerves) sends the messages, and the muscular system moves the legs: they work together for every step.",
    "es": {
-    "prompt": "Los músculos tiran de los huesos para mover el cuerpo. ¿Qué dos sistemas trabajan juntos?",
+    "prompt": "El cerebro envía mensajes que hacen que los músculos de las piernas den cada paso. ¿Qué dos sistemas trabajan juntos?",
     "options": [
-     "Muscular y esquelético",
+     "Nervioso y muscular",
      "Digestivo y respiratorio",
      "Circulatorio y digestivo",
-     "Nervioso e inmunitario"
+     "Excretor y respiratorio"
     ],
-    "hint": "Piensa en los músculos y los huesos.",
-    "explain": "El sistema muscular tira y el esquelético se mueve: trabajan juntos en cada paso."
+    "hint": "¿Qué sistema envía mensajes? ¿Qué sistema mueve las piernas?",
+    "explain": "El sistema nervioso (el cerebro y los nervios) envía los mensajes, y el sistema muscular mueve las piernas: trabajan juntos en cada paso."
    }
   },
   {
@@ -476,26 +476,26 @@ FieldGuide.registerQuestions(2, {
   {
    "id": "ms2q09",
    "code": "3.1.6-8.C",
-   "prompt": "Sweating cools the body during a hike. Which organ releases the sweat?",
+   "prompt": "Working muscle cells make wastes. The blood carries the wastes to the kidneys, which remove them. Which two systems are working together?",
    "options": [
-    "Skin",
-    "Heart",
-    "Lungs",
-    "Stomach"
+    "Circulatory and excretory",
+    "Skeletal and digestive",
+    "Respiratory and digestive",
+    "Nervous and digestive"
    ],
    "answer": 0,
-   "hint": "Where do you feel sweat?",
-   "explain": "Sweat glands in the skin release sweat, which cools the body as it dries.",
+   "hint": "Which system carries blood? Which system has the kidneys?",
+   "explain": "The circulatory system carries the wastes in the blood, and the excretory system (the kidneys) removes them.",
    "es": {
-    "prompt": "Sudar enfría el cuerpo durante una caminata. ¿Qué órgano libera el sudor?",
+    "prompt": "Las células de los músculos que trabajan producen desechos. La sangre lleva los desechos a los riñones, que los eliminan. ¿Qué dos sistemas trabajan juntos?",
     "options": [
-     "La piel",
-     "El corazón",
-     "Los pulmones",
-     "El estómago"
+     "Circulatorio y excretor",
+     "Esquelético y digestivo",
+     "Respiratorio y digestivo",
+     "Nervioso y digestivo"
     ],
-    "hint": "¿Dónde sientes el sudor?",
-    "explain": "Las glándulas sudoríparas de la piel liberan el sudor, que enfría el cuerpo al secarse."
+    "hint": "¿Qué sistema lleva la sangre? ¿Qué sistema tiene los riñones?",
+    "explain": "El sistema circulatorio lleva los desechos en la sangre, y el sistema excretor (los riñones) los elimina."
    }
   },
   {
@@ -526,26 +526,26 @@ FieldGuide.registerQuestions(2, {
   {
    "id": "ms2q11",
    "code": "3.1.6-8.C",
-   "prompt": "White blood cells travel in the blood to fight germs anywhere in the body. Which two systems are working together?",
+   "prompt": "On the steep climb, the brain sends signals that make the hiker breathe faster. Which two systems are working together?",
    "options": [
-    "Immune and circulatory",
+    "Nervous and respiratory",
     "Skeletal and digestive",
-    "Respiratory and skeletal",
-    "Digestive and immune only"
+    "Digestive and excretory",
+    "Muscular and digestive"
    ],
    "answer": 0,
-   "hint": "White blood cells defend; blood carries.",
-   "explain": "White blood cells are part of the immune system, and they travel through the circulatory system.",
+   "hint": "Which system sends signals? Which system does the breathing?",
+   "explain": "The nervous system (the brain) sends the signals, and the respiratory system breathes faster to bring in more oxygen.",
    "es": {
-    "prompt": "Los glóbulos blancos viajan en la sangre para combatir microbios en cualquier parte del cuerpo. ¿Qué dos sistemas trabajan juntos?",
+    "prompt": "En la subida empinada, el cerebro envía señales que hacen que la excursionista respire más rápido. ¿Qué dos sistemas trabajan juntos?",
     "options": [
-     "Inmunitario y circulatorio",
+     "Nervioso y respiratorio",
      "Esquelético y digestivo",
-     "Respiratorio y esquelético",
-     "Solo digestivo e inmunitario"
+     "Digestivo y excretor",
+     "Muscular y digestivo"
     ],
-    "hint": "Los glóbulos blancos defienden; la sangre transporta.",
-    "explain": "Los glóbulos blancos son parte del sistema inmunitario y viajan por el sistema circulatorio."
+    "hint": "¿Qué sistema envía señales? ¿Qué sistema se encarga de respirar?",
+    "explain": "El sistema nervioso (el cerebro) envía las señales, y el sistema respiratorio respira más rápido para traer más oxígeno."
    }
   },
   {
@@ -801,26 +801,26 @@ FieldGuide.registerQuestions(2, {
   {
    "id": "ms2q22",
    "code": "3.1.6-8.H",
-   "prompt": "On a dark night, you slowly see more stars after a few minutes. Why?",
+   "prompt": "On a dark night, a camper sees a shooting star and points at it. What happened FIRST?",
    "options": [
-    "Receptors in your eyes that work in dim light become more sensitive.",
-    "The stars move closer.",
-    "Your ears start helping you see.",
-    "Your eyes stop sending messages."
+    "Receptors in her eyes sensed the light.",
+    "Her arm muscles moved.",
+    "Her brain stored a memory.",
+    "Her ears heard the star."
    ],
    "answer": 0,
-   "hint": "Your eyes adjust to the dark.",
-   "explain": "Some receptors in the eye work best in dim light. As they adjust, you can see fainter stars.",
+   "hint": "Before you can react, something has to sense the stimulus.",
+   "explain": "Sense receptors in the eyes sensed the light first. They sent messages to the brain, and then the brain made her arm muscles point.",
    "es": {
-    "prompt": "En una noche oscura, después de unos minutos ves poco a poco más estrellas. ¿Por qué?",
+    "prompt": "En una noche oscura, una campista ve una estrella fugaz y la señala. ¿Qué pasó PRIMERO?",
     "options": [
-     "Los receptores de tus ojos que funcionan con poca luz se vuelven más sensibles.",
-     "Las estrellas se acercan.",
-     "Tus oídos empiezan a ayudarte a ver.",
-     "Tus ojos dejan de enviar mensajes."
+     "Los receptores de sus ojos captaron la luz.",
+     "Los músculos de su brazo se movieron.",
+     "Su cerebro guardó un recuerdo.",
+     "Sus oídos oyeron la estrella."
     ],
-    "hint": "Tus ojos se adaptan a la oscuridad.",
-    "explain": "Algunos receptores del ojo funcionan mejor con poca luz. Al adaptarse, puedes ver estrellas más tenues."
+    "hint": "Antes de reaccionar, algo tiene que captar el estímulo.",
+    "explain": "Los receptores de los sentidos de los ojos captaron la luz primero. Enviaron mensajes al cerebro, y luego el cerebro hizo que los músculos de su brazo señalaran."
    }
   }
  ],
@@ -1682,12 +1682,12 @@ FieldGuide.registerQuestions(2, {
    "color": "#9fe0ff",
    "word": "Subsystem",
    "def": "A smaller system that is part of a bigger system.",
-   "note": "The body is a system made of SUBSYSTEMS: circulatory, respiratory, digestive, skeletal, muscular, nervous, immune and more. Each one is made of groups of cells.",
+   "note": "The body is a system made of SUBSYSTEMS: circulatory, respiratory, digestive, excretory, skeletal, muscular, nervous, immune and more. Each one is made of groups of cells.",
    "es": {
     "name": "Mapa del cuerpo",
     "word": "Subsistema",
     "def": "Un sistema más pequeño que es parte de un sistema más grande.",
-    "note": "El cuerpo es un sistema formado por SUBSISTEMAS: circulatorio, respiratorio, digestivo, esquelético, muscular, nervioso, inmunitario y más. Cada uno está formado por grupos de células."
+    "note": "El cuerpo es un sistema formado por SUBSISTEMAS: circulatorio, respiratorio, digestivo, excretor, esquelético, muscular, nervioso, inmunitario y más. Cada uno está formado por grupos de células."
    }
   },
   {

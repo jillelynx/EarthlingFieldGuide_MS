@@ -15,6 +15,8 @@ UP = line([[0, 5], [2, 9], [4, 17], [6, 30], [8, 46], [10, 63], [12, 77]], 'Gene
 DOWN = line([[0, 90], [2, 82], [4, 69], [6, 53], [8, 36], [10, 22], [12, 12]], 'Generation', 'Dark moths (%)', [0, 4, 8, 12], 'Generación', 'Polillas oscuras (%)')
 RES = line([[0, 2], [1, 8], [2, 26], [3, 58], [4, 85], [5, 95]], 'Generation of bacteria', 'Resistant bacteria (%)', [0, 1, 2, 3, 4, 5], 'Generación de bacterias', 'Bacterias resistentes (%)')
 FLAT = line([[0, 40], [3, 41], [6, 39], [9, 40], [12, 40]], 'Generation', 'Beetles with stripes (%)', [0, 3, 6, 9, 12], 'Generación', 'Escarabajos con rayas (%)')
+SURV = (dict(type='bars', categories=['Small beak', 'Medium beak', 'Large beak'], values=[10, 15, 30], ylabel='Birds that survived (%)', unit='%'),
+        dict(type='bars', categories=['Pico pequeño', 'Pico mediano', 'Pico grande'], values=[10, 15, 30], ylabel='Aves que sobrevivieron (%)', unit='%'))  # same numbers as the d6-survive chart
 QUESTIONS = [
  # ---- 3.1.6-8.O: patterns in the fossil record (existence, diversity, extinction, change), assuming natural laws work today as in the past
  q('ms6q01', O, 'In undisturbed rock layers, where are the OLDEST fossils usually found?', ['in the deepest layers', 'in the top layer, near the surface', 'in the middle only', 'anywhere at random'], 0,
@@ -49,14 +51,22 @@ QUESTIONS = [
    'Deeper = earlier.', 'Its relative age is older, because deeper layers formed first.',
    ('Un fósil encontrado en una capa MÁS PROFUNDA probablemente es...', ['más viejo que un fósil de una capa de arriba', 'más joven que un fósil de una capa de arriba', 'de la misma edad que todo', 'todavía está vivo'],
     'Más profundo = antes.', 'Su edad relativa es mayor, porque las capas más profundas se formaron primero.')),
- q('ms6q09', O, 'Which group is still alive today, even though its fossils are found in very old layers?', ['sharks', 'trilobites', 'woolly mammoths', 'Tyrannosaurus rex'], 0,
-   'One of these still swims in the ocean.', 'Sharks appear in very old rocks and still live today. The others are extinct.',
-   ('¿Qué grupo todavía vive hoy, aunque sus fósiles se encuentran en capas muy antiguas?', ['los tiburones', 'los trilobites', 'los mamuts lanudos', 'el Tyrannosaurus rex'],
-    'Uno de estos todavía nada en el océano.', 'Los tiburones aparecen en rocas muy antiguas y todavía viven. Los demás están extintos.')),
+ q('ms6q09', O, 'Fossil X appears in the deepest layer AND in every layer up to the top. What can you conclude?',
+   ['This kind of living thing has survived from long ago until recent times.', 'This kind of living thing died out long before the top layer was formed.', 'This kind of living thing first appeared only in the youngest layer.', 'The rock layers must have been flipped upside down at some point.'], 0,
+   'The deepest layer is the oldest, and the top layer is the youngest.', 'Fossil X is found from the oldest layer all the way to the youngest, so this kind of living thing lived through all that time and survived until recent times.',
+   ('El fósil X aparece en la capa más profunda Y en todas las capas hasta la de arriba. ¿Qué puedes concluir?',
+    ['Este tipo de ser vivo ha sobrevivido desde hace mucho tiempo hasta tiempos recientes.', 'Este tipo de ser vivo se extinguió mucho antes de que se formara la capa de arriba.', 'Este tipo de ser vivo apareció por primera vez solo en la capa más joven.', 'Las capas de roca deben de haberse volteado de cabeza en algún momento.'],
+    'La capa más profunda es la más antigua, y la de arriba es la más joven.', 'El fósil X está desde la capa más antigua hasta la más joven, así que este tipo de ser vivo vivió todo ese tiempo y sobrevivió hasta tiempos recientes.')),
  q('ms6q10', O, 'Which is the best evidence that life forms CHANGED over Earth’s history?', ['Layers hold different fossils in a consistent order.', 'All layers hold the same kinds of fossils, top to bottom.', 'There are no fossils in rocks.', 'Fossils in every layer are always the same color.'], 0,
    'Look for a pattern from layer to layer.', 'Different life forms appear in a consistent order through the layers, documenting change over time.',
    ('¿Cuál es la mejor evidencia de que las formas de vida CAMBIARON a lo largo de la historia de la Tierra?', ['Las capas tienen fósiles distintos en un orden constante.', 'Todas las capas tienen los mismos tipos de fósiles, de arriba abajo.', 'No hay fósiles en las rocas.', 'Los fósiles de todas las capas siempre son del mismo color.'],
     'Busca un patrón de capa en capa.', 'Distintas formas de vida aparecen en un orden constante a través de las capas, lo que documenta el cambio con el tiempo.')),
+ q('ms6q49', O, 'The deepest layers hold only simple sea animals. Higher layers add fish with backbones, then animals with four limbs. What pattern does this show?',
+   ['More complex body structures appear in younger layers.', 'All of these animals lived at exactly the same time.', 'Simpler animals appear only in the youngest layers.', 'Animals with four limbs are the very oldest life on Earth.'], 0,
+   'Higher layers are younger. What gets added as you go up?', 'As you move up to younger layers, new life forms with more complex body structures appear. This pattern shows that life changed over Earth’s history.',
+   ('Las capas más profundas solo tienen animales marinos simples. Las capas más altas agregan peces con columna vertebral y luego animales con cuatro extremidades. ¿Qué patrón muestra esto?',
+    ['Las estructuras corporales más complejas aparecen en capas más jóvenes.', 'Todos estos animales vivieron exactamente al mismo tiempo.', 'Los animales más simples solo aparecen en las capas más jóvenes.', 'Los animales con cuatro extremidades son, sin duda, la vida más antigua de la Tierra.'],
+    'Las capas más altas son más jóvenes. ¿Qué se agrega al subir?', 'Al subir a capas más jóvenes, aparecen formas de vida nuevas con estructuras corporales más complejas. Este patrón muestra que la vida cambió a lo largo de la historia de la Tierra.')),
  # ---- 3.1.6-8.P: anatomical similarities and differences among modern organisms and between modern and fossil organisms
  fig(q('ms6q11', P_, 'Look at the bones. What do all four limbs have in common?', ['the same groups of bones in the same order', 'the same overall shape and the same size', 'the same job, such as swimming', 'no bones at all'], 0,
    'Look at the colors, not the shapes.', 'All four have an upper arm bone, forearm bones, and wrist and finger bones, in the same order. They are homologous structures.',
@@ -78,9 +88,9 @@ QUESTIONS = [
    'Look for what is NOT the same.', 'Losing the back legs is a big difference that shows how whales changed over time.',
    ('¿Cuál es una DIFERENCIA ANATÓMICA entre Pakicetus y una ballena moderna?', ['Pakicetus tenía patas traseras; las ballenas modernas no.', 'Los dos tienen huesos del oído con forma de los de una ballena moderna.', 'Los dos son animales.', 'Los dos tienen una columna hecha de muchos huesos.'],
     'Busca lo que NO es igual.', 'Perder las patas traseras es una gran diferencia que muestra cómo cambiaron las ballenas con el tiempo.')),
- q('ms6q16', P_, 'Whales and hippos share a rare ankle bone shape and very similar DNA. What is the best explanation?', ['They share a recent common ancestor.', 'Hippos are a kind of fish.', 'Whales once lived in rivers in Pennsylvania.', 'It happened by chance.'], 0,
+ q('ms6q16', P_, 'Early fossil whales had the same rare ankle bone shape as hippos and their relatives, and whale and hippo DNA is very similar. What is the best explanation?', ['They share a recent common ancestor.', 'Hippos are a kind of fish.', 'Whales once lived in rivers in Pennsylvania.', 'It happened by chance.'], 0,
    'Two kinds of evidence point the same way.', 'Matching anatomy and DNA are strong evidence that whales and hippos are close relatives.',
-   ('Las ballenas y los hipopótamos comparten una forma rara del hueso del tobillo y un ADN muy parecido. ¿Cuál es la mejor explicación?', ['Comparten un ancestro común reciente.', 'Los hipopótamos son un tipo de pez.', 'Las ballenas vivieron en ríos de Pensilvania.', 'Ocurrió por casualidad.'],
+   ('Las primeras ballenas fósiles tenían la misma forma rara del hueso del tobillo que los hipopótamos y sus parientes, y el ADN de las ballenas y el de los hipopótamos es muy parecido. ¿Cuál es la mejor explicación?', ['Comparten un ancestro común reciente.', 'Los hipopótamos son un tipo de pez.', 'Las ballenas vivieron en ríos de Pensilvania.', 'Ocurrió por casualidad.'],
     'Dos tipos de evidencia señalan lo mismo.', 'La anatomía y el ADN coincidentes son una fuerte evidencia de que las ballenas y los hipopótamos son parientes cercanos.')),
  q('ms6q17', P_, 'An insect wing and a bird wing both help an animal fly, but they are built completely differently. What does this suggest?', ['They did NOT come from the same ancestral part.', 'Insects and birds are each other’s closest relatives.', 'Birds evolved from insects.', 'Both have the same bones.'], 0,
    'Similar jobs do not always mean related parts.', 'The wings do the same job but have different structures, so they are not homologous: they evolved separately.',
@@ -164,6 +174,12 @@ QUESTIONS = [
    'It works with differences that are already there.', 'Natural selection acts on existing inherited variation; it does not create traits on demand.',
    ('¿Sobre qué actúa la SELECCIÓN NATURAL?', ['sobre las variaciones que ya existen en una población', 'sobre los cambios que los individuos deciden hacer en su cuerpo', 'solo sobre las rocas y los fósiles', 'sobre rasgos que nunca se heredan'],
     'Trabaja con las diferencias que ya están.', 'La selección natural actúa sobre la variación heredada que ya existe; no crea rasgos a pedido.')),
+ fig(q('ms6q50', S_, 'The bar graph shows finches that survived the 1977 drought. How many times more likely was a large-beaked finch to survive than a small-beaked one?',
+   ['3 times', '2 times', '20 times', '30 times'], 0,
+   'Divide the large-beak percent by the small-beak percent.', '30% of large-beaked finches survived and 10% of small-beaked finches did. 30 ÷ 10 = 3, so a large-beaked finch was 3 times as likely to survive.',
+   ('La gráfica de barras muestra los pinzones que sobrevivieron a la sequía de 1977. ¿Cuántas veces más probable era que sobreviviera un pinzón de pico grande que uno de pico pequeño?',
+    ['3 veces', '2 veces', '20 veces', '30 veces'],
+    'Divide el porcentaje del pico grande entre el porcentaje del pico pequeño.', 'Sobrevivió el 30 % de los pinzones de pico grande y el 10 % de los de pico pequeño. 30 ÷ 10 = 3, así que era 3 veces más probable que sobreviviera un pinzón de pico grande.')), SURV),
  # ---- 3.1.6-8.T: mathematical representations of natural selection increasing and decreasing traits
  fig(q('ms6q37', T_, 'The line graph shows dark moths on sooty bark. What happened to the dark trait?', ['It increased over the generations.', 'It decreased over the generations.', 'It stayed about the same the whole time.', 'It disappeared.'], 0,
    'Follow the line from left to right.', 'The line rises from 5% to 77%: on sooty bark, natural selection increased the dark trait.',

@@ -162,6 +162,30 @@ FieldGuide.registerWorld({
           .hint(1, 6.6, t('World 4 Lab Lock: solve the clues to open the last gate.', 'Candado del Mundo 4: resuelve las pistas para abrir la última puerta.'))
           .lablock('lock4')
           .goal();
+      } },
+    { id: '4-6', title: "Bonus: Tundra Sprint", theme: 'pxtundra', bonus: true, par: 70, codes: [],
+      es: { title: "Nivel extra: Sprint en la tundra", log: "¡CARRERA EXTRA CONTRA RELOJ! Deslízate por las rocas nevadas de la tundra. ¡No caigas en los huecos helados! Solo por diversión: no hay preguntas de ciencias. Junta las monedas, esquiva los obstáculos y gánale al tiempo para ganar 3 estrellas.",
+            outro: "¡Carrera extra superada! Termina dentro del tiempo meta para ganar 3 estrellas y vuelve a intentarlo para mejorar tu tiempo." },
+      log: "BONUS SPEED RUN! Slide across the snowy rocks of the tundra. Do not fall in the icy gaps! Just for fun: no science questions. Grab the coins, dodge the obstacles and beat the time for 3 stars.",
+      outro: "Bonus speed run cleared! Beat the par time for 3 stars, then try again for a faster time.",
+      build: function (b) {
+        /* PIXEL BONUS SPEED RUN (from the high school game, v68-v75): a fun 8-bit course in the Tundra Sprint habitat (pixelscape.js). No questions; stars come from the time (par = 3 stars). Optional: not needed for the certificates. */
+        b.hint(4, 4.6, t("SPEED RUN! Grab coins, dodge obstacles, beat the time!", "¡CARRERA CONTRA RELOJ! Junta monedas, esquiva obstáculos y gánale al tiempo.")).sparks(7, 1.2, 6).ground(14)
+          .power(3, 1.4, 'glide').ground(8)
+          .rise(4).ground(6).hint(-3, 4.6, t("Run off the edge and HOLD jump to glide across!", "Corre hasta el borde y MANTÉN presionado saltar para planear al otro lado.")).gap(17).sparks(-14, -1, 6).rise(-4).ground(12)
+          .hint(1, 4.6, t("SLED RUN! Ride down the hill and fly off the ski jump!", "¡BAJADA EN TRINEO! Baja la colina y vuela desde la rampa de salto.")).ground(4).sled(30, 7, { kick: true }).sparks(-14, 4.4, 5).gap(10).sparks(-8, 4, 6).ground(8)
+          .sled(24, 5).sparks(-14, 4.4, 4).sparks(-6, 2.4, 4).ground(4).sled(22, 6, { kick: true }).gap(11).sparks(-9, 4.5, 6).ground(10)
+          .ground(16).virus(-13, 4.5, 1.1).virus(-5, 3.5, 1.4).sparks(-10, 1.2, 5)
+          .snapper(4, 3.2, 0).snapper(9, 3.2, 1.2).sparks(2, 3.4, 6).ground(14)
+          .gap(15).mover(-13.5, 0.4, 3, 2.2, 0, 1.2).mover(-7, 1.6, 3, 0, 1.6, 1.4).sparks(-7, 4.4, 3).ground(10)
+          .brick(-8, 3.4, 5).sparks(-7.5, 4.8, 5).hazard(-3, 1.4, { ax: 1.8, sp: 1.5 })
+          .gap(12).pillar(-10.2, 0).pillar(-6.6, 0.9).pillar(-3, 0.3).ground(10).virus(-6, 3, 1.6)
+          .spikes(3, 1.8).sparks(2, 3.2, 4).ground(10).rise(2).ground(6).rise(-2).gap(3).ground(6)
+          .crumbleBridge(4, 'crumble').ground(8).hazard(4, 1.2, { ax: 2, sp: 1.4 }).hazard(9, 3, { ax: 1.6, sp: 1.3, ay: 0.8 }).ground(12)
+          .qblock(3, 3.4, 'life').checkpoint().ground(6)
+          .hint(1, 4.6, t("BOSS AHEAD! Stomp it 3 times to open the gate.", "¡JEFE ADELANTE! Salta sobre él 3 veces para abrir la puerta.")).bigboss(24)
+          .sparks(2, 1.2, 6).ground(10)
+          .goal();
       } }
   ]
 });

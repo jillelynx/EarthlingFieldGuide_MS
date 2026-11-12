@@ -736,6 +736,31 @@ FieldGuide.registerQuestions(4, {
    }
   },
   {
+   "id": "ms4q52",
+   "code": "3.1.6-8.J",
+   "prompt": "Reef corals need warm, clear, sunny water. Pennsylvania’s hellbenders need cold, clean streams. What pattern do both show?",
+   "options": [
+    "Living things depend on nonliving conditions in their ecosystem.",
+    "Animals in different ecosystems all need the very same temperature.",
+    "Nonliving conditions do not affect where living things can survive.",
+    "Corals and hellbenders compete with each other for the same food."
+   ],
+   "answer": 0,
+   "hint": "Are water temperature and clean water living or nonliving?",
+   "explain": "Temperature, clean water and sunlight are nonliving conditions. In every ecosystem, living things depend on the right nonliving conditions, so you can predict this pattern anywhere.",
+   "es": {
+    "prompt": "Los corales de arrecife necesitan agua cálida, clara y con sol. Los hellbenders (salamandras gigantes) de Pensilvania necesitan arroyos fríos y limpios. ¿Qué patrón muestran los dos?",
+    "options": [
+     "Los seres vivos dependen de las condiciones sin vida de su ecosistema.",
+     "Los animales de ecosistemas distintos necesitan la misma temperatura.",
+     "Las condiciones sin vida no influyen en dónde sobreviven los seres vivos.",
+     "Los corales y los hellbenders compiten entre sí por el mismo alimento."
+    ],
+    "hint": "¿La temperatura del agua y el agua limpia tienen vida o no tienen vida?",
+    "explain": "La temperatura, el agua limpia y la luz del sol son condiciones sin vida. En todo ecosistema, los seres vivos dependen de las condiciones sin vida adecuadas, así que puedes predecir este patrón en cualquier lugar."
+   }
+  },
+  {
    "id": "ms4q11",
    "code": "3.1.6-8.I",
    "prompt": "Which is a RESOURCE a white-tailed deer needs from its ecosystem?",
@@ -863,7 +888,7 @@ FieldGuide.registerQuestions(4, {
   {
    "id": "ms4q16",
    "code": "3.1.6-8.I",
-   "prompt": "A dry summer shrinks the forest streams. Which population is MOST directly affected?",
+   "prompt": "A dry summer shrinks the forest streams. Which of these is MOST directly affected?",
    "options": [
     "animals that drink from the streams",
     "the rocks lying in the stream bed",
@@ -874,7 +899,7 @@ FieldGuide.registerQuestions(4, {
    "hint": "Water is a resource for living things.",
    "explain": "Less water, a key resource, directly affects the animals that depend on it.",
    "es": {
-    "prompt": "Un verano seco achica los arroyos del bosque. ¿Qué población se ve afectada MÁS directamente?",
+    "prompt": "Un verano seco achica los arroyos del bosque. ¿Cuál de estos se ve afectado MÁS directamente?",
     "options": [
      "los animales que beben de los arroyos",
      "las rocas que hay en el lecho del arroyo",
@@ -983,6 +1008,31 @@ FieldGuide.registerQuestions(4, {
     ],
     "hint": "Más recursos...",
     "explain": "Más alimento y un invierno más fácil permiten que más venados sobrevivan y tengan cervatillos."
+   }
+  },
+  {
+   "id": "ms4q51",
+   "code": "3.1.6-8.I",
+   "prompt": "In a year with few acorns, deer go into winter thinner. What does this show about one deer when food is scarce?",
+   "options": [
+    "It grows less and stores less fat.",
+    "It stores extra fat for the winter.",
+    "It no longer needs any food.",
+    "It grows faster to stay warm."
+   ],
+   "answer": 0,
+   "hint": "What happens to an animal that cannot find enough food?",
+   "explain": "When a resource like food is scarce, each animal gets less matter and energy, so it grows less and stores less fat. Over time, the whole population can shrink too.",
+   "es": {
+    "prompt": "En un año con pocas bellotas, los venados llegan al invierno más flacos. ¿Qué muestra esto sobre un venado cuando escasea el alimento?",
+    "options": [
+     "Crece menos y guarda menos grasa.",
+     "Guarda grasa extra para el invierno.",
+     "Ya no necesita nada de alimento.",
+     "Crece más rápido para no tener frío."
+    ],
+    "hint": "¿Qué le pasa a un animal que no encuentra suficiente alimento?",
+    "explain": "Cuando un recurso como el alimento escasea, cada animal recibe menos materia y energía, así que crece menos y guarda menos grasa. Con el tiempo, toda la población también puede disminuir."
    }
   },
   {
@@ -1236,6 +1286,81 @@ FieldGuide.registerQuestions(4, {
    }
   },
   {
+   "id": "ms4q53",
+   "code": "3.1.6-8.K",
+   "prompt": "Scientists study one rotting log as their SYSTEM. Fungi break the log down and give off carbon dioxide into the air. What happened to that carbon?",
+   "options": [
+    "It left the system but still exists in the air.",
+    "It was destroyed as the log rotted away into soil.",
+    "It turned into energy that the fungi used.",
+    "It stayed inside the log the whole time."
+   ],
+   "answer": 0,
+   "hint": "Matter is never destroyed. Where did the carbon dioxide go?",
+   "explain": "The carbon left the log system as carbon dioxide gas, but it was not destroyed. It is still in the air, where plants can take it in again.",
+   "es": {
+    "prompt": "Unos científicos estudian un tronco podrido como su SISTEMA. Los hongos descomponen el tronco y liberan dióxido de carbono al aire. ¿Qué pasó con ese carbono?",
+    "options": [
+     "Salió del sistema, pero sigue existiendo en el aire.",
+     "Se destruyó mientras el tronco se pudría y se hacía tierra.",
+     "Se convirtió en energía que usaron los hongos.",
+     "Se quedó dentro del tronco todo el tiempo."
+    ],
+    "hint": "La materia nunca se destruye. ¿A dónde fue el dióxido de carbono?",
+    "explain": "El carbono salió del sistema del tronco como gas dióxido de carbono, pero no se destruyó. Sigue en el aire, donde las plantas pueden tomarlo otra vez."
+   }
+  },
+  {
+   "id": "ms4q54",
+   "code": "3.1.6-8.K",
+   "prompt": "A stream carries fallen leaves out of a forest. If the forest is the system, the leaves are...",
+   "options": [
+    "matter leaving the system.",
+    "energy entering the system.",
+    "matter being destroyed.",
+    "new matter being made."
+   ],
+   "answer": 0,
+   "hint": "Leaves are matter. Are they coming in or going out?",
+   "explain": "The leaves are matter, and the stream carries them out of the forest. The matter leaves the system, but it is not destroyed.",
+   "es": {
+    "prompt": "Un arroyo se lleva hojas caídas fuera de un bosque. Si el bosque es el sistema, las hojas son...",
+    "options": [
+     "materia que sale del sistema.",
+     "energía que entra al sistema.",
+     "materia que se destruye.",
+     "materia nueva que se forma."
+    ],
+    "hint": "Las hojas son materia. ¿Entran o salen?",
+    "explain": "Las hojas son materia, y el arroyo se las lleva fuera del bosque. La materia sale del sistema, pero no se destruye."
+   }
+  },
+  {
+   "id": "ms4q55",
+   "code": "3.1.6-8.K",
+   "prompt": "Energy enters a forest as ___ and leaves as ___.",
+   "options": [
+    "sunlight; heat",
+    "heat; sunlight",
+    "soil; oxygen",
+    "water; carbon dioxide"
+   ],
+   "answer": 0,
+   "hint": "Where does a forest’s energy come from? What do living things give off as they use energy?",
+   "explain": "Energy enters as sunlight, which plants capture. As living things use that energy, it leaves the forest as heat. Energy flows one way.",
+   "es": {
+    "prompt": "La energía entra en un bosque como ___ y sale como ___.",
+    "options": [
+     "luz del sol; calor",
+     "calor; luz del sol",
+     "suelo; oxígeno",
+     "agua; dióxido de carbono"
+    ],
+    "hint": "¿De dónde viene la energía de un bosque? ¿Qué liberan los seres vivos al usar energía?",
+    "explain": "La energía entra como luz del sol, que capturan las plantas. Cuando los seres vivos usan esa energía, sale del bosque como calor. La energía fluye en un solo sentido."
+   }
+  },
+  {
    "id": "ms4q31",
    "code": "3.1.6-8.L",
    "prompt": "Which is a change to a PHYSICAL component of an ecosystem?",
@@ -1486,6 +1611,31 @@ FieldGuide.registerQuestions(4, {
    }
   },
   {
+   "id": "ms4q56",
+   "code": "3.1.6-8.L",
+   "prompt": "A scientist claims that the fire helped lodgepole pines. Which evidence BEST supports this?",
+   "options": [
+    "Burned plots had more pine seedlings than unburned plots.",
+    "Many visitors saw thick gray smoke rising over the pine forest.",
+    "The fire burned for several weeks during the summer.",
+    "Some visitors think pines are the prettiest trees."
+   ],
+   "answer": 0,
+   "hint": "Which choice is a measurement that compares burned and unburned areas?",
+   "explain": "Counting seedlings in burned and unburned plots is empirical evidence. More seedlings where it burned supports the claim that the fire helped the pines.",
+   "es": {
+    "prompt": "Una científica afirma que el incendio ayudó a los pinos contorta. ¿Qué evidencia apoya MEJOR esta afirmación?",
+    "options": [
+     "Las parcelas quemadas tenían más plántulas de pino que las no quemadas.",
+     "Muchos visitantes vieron humo gris y espeso que subía sobre el bosque de pinos.",
+     "El incendio duró varias semanas durante el verano.",
+     "Algunos visitantes creen que los pinos son los árboles más bonitos."
+    ],
+    "hint": "¿Qué opción es una medición que compara zonas quemadas y no quemadas?",
+    "explain": "Contar plántulas en parcelas quemadas y no quemadas es evidencia empírica. Más plántulas donde hubo fuego apoya la afirmación de que el incendio ayudó a los pinos."
+   }
+  },
+  {
    "id": "ms4q41",
    "code": "3.1.6-8.U",
    "prompt": "Which is an ECOSYSTEM SERVICE that a healthy river gives people?",
@@ -1497,7 +1647,7 @@ FieldGuide.registerQuestions(4, {
    ],
    "answer": 0,
    "hint": "A benefit from nature.",
-   "explain": "Clean water, fish, flood control and recreation are ecosystem services.",
+   "explain": "Clean water, fish, flood control, nutrient recycling and recreation are ecosystem services.",
    "es": {
     "prompt": "¿Cuál es un SERVICIO DE LOS ECOSISTEMAS que un río sano les da a las personas?",
     "options": [
@@ -1507,7 +1657,7 @@ FieldGuide.registerQuestions(4, {
      "ruido"
     ],
     "hint": "Un beneficio de la naturaleza.",
-    "explain": "El agua limpia, los peces, el control de inundaciones y la recreación son servicios de los ecosistemas."
+    "explain": "El agua limpia, los peces, el control de inundaciones, el reciclaje de nutrientes y la recreación son servicios de los ecosistemas."
    }
   },
   {

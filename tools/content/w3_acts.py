@@ -65,8 +65,8 @@ DATA = [
   'es': {'title': 'Oxígeno en el agua del bosque de kelp durante un día', 'xlabel': 'Hora del día', 'ylabel': 'Oxígeno (miligramos por litro)', 'categories': ['6 a. m.', '10 a. m.', '2 p. m.', '6 p. m.', '10 p. m.']}},
  {'id': 'd3-peas', 'code': E, 'title': 'Pea plant mass after 8 weeks', 'xlabel': 'Seeds and light', 'ylabel': 'Plant mass (grams)',
   'categories': ['Tall, sun', 'Tall, shade', 'Dwarf, sun', 'Dwarf, shade'], 'values': [60, 25, 20, 9],
-  'questions': [dq('Tall seeds and dwarf seeds both grew in the SUN. Which one stayed shorter because of a GENETIC factor?', 2, 'Look only at the two plants in the sun.', 'The dwarf seeds in the sun grew to only 20 grams, while the tall seeds in the same sun grew to 60 grams. Same light, different genes.',
-                   ('Las semillas altas y las enanas crecieron al SOL. ¿Cuál se quedó más baja por un factor GENÉTICO?', 'Mira solo las dos plantas al sol.', 'Las semillas enanas al sol llegaron solo a 20 gramos, mientras que las altas, con el mismo sol, llegaron a 60 gramos. La misma luz, genes distintos.')),
+  'questions': [dq('Tall seeds and dwarf seeds both grew in the SUN. Which one grew LESS because of a GENETIC factor?', 2, 'Look only at the two plants in the sun.', 'The dwarf seeds in the sun grew to only 20 grams, while the tall seeds in the same sun grew to 60 grams. Same light, different genes.',
+                   ('Las semillas altas y las enanas crecieron al SOL. ¿Cuál creció MENOS por un factor GENÉTICO?', 'Mira solo las dos plantas al sol.', 'Las semillas enanas al sol llegaron solo a 20 gramos, mientras que las altas, con el mismo sol, llegaron a 60 gramos. La misma luz, genes distintos.')),
                 dq('Which bar shows that an ENVIRONMENTAL factor made the tall pea variety grow less?', 1, 'Same seeds, less light.', 'Tall seeds in the shade grew to only 25 grams, compared with 60 grams in the sun. Less light means less photosynthesis and less growth.',
                    ('¿Qué barra muestra que un factor AMBIENTAL hizo crecer menos a la variedad alta?', 'Las mismas semillas, menos luz.', 'Las semillas altas en la sombra llegaron solo a 25 gramos, comparado con 60 gramos al sol. Menos luz significa menos fotosíntesis y menos crecimiento.'))],
   'es': {'title': 'Masa de plantas de chícharo después de 8 semanas', 'xlabel': 'Semillas y luz', 'ylabel': 'Masa de la planta (gramos)',
@@ -99,10 +99,10 @@ BECOME = [
 ]
 SEQUENCES = [
  {'id': 'seq3-photo', 'code': F, 'title': 'How a prairie plant turns light into food',
-  'steps': ['Sunlight reaches the leaf', 'Chloroplasts capture the light energy', 'Carbon dioxide and water are rearranged into sugar', 'Oxygen leaves through the stomata', 'The plant uses the sugar to grow'],
+  'steps': ['Sunlight reaches the leaf', 'Chloroplasts capture the light energy', 'Carbon dioxide and water are rearranged into sugar', 'Sugar and oxygen are made; oxygen goes out into the air', 'The plant uses the sugar to grow'],
   'hint': 'Start with the energy arriving from the Sun.', 'explain': 'Energy flows in as light and is stored in sugar. The matter (carbon, hydrogen and oxygen atoms) is rearranged, not created.',
   'es': {'title': 'Cómo una planta de la pradera convierte la luz en alimento',
-         'steps': ['La luz del sol llega a la hoja', 'Los cloroplastos capturan la energía luminosa', 'El dióxido de carbono y el agua se reorganizan en azúcar', 'El oxígeno sale por los estomas', 'La planta usa el azúcar para crecer'],
+         'steps': ['La luz del sol llega a la hoja', 'Los cloroplastos capturan la energía luminosa', 'El dióxido de carbono y el agua se reorganizan en azúcar', 'Se producen azúcar y oxígeno; el oxígeno sale al aire', 'La planta usa el azúcar para crecer'],
          'hint': 'Empieza con la energía que llega del Sol.', 'explain': 'La energía entra como luz y se guarda en el azúcar. La materia (átomos de carbono, hidrógeno y oxígeno) se reorganiza, no se crea.'}},
  {'id': 'seq3-protein', 'code': G, 'title': 'From a turkey sandwich to new muscle',
   'steps': ['You eat turkey, which has protein', 'Digestion breaks the protein into amino acids', 'The small intestine absorbs the amino acids', 'The blood carries them to muscle cells', 'The cells join them into new proteins'],
